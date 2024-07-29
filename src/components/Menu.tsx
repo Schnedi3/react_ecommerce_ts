@@ -3,6 +3,7 @@ import Logo from "../assets/logo.svg";
 
 import { Link } from "react-router-dom";
 import { CartWidget } from "./CartWidget";
+import { Login } from "./Login";
 
 export const Menu = () => {
   return (
@@ -15,6 +16,7 @@ export const Menu = () => {
           <Link to="/">Home</Link>
           <Link to="/contact">Contact</Link>
           <CartWidget />
+          <Login />
         </div>
       </div>
     </nav>

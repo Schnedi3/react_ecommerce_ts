@@ -9,6 +9,7 @@ import { Contact } from "./pages/Contact";
 import { ProductDetail } from "./pages/ProductDetail";
 import { Cart } from "./pages/Cart";
 
+
 export const App = () => {
   return (
     <main className="app">
