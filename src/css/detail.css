@@ -1,0 +1,63 @@
+/*
+==========
+DETAILS
+==========
+*/
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--black-text);
+}
+
+.info img {
+  width: 20%;
+  margin-bottom: 3rem;
+}
+
+.info h2 {
+  font-family: Raleway;
+  font-weight: 800;
+  font-size: 1.7rem;
+  text-wrap: balance;
+  text-align: center;
+}
+
+.info h3 {
+  margin: .5rem 0;
+  font-weight: 700;
+  color: #55946b;
+}
+
+.detail__desc {
+  text-wrap: balance;
+  text-align: center;
+}
+
+/*
+==========
+ADD TO CART
+==========
+*/
+.add__cart {
+  margin-top: 1.5rem;
+  padding: .8rem 1.5rem;
+  font-family: Poppins;
+  font-weight: 300;
+  font-size: 1.1rem;
+  color: var(--white-text);
+  border: none;
+  border-radius: 2rem;
+  background-color: #49a2da;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.add__cart:hover {
+  background-color: #40ad59;
+}
+
+.add__quantity {
+  font-weight: 700;
+}

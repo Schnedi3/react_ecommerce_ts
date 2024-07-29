@@ -1,0 +1,86 @@
+/*
+==========
+MENU
+==========
+*/
+.menu {
+  width: 100%;
+  z-index: 1;
+  background-color: rgb(25, 32, 47);
+}
+
+.menu__container {
+  width: 85%;
+  margin: auto;
+  padding: 1.5rem 0;
+  display: flex;
+  justify-content: space-between
+}
+
+/*
+==========
+LOGO
+==========
+*/
+.menu__logo {
+  display: flex;
+}
+
+.menu__logo img {
+  width: 55%;
+}
+
+/*
+==========
+LINKS
+==========
+*/
+.menu__links {
+  display: flex;
+  gap: 4rem;
+}
+
+.menu__links a {
+  position:relative;
+  color: #ededed;
+  font-family: Poppins;
+  font-size: 1.1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu__links a:after {
+  content:'';
+  width: 0;
+  height: 1.5px;
+  background: #ededed;
+  display: block;
+  transition: width .3s linear;
+}
+
+.menu__links a:hover:after {
+  width:100%;
+}
+
+.cart__img {
+  display: flex;
+}
+
+.cart__img img {
+  width: 2rem;
+}
+
+.cart__img span {
+  position: absolute;
+  width: 1.3rem;
+  height: 1.3rem;
+  bottom: .8rem;
+  left: 1.2rem;
+  display: flex;
+  justify-content: center;
+  color: #2b376a;
+  font-weight: 600;
+  font-size: .9rem;
+  background-color: #ededed;
+  border-radius: 50%;
+}
