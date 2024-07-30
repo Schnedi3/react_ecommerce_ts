@@ -86,3 +86,14 @@ VALIDATION
   font-size: 1.2rem;
   color: #1de764;
 }
+
+/*
+==========
+MOBILE
+==========
+*/
+@media (max-width: 700px) {
+  .contact__form {
+    width: 100%;
+  }
+}

@@ -12,12 +12,20 @@ export const Menu = () => {
         <Link to="/" className="menu__logo">
           <img src={Logo} alt="logo" />
         </Link>
-        <div className="menu__links">
-          <Link to="/">Home</Link>
-          <Link to="/contact">Contact</Link>
-          <CartWidget />
-          <Login />
-        </div>
+        <ul className="menu__links">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <CartWidget />
+          </li>
+          <li>
+            <Login />
+          </li>
+        </ul>
       </div>
     </nav>
   );

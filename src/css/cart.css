@@ -1,5 +1,6 @@
 .aside__container {
-  max-width: 1300px;
+  width: 80%;
+  max-width: 1100px;
   min-height: 89vh;
   margin: auto;
   display: grid;
@@ -12,8 +13,8 @@ MAIN
 ==========
 */
 .cart__info {
-  margin: 5rem;
   color: var(--black-text);
+  margin: 5rem 3rem 0 0;
 }
 
 .cart__info > p {
@@ -54,6 +55,7 @@ ITEM
 .quantity__info > button {
   display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 1rem;
   border: none;
   width: 1.4rem;
@@ -121,20 +123,15 @@ PAY
 }
 
 .pay__info {
+  margin: 5rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
-  padding: 5rem 3rem;
   text-align: center;
   color: #5d7ba2;
 }
 
-/*
-==========
-EMPTY
-==========
-*/
 .pay__info > button {
   margin-top: .5rem;
   padding: 1rem 0;
@@ -155,11 +152,6 @@ EMPTY
   background-color: #40ad59;
 }
 
-/*
-==========
-TOTAL
-==========
-*/
 .pay__info > h2 {
   position: relative;
   font-family: Raleway;
@@ -191,4 +183,27 @@ TOTAL
   margin: 7rem auto 0;
   filter: invert(1);
   opacity: .5;
+}
+
+/*
+==========
+MOBILE
+==========
+*/
+@media (max-width: 700px) {
+  .aside__container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart__info {
+    width: 80%;
+    margin: 5rem auto;
+  }
+
+  .pay__info {
+    width: 50%;
+    margin: 5rem auto;
+  }
 }
