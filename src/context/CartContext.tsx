@@ -1,19 +1,5 @@
 import { createContext, PropsWithChildren, useState } from "react";
-import { Product } from "../types/types";
-
-interface CartItem extends Product {
-  quantity: number;
-}
-
-export interface CartContextType {
-  cart: CartItem[];
-  addToCart: (product: Product) => void;
-  increaseQuantity: (productId: number) => void;
-  decreaseQuantity: (productId: number) => void;
-  deleteProduct: (productId: number) => void;
-  totalCart: () => number;
-  emptyCart: () => void;
-}
+import { Product, CartItem, CartContextType } from "../types/types";
 
 export const CartContext = createContext<CartContextType | undefined>(
   undefined

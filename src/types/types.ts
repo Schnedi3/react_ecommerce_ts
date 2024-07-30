@@ -16,6 +16,20 @@ export const defaultProduct: Product = {
   image: "https://placehold.co/150x150?text=Hello\nWorld",
 };
 
+export interface CartItem extends Product {
+  quantity: number;
+}
+
+export interface CartContextType {
+  cart: CartItem[];
+  addToCart: (product: Product) => void;
+  increaseQuantity: (productId: number) => void;
+  decreaseQuantity: (productId: number) => void;
+  deleteProduct: (productId: number) => void;
+  totalCart: () => number;
+  emptyCart: () => void;
+}
+
 export interface FormValues {
   name: string;
   email: string;
