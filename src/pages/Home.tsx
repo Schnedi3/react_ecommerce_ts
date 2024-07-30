@@ -50,7 +50,7 @@ export const Home = () => {
 
       <section className="cards">
         {filteredProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} error={null} />
         ))}
       </section>
     </div>

@@ -4,7 +4,9 @@ import { AddProduct } from "../components/AddProduct";
 import { useFetchProduct } from "../hooks/useFetch";
 
 export const ProductDetail = () => {
-  const { product } = useFetchProduct()
+  const { product, error } = useFetchProduct();
+
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <section className="container">
