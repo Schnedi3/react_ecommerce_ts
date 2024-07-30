@@ -16,7 +16,6 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       <div className="card__info">
         <h3>{product.title}</h3>
         <h4>{product.price}$</h4>
-        <p>{product.category}</p>
         <Link to={`/product/${product.id}`}>View Details</Link>
       </div>
     </section>

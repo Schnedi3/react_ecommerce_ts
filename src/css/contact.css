@@ -6,27 +6,30 @@ FORM
 */
 .contact__form {
   color: var(--black-text);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin: auto;
 }
 
 .contact__form > h2 {
   margin-bottom: 1rem;
   font-family: Raleway;
   font-weight: 800;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .contact__form > input,
 .contact__form > textarea {
-  width: 100%;
-  margin: .6rem 0;
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   font-family: Poppins;
   font-weight: 300;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--black-text);
   background: rgba(255, 255, 255, 0.9);
-  border: 3px solid rgba(0, 0, 0, 0.2);
-  border-radius: 1rem;
+  border: 2px solid rgba(0, 0, 0, .15);
+  border-radius: .5rem;
 }
 
 .contact__form > input::placeholder,
@@ -44,15 +47,14 @@ FORM
 }
 
 .contact__button {
-  float: right;
-  width: 40%;
-  padding: 1.2rem 1rem;
+  margin-top: .5rem;
+  padding: 1rem;
   font-family: Poppins;
   font-weight: 800;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--white-text);
   border: none;
-  border-radius: 1rem;
+  border-radius: .5rem;
   background-color: #49a2da;
   text-transform: uppercase;
   letter-spacing: .5rem;
@@ -73,16 +75,14 @@ VALIDATION
   position: relative;
   left: 1rem;
   color: #f13a3a;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
 .success {
-  position: relative;
-  top: .5rem;
-  left: 1rem;
+  text-align: center;
   font-family: Raleway;
   font-weight: 600;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #1de764;
 }

@@ -1,4 +1,3 @@
-import { Product } from "../types/types";
 import { Products } from "../components/Products";
 import { ProductCard } from "../components/ProductCard";
 
@@ -15,7 +14,7 @@ export const Home = () => {
       <h1>Products</h1>
 
       <div className="categories">
-        {uniqueCategories.map((category: string) => (
+        {uniqueCategories.map((category) => (
           <button
             key={category}
             onClick={() => handleCategoryChange(category)}
@@ -27,7 +26,7 @@ export const Home = () => {
       </div>
 
       <section className="cards">
-        {filteredProducts.map((product: Product) => (
+        {filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </section>

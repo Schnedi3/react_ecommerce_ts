@@ -15,7 +15,7 @@ export const Products = () => {
 
   const uniqueCategories = [
     defaultCategory,
-    ...new Set(products.map((product: Product) => product.category)),
+    ...new Set(products.map((product) => product.category)),
   ];
 
   const handleCategoryChange = (category: string) => {
@@ -26,9 +26,7 @@ export const Products = () => {
     selectedCategory === defaultCategory
       ? setFilteredProducts(products)
       : setFilteredProducts(
-          products.filter(
-            (product: Product) => product.category === selectedCategory
-          )
+          products.filter((product) => product.category === selectedCategory)
         );
   }, [selectedCategory, products]);
 

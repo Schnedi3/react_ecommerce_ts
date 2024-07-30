@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { defaultProduct, Product } from '../types/types';
+import { defaultProduct, Product } from "../types/types";
 
 const API_URL: string = "https://fakestoreapi.com/products";
 
@@ -14,7 +14,7 @@ export const useFetchProducts = () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data: Product[] = await response.json();
+        const data = await response.json();
         setProducts(data);
       } catch (error) {
         console.error(`Error fetching products: ${error}`);
@@ -28,7 +28,7 @@ export const useFetchProducts = () => {
 };
 
 export const useFetchProduct = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<string>();
   const [product, setProduct] = useState<Product>(defaultProduct);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export const useFetchProduct = () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data: Product = await response.json();
+        const data = await response.json();
         setProduct(data);
       } catch (error) {
         console.error(`Error fetching product: ${error}`);

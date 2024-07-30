@@ -3,7 +3,7 @@
 DETAILS
 ==========
 */
-.info {
+.detail__info {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,12 +11,12 @@ DETAILS
   color: var(--black-text);
 }
 
-.info img {
+.detail__info > img {
   width: 20%;
   margin-bottom: 3rem;
 }
 
-.info h2 {
+.detail__info > h2 {
   font-family: Raleway;
   font-weight: 800;
   font-size: 1.7rem;
@@ -24,13 +24,13 @@ DETAILS
   text-align: center;
 }
 
-.info h3 {
+.detail__info > h3 {
   margin: .5rem 0;
   font-weight: 700;
   color: #55946b;
 }
 
-.detail__desc {
+.detail__info > p {
   text-wrap: balance;
   text-align: center;
 }

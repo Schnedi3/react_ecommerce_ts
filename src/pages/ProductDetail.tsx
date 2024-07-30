@@ -8,11 +8,11 @@ export const ProductDetail = () => {
 
   return (
     <section className="container">
-      <div className="info">
+      <div className="detail__info">
         <img src={product.image} alt={product.title} />
         <h2>{product.title}</h2>
         <h3>{product.price}$</h3>
-        <p className="detail__desc">{product.description}</p>
+        <p>{product.description}</p>
         <AddProduct />
       </div>
     </section>

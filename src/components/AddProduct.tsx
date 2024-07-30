@@ -11,7 +11,10 @@ export const AddProduct = () => {
 
   return (
     <button className="add__cart" onClick={() => addToCart(product)}>
-      Add to Cart <span className="add__quantity">{article && <>({article.quantity})</>}</span>
+      Add to Cart{" "}
+      <span className="add__quantity">
+        {article && <>({article.quantity})</>}
+      </span>
     </button>
   );
 };

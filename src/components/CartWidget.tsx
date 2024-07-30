@@ -12,9 +12,7 @@ export const CartWidget = () => {
   return (
     <Link to="/cart" className="cart__img">
       <img src={imgCart} alt="cart image" />
-      <div>
-        <span>{quantityInCart()}</span>
-      </div>
+      <span>{quantityInCart()}</span>
     </Link>
   );
 };

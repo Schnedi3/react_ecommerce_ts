@@ -15,7 +15,7 @@ HOME CONTAINER
 TITLE
 ==========
 */
-.main__container h1 {
+.main__container > h1 {
   margin-left: 2rem;
   font-family: Raleway;
   font-weight: 900;
@@ -34,7 +34,7 @@ CATEGORIES
   justify-content: space-evenly;
 }
 
-.categories button {
+.categories > button {
   padding: .4rem 1.2rem;
   font-family: Josefin;
   font-weight: 400;
@@ -47,12 +47,12 @@ CATEGORIES
   transition: .3s;
 }
 
-.categories button:hover {
+.categories > button:hover {
   color: var(--white-text);
   background-color: #40ad59;
 }
 
-.categories button.active {
+.categories > button.active {
   color: var(--white-text);
   font-weight: 800;
   background-color: #49a2da;
@@ -73,13 +73,11 @@ CARDS
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 330px;
-  min-height: 400px;
-  padding: 1.5rem;
+  width: 310px;
+  min-height: 380px;
   place-items: center;
   border-radius: 1rem;
   border: 2px solid rgba(0, 0, 0, .1);
-  background-color: #eaeaea;
   margin: auto;
   text-align: center;
 }
@@ -104,14 +102,9 @@ CARDS
 }
 
 .card__info > h4 {
-  margin-top: .5rem;
+  margin: .5rem 0 1rem 0;
   font-weight: 700;
   color: #40ad59;
-}
-
-.card__info > p {
-  margin: .7rem;
-  text-transform: capitalize;
 }
 
 .card__info > a {
@@ -125,6 +118,6 @@ CARDS
   transition: .3s;
 }
 
-.card__info a:hover {
+.card__info > a:hover {
   background-color: #40ad59;
 }

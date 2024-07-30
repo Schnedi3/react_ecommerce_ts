@@ -4,8 +4,14 @@ import imgPay from "../assets/pay.svg";
 import { useCartContext } from "../context/useCartContext";
 
 export const Cart = () => {
-  const { cart, decreaseQuantity, increaseQuantity, deleteProduct, totalCart, emptyCart } =
-    useCartContext();
+  const {
+    cart,
+    decreaseQuantity,
+    increaseQuantity,
+    deleteProduct,
+    totalCart,
+    emptyCart,
+  } = useCartContext();
 
   return (
     <section className="aside__container">
@@ -23,8 +29,12 @@ export const Cart = () => {
                   <p className="item__quantity">{item.quantity}</p>
                   <button onClick={() => increaseQuantity(item.id)}>+</button>
                 </div>
-                <p>Unit price: <span>${item.price}</span></p>
-                <p>Total: <span>${item.quantity * item.price}</span></p>
+                <p>
+                  Unit price: <span>${item.price}</span>
+                </p>
+                <p>
+                  Total: <span>${item.quantity * item.price}</span>
+                </p>
                 <button onClick={() => deleteProduct(item.id)}>
                   Remove item
                 </button>
@@ -35,10 +45,10 @@ export const Cart = () => {
       </article>
       <aside className="pay__container">
         <div className="pay__info">
-          <button onClick={emptyCart}>
-            empty cart
-          </button>
-          <h2>cart total <span>${totalCart().toFixed(2)}</span></h2>
+          <button onClick={emptyCart}>empty cart</button>
+          <h2>
+            cart total <span>${totalCart().toFixed(2)}</span>
+          </h2>
           <img src={imgPay} alt="pay image" />
         </div>
       </aside>
