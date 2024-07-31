@@ -1,31 +1,50 @@
 import "../css/menu.css";
-import Logo from "../assets/logo.svg";
+import mobileMenu from "../assets/mobile_menu.svg";
 
 import { Link } from "react-router-dom";
 import { CartWidget } from "./CartWidget";
-import { Login } from "./Login";
+import { useEffect, useState } from "react";
 
 export const Menu = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", closeMenu);
+
+    return () => {
+      window.removeEventListener("resize", closeMenu);
+    };
+  }, []);
+  
+
   return (
     <nav className="menu">
       <div className="menu__container">
         <Link to="/" className="menu__logo">
-          <img src={Logo} alt="logo" />
+          LOGO
         </Link>
-        <ul className="menu__links">
+        <img
+          className="mobile__menu"
+          src={mobileMenu}
+          alt="mobile menu icon"
+          id={isMenuOpen ? "mobile__menu-rotate" : ""}
+          onClick={toggleMenu}
+        />
+        <ul className="menu__links" id={isMenuOpen ? "menu__links-visible" : ""}>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" onClick={closeMenu}>Home</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link to="/contact" onClick={closeMenu}>Contact</Link>
           </li>
           <li>
-            <CartWidget />
-          </li>
-          <li>
-            <Login />
+            <Link to="/login" onClick={closeMenu}>Login</Link>
           </li>
         </ul>
+        <CartWidget />
       </div>
     </nav>
   );

@@ -8,10 +8,12 @@ export const ProductDetail = () => {
 
   if (error) return <p>Error: {error}</p>;
 
+/*   if (!product) return <p>No product data available.</p>; */
+
   return (
     <section className="container">
       <div className="detail__info">
-        <img src={product.image} alt={product.title} />
+        <img src={product.thumbnail} alt={product.title} />
         <h2>{product.title}</h2>
         <h3>{product.price}$</h3>
         <p>{product.description}</p>

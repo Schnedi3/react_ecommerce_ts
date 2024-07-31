@@ -1,8 +1,9 @@
+import "../css/login.css";
+
 import { GoogleLogin } from "@react-oauth/google";
 import { GoogleCredentialResponse } from "@react-oauth/google";
 
 export const Login = () => {
-
   const handleError = () => {
     console.log("Login failed");
   };
@@ -12,15 +13,14 @@ export const Login = () => {
   };
 
   return (
-    <div>
-      <GoogleLogin
+    <section className="container">
+      <div className="login__container">
+        <GoogleLogin
         onError={handleError}
         onSuccess={handleSuccess}
-        type="icon"
-        theme="outline"
         shape="circle"
-        size="medium"
       />
-    </div>
+      </div>
+    </section>
   );
 };

@@ -5,8 +5,9 @@ import { CartProvider } from "./context/CartContext";
 
 import { Menu } from "./components/Menu";
 import { Home } from "./pages/Home";
-import { Contact } from "./pages/Contact";
 import { ProductDetail } from "./pages/ProductDetail";
+import { Contact } from "./pages/Contact";
+import { Login } from "./pages/Login";
 import { Cart } from "./pages/Cart";
 
 export const App = () => {
@@ -20,6 +21,7 @@ export const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
         </BrowserRouter>

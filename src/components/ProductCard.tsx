@@ -17,7 +17,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <section className="card__container">
       <div className="img__container">
-        <img src={product.image} alt={product.title} />
+        <img src={product.thumbnail} alt={product.title} />
       </div>
       <div className="card__info">
         <h3>{product.title}</h3>

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { defaultProduct, Product } from "../types/types";
 import axios from "axios";
 
-const API_URL: string = "https://fakestoreapi.com/products";
+const API_URL: string = "https://dummyjson.com/products";
 
 export const useFetchProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -13,7 +13,7 @@ export const useFetchProducts = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(API_URL);
-        setProducts(response.data);
+        setProducts(response.data.products);
       } catch (error) {
         setError(`Error fetching products: ${error}`);
       }

@@ -50,10 +50,6 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   };
 
-  const emptyCart = () => {
-    setCart([]);
-  };
-
   return (
     <CartContext.Provider
       value={{
@@ -63,7 +59,6 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         increaseQuantity,
         deleteProduct,
         totalCart,
-        emptyCart,
       }}
     >
       {children}
