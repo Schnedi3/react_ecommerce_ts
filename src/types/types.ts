@@ -60,7 +60,7 @@ export const defaultProduct: Product = {
   dimensions: {
     width: 0,
     height: 0,
-    depth: 0
+    depth: 0,
   },
   warrantyInformation: "Loading...",
   shippingInformation: "Loading...",
@@ -71,21 +71,21 @@ export const defaultProduct: Product = {
       comment: "Loading...",
       date: "Loading...",
       reviewerName: "Loading...",
-      reviewerEmail: "Loading..."
+      reviewerEmail: "Loading...",
     },
     {
       rating: 0,
       comment: "Loading...",
       date: "Loading...",
       reviewerName: "Loading...",
-      reviewerEmail: "Loading..."
+      reviewerEmail: "Loading...",
     },
     {
       rating: 0,
       comment: "Loading...",
       date: "Loading...",
       reviewerName: "Loading...",
-      reviewerEmail: "Loading..."
+      reviewerEmail: "Loading...",
     },
   ],
   returnPolicy: "Loading...",
@@ -94,12 +94,10 @@ export const defaultProduct: Product = {
     createdAt: "Loading...",
     updatedAt: "Loading...",
     barcode: "Loading...",
-    qrCode: "https://dummyjson.com/image/150"
+    qrCode: "https://dummyjson.com/image/150",
   },
-  images: [
-    "https://dummyjson.com/image/150"
-  ],
-  thumbnail: "https://dummyjson.com/image/150"
+  images: ["https://dummyjson.com/image/150"],
+  thumbnail: "https://dummyjson.com/image/150",
 };
 
 export interface CartItem extends Product {
@@ -113,6 +111,10 @@ export interface CartContextType {
   decreaseQuantity: (productId: number) => void;
   deleteProduct: (productId: number) => void;
   totalCart: () => number;
+}
+
+export interface ICategoriesProps {
+  setFilteredProducts: (filteredProducts: Product[]) => void;
 }
 
 export interface FormValues {

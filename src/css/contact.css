@@ -4,9 +4,20 @@
 FORM
 ==========
 */
+.contact__container {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  place-items: center;
+  gap: 3rem;
+}
+
+.contact__container > img {
+  width: 100%;
+}
+
 .contact__form {
   color: var(--black-text);
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: .5rem;
@@ -15,7 +26,7 @@ FORM
 
 .contact__form > h2 {
   margin-bottom: 1rem;
-  font-family: Raleway;
+  font-family: Montserrat;
   font-weight: 800;
   font-size: 2.5rem;
 }
@@ -24,7 +35,6 @@ FORM
 .contact__form > textarea {
   padding: 1rem;
   font-family: Poppins;
-  font-weight: 300;
   font-size: 1rem;
   color: var(--black-text);
   background: rgba(255, 255, 255, 0.9);
@@ -35,6 +45,7 @@ FORM
 .contact__form > input::placeholder,
 .contact__form > textarea::placeholder {
   color: var(--black-text);
+  opacity: .5;
 }
 
 .contact__form > input:focus-visible,
@@ -49,12 +60,12 @@ FORM
 .contact__button {
   margin-top: .5rem;
   padding: 1rem;
-  font-family: Poppins;
+  font-family: Montserrat;
   font-weight: 800;
   font-size: 1.3rem;
   color: var(--white-text);
   border: none;
-  border-radius: .5rem;
+  border-radius: 5rem;
   background-color: #49a2da;
   text-transform: uppercase;
   letter-spacing: .5rem;
@@ -93,6 +104,14 @@ MOBILE
 ==========
 */
 @media (max-width: 700px) {
+  .contact__container {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact__container > img {
+    display: none;
+  }
+
   .contact__form {
     width: 100%;
   }

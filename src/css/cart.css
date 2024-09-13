@@ -41,7 +41,7 @@ HEADER
   gap: 1.5rem;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  border-bottom: 2px solid rgba(0, 0, 0, .15);
+  border-bottom: 1px solid rgba(0, 0, 0, .4);
   text-wrap: balance;
 }
 
@@ -73,25 +73,38 @@ ITEM
 
 .quantity__info {
   display: flex;
+  align-items: center;
+  padding: .3rem .3rem;
+  background-color: #ffffff;
+  border-radius: 2rem;
 }
 
 .quantity__info > p {
-  padding: .2rem .8rem;
-  border: 1px solid;
-  margin: 0 1rem;
+  margin: 0 .7rem;
 }
 
 .quantity__info > button {
-  font-size: 1.5rem;
-  font-weight: 600;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Josefin;
+  font-size: 1.6rem;
+  font-weight: 500;
   border: 0;
   color: var(--black-text);
-  background-color: transparent;
+  background-color: rgba(21, 237, 71, .2);
+  border-radius: 50%;
   cursor: pointer;
 }
 
+.quantity__info > button:first-child {
+  background-color: rgba(245, 41, 27, .2);
+}
+
 .quantity__info > button:hover {
-  color: #49aa4e;
+  filter: brightness(70%);
 }
 
 .item__quantity {
@@ -109,18 +122,33 @@ ITEM
 }
 
 .item__info > button {
+  position: relative;
   width: 1rem;
   font-size: 1rem;
   font-weight: 900;
   border: none;
   color: var(--black-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: transparent;
   cursor: pointer;
+}
+
+.item__info > button:after {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: -16%;
+  border-radius: 50%;
+  z-index: -1;
   transition: .3s;
 }
 
-.item__info > button:hover {
+.item__info > button:hover:after {
   color: #ad4040;
+  background-color: rgba(245, 41, 27, .15);
 }
 
 /*
@@ -133,8 +161,8 @@ TOTAL
 }
 
 .cart__total > h2 {
-  font-family: Raleway;
-  font-weight: 900;
+  font-family: Montserrat;
+  font-weight: 800;
   font-size: 2rem;
 }
 
@@ -147,7 +175,7 @@ TOTAL
   justify-content: space-between;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
-  border-bottom: 2px solid rgba(0, 0, 0, .15);
+  border-bottom: 1px solid rgba(0, 0, 0, .4);
 }
 
 .total__info > p > span {
@@ -170,9 +198,9 @@ PAY
 */
 .cart__pay {
   margin: 3rem 0;
-  padding: 1rem;
+  padding: .9rem 1.8rem;
   border: 0;
-  border-radius: 5px;
+  border-radius: 2rem;
   font-family: Poppins;
   font-weight: 600;
   font-size: 1.1rem;

@@ -1,7 +1,7 @@
 import "../css/menu.css";
-import mobileMenu from "../assets/mobile_menu.svg";
+import mobileMenu from "../assets/icons/mobile_menu.svg";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CartWidget } from "./CartWidget";
 import { useEffect, useState } from "react";
 
@@ -35,13 +35,13 @@ export const Menu = () => {
         />
         <ul className="menu__links" id={isMenuOpen ? "menu__links-visible" : ""}>
           <li>
-            <Link to="/" onClick={closeMenu}>Home</Link>
+            <NavLink to="/" onClick={closeMenu}>Home</NavLink>
           </li>
           <li>
-            <Link to="/contact" onClick={closeMenu}>Contact</Link>
+            <NavLink to="/contact" onClick={closeMenu}>Contact</NavLink>
           </li>
           <li>
-            <Link to="/login" onClick={closeMenu}>Login</Link>
+            <NavLink to="/login" onClick={closeMenu}>Login</NavLink>
           </li>
         </ul>
         <CartWidget />

@@ -9,6 +9,11 @@ FONTS
 }
 
 @font-face {
+  font-family: Montserrat;
+  src: url(../assets/Montserrat.ttf) format(truetype);
+}
+
+@font-face {
   font-family: Poppins;
   src: url(../assets/Poppins.ttf) format(truetype);
 }
@@ -36,6 +41,11 @@ COMMON
 
 body {
   background-color: #f4f4f4;
+}
+
+button,
+input {
+  font-family: inherit;
 }
 
 .app {

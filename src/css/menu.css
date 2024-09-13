@@ -63,7 +63,7 @@ LINKS
 .menu__links > li > a:after {
   content:'';
   width: 0;
-  height: 1.5px;
+  height: 1px;
   background: #ededed;
   display: block;
   transition: width .3s linear;
@@ -73,12 +73,8 @@ LINKS
   width:100%;
 }
 
-.menu__links > li > a:active {
-  border-bottom: 1.5px solid var(--white-text);
-}
-
-.menu__links > li:active {
-  border-bottom: 1.5px solid var(--white-text);
+.menu__links > li > a.active {
+  border-bottom: 1px solid var(--white-text);
 }
 
 /*

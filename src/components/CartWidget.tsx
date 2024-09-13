@@ -1,5 +1,5 @@
 import "../css/menu.css";
-import imgCart from "../assets/cart.svg";
+import imgCart from "../assets/icons/cart.svg";
 
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/useCartContext";
