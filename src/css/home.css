@@ -1,23 +1,14 @@
-/*
-==========
-HOME
-==========
-*/
+/* HOME */
 .main__container {
   width: 90%;
   max-width: 1100px;
   margin: 5rem auto;
-  color: var(--black-text);
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  color: var(--primary-text);
 }
 
-/*
-==========
-TITLE
-==========
-*/
 .header {
   display: flex;
   align-items: center;
@@ -31,11 +22,6 @@ TITLE
   text-transform: capitalize;
 }
 
-/*
-==========
-CARDS
-==========
-*/
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -43,15 +29,15 @@ CARDS
 }
 
 .card__container {
+  width: 310px;
+  min-height: 380px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 310px;
-  min-height: 380px;
   place-items: center;
   border-radius: 1rem;
   border: 2px solid rgba(0, 0, 0, 0.1);
-  margin: auto;
   text-align: center;
 }
 
@@ -77,22 +63,25 @@ CARDS
 .card__info > h4 {
   margin: 0.5rem 0 1rem 0;
   font-weight: 700;
-  color: #40ad59;
+  color: var(--accent);
 }
 
 .card__info > a {
   padding: 0.3rem 0.8rem;
   font-size: 0.9rem;
-  color: var(--white-text);
+  color: var(--secondary-text);
   border: none;
   border-radius: 2rem;
-  background-color: #49a2da;
+  background-color: var(--accent);
   text-decoration: none;
   transition: 0.3s;
 }
 
-.card__info > a:hover {
-  background-color: #40ad59;
+/* HOVER */
+@media (hover: hover) {
+  .card__info > a:hover {
+    background-color: var(--accented);
+  }
 }
 
 /* ADAPTIVE */

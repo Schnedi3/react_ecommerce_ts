@@ -1,8 +1,4 @@
-/*
-==========
-FONTS
-==========
-*/
+/* FONTS */
 @font-face {
   font-family: Josefin;
   src: url(../assets/Josefin.ttf) format(truetype);
@@ -23,14 +19,16 @@ FONTS
   src: url(../assets/Raleway.ttf) format(truetype);
 }
 
-/*
-==========
-COMMON
-==========
-*/
+/* GLOBALS */
 :root {
-  --black-text: #405b7e;
-  --white-text: #f8f8f8;
+  --primary-text: #405b7e;
+  --secondary-text: #f8f8f8;
+
+  --main-bg: #f8f8f8;
+  --primary-bg: #283e4e;
+
+  --accent: #9d44ae;
+  --accented: #ae447e;
 }
 
 * {
@@ -40,9 +38,10 @@ COMMON
 }
 
 body {
-  background-color: #f4f4f4;
+  background-color: var(--main-bg);
 }
 
+a,
 button,
 input {
   font-family: inherit;

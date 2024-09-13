@@ -9,8 +9,8 @@
   border: 0;
   border-radius: 0.5rem;
   font-size: 0.9rem;
-  color: #f8f8f8;
-  background-color: #232b3b;
+  color: var(--secondary-text);
+  background-color: var(--primary-bg);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -20,7 +20,8 @@
 .categories > button > span {
   width: 1px;
   height: 1.3rem;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: var(--main-bg);
+  opacity: 0.3;
 }
 
 .categories > button > img {
@@ -45,8 +46,8 @@
   list-style-type: none;
   padding: 0.6rem 2rem;
   font-size: 0.8rem;
-  color: #f8f8f8;
-  background-color: #232b3b;
+  color: var(--secondary-text);
+  background-color: var(--primary-bg);
   transition: 0.3s;
 }
 
@@ -59,7 +60,7 @@
 }
 
 .categories > ul > li.active {
-  color: #bf6bd0;
+  color: var(--accent);
 }
 
 /* HOVER */
@@ -69,7 +70,7 @@
   }
 
   .categories > ul > li:hover {
-    color: #bf6bd0;
+    color: var(--accented);
     cursor: pointer;
   }
 }

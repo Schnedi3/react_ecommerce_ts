@@ -1,12 +1,7 @@
-
-/*
-==========
-FORM
-==========
-*/
+/* FORM */
 .contact__container {
   display: grid;
-  grid-template-columns: .8fr 1.2fr;
+  grid-template-columns: 0.8fr 1.2fr;
   place-items: center;
   gap: 3rem;
 }
@@ -16,12 +11,12 @@ FORM
 }
 
 .contact__form {
-  color: var(--black-text);
   width: 100%;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  gap: .5rem;
-  margin: auto;
+  gap: 0.5rem;
+  color: var(--primary-text);
 }
 
 .contact__form > h2 {
@@ -36,16 +31,16 @@ FORM
   padding: 1rem;
   font-family: Poppins;
   font-size: 1rem;
-  color: var(--black-text);
+  color: var(--primary-text);
   background: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(0, 0, 0, .15);
-  border-radius: .5rem;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
 }
 
 .contact__form > input::placeholder,
 .contact__form > textarea::placeholder {
-  color: var(--black-text);
-  opacity: .5;
+  color: var(--primary-text);
+  opacity: 0.5;
 }
 
 .contact__form > input:focus-visible,
@@ -58,34 +53,25 @@ FORM
 }
 
 .contact__button {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   padding: 1rem;
   font-family: Montserrat;
   font-weight: 800;
   font-size: 1.3rem;
-  color: var(--white-text);
+  color: var(--secondary-text);
   border: none;
   border-radius: 5rem;
-  background-color: #49a2da;
+  background-color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: .5rem;
-  cursor: pointer;
-  transition: .3s;
+  letter-spacing: 0.5rem;
+  transition: 0.3s;
 }
 
-.contact__button:hover {
-  background-color: #40ad59;
-}
-
-/*
-==========
-VALIDATION
-==========
-*/
+/* VALIDATION */
 .error {
   position: relative;
   left: 1rem;
-  color: #f13a3a;
+  color: var(--accented);
   font-size: 1rem;
   font-weight: 500;
 }
@@ -95,19 +81,23 @@ VALIDATION
   font-family: Raleway;
   font-weight: 600;
   font-size: 1.2rem;
-  color: #1de764;
+  color: var(--accent);
 }
 
-/*
-==========
-MOBILE
-==========
-*/
+/* HOVER */
+@media (hover: hover) {
+  .contact__button:hover {
+    background-color: var(--accented);
+    cursor: pointer;
+  }
+}
+
+/* MOBILE */
 @media (max-width: 700px) {
   .contact__container {
     grid-template-columns: 1fr;
   }
-  
+
   .contact__container > img {
     display: none;
   }

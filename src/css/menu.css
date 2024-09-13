@@ -1,11 +1,7 @@
-/*
-==========
-MENU
-==========
-*/
+/* MENU */
 .menu {
   width: 100%;
-  background-color: #232b3b;
+  background-color: var(--primary-bg);
   margin-bottom: 5rem;
 }
 
@@ -22,25 +18,17 @@ MENU
   justify-content: space-between;
 }
 
-/*
-==========
-LOGO
-==========
-*/
+/* LOGO */
 .menu__logo {
   font-family: Poppins;
   font-weight: 700;
   font-size: 1.9rem;
-  color: var(--white-text);
+  color: var(--secondary-text);
   text-decoration: none;
   letter-spacing: 2px;
 }
 
-/*
-==========
-LINKS
-==========
-*/
+/* LINKS */
 .menu__links {
   display: flex;
   align-items: center;
@@ -52,36 +40,27 @@ LINKS
 }
 
 .menu__links > li > a {
-  position:relative;
-  color: #ededed;
-  font-family: Poppins;
+  position: relative;
+  color: var(--secondary-text);
   font-size: 1.1rem;
   text-decoration: none;
-  cursor: pointer;
 }
 
 .menu__links > li > a:after {
-  content:'';
+  content: "";
   width: 0;
   height: 1px;
-  background: #ededed;
+  background-color: var(--main-bg);
   display: block;
-  transition: width .3s linear;
-}
-
-.menu__links > li > a:hover:after {
-  width:100%;
+  transition: width 0.3s linear;
 }
 
 .menu__links > li > a.active {
-  border-bottom: 1px solid var(--white-text);
+  padding-bottom: 0.1rem;
+  border-bottom: 1px solid var(--secondary-text);
 }
 
-/*
-==========
-CART
-==========
-*/
+/* CART */
 .cart__img {
   display: flex;
   position: relative;
@@ -98,24 +77,31 @@ CART
   left: 1.2rem;
   display: flex;
   justify-content: center;
-  color: #2b376a;
+  color: var(--primary-text);
   font-weight: 600;
-  font-size: .9rem;
-  background-color: #ededed;
+  font-size: 0.9rem;
+  background-color: var(--main-bg);
   border-radius: 50%;
 }
 
-/*
-==========
-MOBILE
-==========
-*/
+/* HOVER */
+@media (hover: hover) {
+  .menu__links > li > a:hover {
+    cursor: pointer;
+  }
+
+  .menu__links > li > a:hover:after {
+    width: 100%;
+  }
+}
+
+/* ADAOTIVE */
 @media (max-width: 700px) {
   .mobile__menu {
     display: block;
     width: 2rem;
     cursor: pointer;
-    transition: .3s;
+    transition: 0.3s;
   }
 
   #mobile__menu-rotate {
@@ -133,9 +119,9 @@ MOBILE
     top: 5.7rem;
     left: 0;
     justify-content: center;
-    background-color: #283144;
+    background-color: var(--primary-bg);
     clip-path: inset(0 0 100% 0);
-    transition: .5s;
+    transition: 0.5s;
   }
 
   #menu__links-visible {
