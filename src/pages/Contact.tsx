@@ -4,7 +4,7 @@ import contactImage from "../assets/icons//contact-img.svg";
 import { useValidateForm } from "../hooks/useValidationForm";
 
 export const Contact = () => {
-  const { register, handleSubmit, onSubmit, errors, successMessage } =
+  const { register, handleSubmit, onSubmit, errors, isSubmitted } =
     useValidateForm();
 
   return (
@@ -53,7 +53,9 @@ export const Contact = () => {
         <button type="submit" className="contact__button">
           send
         </button>
-        {successMessage && <span className="success">{successMessage}</span>}
+        {isSubmitted && (
+          <span className="success">Form submitted successfully!</span>
+        )}
       </form>
     </section>
   );

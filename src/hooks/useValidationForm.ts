@@ -1,9 +1,9 @@
-import { FormValues } from "../types/types";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
+
+import { FormValues } from "../types/types";
 
 const contactSchema = zod.object({
   name: zod
@@ -19,7 +19,7 @@ const contactSchema = zod.object({
 });
 
 export const useValidateForm = () => {
-  const [successMessage, setSuccessMessage] = useState<string>("");
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const {
     register,
@@ -32,9 +32,19 @@ export const useValidateForm = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
-    setSuccessMessage("Form submitted successfully!");
+    setIsSubmitted(true);
     reset();
   };
 
-  return { register, handleSubmit, onSubmit, errors, successMessage };
+  useEffect(() => {
+    if (isSubmitted) {
+      const timer = setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [isSubmitted]);
+
+  return { register, handleSubmit, onSubmit, errors, isSubmitted };
 };
