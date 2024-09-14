@@ -21,14 +21,17 @@
 
 /* GLOBALS */
 :root {
-  --primary-text: #405b7e;
+  --primary-text: #333f57;
   --secondary-text: #f8f8f8;
 
-  --main-bg: #f8f8f8;
-  --primary-bg: #283e4e;
+  --main-bg: #f0f0f0;
+  --primary-bg: #333f57;
 
   --accent: #9d44ae;
+  --accent-pale: #b78dbf;
   --accented: #ae447e;
+
+  --white: #ffffff;
 }
 
 * {

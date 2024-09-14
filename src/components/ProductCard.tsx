@@ -16,14 +16,14 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <section className="card__container">
-      <div className="img__container">
+      <figure className="img__container">
         <img src={product.thumbnail} alt={product.title} />
-      </div>
-      <div className="card__info">
+      </figure>
+      <article className="card__info">
         <h3>{product.title}</h3>
         <h4>{product.price}$</h4>
         <Link to={`/product/${product.id}`}>View Details</Link>
-      </div>
+      </article>
     </section>
   );
 };
