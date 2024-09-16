@@ -1,18 +1,13 @@
+import { Link } from "react-router-dom";
+
+import { IProductCardProps } from "../types/types";
+import { useFetchProducts } from "../hooks/useFetch";
 import "../css/home.css";
 
-import { Link } from "react-router-dom";
-import { Product } from "../types/types";
-import { useFetchProducts } from "../hooks/useFetch";
-
-interface ProductCardProps {
-  product: Product;
-  error: string | null;
-}
-
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard = ({ product }: IProductCardProps) => {
   const { error } = useFetchProducts();
 
-  if (error) return <p>Error: {error}</p>;
+  if (error) return <p>{error}</p>;
 
   return (
     <section className="card__container">

@@ -1,5 +1,5 @@
 import { createContext, PropsWithChildren, useState } from "react";
-import { Product, CartItem, CartContextType } from "../types/types";
+import { IProduct, CartItem, CartContextType } from "../types/types";
 
 export const CartContext = createContext<CartContextType | undefined>(
   undefined
@@ -9,7 +9,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cart, setCart] = useState<CartItem[]>([]);
 
   // Item detail page
-  const addToCart = (product: Product) => {
+  const addToCart = (product: IProduct) => {
     setCart((prevCart) => {
       const onCart = prevCart.find((item) => item.id === product.id);
       if (onCart) {

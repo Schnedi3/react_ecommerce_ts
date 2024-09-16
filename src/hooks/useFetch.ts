@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { defaultProduct, Product } from "../types/types";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
+import { IProduct } from "../types/types";
 
 const API_URL: string = "https://dummyjson.com/products";
 
 export const useFetchProducts = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<IProduct[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export const useFetchProducts = () => {
 
 export const useFetchProduct = () => {
   const { id } = useParams<string>();
-  const [product, setProduct] = useState<Product>(defaultProduct);
+  const [product, setProduct] = useState<IProduct | undefined>(undefined);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

@@ -1,8 +1,8 @@
-import "../css/menu.css";
-import imgCart from "../assets/icons/cart.svg";
-
 import { Link } from "react-router-dom";
+
 import { useCartContext } from "../context/useCartContext";
+import imgCart from "../assets/icons/cart.svg";
+import "../css/menu.css";
 
 export const CartWidget = () => {
   const { cart } = useCartContext();

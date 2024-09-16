@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 
-import { FormValues } from "../types/types";
+import { IContactForm } from "../types/types";
 
 const contactSchema = zod.object({
   name: zod
@@ -26,11 +26,11 @@ export const useValidateForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormValues>({
+  } = useForm<IContactForm>({
     resolver: zodResolver(contactSchema),
   });
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = (data: IContactForm) => {
     console.log(data);
     setIsSubmitted(true);
     reset();

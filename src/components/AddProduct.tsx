@@ -1,7 +1,6 @@
-import "../css/detail.css";
-
 import { useCartContext } from "../context/useCartContext";
 import { useFetchProduct } from "../hooks/useFetch";
+import "../css/detail.css";
 
 export const AddProduct = () => {
   const { product } = useFetchProduct();

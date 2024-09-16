@@ -95,7 +95,7 @@
   }
 }
 
-/* ADAOTIVE */
+/* ADAPTIVE */
 @media (max-width: 700px) {
   .mobile__menu {
     display: block;
@@ -104,7 +104,7 @@
     transition: 0.3s;
   }
 
-  #mobile__menu-rotate {
+  .mobile__menu-rotate {
     transform: rotate(180deg);
   }
 
@@ -124,7 +124,7 @@
     transition: 0.5s;
   }
 
-  #menu__links-visible {
+  .menu__links-visible {
     clip-path: inset(0 0 0 0);
   }
 }
