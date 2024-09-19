@@ -1,0 +1,71 @@
+/* CATEGORIES */
+.categories {
+  position: relative;
+  justify-self: end;
+}
+
+.categories > button {
+  min-width: 10rem;
+  padding: 0.7rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  color: var(--black-text);
+  background-color: var(--white);
+  border: 0;
+  border-radius: 0.2rem;
+}
+
+.categories > button > span {
+  width: 1px;
+  height: 1.3rem;
+  background-color: var(--black-bg);
+  opacity: 0.3;
+}
+
+.categories > button > img {
+  width: 1rem;
+}
+
+.categories > ul {
+  width: 100%;
+  position: absolute;
+  top: 3rem;
+  display: flex;
+  flex-direction: column;
+  clip-path: inset(0 0 100% 0);
+  transition: 0.3s;
+}
+
+.categories > ul.modal_open {
+  clip-path: inset(0 0 0 0);
+}
+
+.categories > ul > li {
+  list-style-type: none;
+  padding: 0.6rem 2rem;
+  font-size: 0.8rem;
+  color: var(--black-text);
+  background-color: var(--white);
+  border-radius: 0.2rem;
+  transition: 0.3s;
+}
+
+.categories > ul > li.active {
+  color: var(--accent);
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .categories > button:hover {
+    cursor: pointer;
+  }
+
+  .categories > ul > li:hover {
+    font-weight: 400;
+    background-color: var(--accent);
+    cursor: pointer;
+  }
+}

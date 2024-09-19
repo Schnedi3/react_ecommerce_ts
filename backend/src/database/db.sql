@@ -1,0 +1,36 @@
+CREATE DATABASE ecommercedb;
+
+CREATE TABLE product (
+  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  title VARCHAR(50) NOT NULL,
+  description TEXT NOT NULL,
+  category VARCHAR(25) NOT NULL,
+  subcategory VARCHAR(25) NOT NULL,
+  price NUMERIC NOT NULL,
+  sizes VARCHAR(10)[] NOT NULL,
+  images TEXT[] NOT NULL
+);
+
+CREATE TABLE customer (
+  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  username VARCHAR(25) NOT NULL,
+  email VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(25) NOT NULL,
+  role VARCHAR(50) DEFAULT 'user'
+);
+
+CREATE TABLE cart_item (
+  cart_id INTEGER NOT NULL REFERENCES cart(id) ON DELETE CASCADE,
+  product_id INTEGER NOT NULL REFERENCES product(id),
+  quantity INTEGER NOT NULL,
+  PRIMARY KEY (cart_id, product_id)
+);
+
+CREATE TABLE cart (
+  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES customer(id)
+);
+
+UPDATE users
+SET role = 'admin'
+WHERE email = 'email';

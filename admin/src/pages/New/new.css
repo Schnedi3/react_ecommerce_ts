@@ -1,0 +1,187 @@
+/* FORM */
+.form {
+  margin: 2rem auto !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: var(--black-text);
+}
+
+.form > h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: Prata;
+  font-weight: 300;
+  font-size: 1.9rem;
+}
+
+.form > h2::after {
+  content: "";
+  width: 2rem;
+  height: 0.1rem;
+  background-color: var(--black-text);
+}
+
+/* ----- */
+.upload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.upload > div {
+  display: flex;
+  gap: 3rem;
+}
+
+.upload > div > label > img {
+  width: 5rem;
+}
+
+.upload > div > label > input {
+  display: none;
+}
+
+.upload > div > ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.upload > div > ul > li > img {
+  height: 5rem;
+}
+
+/* ----- */
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.title > input {
+  padding: 0.7rem;
+  font-size: 1rem;
+  color: var(--black-text);
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+}
+
+.title > input::placeholder {
+  opacity: 0.25;
+}
+
+/* ----- */
+.desc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.desc > textarea {
+  padding: 0.7rem;
+  font-size: 1rem;
+  color: var(--black-text);
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+  resize: none;
+}
+
+.desc > textarea::placeholder {
+  opacity: 0.25;
+}
+
+/* ----- */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.category,
+.subcategory,
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.category > select,
+.subcategory > select,
+.price > input {
+  padding: 0.7rem;
+  color: var(--black-text);
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+  font-size: 1rem;
+}
+
+.price > input {
+  width: 100%;
+}
+
+/* ----- */
+.sizes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.sizes > div {
+  display: flex;
+  gap: 1rem;
+}
+
+.sizes > div > button {
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+  background-color: #e2e8f0;
+  border: 0;
+  border-radius: 0.2rem;
+  transition: 0.3s;
+}
+
+.sizes > div > button.selected {
+  background-color: var(--accent);
+}
+
+/* ----- */
+.form > button {
+  margin-top: 0.5rem;
+  padding: 0.7rem;
+  font-size: 1.1rem;
+  color: var(--white-text);
+  background-color: var(--black-text);
+  border: 0;
+  border-radius: 0.2rem;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+/* ----- */
+.error {
+  color: #e15656;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .upload > div > label > img:hover {
+    cursor: pointer;
+  }
+
+  .sizes > div > button:hover {
+    background-color: var(--accent);
+    cursor: pointer;
+  }
+
+  .form > button:hover {
+    font-weight: 500;
+    color: var(--black-text);
+    background-color: var(--accent);
+    cursor: pointer;
+  }
+}

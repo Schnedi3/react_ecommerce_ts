@@ -1,0 +1,102 @@
+/* MENU */
+.menu {
+  height: var(--menu-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* ----- */
+.menu_logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu_logo > h2 {
+  display: flex;
+  align-items: baseline;
+  font-family: Logotype;
+  font-weight: 300;
+  font-size: 2.5rem;
+  color: var(--black-text);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.menu_logo > h2::after {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+.menu_logo > h3 {
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+/* ----- */
+.menu_links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.menu_links > li > a {
+  position: relative;
+  font-weight: 500;
+}
+
+.menu_links > li > a:after {
+  content: "";
+  width: 0;
+  height: 0.1rem;
+  position: absolute;
+  bottom: -0.5rem;
+  background-color: var(--black-text);
+  display: block;
+  transition: 0.3s;
+}
+
+.menu_links > li > a.active {
+  padding-bottom: 0.4rem;
+  border-bottom: 0.1rem solid var(--black-text);
+}
+
+.menu_links > li > a.active::after {
+  display: none;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .menu_links > li > a:hover {
+    cursor: pointer;
+  }
+
+  .menu_links > li > a:hover:after {
+    width: 100%;
+  }
+}
+
+/* ADAPTIVE */
+@media (max-width: 700px) {
+  .menu {
+    height: auto;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .menu_logo {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: baseline;
+  }
+
+  .menu_links > li > a {
+    font-size: 0.85rem;
+  }
+}

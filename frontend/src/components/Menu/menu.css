@@ -1,0 +1,149 @@
+/* MENU */
+.menu {
+  height: var(--menu-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.mobile_menu,
+.close_menu {
+  display: none;
+}
+
+/* LOGO */
+.menu_logo {
+  display: flex;
+  align-items: baseline;
+  font-family: Logotype;
+  font-weight: 300;
+  font-size: 2.5rem;
+  color: var(--black-text);
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.menu_logo::after {
+  content: "";
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+/* LINKS */
+.menu_links {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.menu_links > li > a {
+  position: relative;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--black-text);
+  text-transform: uppercase;
+}
+
+.menu_links > li > a:after {
+  content: "";
+  width: 0;
+  height: 1px;
+  background-color: var(--black-text);
+  display: block;
+  transition: width 0.3s linear;
+}
+
+.menu_links > li > a.active {
+  border-bottom: 2px solid var(--black-text);
+}
+
+.menu > article {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* LOGIN */
+.menu_login > img {
+  width: 1.8rem;
+}
+
+/* CART */
+.menu_cart {
+  display: flex;
+  position: relative;
+}
+
+.menu_cart > img {
+  width: 2rem;
+}
+
+.menu_cart > span {
+  width: 1.1rem;
+  height: 1.1rem;
+  position: absolute;
+  bottom: 0rem;
+  left: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-text);
+  font-weight: 700;
+  font-size: 0.7rem;
+  background-color: var(--black-bg);
+  border-radius: 50%;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .menu_links > li > a:hover {
+    cursor: pointer;
+  }
+
+  .menu_links > li > a:hover:after {
+    width: 100%;
+  }
+}
+
+/* ADAPTIVE */
+@media (max-width: 700px) {
+  .mobile_menu {
+    display: block;
+    width: 2rem;
+    margin-left: 1rem;
+  }
+
+  .close_menu {
+    display: block;
+    width: 2.2em;
+    margin-bottom: 4rem;
+  }
+
+  .menu_links {
+    width: 60%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.5rem 1.3rem;
+    flex-direction: column;
+    align-items: flex-end;
+    background-color: var(--white-bg);
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    clip-path: inset(0 0 0 100%);
+    transition: 0.3s;
+  }
+
+  .menu_links-visible {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .menu_links > li > a {
+    font-size: 1rem;
+  }
+}

@@ -1,2 +1,2 @@
-# Simple e-commerce
-- React + TypeScript
+# PERN e-commerce
+- Postgres, Express, React, Node + TypeScript
