@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useFetchProducts } from "../../hooks/useFetch";
+import { useCartContext } from "../../context/useCartContext";
 import { IProduct } from "../../types/types";
 import { Categories } from "./Categories";
 import "./home.css";
@@ -9,6 +10,7 @@ import "./home.css";
 export const Home = () => {
   const { products, loading, error } = useFetchProducts();
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
+  const { cart } = useCartContext();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
@@ -35,7 +37,17 @@ export const Home = () => {
             </figure>
             <div className="card_info">
               <h3>{product.title}</h3>
-              <h4>{product.price}$</h4>
+              <div>
+                <h4>{product.price}$</h4>
+                {cart.map((item) => (
+                  <p
+                    key={item.id}
+                    className={item.id === product.id ? "home_badge" : ""}
+                  >
+                    {item.id === product.id ? "on cart" : ""}
+                  </p>
+                ))}
+              </div>
             </div>
           </Link>
         ))}

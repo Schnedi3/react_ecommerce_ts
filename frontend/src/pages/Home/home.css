@@ -73,6 +73,23 @@
   color: var(--black-text);
 }
 
+.card_info > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home_badge {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  background-color: var(--accent);
+  border-radius: 1rem;
+}
+
 /* HOVER */
 @media (hover: hover) {
   .card_container:hover {

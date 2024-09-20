@@ -56,9 +56,19 @@
 }
 
 /* ADAPTIVE */
+@media (max-width: 1100px) {
+  .detail_info > button {
+    width: 70%;
+  }
+}
+
 @media (max-width: 700px) {
   .detail_container {
+    margin: 2rem auto !important;
     grid-template-columns: 1fr;
-    margin: 2rem auto;
+  }
+
+  .detail_info > button {
+    width: 40%;
   }
 }
