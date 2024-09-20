@@ -1,4 +1,6 @@
 import { createContext, PropsWithChildren, useState } from "react";
+import { toast } from "react-toastify";
+
 import { IProduct, CartItem, CartContextType } from "../types/types";
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -21,6 +23,11 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       }
       return [...prevCart, { ...product, quantity: 1 }];
     });
+
+    toast.success("Product added to the cart", {
+      autoClose: 2000,
+      pauseOnHover: false,
+    });
   };
 
   // Menu
@@ -39,6 +46,11 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
   const deleteProduct = (productId: number) => {
     setCart(cart.filter((item) => item.id !== productId));
+
+    toast.success("Product removed", {
+      autoClose: 2000,
+      pauseOnHover: false,
+    });
   };
 
   const totalCart = () => {

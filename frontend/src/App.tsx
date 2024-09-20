@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
@@ -16,6 +18,7 @@ import "./app.css";
 export const App = () => {
   return (
     <main className="app">
+      <ToastContainer />
       <AuthProvider>
         <CartProvider>
           <BrowserRouter>
