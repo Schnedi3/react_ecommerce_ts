@@ -21,7 +21,7 @@ export const registerUser = async (req: Request, res: Response) => {
     ]);
 
     // generate token
-    const token = generateToken(rows[0].user_id);
+    const token = generateToken(rows[0].user.id);
 
     res.status(200).json({ success: true, user: rows[0], token });
   } catch (error: any) {
@@ -47,30 +47,7 @@ export const loginUser = async (req: Request, res: Response) => {
     }
 
     // generate token
-    const token = generateToken(rows[0].user_id);
-
-    res.status(200).json({ success: true, user: rows[0], token });
-  } catch (error: any) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-export const loginAdmin = async (req: Request, res: Response) => {
-  const { email, password } = req.body;
-
-  try {
-    const queryString = "SELECT * FROM users WHERE email = $1";
-    const { rows } = await pool.query(queryString, [email]);
-
-    const isMatch = await bcrypt.compare(password, rows[0].password);
-    if (!isMatch) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid password" });
-    }
-
-    // generate token
-    const token = generateToken(rows[0].user_id);
+    const token = generateToken(rows[0].user.id);
 
     res.status(200).json({ success: true, user: rows[0], token });
   } catch (error: any) {
