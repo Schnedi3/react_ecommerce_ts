@@ -52,13 +52,28 @@
   content: "";
   width: 0;
   height: 1px;
-  background-color: var(--black-text);
+  background-color: var(--gray-bg);
   display: block;
   transition: width 0.3s linear;
 }
 
 .menu_links > li > a.active {
-  border-bottom: 2px solid var(--black-text);
+  border-bottom: 2px solid var(--gray-bg);
+}
+
+.admin {
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--gray-bg);
+  border-radius: 2rem;
+}
+
+.menu_links > li.admin > a::after {
+  display: none;
+}
+
+.menu_links > li.admin > a.active {
+  color: var(--accent);
+  border-bottom: 0;
 }
 
 .menu > article {
@@ -106,6 +121,15 @@
 
   .menu_links > li > a:hover:after {
     width: 100%;
+  }
+
+  .admin:hover {
+    border: 2px solid var(--accent);
+    cursor: pointer;
+  }
+
+  .menu_links > li.admin:hover > a {
+    color: var(--accent);
   }
 }
 

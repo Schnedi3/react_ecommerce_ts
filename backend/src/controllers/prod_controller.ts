@@ -59,4 +59,22 @@ export const removeProduct = async (req: Request, res: Response) => {
   }
 };
 
-export const singleProduct = async (req: Request, res: Response) => {};
+export const singleProduct = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const queryString = "SELECT * FROM product WHERE id = $1";
+
+    const { rows } = await pool.query(queryString, [id]);
+
+    if (rows.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Product not found" });
+    }
+
+    res.status(200).json({ success: true, product: rows[0] });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
