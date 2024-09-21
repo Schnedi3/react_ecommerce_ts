@@ -20,6 +20,9 @@ export const Menu = () => {
         <li>
           <NavLink to="/orders">Orders</NavLink>
         </li>
+        <li>
+          <NavLink to="/users">Manage Users</NavLink>
+        </li>
       </ul>
     </nav>
   );

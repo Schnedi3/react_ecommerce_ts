@@ -97,6 +97,12 @@
     align-items: baseline;
   }
 
+  .menu_links {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+  }
+
   .menu_links > li > a {
     font-size: 0.85rem;
   }

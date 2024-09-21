@@ -7,6 +7,7 @@ import { Menu } from "./components/Menu/Menu";
 import { New } from "./pages/New/New";
 import { List } from "./pages/List/List";
 import { Orders } from "./pages/Orders/Orders";
+import { Users } from "./pages/users/Users";
 
 import "./app.css";
 
@@ -21,6 +22,7 @@ export const App = () => {
           <Route path="/" element={<New />} />
           <Route path="/list" element={<List />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       </BrowserRouter>
     </main>

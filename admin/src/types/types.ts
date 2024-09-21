@@ -8,3 +8,11 @@ export interface IProduct {
   sizes: string[];
   images: string[];
 }
+
+export interface IUser {
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+  role: string;
+}
