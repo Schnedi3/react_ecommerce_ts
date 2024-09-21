@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import { useCartContext } from "../../context/useCartContext";
-import { useAuthContext } from "../../context/useAuthContext";
+// import { useAuthContext } from "../../context/useAuthContext";
 
 import { iconCart, iconClose, iconLogin, iconMenu } from "../../UIIcons";
 import "./menu.css";
 
 export const Menu = () => {
   const { quantityInCart } = useCartContext();
-  const { isAuthenticated, user } = useAuthContext();
+  // const { isAuthenticated, user } = useAuthContext();
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -45,13 +45,18 @@ export const Menu = () => {
             Contact
           </NavLink>
         </li>
-        {isAuthenticated && user?.role === "admin" && (
+        {/* {isAuthenticated && user?.role === "admin" && (
           <li className="admin">
-            <NavLink to="/" onClick={closeMenu}>
+            <Link
+              to={"http://localhost:5174"}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+            >
               Admin panel
-            </NavLink>
+            </Link>
           </li>
-        )}
+        )} */}
       </ul>
       <article>
         <Link className="menu_login" to="/login">

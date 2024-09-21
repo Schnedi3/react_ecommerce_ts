@@ -71,11 +71,6 @@
   display: none;
 }
 
-.menu_links > li.admin > a.active {
-  color: var(--accent);
-  border-bottom: 0;
-}
-
 .menu > article {
   display: flex;
   align-items: center;

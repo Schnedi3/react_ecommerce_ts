@@ -37,8 +37,18 @@
   gap: 3rem;
 }
 
+.upload > div > label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+  background-color: var(--white);
+}
+
 .upload > div > label > img {
-  width: 5rem;
+  width: 2rem;
 }
 
 .upload > div > label > input {
@@ -114,10 +124,11 @@
 .subcategory > select,
 .price > input {
   padding: 0.7rem;
+  font-size: 1rem;
   color: var(--black-text);
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
-  font-size: 1rem;
+  background-color: var(--white);
 }
 
 .price > input {
@@ -139,9 +150,9 @@
 .sizes > div > button {
   padding: 0.5rem 0.8rem;
   font-size: 1rem;
-  background-color: #e2e8f0;
-  border: 0;
+  border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
+  background-color: var(--white);
   transition: 0.3s;
 }
 
@@ -170,6 +181,11 @@
 /* HOVER */
 @media (hover: hover) {
   .upload > div > label > img:hover {
+    cursor: pointer;
+  }
+
+  .category > select,
+  .subcategory > select {
     cursor: pointer;
   }
 

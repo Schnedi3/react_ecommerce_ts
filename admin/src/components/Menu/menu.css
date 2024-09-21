@@ -48,6 +48,7 @@
 .menu_links > li > a {
   position: relative;
   font-weight: 500;
+  color: var(--black-text);
 }
 
 .menu_links > li > a:after {

@@ -52,6 +52,7 @@ ol {
   --gray-bg: #b9b9b9;
 
   --accent: #cab585;
+  --white: #ffffff;
 
   --filter: invert(43%) sepia(7%) saturate(5324%) hue-rotate(317deg)
     brightness(100%) contrast(105%);
