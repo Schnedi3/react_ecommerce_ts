@@ -53,21 +53,16 @@ export const List = () => {
       <ul className="product">
         {list.map((item) => (
           <li key={item.id}>
-            <div className="images">
-              {item.images.map((image, index) => (
-                <img key={index} src={image} />
-              ))}
-            </div>
-            <div className="info">
-              <h3>{item.title}</h3>
-              <h4>{item.category}</h4>
-              <p>{item.price}€</p>
-              <img
-                src={iconRemove}
-                alt="remove product"
-                onClick={() => removeProduct(item.id)}
-              />
-            </div>
+            <img className="product_img" src={item.images[0]} />
+            <h3>{item.title}</h3>
+            <h4>{item.category}</h4>
+            <p>{item.price}€</p>
+            <img
+              className="product_remove"
+              src={iconRemove}
+              alt="remove product"
+              onClick={() => removeProduct(item.id)}
+            />
           </li>
         ))}
       </ul>
