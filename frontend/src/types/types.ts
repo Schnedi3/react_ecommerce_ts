@@ -56,24 +56,18 @@ export interface IContact {
   message: string;
 }
 
-export interface IRegister {
-  username: string;
+export interface IAuth {
+  username?: string;
   email: string;
   password: string;
-}
-
-export interface ILogin {
-  username: string;
-  email: string;
-  password: string;
+  role?: string;
 }
 
 export interface AuthContextType {
-  user: IRegister | ILogin | null;
-  signup: (user: IRegister) => void;
-  login: (user: ILogin) => void;
+  user: IAuth | null;
+  signup: (user: IAuth) => void;
+  login: (user: IAuth) => void;
   logout: () => void;
   isAuthenticated: boolean;
   setIsAuthenticated: (isAuthenticated: boolean) => void;
-  error: string | null;
 }

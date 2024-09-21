@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { contactSchema, loginSchema, registerSchema } from "../schemas/schemas";
-import { IContact, ILogin } from "../types/types";
+import { IContact, IAuth } from "../types/types";
 import { useAuthContext } from "../context/useAuthContext";
 
 export const useValidateContact = () => {
@@ -29,13 +29,13 @@ export const useValidateLogin = (isSignUp: boolean) => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<ILogin>({
+  } = useForm<IAuth>({
     resolver: zodResolver(isSignUp ? registerSchema : loginSchema),
   });
 
   const { login, signup } = useAuthContext();
 
-  const onSubmit = (data: ILogin) => {
+  const onSubmit = (data: IAuth) => {
     isSignUp ? signup(data) : login(data);
     reset();
   };

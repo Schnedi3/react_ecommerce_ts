@@ -9,7 +9,7 @@ import "./menu.css";
 
 export const Menu = () => {
   const { quantityInCart } = useCartContext();
-  const { isAuthenticated } = useAuthContext();
+  const { isAuthenticated, user } = useAuthContext();
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -45,7 +45,7 @@ export const Menu = () => {
             Contact
           </NavLink>
         </li>
-        {isAuthenticated && (
+        {isAuthenticated && user?.role === "admin" && (
           <li className="admin">
             <NavLink to="/" onClick={closeMenu}>
               Admin panel

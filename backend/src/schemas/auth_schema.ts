@@ -10,7 +10,7 @@ export const registerSchema = z.object({
   password: z
     .string()
     .min(1, "Field is required")
-    .min(5, "Password must be at least 5 characters long"),
+    .min(8, "Password must be at least 8 characters long"),
 });
 
 export const loginSchema = z.object({
@@ -18,5 +18,5 @@ export const loginSchema = z.object({
   password: z
     .string()
     .min(1, "Field is required")
-    .min(5, "Password must be at least 5 characters long"),
+    .min(8, "Password must be at least 8 characters long"),
 });

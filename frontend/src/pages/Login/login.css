@@ -40,6 +40,7 @@
 
 .form > label > input {
   padding: 0.7rem;
+  font-size: 1rem;
   color: var(--black-text);
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
@@ -49,7 +50,8 @@
   opacity: 0.25;
 }
 
-.form > button {
+.form > button,
+.logout {
   margin-top: 0.5rem;
   padding: 0.7rem;
   font-size: 1.1rem;
@@ -58,6 +60,7 @@
   border: 0;
   border-radius: 0.2rem;
   text-transform: uppercase;
+  transition: 0.3s;
 }
 
 .footer_container {
@@ -92,18 +95,12 @@
 /* LOGOUT */
 .logout {
   width: 55%;
-  padding: 0.7rem;
-  font-size: 1.1rem;
-  color: var(--white-text);
-  background-color: var(--black-text);
-  border: 0;
-  border-radius: 0.2rem;
-  text-transform: uppercase;
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .form > button:hover {
+  .form > button:hover,
+  .logout:hover {
     font-weight: 500;
     color: var(--black-text);
     background-color: var(--accent);
@@ -112,13 +109,6 @@
 
   .footer_container > p:hover {
     text-decoration: underline;
-    cursor: pointer;
-  }
-
-  .logout:hover {
-    font-weight: 500;
-    color: var(--black-text);
-    background-color: var(--accent);
     cursor: pointer;
   }
 }

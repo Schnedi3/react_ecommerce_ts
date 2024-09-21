@@ -4,7 +4,7 @@ export const contactSchema = z.object({
   name: z
     .string()
     .min(1, "Field required")
-    .min(8, "Must be more than 8 characters"),
+    .min(8, "Must be at least 8 characters"),
   email: z.string().min(1, "Field required").email("Invalid email address"),
   message: z
     .string()
@@ -18,17 +18,18 @@ export const loginSchema = z.object({
   password: z
     .string()
     .min(1, "Field required")
-    .min(8, "Must be more than 8 characters"),
+    .min(8, "Must be at least 8 characters"),
 });
 
 export const registerSchema = z.object({
   username: z
     .string()
     .min(1, "Field required")
-    .min(3, "Must be more than 3 characters"),
+    .min(3, "Must be at least 3 characters")
+    .max(20, "Username must be at most 20 characters long"),
   email: z.string().min(1, "Field required").email("Invalid email address"),
   password: z
     .string()
     .min(1, "Field required")
-    .min(8, "Must be more than 8 characters"),
+    .min(8, "Must be at least 8 characters"),
 });

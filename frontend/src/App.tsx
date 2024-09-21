@@ -19,9 +19,9 @@ export const App = () => {
   return (
     <main className="app">
       <ToastContainer />
-      <AuthProvider>
-        <CartProvider>
-          <BrowserRouter>
+      <BrowserRouter>
+        <AuthProvider>
+          <CartProvider>
             <Menu />
 
             <Routes>
@@ -33,9 +33,9 @@ export const App = () => {
             </Routes>
 
             <Footer />
-          </BrowserRouter>
-        </CartProvider>
-      </AuthProvider>
+          </CartProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </main>
   );
 };

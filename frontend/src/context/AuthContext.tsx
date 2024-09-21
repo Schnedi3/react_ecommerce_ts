@@ -1,6 +1,8 @@
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import { AuthContextType, ILogin, IRegister } from "../types/types";
+import { AuthContextType, IAuth } from "../types/types";
 import { loginRequest, registerRequest } from "../api/auth";
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -8,35 +10,59 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 );
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-  const [user, setUser] = useState<IRegister | ILogin | null>(null);
+  const [user, setUser] = useState<IAuth | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  const signup = async (user: IRegister) => {
+  const signup = async (user: IAuth) => {
     try {
-      const res = await registerRequest(user);
-      setUser(res.data);
-      setIsAuthenticated(true);
-      setError(null);
+      const response = await registerRequest(user);
 
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      if (response.data.success) {
+        setUser(response.data);
+        setIsAuthenticated(true);
+        toast.success(response.data.message, {
+          autoClose: 2000,
+          pauseOnHover: false,
+        });
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        navigate("/");
+      } else {
+        toast.error(response.data.message, {
+          autoClose: 2000,
+          pauseOnHover: false,
+        });
+      }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      setError(error.response.data.message);
+      console.log(error);
+      toast.error(error.message);
     }
   };
 
-  const login = async (user: ILogin) => {
+  const login = async (user: IAuth) => {
     try {
-      const res = await loginRequest(user);
-      setUser(res.data);
-      setIsAuthenticated(true);
-      setError(null);
+      const response = await loginRequest(user);
 
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      if (response.data.success) {
+        setUser(response.data);
+        setIsAuthenticated(true);
+        toast.success(response.data.message, {
+          autoClose: 2000,
+          pauseOnHover: false,
+        });
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        navigate("/");
+      } else {
+        toast.error(response.data.message, {
+          autoClose: 2000,
+          pauseOnHover: false,
+        });
+      }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      setError(error.response.data.message);
+      console.log(error);
+      toast.error(error.message);
     }
   };
 
@@ -44,6 +70,11 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     localStorage.removeItem("user");
     setIsAuthenticated(false);
     setUser(null);
+    toast.success("User logged out succesfully", {
+      autoClose: 2000,
+      pauseOnHover: false,
+    });
+    navigate("/");
   };
 
   const checkAuth = () => {
@@ -71,7 +102,6 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         logout,
         isAuthenticated,
         setIsAuthenticated,
-        error,
       }}
     >
       {children}

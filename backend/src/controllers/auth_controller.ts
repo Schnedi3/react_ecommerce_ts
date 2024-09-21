@@ -10,20 +10,25 @@ export const registerUser = async (req: Request, res: Response) => {
   // encrypt password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const queryString =
+  const registerQuery =
     "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *";
 
   try {
-    const { rows } = await pool.query(queryString, [
+    const { rows } = await pool.query(registerQuery, [
       username,
       email,
       hashedPassword,
     ]);
 
     // generate token
-    const token = generateToken(rows[0].user.id);
+    const token = generateToken(rows[0].id);
 
-    res.status(200).json({ success: true, user: rows[0], token });
+    res.status(200).json({
+      success: true,
+      message: "User registered succesfully",
+      user: rows[0],
+      token,
+    });
   } catch (error: any) {
     if (error.code === "23505") {
       res.status(403).json({ success: false, message: "Email already exist" });
@@ -36,8 +41,8 @@ export const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
-    const queryString = "SELECT * FROM users WHERE email = $1";
-    const { rows } = await pool.query(queryString, [email]);
+    const loginQuery = "SELECT * FROM users WHERE email = $1";
+    const { rows } = await pool.query(loginQuery, [email]);
 
     const isMatch = await bcrypt.compare(password, rows[0].password);
     if (!isMatch) {
@@ -47,9 +52,14 @@ export const loginUser = async (req: Request, res: Response) => {
     }
 
     // generate token
-    const token = generateToken(rows[0].user.id);
+    const token = generateToken(rows[0].id);
 
-    res.status(200).json({ success: true, user: rows[0], token });
+    res.status(200).json({
+      success: true,
+      message: "User logged in succesfully",
+      user: rows[0],
+      token,
+    });
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });
   }

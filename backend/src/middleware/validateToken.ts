@@ -11,7 +11,9 @@ export const validateToken = (
 ) => {
   const token = req.header("token");
   if (!token) {
-    return res.status(401).json({ message: "No token, authorization denied" });
+    return res
+      .status(401)
+      .json({ success: false, message: "No token, authorization denied" });
   }
 
   try {
@@ -19,6 +21,6 @@ export const validateToken = (
     req.user = user as IUser;
     next();
   } catch (err) {
-    return res.status(403).json({ message: "Invalid token" });
+    return res.status(403).json({ success: false, message: "Invalid token" });
   }
 };
