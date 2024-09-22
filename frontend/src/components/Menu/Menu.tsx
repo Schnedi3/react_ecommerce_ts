@@ -59,7 +59,7 @@ export const Menu = () => {
         )} */}
       </ul>
       <article>
-        <Link className="menu_login" to="/login">
+        <Link className="menu_user" to="/user">
           <img src={iconLogin} alt="login icon" />
         </Link>
         <Link className="menu_cart" to="/cart">

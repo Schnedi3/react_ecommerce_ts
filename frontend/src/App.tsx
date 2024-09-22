@@ -9,7 +9,7 @@ import { Menu } from "./components/Menu/Menu";
 import { Home } from "./pages/Home/Home";
 import { Detail } from "./pages/Detail/Detail";
 import { Contact } from "./pages/Contact/Contact";
-import { Login } from "./pages/Login/Login";
+import { User } from "./pages/User/User";
 import { Cart } from "./pages/Cart/Cart";
 import { Footer } from "./components/Footer/Footer";
 
@@ -28,7 +28,7 @@ export const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/product/:id" element={<Detail />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/user" element={<User />} />
               <Route path="/cart" element={<Cart />} />
             </Routes>
 

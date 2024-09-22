@@ -1,10 +1,12 @@
-import { useCartContext } from "../../context/useCartContext";
+import { useNavigate } from "react-router-dom";
 
+import { useCartContext } from "../../context/useCartContext";
 import { iconCart, iconRemove } from "../../UIIcons";
 import "./cart.css";
 
 export const Cart = () => {
   const { cart, updateQuantity, deleteProduct, totalCart } = useCartContext();
+  const navigate = useNavigate();
 
   return cart.length === 0 ? (
     <img className="cart_empty" src={iconCart} alt="" />
@@ -46,7 +48,9 @@ export const Cart = () => {
             Total <span>${totalCart().toFixed(2)}</span>
           </h3>
         </div>
-        <button className="cart_pay">proceed to checkout</button>
+        <button className="cart_pay" onClick={() => navigate("/place-order")}>
+          proceed to checkout
+        </button>
       </article>
     </section>
   );
