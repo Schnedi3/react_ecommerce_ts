@@ -1,19 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import { useFetchProducts } from "../../hooks/useFetch";
 import { useCartContext } from "../../context/useCartContext";
+import { listProductsRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 import { Categories } from "./Categories";
 import "./home.css";
 
 export const Home = () => {
-  const { products, loading, error } = useFetchProducts();
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
   const { cart } = useCartContext();
+  const [products, setProducts] = useState<IProduct[]>([]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  const fetchProducts = async () => {
+    try {
+      const response = await listProductsRequest();
+
+      if (response.data.success) {
+        setProducts(response.data.rows);
+      } else {
+        toast.error(response.data.message);
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <section className="home_container container">
@@ -26,31 +44,25 @@ export const Home = () => {
       </header>
 
       <article className="cards">
-        {filteredProducts.map((product) => (
-          <Link
-            to={`/product/${product.id}`}
-            className="card_container"
-            key={product.id}
-          >
-            <figure className="img_container">
-              <img src={product.thumbnail} alt={product.title} />
-            </figure>
-            <div className="card_info">
-              <h3>{product.title}</h3>
-              <div>
-                <h4>{product.price}$</h4>
-                {cart.map((item) => (
-                  <p
-                    key={item.id}
-                    className={item.id === product.id ? "home_badge" : ""}
-                  >
-                    {item.id === product.id ? "on cart" : ""}
-                  </p>
-                ))}
+        {filteredProducts.map((product) => {
+          const onCart = cart.some((item) => item.id === product.id);
+          return (
+            <Link
+              to={`/product/${product.id}`}
+              className="card_container"
+              key={product.id}
+            >
+              <img src={product.images[0]} alt={product.title} />
+              <div className="card_info">
+                <h3>{product.title}</h3>
+                <div>
+                  <h4>{product.price}$</h4>
+                  {onCart && <p className="home_badge">on cart</p>}
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
       </article>
     </section>
   );

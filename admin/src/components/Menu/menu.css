@@ -57,14 +57,14 @@
   height: 0.1rem;
   position: absolute;
   bottom: -0.5rem;
-  background-color: var(--black-text);
+  background-color: var(--gray-bg);
   display: block;
   transition: 0.3s;
 }
 
 .menu_links > li > a.active {
   padding-bottom: 0.4rem;
-  border-bottom: 0.1rem solid var(--black-text);
+  border-bottom: 0.1rem solid var(--accent);
 }
 
 .menu_links > li > a.active::after {

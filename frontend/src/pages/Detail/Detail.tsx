@@ -1,29 +1,54 @@
-import { useFetchProduct } from "../../hooks/useFetch";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+
 import { useCartContext } from "../../context/useCartContext";
+import { singleProductRequest } from "../../api/product";
+import { IProduct } from "../../types/types";
 import "./detail.css";
 
 export const Detail = () => {
-  const { product, loading, error } = useFetchProduct();
+  const { id } = useParams<{ id: string }>();
   const { cart, addToCart } = useCartContext();
+  const [product, setProduct] = useState<IProduct | undefined>(undefined);
 
-  if (!product) return <p>Failed to load product</p>;
-  if (loading) return <p>Loading</p>;
-  if (error) return <p>{error}</p>;
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        if (id) {
+          const response = await singleProductRequest(parseInt(id));
 
-  const { images, title, price, description } = product;
+          if (response.data.success) {
+            setProduct(response.data.product);
+          } else {
+            toast.error(response.data.message);
+          }
+        }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
+        console.log(error.message);
+        toast.error(error.message);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  if (!product) return <p>Product not found</p>;
+
+  const { title, description, price, images } = product;
+  const onCart = cart.some((item) => item.id === product.id);
 
   return (
     <section className="detail_container container">
-      <img src={images[0]} alt={product.title} />
+      <img src={images[0]} alt={title} />
       <article className="detail_info">
         <h2>{title}</h2>
         <h3>{price}$</h3>
         <p>{description}</p>
-        {cart.map((item) => (
-          <button key={item.id} onClick={() => addToCart(product)}>
-            {item.id === product.id ? "Already on cart" : "Add to Cart"}
-          </button>
-        ))}
+        <button onClick={() => addToCart(product)}>
+          {onCart ? "Already on cart" : "Add to Cart"}
+        </button>
       </article>
     </section>
   );

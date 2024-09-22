@@ -14,7 +14,7 @@ export const Cart = () => {
 
       {cart.map((item) => (
         <article className="item_info" key={item.id}>
-          <img className="item_photo" src={item.thumbnail} alt={item.title} />
+          <img className="item_photo" src={item.images[0]} alt={item.title} />
           <h3 className="item_title">{item.title}</h3>
           <input
             type="number"
