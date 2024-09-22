@@ -4,8 +4,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { Menu } from "./components/Menu/Menu";
 
-import { New } from "./pages/New/New";
-import { List } from "./pages/List/List";
+import { NewProduct } from "./pages/NewProduct/NewProduct";
+import { Products } from "./pages/Products/Products";
 import { Orders } from "./pages/Orders/Orders";
 import { Users } from "./pages/users/Users";
 
@@ -19,8 +19,8 @@ export const App = () => {
         <Menu />
 
         <Routes>
-          <Route path="/" element={<New />} />
-          <Route path="/list" element={<List />} />
+          <Route path="/" element={<NewProduct />} />
+          <Route path="/products" element={<Products />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/users" element={<Users />} />
         </Routes>

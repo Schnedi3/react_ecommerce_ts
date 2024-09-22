@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { listProductsRequest, removeProductRequest } from "../../api/product";
+import { getProductsRequest, removeProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 
 import iconRemove from "../../assets/images/remove.svg";
-import "./list.css";
+import "./products.css";
 
-export const List = () => {
-  const [list, setList] = useState<IProduct[]>([]);
+export const Products = () => {
+  const [products, setProducts] = useState<IProduct[]>([]);
 
-  const fetchList = async () => {
+  const fetchProducts = async () => {
     try {
-      const response = await listProductsRequest();
+      const response = await getProductsRequest();
 
       if (response.data.success) {
-        setList(response.data.rows);
+        setProducts(response.data.rows);
       } else {
         toast.error(response.data.message);
       }
@@ -31,7 +31,7 @@ export const List = () => {
       const response = await removeProductRequest(id);
 
       if (response.data.success) {
-        setList((prevList) => prevList.filter((item) => item.id !== id));
+        setProducts(products.filter((item) => item.id !== id));
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
@@ -44,14 +44,14 @@ export const List = () => {
   };
 
   useEffect(() => {
-    fetchList();
+    fetchProducts();
   }, []);
 
   return (
     <section className="list container">
       <h2>All products</h2>
       <ul className="product">
-        {list.map((item) => (
+        {products.map((item) => (
           <li key={item.id}>
             <img className="product_img" src={item.images[0]} />
             <h3>{item.title}</h3>

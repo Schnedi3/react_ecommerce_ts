@@ -12,10 +12,10 @@ export const addProduct = async (req: Request, res: Response) => {
   const imageUrls = images.map((file) => `${BASE_URL}/images/${file.filename}`);
 
   try {
-    const queryString =
+    const addQuery =
       "INSERT INTO product (title, description, price, category, subcategory, sizes, images) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *";
 
-    const { rows } = await pool.query(queryString, [
+    const { rows } = await pool.query(addQuery, [
       title,
       description,
       price,
@@ -33,11 +33,11 @@ export const addProduct = async (req: Request, res: Response) => {
   }
 };
 
-export const listProduct = async (req: Request, res: Response) => {
+export const getProducts = async (req: Request, res: Response) => {
   try {
-    const queryString = "SELECT * FROM product";
+    const getQuery = "SELECT * FROM product";
 
-    const { rows } = await pool.query(queryString);
+    const { rows } = await pool.query(getQuery);
 
     res.status(200).json({ success: true, rows });
   } catch (error: any) {
@@ -49,9 +49,9 @@ export const removeProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const queryString = "DELETE FROM product WHERE id = $1";
+    const removeQuery = "DELETE FROM product WHERE id = $1";
 
-    await pool.query(queryString, [id]);
+    await pool.query(removeQuery, [id]);
 
     res.status(200).json({ success: true, message: "Product removed" });
   } catch (error: any) {
@@ -63,9 +63,9 @@ export const singleProduct = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   try {
-    const queryString = "SELECT * FROM product WHERE id = $1";
+    const singleQuery = "SELECT * FROM product WHERE id = $1";
 
-    const { rows } = await pool.query(queryString, [id]);
+    const { rows } = await pool.query(singleQuery, [id]);
 
     if (rows.length === 0) {
       return res

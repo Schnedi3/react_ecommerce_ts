@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { usersRequest, removeUserRequest } from "../../api/users";
+import { getUsersRequest, removeUserRequest } from "../../api/users";
 import { IUser } from "../../types/types";
 
 import iconRemove from "../../assets/images/remove.svg";
 import "./users.css";
 
 export const Users = () => {
-  const [list, setList] = useState<IUser[]>([]);
+  const [users, setUsers] = useState<IUser[]>([]);
 
   const fetchUsers = async () => {
     try {
-      const response = await usersRequest();
+      const response = await getUsersRequest();
 
       if (response.data.success) {
-        setList(response.data.rows);
+        setUsers(response.data.rows);
       } else {
         toast.error(response.data.message);
       }
@@ -31,7 +31,7 @@ export const Users = () => {
       const response = await removeUserRequest(id);
 
       if (response.data.success) {
-        setList(list.filter((user) => user.id !== id));
+        setUsers(users.filter((user) => user.id !== id));
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
@@ -51,7 +51,7 @@ export const Users = () => {
     <section className="list container">
       <h2>All users</h2>
       <ul className="users">
-        {list.map((user) => (
+        {users.map((user) => (
           <li className="info" key={user.id}>
             <h3>{user.id}</h3>
             <h3>{user.username}</h3>

@@ -15,7 +15,7 @@ export const Menu = () => {
           <NavLink to="/">New Product</NavLink>
         </li>
         <li>
-          <NavLink to="/list">Manage Products</NavLink>
+          <NavLink to="/products">Manage Products</NavLink>
         </li>
         <li>
           <NavLink to="/orders">Orders</NavLink>

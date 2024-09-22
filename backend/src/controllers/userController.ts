@@ -2,11 +2,11 @@ import { Request, Response } from "express";
 
 import { pool } from "../database/db";
 
-export const listUsers = async (req: Request, res: Response) => {
+export const getUsers = async (req: Request, res: Response) => {
   try {
-    const usersQuery = "SELECT * FROM users";
+    const getQuery = "SELECT * FROM users";
 
-    const { rows } = await pool.query(usersQuery);
+    const { rows } = await pool.query(getQuery);
 
     res.status(200).json({ success: true, rows });
   } catch (error: any) {

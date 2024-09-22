@@ -4,7 +4,7 @@ export const addProductRequest = (formData: FormData) => {
   return axios.post("/product/add", formData);
 };
 
-export const listProductsRequest = () => {
+export const getProductsRequest = () => {
   return axios.get("/product/list");
 };
 

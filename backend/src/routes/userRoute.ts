@@ -1,10 +1,10 @@
 import { Router } from "express";
 
-import { listUsers, removeUser } from "../controllers/users_controller";
+import { getUsers, removeUser } from "../controllers/userController";
 
 const router = Router();
 
-router.get("/list", listUsers);
+router.get("/list", getUsers);
 router.delete("/list/:id", removeUser);
 
 export default router;

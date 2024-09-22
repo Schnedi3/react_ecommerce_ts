@@ -1,6 +1,6 @@
 import axios from "./axios";
 
-export const usersRequest = () => {
+export const getUsersRequest = () => {
   return axios.get("/users/list");
 };
 

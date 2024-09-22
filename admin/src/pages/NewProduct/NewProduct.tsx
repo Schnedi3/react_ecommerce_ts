@@ -5,7 +5,7 @@ import { addProductRequest } from "../../api/product";
 import imageUpload from "../../assets/images/upload.svg";
 import "./new.css";
 
-export const New = () => {
+export const NewProduct = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [category, setCategory] = useState<string>("");
