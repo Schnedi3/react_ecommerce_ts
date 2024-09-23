@@ -10,11 +10,11 @@
 }
 
 .cart_container {
+  margin: 2rem auto !important;
   min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 2rem auto;
 }
 
 .cart_container > h2 {
@@ -37,6 +37,7 @@
 /* ITEM */
 .item_info {
   padding: 1rem 0;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -117,6 +118,7 @@
 .total_info > h3 {
   display: flex;
   justify-content: space-between;
+  font-weight: 600;
   font-size: 1rem;
 }
 

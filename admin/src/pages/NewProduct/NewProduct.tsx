@@ -8,8 +8,8 @@ import "./new.css";
 export const NewProduct = () => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [category, setCategory] = useState<string>("");
-  const [subcategory, setSubcategory] = useState<string>("");
+  const [category, setCategory] = useState<string>("Men");
+  const [subcategory, setSubcategory] = useState<string>("Top");
   const [price, setPrice] = useState<string>("");
   const [sizes, setSizes] = useState<string[]>([]);
   const [images, setImages] = useState<File[]>([]);
@@ -47,9 +47,9 @@ export const NewProduct = () => {
         toast.success(response.data.message);
         setTitle("");
         setDescription("");
-        setCategory("");
-        setSubcategory("");
-        setPrice("10");
+        setCategory("Men");
+        setSubcategory("Top");
+        setPrice("");
         setSizes([]);
         setImages([]);
       } else {

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { useCartContext } from "../../context/useCartContext";
+
 import { iconCart, iconRemove } from "../../UIIcons";
 import "./cart.css";
 
@@ -15,7 +16,7 @@ export const Cart = () => {
       <h2>Cart</h2>
 
       {cart.map((item) => (
-        <article className="item_info" key={item.id}>
+        <article className="item_info" key={item.product_id}>
           <img className="item_photo" src={item.images[0]} alt={item.title} />
           <h3 className="item_title">{item.title}</h3>
           <input
@@ -23,14 +24,16 @@ export const Cart = () => {
             id="quantity"
             min={1}
             defaultValue={item.quantity}
-            onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
+            onChange={(e) =>
+              updateQuantity(item.product_id, Number(e.target.value))
+            }
           />
           <p>${item.price}</p>
           <img
             className="item_remove"
             src={iconRemove}
             alt="remove product"
-            onClick={() => deleteProduct(item.id)}
+            onClick={() => deleteProduct(item.product_id)}
           />
         </article>
       ))}

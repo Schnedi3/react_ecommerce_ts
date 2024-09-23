@@ -50,7 +50,7 @@ export const Categories = ({
           ? "Filter by category"
           : selectedCategory}{" "}
         <span></span>
-        <img src={iconModal} />
+        <img src={iconModal} alt="Modal toggle icon" />
       </button>
       <ul className={isModalOpen ? "modal_open" : ""}>
         {uniqueCategories.map((category) => (

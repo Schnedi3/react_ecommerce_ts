@@ -7,18 +7,21 @@ export interface IProduct {
   price: number;
   sizes: string[];
   images: string[];
+  quantity: number;
 }
 
 export interface CartItem extends IProduct {
+  product_id: number;
   quantity: number;
 }
 
 export interface CartContextType {
   cart: CartItem[];
+  getCart: () => void;
   quantityInCart: () => number;
-  addToCart: (product: IProduct) => void;
-  updateQuantity: (productId: number, newQuantity: number) => void;
-  deleteProduct: (productId: number) => void;
+  addToCart: (product: IProduct, quantity: number) => void;
+  updateQuantity: (id: number, quantity: number) => void;
+  deleteProduct: (id: number) => void;
   totalCart: () => number;
 }
 

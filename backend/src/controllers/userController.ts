@@ -14,6 +14,20 @@ export const getUsers = async (req: Request, res: Response) => {
   }
 };
 
+export const getUser = async (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  try {
+    const getUserQuery = "SELECT * FROM users WHERE id = $1";
+
+    const { rows } = await pool.query(getUserQuery, [id]);
+
+    res.status(200).json({ success: true, user: rows[0] });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 export const removeUser = async (req: Request, res: Response) => {
   const { id } = req.params;
 

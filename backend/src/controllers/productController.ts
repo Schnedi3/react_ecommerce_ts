@@ -36,7 +36,6 @@ export const addProduct = async (req: Request, res: Response) => {
 export const getProducts = async (req: Request, res: Response) => {
   try {
     const getQuery = "SELECT * FROM product";
-
     const { rows } = await pool.query(getQuery);
 
     res.status(200).json({ success: true, rows });
@@ -50,7 +49,6 @@ export const removeProduct = async (req: Request, res: Response) => {
 
   try {
     const removeQuery = "DELETE FROM product WHERE id = $1";
-
     await pool.query(removeQuery, [id]);
 
     res.status(200).json({ success: true, message: "Product removed" });
@@ -64,14 +62,7 @@ export const singleProduct = async (req: Request, res: Response) => {
 
   try {
     const singleQuery = "SELECT * FROM product WHERE id = $1";
-
     const { rows } = await pool.query(singleQuery, [id]);
-
-    if (rows.length === 0) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Product not found" });
-    }
 
     res.status(200).json({ success: true, product: rows[0] });
   } catch (error: any) {

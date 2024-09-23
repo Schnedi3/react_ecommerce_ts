@@ -1,15 +1,18 @@
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 
 import { AuthContextType, IAuth } from "../types/types";
 import { loginRequest, registerRequest } from "../api/auth";
+import { useCartContext } from "./useCartContext";
 
 export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
 );
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
+  const { getCart } = useCartContext();
   const [user, setUser] = useState<IAuth | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -19,19 +22,15 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       const response = await registerRequest(user);
 
       if (response.data.success) {
-        setUser(response.data);
+        setUser(response.data.user);
         setIsAuthenticated(true);
-        toast.success(response.data.message, {
-          autoClose: 2000,
-          pauseOnHover: false,
-        });
+        getCart();
+        toast.success(response.data.message);
+        Cookies.set("token", response.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         navigate("/");
       } else {
-        toast.error(response.data.message, {
-          autoClose: 2000,
-          pauseOnHover: false,
-        });
+        toast.error(response.data.message);
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
@@ -45,19 +44,15 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       const response = await loginRequest(user);
 
       if (response.data.success) {
-        setUser(response.data);
+        setUser(response.data.user);
         setIsAuthenticated(true);
-        toast.success(response.data.message, {
-          autoClose: 2000,
-          pauseOnHover: false,
-        });
+        getCart();
+        toast.success(response.data.message);
+        Cookies.set("token", response.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         navigate("/");
       } else {
-        toast.error(response.data.message, {
-          autoClose: 2000,
-          pauseOnHover: false,
-        });
+        toast.error(response.data.message);
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
@@ -67,20 +62,20 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   const logout = () => {
+    Cookies.remove("token");
     localStorage.removeItem("user");
     setIsAuthenticated(false);
     setUser(null);
-    toast.success("User logged out succesfully", {
-      autoClose: 2000,
-      pauseOnHover: false,
-    });
+    toast.success("User logged out succesfully");
     navigate("/");
   };
 
   const checkAuth = () => {
+    const token = Cookies.get("token");
     const savedUser = localStorage.getItem("user");
 
-    if (savedUser) {
+    if (token && savedUser) {
+      getCart();
       setUser(JSON.parse(savedUser));
       setIsAuthenticated(true);
     } else {
@@ -91,6 +86,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     checkAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

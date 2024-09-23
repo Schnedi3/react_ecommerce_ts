@@ -9,7 +9,7 @@ export const validateToken = (
   res: Response,
   next: NextFunction
 ) => {
-  const token = req.header("token");
+  const token = req.cookies.token;
   if (!token) {
     return res
       .status(401)
@@ -20,7 +20,7 @@ export const validateToken = (
     const user = jwt.verify(token, JWT_SECRET);
     req.user = user as IUser;
     next();
-  } catch (err) {
-    return res.status(403).json({ success: false, message: "Invalid token" });
+  } catch (error: any) {
+    return res.status(403).json({ success: false, message: error.message });
   }
 };

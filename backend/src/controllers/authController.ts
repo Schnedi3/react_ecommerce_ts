@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 
 import { generateToken } from "../libs/generateToken";
 import { pool } from "../database/db";
+import { createCartForUser } from "./cartController";
 
 export const registerUser = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
@@ -20,13 +21,20 @@ export const registerUser = async (req: Request, res: Response) => {
       hashedPassword,
     ]);
 
+    // create a cart
+    const userId = rows[0].id;
+    const cart = await createCartForUser(userId);
+
     // generate token
     const token = generateToken(rows[0].id);
+    // Set token as a cookie
+    res.cookie("token", token);
 
     res.status(200).json({
       success: true,
       message: "User registered succesfully",
       user: rows[0],
+      cart,
       token,
     });
   } catch (error: any) {
@@ -53,6 +61,8 @@ export const loginUser = async (req: Request, res: Response) => {
 
     // generate token
     const token = generateToken(rows[0].id);
+    // Set token as a cookie
+    res.cookie("token", token);
 
     res.status(200).json({
       success: true,

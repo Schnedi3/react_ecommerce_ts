@@ -37,7 +37,7 @@ export const Detail = () => {
   if (!product) return <p>Product not found</p>;
 
   const { title, description, price, images } = product;
-  const onCart = cart.some((item) => item.id === product.id);
+  const onCart = cart.some((item) => item.product_id === product.id);
 
   return (
     <section className="detail_container container">
@@ -46,7 +46,10 @@ export const Detail = () => {
         <h2>{title}</h2>
         <h3>{price}$</h3>
         <p>{description}</p>
-        <button onClick={() => addToCart(product)}>
+        <button
+          className={onCart ? "disabled" : ""}
+          onClick={() => addToCart(product, 1)}
+        >
           {onCart ? "Already on cart" : "Add to Cart"}
         </button>
       </article>

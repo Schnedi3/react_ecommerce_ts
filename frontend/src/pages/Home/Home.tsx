@@ -45,7 +45,7 @@ export const Home = () => {
 
       <article className="cards">
         {filteredProducts.map((product) => {
-          const onCart = cart.some((item) => item.id === product.id);
+          const onCart = cart.some((item) => item.product_id === product.id);
           return (
             <Link
               to={`/product/${product.id}`}

@@ -1,10 +1,11 @@
 /* DETAILS */
 .detail_container {
+  margin: 2rem auto !important;
   min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   display: grid;
-  grid-template-columns: 1fr 0.8fr;
-  place-items: center;
-  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 3rem;
 }
 
 .detail_container > img {
@@ -45,6 +46,13 @@
   border-radius: 0.2rem;
   text-transform: uppercase;
   transition: 0.3s;
+}
+
+.detail_info > button.disabled {
+  pointer-events: none;
+  font-weight: 500;
+  color: var(--black-text);
+  background-color: var(--accent);
 }
 
 /* HOVER */
