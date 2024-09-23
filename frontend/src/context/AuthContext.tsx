@@ -12,7 +12,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 );
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-  const { getCart } = useCartContext();
+  const { getCart, setCart } = useCartContext();
   const [user, setUser] = useState<IAuth | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const navigate = useNavigate();
@@ -66,6 +66,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     localStorage.removeItem("user");
     setIsAuthenticated(false);
     setUser(null);
+    setCart([]);
     toast.success("User logged out succesfully");
     navigate("/");
   };

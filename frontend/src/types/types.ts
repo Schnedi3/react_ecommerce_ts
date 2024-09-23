@@ -17,6 +17,7 @@ export interface CartItem extends IProduct {
 
 export interface CartContextType {
   cart: CartItem[];
+  setCart: (cart: CartItem[]) => void;
   getCart: () => void;
   quantityInCart: () => number;
   addToCart: (product: IProduct, quantity: number) => void;
