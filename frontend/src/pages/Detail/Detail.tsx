@@ -19,7 +19,7 @@ export const Detail = () => {
           const response = await singleProductRequest(parseInt(id));
 
           if (response.data.success) {
-            setProduct(response.data.product);
+            setProduct(response.data.result);
           } else {
             toast.error(response.data.message);
           }

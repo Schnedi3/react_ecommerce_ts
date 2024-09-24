@@ -21,7 +21,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       const response = await getCartRequest();
 
       if (response.data.success) {
-        setCart(response.data.rows);
+        setCart(response.data.result);
       } else {
         console.log(response.data.message);
       }
@@ -37,7 +37,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       const response = await addToCartRequest(product.id, quantity);
 
       if (response.data.success) {
-        const newItem = response.data.cartItem;
+        const newItem = response.data.result;
         setCart([...cart, newItem]);
         getCart();
         toast.success(response.data.message);
@@ -51,16 +51,12 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const quantityInCart = () => {
-    return cart.reduce((acc, item) => acc + item.quantity, 0);
-  };
-
   const updateQuantity = async (product_id: number, quantity: number) => {
     try {
       const response = await updateCartRequest(product_id, quantity);
 
       if (response.data.success) {
-        const updateItem = response.data.cartItem;
+        const updateItem = response.data.result;
         setCart(
           cart.map((item) => (item.id === product_id ? updateItem : item))
         );
@@ -91,6 +87,10 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       console.log(error);
       toast.error(error.message);
     }
+  };
+
+  const quantityInCart = () => {
+    return cart.reduce((acc, item) => acc + item.quantity, 0);
   };
 
   const totalCart = () => {

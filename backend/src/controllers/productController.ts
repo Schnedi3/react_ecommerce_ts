@@ -1,6 +1,11 @@
 import { Request, Response } from "express";
 
-import { pool } from "../database/db";
+import {
+  addProductDB,
+  getProductsDB,
+  removeProductDB,
+  singleProductDB,
+} from "../database/productDB";
 import { PG_HOST, PORT } from "../config/config";
 
 const BASE_URL = `http://${PG_HOST}:${PORT}`;
@@ -12,22 +17,17 @@ export const addProduct = async (req: Request, res: Response) => {
   const imageUrls = images.map((file) => `${BASE_URL}/images/${file.filename}`);
 
   try {
-    const addQuery =
-      "INSERT INTO product (title, description, price, category, subcategory, sizes, images) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *";
-
-    const { rows } = await pool.query(addQuery, [
+    const result = await addProductDB(
       title,
       description,
       price,
       category,
       subcategory,
       sizes,
-      imageUrls,
-    ]);
+      imageUrls
+    );
 
-    res
-      .status(200)
-      .json({ success: true, message: "Product added", product: rows[0] });
+    res.status(200).json({ success: true, message: "Product added", result });
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });
   }
@@ -35,21 +35,19 @@ export const addProduct = async (req: Request, res: Response) => {
 
 export const getProducts = async (req: Request, res: Response) => {
   try {
-    const getQuery = "SELECT * FROM product";
-    const { rows } = await pool.query(getQuery);
+    const result = await getProductsDB();
 
-    res.status(200).json({ success: true, rows });
+    res.status(200).json({ success: true, result });
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
 export const removeProduct = async (req: Request, res: Response) => {
-  const { id } = req.params;
+  const id = Number(req.params.id);
 
   try {
-    const removeQuery = "DELETE FROM product WHERE id = $1";
-    await pool.query(removeQuery, [id]);
+    await removeProductDB(id);
 
     res.status(200).json({ success: true, message: "Product removed" });
   } catch (error: any) {
@@ -58,13 +56,12 @@ export const removeProduct = async (req: Request, res: Response) => {
 };
 
 export const singleProduct = async (req: Request, res: Response) => {
-  const { id } = req.params;
+  const id = Number(req.params.id);
 
   try {
-    const singleQuery = "SELECT * FROM product WHERE id = $1";
-    const { rows } = await pool.query(singleQuery, [id]);
+    const result = await singleProductDB(id);
 
-    res.status(200).json({ success: true, product: rows[0] });
+    res.status(200).json({ success: true, result });
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });
   }

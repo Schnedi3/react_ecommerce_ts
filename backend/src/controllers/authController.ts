@@ -2,8 +2,8 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 
 import { generateToken } from "../libs/generateToken";
-import { pool } from "../database/db";
-import { createCartForUser } from "./cartController";
+import { createCartForUser } from "../database/cartDB";
+import { loginUserDB, registerUserDB } from "../database/authDB";
 
 export const registerUser = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
@@ -11,29 +11,22 @@ export const registerUser = async (req: Request, res: Response) => {
   // encrypt password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const registerQuery =
-    "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *";
-
   try {
-    const { rows } = await pool.query(registerQuery, [
-      username,
-      email,
-      hashedPassword,
-    ]);
+    const result = await registerUserDB(username, email, hashedPassword);
 
     // create a cart
-    const userId = rows[0].id;
+    const userId = result.id;
     const cart = await createCartForUser(userId);
 
     // generate token
-    const token = generateToken(rows[0].id);
+    const token = generateToken(result.id);
     // Set token as a cookie
     res.cookie("token", token);
 
     res.status(200).json({
       success: true,
       message: "User registered succesfully",
-      user: rows[0],
+      result,
       cart,
       token,
     });
@@ -49,25 +42,22 @@ export const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
-    const loginQuery = "SELECT * FROM users WHERE email = $1";
-    const { rows } = await pool.query(loginQuery, [email]);
+    const result = await loginUserDB(email);
 
-    const isMatch = await bcrypt.compare(password, rows[0].password);
+    const isMatch = await bcrypt.compare(password, result.password);
     if (!isMatch) {
       return res
         .status(400)
         .json({ success: false, message: "Invalid password" });
     }
 
-    // generate token
-    const token = generateToken(rows[0].id);
-    // Set token as a cookie
+    const token = generateToken(result.id);
     res.cookie("token", token);
 
     res.status(200).json({
       success: true,
       message: "User logged in succesfully",
-      user: rows[0],
+      result,
       token,
     });
   } catch (error: any) {

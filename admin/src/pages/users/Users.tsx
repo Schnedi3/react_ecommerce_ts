@@ -15,7 +15,7 @@ export const Users = () => {
       const response = await getUsersRequest();
 
       if (response.data.success) {
-        setUsers(response.data.rows);
+        setUsers(response.data.result);
       } else {
         toast.error(response.data.message);
       }

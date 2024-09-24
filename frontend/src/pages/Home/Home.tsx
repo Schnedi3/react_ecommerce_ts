@@ -18,7 +18,7 @@ export const Home = () => {
       const response = await listProductsRequest();
 
       if (response.data.success) {
-        setProducts(response.data.rows);
+        setProducts(response.data.result);
       } else {
         toast.error(response.data.message);
       }

@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       const response = await registerRequest(user);
 
       if (response.data.success) {
-        setUser(response.data.user);
+        setUser(response.data.result);
         setIsAuthenticated(true);
         getCart();
         toast.success(response.data.message);
@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       const response = await loginRequest(user);
 
       if (response.data.success) {
-        setUser(response.data.user);
+        setUser(response.data.result);
         setIsAuthenticated(true);
         getCart();
         toast.success(response.data.message);
