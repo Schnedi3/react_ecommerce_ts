@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useState } from "react";
+import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 import { CartItem, CartContextType, IProduct } from "../types/types";
@@ -15,6 +15,8 @@ export const CartContext = createContext<CartContextType | undefined>(
 
 export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [itemsInCart, setItemsInCart] = useState<number>(0);
+  const [totalAmount, setTotalAmount] = useState<number>(0);
 
   const getCart = async () => {
     try {
@@ -39,7 +41,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
       if (response.data.success) {
         const newItem = response.data.result;
         setCart([...cart, newItem]);
-        getCart();
+        await getCart();
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
@@ -60,6 +62,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         setCart(
           cart.map((item) => (item.id === product_id ? updateItem : item))
         );
+        await getCart();
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
@@ -77,8 +80,8 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
 
       if (response.data.success) {
         setCart(cart.filter((item) => item.id !== product_id));
+        await getCart();
         toast.success(response.data.message);
-        getCart();
       } else {
         toast.error(response.data.message);
       }
@@ -89,13 +92,18 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const quantityInCart = () => {
-    return cart.reduce((acc, item) => acc + item.quantity, 0);
-  };
+  useEffect(() => {
+    const quantityInCart = cart.reduce((acc, item) => acc + item.quantity, 0);
+    setItemsInCart(quantityInCart);
+  }, [cart]);
 
-  const totalCart = () => {
-    return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  };
+  useEffect(() => {
+    const totalCart = cart.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+    setTotalAmount(totalCart);
+  }, [cart]);
 
   return (
     <CartContext.Provider
@@ -103,11 +111,11 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         cart,
         setCart,
         getCart,
-        quantityInCart,
         addToCart,
         updateQuantity,
         deleteProduct,
-        totalCart,
+        itemsInCart,
+        totalAmount,
       }}
     >
       {children}

@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         getCart();
         toast.success(response.data.message);
         Cookies.set("token", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("user", JSON.stringify(response.data.result));
         navigate("/");
       } else {
         toast.error(response.data.message);
@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         getCart();
         toast.success(response.data.message);
         Cookies.set("token", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("user", JSON.stringify(response.data.result));
         navigate("/");
       } else {
         toast.error(response.data.message);

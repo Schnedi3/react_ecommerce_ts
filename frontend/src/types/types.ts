@@ -19,11 +19,11 @@ export interface CartContextType {
   cart: CartItem[];
   setCart: (cart: CartItem[]) => void;
   getCart: () => void;
-  quantityInCart: () => number;
   addToCart: (product: IProduct, quantity: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
   deleteProduct: (id: number) => void;
-  totalCart: () => number;
+  itemsInCart: number;
+  totalAmount: number;
 }
 
 export interface ICategoriesProps {

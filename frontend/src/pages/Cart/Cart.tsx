@@ -6,7 +6,7 @@ import { iconCart, iconRemove } from "../../UIIcons";
 import "./cart.css";
 
 export const Cart = () => {
-  const { cart, updateQuantity, deleteProduct, totalCart } = useCartContext();
+  const { cart, updateQuantity, deleteProduct, totalAmount } = useCartContext();
   const navigate = useNavigate();
 
   return cart.length === 0 ? (
@@ -42,13 +42,13 @@ export const Cart = () => {
         <h2>Total</h2>
         <div className="total_info">
           <p>
-            Subtotal <span>${totalCart().toFixed(2)}</span>
+            Subtotal <span>${totalAmount.toFixed(2)}</span>
           </p>
           <p>
             Shipping fee <span>Free</span>
           </p>
           <h3>
-            Total <span>${totalCart().toFixed(2)}</span>
+            Total <span>${totalAmount.toFixed(2)}</span>
           </h3>
         </div>
         <button className="cart_pay" onClick={() => navigate("/place-order")}>

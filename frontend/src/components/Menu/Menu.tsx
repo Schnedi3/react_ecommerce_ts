@@ -8,7 +8,7 @@ import { iconCart, iconClose, iconLogin, iconMenu } from "../../UIIcons";
 import "./menu.css";
 
 export const Menu = () => {
-  const { quantityInCart } = useCartContext();
+  const { itemsInCart } = useCartContext();
   // const { isAuthenticated, user } = useAuthContext();
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -64,7 +64,7 @@ export const Menu = () => {
         </Link>
         <Link className="menu_cart" to="/cart">
           <img src={iconCart} alt="cart icon" />
-          <span>{quantityInCart()}</span>
+          <span>{itemsInCart}</span>
         </Link>
         <img
           className="mobile_menu"
