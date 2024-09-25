@@ -1,9 +1,14 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
+import axios from "axios";
 
 import { generateToken } from "../libs/generateToken";
 import { createCartForUser } from "../database/cartDB";
-import { loginUserDB, registerUserDB } from "../database/authDB";
+import {
+  createGoogleUserDB,
+  loginUserDB,
+  registerUserDB,
+} from "../database/authDB";
 
 export const registerUser = async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
@@ -58,6 +63,36 @@ export const loginUser = async (req: Request, res: Response) => {
       success: true,
       message: "User logged in succesfully",
       result,
+      token,
+    });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const loginGoogle = async (req: Request, res: Response) => {
+  const { accessToken } = req.body;
+
+  const tokenURL = `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`;
+
+  try {
+    const userInfo = await axios.get(tokenURL);
+    const { name, email, sub } = userInfo.data;
+
+    const result = await createGoogleUserDB(name, email, sub);
+
+    // create a cart
+    const userId = result.id;
+    const cart = await createCartForUser(userId);
+
+    const token = generateToken(result.id);
+    res.cookie("token", token);
+
+    res.status(200).json({
+      success: true,
+      message: "User logged in succesfully",
+      result,
+      cart,
       token,
     });
   } catch (error: any) {

@@ -1,10 +1,11 @@
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import { useGoogleLogin } from "@react-oauth/google";
 import { toast } from "react-toastify";
 
-import { AuthContextType, IAuth } from "../types/types";
-import { loginRequest, registerRequest } from "../api/auth";
+import { loginGoogleRequest, loginRequest, registerRequest } from "../api/auth";
+import { AuthContextType, ILogin, IRegister } from "../types/types";
 import { useCartContext } from "./useCartContext";
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -13,22 +14,32 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const { getCart, setCart } = useCartContext();
-  const [user, setUser] = useState<IAuth | null>(null);
+  const [user, setUser] = useState<ILogin | IRegister | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const navigate = useNavigate();
 
-  const signup = async (user: IAuth) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleAuthSuccess = (response: any) => {
+    setUser(response.data.result);
+    setIsAuthenticated(true);
+    getCart();
+    toast.success(response.data.message);
+    Cookies.set("token", response.data.token);
+    localStorage.setItem("user", JSON.stringify(response.data.result));
+    navigate("/");
+  };
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: (codeResponse) => handleGoogleLogin(codeResponse.access_token),
+    onError: (error) => console.log("Login Failed:", error),
+  });
+
+  const handleGoogleLogin = async (accessToken: string) => {
     try {
-      const response = await registerRequest(user);
+      const response = await loginGoogleRequest(accessToken);
 
       if (response.data.success) {
-        setUser(response.data.result);
-        setIsAuthenticated(true);
-        getCart();
-        toast.success(response.data.message);
-        Cookies.set("token", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.result));
-        navigate("/");
+        handleAuthSuccess(response);
       } else {
         toast.error(response.data.message);
       }
@@ -39,18 +50,28 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const login = async (user: IAuth) => {
+  const login = async (user: ILogin) => {
     try {
       const response = await loginRequest(user);
 
       if (response.data.success) {
-        setUser(response.data.result);
-        setIsAuthenticated(true);
-        getCart();
-        toast.success(response.data.message);
-        Cookies.set("token", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.result));
-        navigate("/");
+        handleAuthSuccess(response);
+      } else {
+        toast.error(response.data.message);
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
+  const signup = async (user: IRegister) => {
+    try {
+      const response = await registerRequest(user);
+
+      if (response.data.success) {
+        handleAuthSuccess(response);
       } else {
         toast.error(response.data.message);
       }
@@ -94,8 +115,9 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     <AuthContext.Provider
       value={{
         user,
-        signup,
+        googleLogin,
         login,
+        signup,
         logout,
         isAuthenticated,
         setIsAuthenticated,

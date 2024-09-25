@@ -10,6 +10,11 @@
 }
 
 @font-face {
+  font-family: Poppins;
+  src: url(./assets/fonts/Poppins.ttf) format(truetype);
+}
+
+@font-face {
   font-family: Prata;
   src: url(./assets/fonts/Prata.ttf) format(truetype);
 }
@@ -55,6 +60,7 @@ ol {
 
   --accent: #cab585;
   --error: #ff5f5f;
+  --link: #5c6ce3;
 
   --filter: invert(43%) sepia(7%) saturate(5324%) hue-rotate(317deg)
     brightness(100%) contrast(105%);
@@ -68,8 +74,7 @@ body {
 }
 
 .app {
-  font-family: Outfit;
-  font-weight: 300;
+  font-family: Poppins;
 }
 
 .container {

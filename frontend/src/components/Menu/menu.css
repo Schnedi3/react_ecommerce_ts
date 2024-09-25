@@ -12,7 +12,7 @@
   display: none;
 }
 
-/* LOGO */
+/* ----- */
 .menu_logo {
   display: flex;
   align-items: baseline;
@@ -33,7 +33,7 @@
   border-radius: 50%;
 }
 
-/* LINKS */
+/* ----- */
 .menu_links {
   display: flex;
   align-items: center;
@@ -51,19 +51,20 @@
 .menu_links > li > a:after {
   content: "";
   width: 0;
-  height: 1px;
-  background-color: var(--gray-bg);
+  height: 0.08rem;
+  background-color: var(--accent);
   display: block;
   transition: width 0.3s linear;
 }
 
 .menu_links > li > a.active {
-  border-bottom: 2px solid var(--gray-bg);
+  padding-bottom: 0.1rem;
+  border-bottom: 0.05rem solid var(--accent);
 }
 
 .admin {
   padding: 0.2rem 0.7rem;
-  border: 2px solid var(--gray-bg);
+  border: 0.05rem solid var(--gray-bg);
   border-radius: 2rem;
 }
 
@@ -77,12 +78,13 @@
   gap: 1rem;
 }
 
-/* LOGIN */
+/* ----- */
 .menu_user > img {
-  width: 1.8rem;
+  margin-top: 0.2rem;
+  width: 1.7rem;
 }
 
-/* CART */
+/* ----- */
 .menu_cart {
   display: flex;
   position: relative;
@@ -119,7 +121,7 @@
   }
 
   .admin:hover {
-    border: 2px solid var(--accent);
+    border: 0.08rem solid var(--accent);
     cursor: pointer;
   }
 

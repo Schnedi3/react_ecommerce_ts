@@ -11,6 +11,8 @@ import { Detail } from "./pages/Detail/Detail";
 import { Contact } from "./pages/Contact/Contact";
 import { User } from "./pages/User/User";
 import { Cart } from "./pages/Cart/Cart";
+import { Login } from "./pages/Login/Login";
+import { Register } from "./pages/Register/Register";
 import { Footer } from "./components/Footer/Footer";
 
 import "./app.css";
@@ -29,6 +31,8 @@ export const App = () => {
               <Route path="/product/:id" element={<Detail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/user" element={<User />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
               <Route path="/cart" element={<Cart />} />
             </Routes>
 

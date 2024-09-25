@@ -1,8 +1,24 @@
-import { useValidateContact } from "../../hooks/useValidate";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { contactSchema } from "../../schemas/schemas";
+import { IContact } from "../../types/types";
 import "./contact.css";
 
 export const Contact = () => {
-  const { register, handleSubmit, onSubmit, errors } = useValidateContact();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<IContact>({
+    resolver: zodResolver(contactSchema),
+  });
+
+  const onSubmit = (data: IContact) => {
+    console.log(data);
+    reset();
+  };
 
   return (
     <section className="contact_container  container">

@@ -37,17 +37,24 @@ export interface IContact {
   message: string;
 }
 
-export interface IAuth {
-  username?: string;
+export interface ILogin {
+  email: string;
+  password: string;
+  role?: string;
+}
+
+export interface IRegister {
+  username: string;
   email: string;
   password: string;
   role?: string;
 }
 
 export interface AuthContextType {
-  user: IAuth | null;
-  signup: (user: IAuth) => void;
-  login: (user: IAuth) => void;
+  user: ILogin | IRegister | null;
+  googleLogin: () => void;
+  login: (user: ILogin) => void;
+  signup: (user: IRegister) => void;
   logout: () => void;
   isAuthenticated: boolean;
   setIsAuthenticated: (isAuthenticated: boolean) => void;

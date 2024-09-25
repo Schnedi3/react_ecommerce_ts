@@ -34,3 +34,7 @@ CREATE TABLE cart (
 UPDATE users
 SET role = 'admin'
 WHERE email = 'email';
+
+ALTER TABLE users ADD COLUMN google_id VARCHAR(255) UNIQUE;
+
+ALTER TABLE users ALTER COLUMN password DROP NOT NULL;
