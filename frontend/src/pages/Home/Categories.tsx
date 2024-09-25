@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 
 import { ICategoriesProps } from "../../types/types";
+import { defaultCategory } from "./Home";
 import { iconModal } from "../../UIIcons";
 import "./categories.css";
 
-const defaultCategory: string = "All";
-
 export const Categories = ({
   products,
-  setFilteredProducts,
+  selectedCategory,
+  setSelectedCategory,
 }: ICategoriesProps) => {
-  const [selectedCategory, setSelectedCategory] =
-    useState<string>(defaultCategory);
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const toggleModal = () => setIsModalOpen(!isModalOpen);
   const closeModal = () => setIsModalOpen(false);
@@ -26,14 +23,6 @@ export const Categories = ({
     setSelectedCategory(category);
     closeModal();
   };
-
-  useEffect(() => {
-    selectedCategory === defaultCategory
-      ? setFilteredProducts(products)
-      : setFilteredProducts(
-          products.filter((product) => product.category === selectedCategory)
-        );
-  }, [selectedCategory, setFilteredProducts, products]);
 
   useEffect(() => {
     window.addEventListener("resize", closeModal);

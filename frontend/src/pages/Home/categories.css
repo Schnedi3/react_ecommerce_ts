@@ -14,7 +14,7 @@
   font-size: 0.9rem;
   color: var(--black-text);
   background-color: var(--white);
-  border: 0;
+  border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
 }
 

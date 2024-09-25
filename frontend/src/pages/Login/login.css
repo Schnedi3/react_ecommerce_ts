@@ -5,31 +5,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 /* ----- */
 .gbutton {
+  width: 60%;
+  padding: 0.7rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
   border: 0;
-  border-radius: 2rem;
+  border-radius: 0.2rem;
+  background-color: var(--white);
+  border: 0.05rem solid var(--gray-bg);
 }
 
 .gbutton > img {
-  width: 2.2rem;
-  position: absolute;
-  padding: 0.5rem;
-  border-radius: 50%;
-  border: 0.05rem solid var(--gray-bg);
-  background-color: var(--white);
+  width: 1.2rem;
 }
 
 .gbutton > p {
-  padding: 0.3rem 1rem 0.3rem 2.8rem;
-  border: 0;
-  border-radius: 1rem;
-  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  opacity: 0.3;
 }
 
 /* ----- */
@@ -58,16 +57,17 @@
 }
 
 /* ----- */
-.login_container > h2 {
+.login_form > h2 {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   font-family: Prata;
   font-weight: 300;
   font-size: 1.9rem;
 }
 
-.login_container > h2::after {
+.login_form > h2::after {
   content: "";
   width: 2rem;
   height: 0.1rem;
@@ -124,7 +124,7 @@
 }
 
 .login_footer > h3 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.9rem;
 }
 
@@ -147,10 +147,6 @@
     cursor: pointer;
   }
 
-  .gbutton:hover > p {
-    color: var(--white-text);
-  }
-
   .login_form > button:hover {
     font-weight: 500;
     color: var(--black-text);
@@ -166,6 +162,14 @@
 
 /* MOBILE */
 @media (max-width: 700px) {
+  .gbutton {
+    width: 100%;
+  }
+
+  .separator {
+    width: 100%;
+  }
+
   .login_form {
     width: 100%;
   }

@@ -27,8 +27,9 @@ export interface CartContextType {
 }
 
 export interface ICategoriesProps {
+  selectedCategory: string;
+  setSelectedCategory: (selectedCategory: string) => void;
   products: IProduct[];
-  setFilteredProducts: (filteredProducts: IProduct[]) => void;
 }
 
 export interface IContact {
@@ -58,4 +59,9 @@ export interface AuthContextType {
   logout: () => void;
   isAuthenticated: boolean;
   setIsAuthenticated: (isAuthenticated: boolean) => void;
+}
+
+export interface ISearchProps {
+  inputValue: string;
+  setInputValue: (inputValue: string) => void;
 }

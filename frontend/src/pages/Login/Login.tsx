@@ -38,13 +38,13 @@ export const Login = () => {
         <span></span>
       </article>
 
-      <h2>Login</h2>
-
       <form
         className="login_form"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
+        <h2>Login</h2>
+
         <label htmlFor="email">
           Email
           {errors.email && (
