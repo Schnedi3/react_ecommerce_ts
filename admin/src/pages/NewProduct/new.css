@@ -15,7 +15,7 @@
   gap: 0.5rem;
   font-family: Prata;
   font-weight: 300;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 }
 
 .form > h2::after {
@@ -29,7 +29,7 @@
 .upload {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.2rem;
 }
 
 .upload > div {
@@ -44,11 +44,12 @@
   padding: 1rem;
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
-  background-color: var(--white);
+  background-color: var(--white-bg);
 }
 
 .upload > div > label > img {
   width: 2rem;
+  opacity: 0.5;
 }
 
 .upload > div > label > input {
@@ -68,7 +69,7 @@
 .title {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.2rem;
 }
 
 .title > input {
@@ -77,6 +78,7 @@
   color: var(--black-text);
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
+  background-color: var(--white-bg);
 }
 
 .title > input::placeholder {
@@ -87,7 +89,7 @@
 .desc {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.2rem;
 }
 
 .desc > textarea {
@@ -96,6 +98,7 @@
   color: var(--black-text);
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
+  background-color: var(--white-bg);
   resize: none;
 }
 
@@ -117,7 +120,7 @@
 .price {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.2rem;
 }
 
 .category > select,
@@ -128,7 +131,7 @@
   color: var(--black-text);
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
-  background-color: var(--white);
+  background-color: var(--white-bg);
 }
 
 .price > input {
@@ -139,7 +142,7 @@
 .sizes {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.2rem;
 }
 
 .sizes > div {
@@ -152,11 +155,12 @@
   font-size: 1rem;
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
-  background-color: var(--white);
+  background-color: var(--white-bg);
   transition: 0.3s;
 }
 
 .sizes > div > button.selected {
+  color: var(--white-text);
   background-color: var(--accent);
 }
 
@@ -173,15 +177,15 @@
   transition: 0.3s;
 }
 
-/* ----- */
-.error {
-  color: #e15656;
-}
-
 /* HOVER */
 @media (hover: hover) {
-  .upload > div > label > img:hover {
+  .upload > div > label:hover {
     cursor: pointer;
+  }
+
+  .upload > div > label:hover > img {
+    filter: var(--filter);
+    opacity: 1;
   }
 
   .category > select,
@@ -190,13 +194,12 @@
   }
 
   .sizes > div > button:hover {
+    color: var(--white-text);
     background-color: var(--accent);
     cursor: pointer;
   }
 
   .form > button:hover {
-    font-weight: 500;
-    color: var(--black-text);
     background-color: var(--accent);
     cursor: pointer;
   }

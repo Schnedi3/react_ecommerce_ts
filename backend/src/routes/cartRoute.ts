@@ -10,9 +10,9 @@ import { validateToken } from "../middleware/validateToken";
 
 const router = Router();
 
-router.get("/get", validateToken, getCart);
-router.post("/add", validateToken, addToCart);
-router.put("/update", validateToken, updateCart);
-router.delete("/delete", validateToken, removeFromCart);
+router.get("/", validateToken, getCart);
+router.post("/:id", validateToken, addToCart);
+router.put("/:id", validateToken, updateCart);
+router.delete("/:id", validateToken, removeFromCart);
 
 export default router;

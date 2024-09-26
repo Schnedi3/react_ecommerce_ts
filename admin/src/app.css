@@ -5,8 +5,8 @@
 }
 
 @font-face {
-  font-family: Outfit;
-  src: url(./assets/fonts/Outfit.ttf) format(truetype);
+  font-family: Poppins;
+  src: url(./assets/fonts/Poppins.ttf) format(truetype);
 }
 
 @font-face {
@@ -48,24 +48,24 @@ ol {
   --white-text: #f8f8f8;
 
   --black-bg: #333f57;
-  --white-bg: #f8f8f8;
+  --white-bg: #f7f6f9;
   --gray-bg: #b9b9b9;
 
-  --accent: #cab585;
+  --accent: #5c6ce3;
   --white: #ffffff;
 
-  --filter: invert(43%) sepia(7%) saturate(5324%) hue-rotate(317deg)
-    brightness(100%) contrast(105%);
+  --filter: invert(37%) sepia(83%) saturate(1230%) hue-rotate(215deg)
+    brightness(92%) contrast(92%);
 
   --menu-height: 5rem;
 }
 
 body {
-  background-color: var(--white-bg);
+  background-color: var(--white);
 }
 
 .app {
-  font-family: Outfit;
+  font-family: Poppins;
 }
 
 .container {

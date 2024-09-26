@@ -3,8 +3,8 @@ import { Request, Response } from "express";
 import {
   addProductDB,
   getProductsDB,
+  getProductDB,
   removeProductDB,
-  singleProductDB,
 } from "../database/productDB";
 import { PG_HOST, PORT } from "../config/config";
 
@@ -43,6 +43,18 @@ export const getProducts = async (req: Request, res: Response) => {
   }
 };
 
+export const getProduct = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+
+  try {
+    const result = await getProductDB(id);
+
+    res.status(200).json({ success: true, result });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 export const removeProduct = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
@@ -50,18 +62,6 @@ export const removeProduct = async (req: Request, res: Response) => {
     await removeProductDB(id);
 
     res.status(200).json({ success: true, message: "Product removed" });
-  } catch (error: any) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-export const singleProduct = async (req: Request, res: Response) => {
-  const id = Number(req.params.id);
-
-  try {
-    const result = await singleProductDB(id);
-
-    res.status(200).json({ success: true, result });
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });
   }

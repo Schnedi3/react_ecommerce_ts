@@ -1,9 +1,9 @@
 import axios from "./axios";
 
-export const listProductsRequest = () => {
-  return axios.get("/product/list");
+export const getProductsRequest = () => {
+  return axios.get("/product");
 };
 
-export const singleProductRequest = (id: number) => {
-  return axios.get(`/product/list/${id}`);
+export const getProductRequest = (id: number) => {
+  return axios.get(`/product/${id}`);
 };

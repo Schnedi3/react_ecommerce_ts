@@ -3,17 +3,16 @@ import { Router } from "express";
 import {
   addProduct,
   getProducts,
+  getProduct,
   removeProduct,
-  singleProduct,
 } from "../controllers/productController";
 import { upload } from "../middleware/multer";
 
 const router = Router();
 
-router.post("/add", upload.array("images", 5), addProduct);
-router.get("/list", getProducts);
-router.delete("/list/:id", removeProduct);
-router.get("/list/:id", singleProduct);
+router.post("/", upload.array("images", 5), addProduct);
+router.get("/", getProducts);
+router.get("/:id", getProduct);
+router.delete("/:id", removeProduct);
 
 export default router;
- 

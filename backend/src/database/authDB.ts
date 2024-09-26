@@ -5,8 +5,10 @@ export const registerUserDB = async (
   email: string,
   hashedPassword: string
 ) => {
-  const registerQuery =
-    "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *";
+  const registerQuery = `
+    INSERT INTO users (username, email, password)
+    VALUES ($1, $2, $3)
+    RETURNING *`;
 
   const result = await pool.query(registerQuery, [
     username,
@@ -18,9 +20,11 @@ export const registerUserDB = async (
 };
 
 export const loginUserDB = async (email: string) => {
-  const loginQuery = "SELECT * FROM users WHERE email = $1";
-  const result = await pool.query(loginQuery, [email]);
+  const loginQuery = `
+    SELECT * FROM users
+    WHERE email = $1`;
 
+  const result = await pool.query(loginQuery, [email]);
   return result.rows[0];
 };
 
@@ -30,7 +34,6 @@ export const createGoogleUserDB = async (
   googleId: string
 ) => {
   const username = name;
-
   const createUserQuery = `
     INSERT INTO users (username, email, google_id, password)
     VALUES ($1, $2, $3, NULL)
@@ -39,6 +42,5 @@ export const createGoogleUserDB = async (
     RETURNING *`;
 
   const result = await pool.query(createUserQuery, [username, email, googleId]);
-
   return result.rows[0];
 };

@@ -3,12 +3,12 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { useCartContext } from "../../context/useCartContext";
-import { singleProductRequest } from "../../api/product";
+import { getProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 import "./detail.css";
 
 export const Detail = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<string>();
   const { cart, addToCart } = useCartContext();
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
 
@@ -16,7 +16,7 @@ export const Detail = () => {
     const fetchProduct = async () => {
       try {
         if (id) {
-          const response = await singleProductRequest(parseInt(id));
+          const response = await getProductRequest(parseInt(id));
 
           if (response.data.success) {
             setProduct(response.data.result);

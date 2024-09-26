@@ -11,8 +11,8 @@ import {
 export const getCart = async (req: Request, res: Response) => {
   try {
     const userId = req.user.id;
-    const cartId = await getCartIdByUserId(userId);
 
+    const cartId = await getCartIdByUserId(userId);
     const result = await getCartDB(cartId);
 
     res.status(200).json({ success: true, result });
@@ -22,12 +22,16 @@ export const getCart = async (req: Request, res: Response) => {
 };
 
 export const addToCart = async (req: Request, res: Response) => {
-  const { product_id, quantity } = req.body;
+  const product_id = Number(req.params.id);
+  const { quantity } = req.body;
+
+  console.log(product_id);
+  console.log(quantity);
 
   try {
     const userId = req.user.id;
-    const cartId = await getCartIdByUserId(userId);
 
+    const cartId = await getCartIdByUserId(userId);
     const result = await addToCartDB(cartId, product_id, quantity);
 
     res.status(200).json({
@@ -41,12 +45,13 @@ export const addToCart = async (req: Request, res: Response) => {
 };
 
 export const updateCart = async (req: Request, res: Response) => {
-  const { product_id, quantity } = req.body;
+  const product_id = Number(req.params.id);
+  const { quantity } = req.body;
 
   try {
     const userId = req.user.id;
-    const cartId = await getCartIdByUserId(userId);
 
+    const cartId = await getCartIdByUserId(userId);
     const result = await updateCartDB(quantity, cartId, product_id);
 
     res
@@ -58,12 +63,12 @@ export const updateCart = async (req: Request, res: Response) => {
 };
 
 export const removeFromCart = async (req: Request, res: Response) => {
-  const { product_id } = req.body;
+  const product_id = Number(req.params.id);
 
   try {
     const userId = req.user.id;
-    const cartId = await getCartIdByUserId(userId);
 
+    const cartId = await getCartIdByUserId(userId);
     await removeFromCartDB(cartId, product_id);
 
     res.status(200).json({ success: true, message: "Product removed" });

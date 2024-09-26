@@ -20,7 +20,7 @@
   font-weight: 300;
   font-size: 2.5rem;
   color: var(--black-text);
-  letter-spacing: 2px;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
 }
 
@@ -47,7 +47,7 @@
 
 .menu_links > li > a {
   position: relative;
-  font-weight: 500;
+  font-size: 0.9rem;
   color: var(--black-text);
 }
 
@@ -104,6 +104,6 @@
   }
 
   .menu_links > li > a {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 }

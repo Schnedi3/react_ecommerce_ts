@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { CartItem, CartContextType, IProduct } from "../types/types";
 import {
   addToCartRequest,
-  deleteFromCartRequest,
+  removeFromCartRequest,
   getCartRequest,
   updateCartRequest,
 } from "../api/cart";
@@ -80,9 +80,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const deleteProduct = async (product_id: number) => {
+  const removeProduct = async (product_id: number) => {
     try {
-      const response = await deleteFromCartRequest(product_id);
+      const response = await removeFromCartRequest(product_id);
 
       if (response.data.success) {
         setCart(cart.filter((item) => item.id !== product_id));
@@ -121,7 +121,7 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         getCart,
         addToCart,
         updateQuantity,
-        deleteProduct,
+        removeProduct,
         itemsInCart,
         totalAmount,
       }}
@@ -130,3 +130,4 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     </CartContext.Provider>
   );
 };
+ 

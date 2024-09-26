@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { useCartContext } from "../../context/useCartContext";
-import { listProductsRequest } from "../../api/product";
+import { getProductsRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 import { Search } from "./Search";
 import { Categories } from "./Categories";
@@ -20,17 +20,19 @@ export const Home = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await listProductsRequest();
+      const response = await getProductsRequest();
 
       if (response.data.success) {
         setProducts(response.data.result);
       } else {
         toast.error(response.data.message);
       }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      console.log(error);
-      toast.error(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unexpected error occurred");
+      }
     }
   };
 

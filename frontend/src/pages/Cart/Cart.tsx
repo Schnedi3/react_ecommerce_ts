@@ -5,7 +5,7 @@ import { iconCart, iconRemove } from "../../UIIcons";
 import "./cart.css";
 
 export const Cart = () => {
-  const { cart, updateQuantity, deleteProduct, totalAmount } = useCartContext();
+  const { cart, updateQuantity, removeProduct, totalAmount } = useCartContext();
   const navigate = useNavigate();
 
   return cart.length === 0 ? (
@@ -32,7 +32,7 @@ export const Cart = () => {
             className="item_remove"
             src={iconRemove}
             alt="remove product"
-            onClick={() => deleteProduct(item.product_id)}
+            onClick={() => removeProduct(item.product_id)}
           />
         </article>
       ))}

@@ -5,11 +5,6 @@
 }
 
 @font-face {
-  font-family: Outfit;
-  src: url(./assets/fonts/Outfit.ttf) format(truetype);
-}
-
-@font-face {
   font-family: Poppins;
   src: url(./assets/fonts/Poppins.ttf) format(truetype);
 }
@@ -55,7 +50,7 @@ ol {
 
   --black-bg: #333f57;
   --white-bg: #f7f6f9;
-  --gray-bg: #dedede;
+  --gray-bg: #b9b9b9;
 
   --white: #ffffff;
 

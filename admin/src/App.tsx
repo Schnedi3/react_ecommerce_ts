@@ -14,7 +14,7 @@ import "./app.css";
 export const App = () => {
   return (
     <main className="app">
-      <ToastContainer />
+      <ToastContainer autoClose={2000} pauseOnHover={false} />
       <BrowserRouter>
         <Menu />
 

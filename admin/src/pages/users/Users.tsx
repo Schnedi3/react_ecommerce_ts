@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 
 import { getUsersRequest, removeUserRequest } from "../../api/users";
 import { IUser } from "../../types/types";
-
 import iconRemove from "../../assets/images/remove.svg";
 import "./users.css";
 

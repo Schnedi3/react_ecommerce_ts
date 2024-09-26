@@ -20,8 +20,8 @@ export interface CartContextType {
   setCart: (cart: CartItem[]) => void;
   getCart: () => void;
   addToCart: (product: IProduct, quantity: number) => void;
-  updateQuantity: (id: number, quantity: number) => void;
-  deleteProduct: (id: number) => void;
+  updateQuantity: (product_id: number, quantity: number) => void;
+  removeProduct: (product_id: number) => void;
   itemsInCart: number;
   totalAmount: number;
 }

@@ -1,4 +1,4 @@
-/* LIST */
+/* PRODUCTS */
 .list {
   margin: 2rem auto !important;
   display: flex;
@@ -12,7 +12,7 @@
   gap: 0.5rem;
   font-family: Prata;
   font-weight: 300;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 }
 
 .list > h2::after {
@@ -25,16 +25,15 @@
 .product {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .product > li {
   padding: 1rem 0;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  border: 0.05rem solid var(--gray-bg);
+  border-bottom: 0.05rem solid var(--gray-bg);
 }
 
 .product_img {
@@ -42,8 +41,8 @@
 }
 
 .product > li > h3 {
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .product > li > h4 {

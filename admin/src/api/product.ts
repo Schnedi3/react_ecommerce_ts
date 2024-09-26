@@ -1,13 +1,13 @@
 import axios from "./axios";
 
 export const addProductRequest = (formData: FormData) => {
-  return axios.post("/product/add", formData);
+  return axios.post("/product", formData);
 };
 
 export const getProductsRequest = () => {
-  return axios.get("/product/list");
+  return axios.get("/product");
 };
 
 export const removeProductRequest = (id: number) => {
-  return axios.delete(`/product/list/${id}`);
+  return axios.delete(`/product/${id}`);
 };

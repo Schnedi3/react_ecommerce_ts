@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 
 import { getProductsRequest, removeProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
-
 import iconRemove from "../../assets/images/remove.svg";
 import "./products.css";
 
