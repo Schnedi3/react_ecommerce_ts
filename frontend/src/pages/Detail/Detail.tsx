@@ -24,10 +24,12 @@ export const Detail = () => {
             toast.error(response.data.message);
           }
         }
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } catch (error: any) {
-        console.log(error.message);
-        toast.error(error.message);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.log(error.message);
+        } else {
+          console.log("An unexpected error occurred");
+        }
       }
     };
 

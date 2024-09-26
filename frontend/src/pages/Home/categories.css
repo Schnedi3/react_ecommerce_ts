@@ -13,7 +13,7 @@
   gap: 0.7rem;
   font-size: 0.9rem;
   color: var(--black-text);
-  background-color: var(--white);
+  background-color: var(--white-bg);
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
 }
@@ -48,8 +48,8 @@
   padding: 0.6rem 2rem;
   font-size: 0.8rem;
   color: var(--black-text);
-  background-color: var(--white);
   border-radius: 0.2rem;
+  background-color: var(--white-bg);
   transition: 0.3s;
 }
 
@@ -64,7 +64,7 @@
   }
 
   .categories > ul > li:hover {
-    font-weight: 400;
+    color: var(--white-text);
     background-color: var(--accent);
     cursor: pointer;
   }

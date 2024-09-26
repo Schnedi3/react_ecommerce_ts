@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
@@ -5,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/useAuthContext";
 import { registerSchema } from "../../schemas/schemas";
 import { IRegister } from "../../types/types";
+import { iconEyeClosed, iconEyeOpen } from "../../UIIcons";
 import "./register.css";
 
 export const Register = () => {
@@ -17,6 +19,7 @@ export const Register = () => {
   } = useForm<IRegister>({
     resolver: zodResolver(registerSchema),
   });
+  const [visible, setIsVisible] = useState<boolean>(false);
 
   const onSubmit = (data: IRegister) => {
     signup(data);
@@ -63,11 +66,21 @@ export const Register = () => {
             <span className="error">{errors.password.message}</span>
           )}
           <input
-            type="password"
+            type={visible ? "text" : "password"}
             id="password"
             placeholder="A1b2C3d4"
             {...register("password")}
           />
+          <button
+            type="button"
+            className="view_pass"
+            onClick={() => setIsVisible(!visible)}
+          >
+            <img
+              src={visible ? iconEyeOpen : iconEyeClosed}
+              alt="password visibility"
+            />
+          </button>
         </label>
 
         <button type="submit">Sign Up</button>

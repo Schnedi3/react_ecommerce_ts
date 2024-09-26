@@ -15,7 +15,7 @@
   gap: 0.5rem;
   font-family: Prata;
   font-weight: 300;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 }
 
 .register_container > h2::after {
@@ -47,6 +47,7 @@
   color: var(--black-text);
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
+  background-color: var(--white-bg);
 }
 
 .register_form > label > input::placeholder {
@@ -63,7 +64,7 @@
   border: 0;
   border-radius: 0.2rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.05rem;
   transition: 0.3s;
 }
 
@@ -75,12 +76,12 @@
 }
 
 .register_footer > h3 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 0.9rem;
 }
 
 .register_footer > a {
-  color: var(--link);
+  color: var(--accent);
 }
 
 /* ----- */
@@ -94,8 +95,6 @@
 /* HOVER */
 @media (hover: hover) {
   .register_form > button:hover {
-    font-weight: 500;
-    color: var(--black-text);
     background-color: var(--accent);
     cursor: pointer;
   }

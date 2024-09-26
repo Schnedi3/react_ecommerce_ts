@@ -30,7 +30,7 @@ export const registerUser = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "User registered succesfully",
+      message: "Registered succesfully",
       result,
       cart,
       token,
@@ -61,7 +61,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "User logged in succesfully",
+      message: "Logged in succesfully",
       result,
       token,
     });
@@ -90,7 +90,7 @@ export const loginGoogle = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "User logged in succesfully",
+      message: "Logged in succesfully",
       result,
       cart,
       token,

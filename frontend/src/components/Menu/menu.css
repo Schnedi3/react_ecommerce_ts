@@ -128,6 +128,15 @@
   .menu_links > li.admin:hover > a {
     color: var(--accent);
   }
+
+  .menu_user > img:hover,
+  .menu_cart:hover > img {
+    filter: var(--filter);
+  }
+
+  .menu_cart:hover > span {
+    background-color: var(--accent);
+  }
 }
 
 /* ADAPTIVE */

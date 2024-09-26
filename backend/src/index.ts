@@ -9,6 +9,7 @@ import authRoutes from "./routes/authRoute";
 import prodRoutes from "./routes/productRoute";
 import usersRoutes from "./routes/userRoute";
 import cartRoutes from "./routes/cartRoute";
+import addressRoutes from "./routes/addressRoute";
 
 export const app = express();
 
@@ -27,7 +28,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/product", prodRoutes);
 app.use("/api/user", usersRoutes);
 app.use("/api/cart", cartRoutes);
-
+app.use("/api/address", addressRoutes);
 
 app.listen(PORT);
 console.log("Server running on port", PORT);

@@ -74,9 +74,8 @@
 .home_badge {
   display: flex;
   align-items: center;
-  font-weight: 600;
   font-size: 0.6rem;
-  color: var(--black-text);
+  color: var(--white-text);
   text-transform: uppercase;
   padding: 0.2rem 0.5rem;
   background-color: var(--accent);

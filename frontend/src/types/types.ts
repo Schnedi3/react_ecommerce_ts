@@ -39,6 +39,7 @@ export interface IContact {
 }
 
 export interface ILogin {
+  username?: string;
   email: string;
   password: string;
   role?: string;
@@ -64,4 +65,14 @@ export interface AuthContextType {
 export interface ISearchProps {
   inputValue: string;
   setInputValue: (inputValue: string) => void;
+}
+
+export interface IAddress {
+  id: number;
+  address_line1: string;
+  address_line2: string;
+  city: string;
+  state: string;
+  zip_code: string;
+  phone: string;
 }

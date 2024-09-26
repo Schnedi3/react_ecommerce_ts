@@ -24,7 +24,7 @@
   gap: 0.5rem;
   font-family: Prata;
   font-weight: 300;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 }
 
 .cart_container > h2::after {
@@ -40,9 +40,9 @@
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  border: 0.05rem solid var(--gray-bg);
+  border-bottom: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
 }
 
@@ -78,7 +78,7 @@
 
 /* ----- */
 .cart_total {
-  width: 60%;
+  width: 50%;
   align-self: flex-end;
   display: flex;
   flex-direction: column;
@@ -109,10 +109,8 @@
 }
 
 .total_info > p {
-  padding-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .total_info > h3 {
@@ -120,21 +118,31 @@
   justify-content: space-between;
   font-weight: 600;
   font-size: 1rem;
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.total_info > h3 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--black-text);
 }
 
 .total_info > h3 > span {
-  color: var(--black-text);
+  font-weight: 700;
 }
 
 .cart_pay {
   width: 100%;
   padding: 0.7rem;
+  font-size: 1rem;
   color: var(--white-text);
   background-color: var(--black-text);
-  text-transform: uppercase;
-  letter-spacing: 2px;
   border: 0;
   border-radius: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
   transition: 0.3s;
 }
 
@@ -146,8 +154,6 @@
   }
 
   .cart_pay:hover {
-    font-weight: 500;
-    color: var(--black-text);
     background-color: var(--accent);
     cursor: pointer;
   }

@@ -7,7 +7,7 @@
   padding: 0.7rem;
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
-  background-color: var(--white);
+  background-color: var(--white-bg);
 }
 
 .find_icon {
@@ -46,6 +46,7 @@
 /* HOVER */
 @media (hover: hover) {
   .clear_icon:hover {
+    filter: var(--filter);
     cursor: pointer;
   }
 }

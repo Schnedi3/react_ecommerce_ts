@@ -15,7 +15,7 @@
   gap: 0.5rem;
   font-family: Prata;
   font-weight: 300;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
 }
 
 .logout_container > h2::after {
@@ -30,12 +30,28 @@
 .orders {
   width: 60%;
   margin-top: 0.5rem;
-  padding: 0.7rem;
+  padding: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
   color: var(--black-text);
-  background-color: var(--white);
   border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  border-radius: 1rem;
+  background-color: var(--white-bg);
   transition: 0.3s;
+}
+
+.profile > img:nth-child(1),
+.orders > img:nth-child(1) {
+  width: 1.5rem;
+  filter: var(--filter);
+}
+
+.profile > img:nth-child(3),
+.orders > img:nth-child(3) {
+  width: 1.5rem;
+  transform: rotate(-90deg);
+  opacity: 0.7;
 }
 
 /* ----- */
@@ -43,12 +59,13 @@
   width: 60%;
   margin-top: 0.5rem;
   padding: 0.7rem;
+  font-size: 1rem;
   color: var(--white-text);
   background-color: var(--black-text);
   border: 0;
   border-radius: 0.2rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.05rem;
   transition: 0.3s;
 }
 
@@ -56,16 +73,27 @@
 @media (hover: hover) {
   .profile:hover,
   .orders:hover {
-    font-weight: 400;
-    color: var(--black-text);
+    color: var(--white-text);
     background-color: var(--accent);
     cursor: pointer;
   }
 
+  .profile:hover > img,
+  .orders:hover > img {
+    filter: invert(1);
+  }
+
   .logout:hover {
-    font-weight: 500;
-    color: var(--black-text);
     background-color: var(--accent);
     cursor: pointer;
+  }
+}
+
+/* ADAPTIVE */
+@media (max-width: 700px) {
+  .profile,
+  .orders,
+  .logout {
+    width: 100%;
   }
 }

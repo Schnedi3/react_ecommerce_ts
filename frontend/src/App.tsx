@@ -13,6 +13,8 @@ import { User } from "./pages/User/User";
 import { Cart } from "./pages/Cart/Cart";
 import { Login } from "./pages/Login/Login";
 import { Register } from "./pages/Register/Register";
+import { PlaceOrder } from "./pages/PlaceOrder/PlaceOrder";
+import { Profile } from "./pages/Profile/Profile";
 import { Footer } from "./components/Footer/Footer";
 
 import "./app.css";
@@ -34,6 +36,8 @@ export const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/place-order" element={<PlaceOrder />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
 
             <Footer />

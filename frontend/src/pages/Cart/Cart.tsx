@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
 import { useCartContext } from "../../context/useCartContext";
-
 import { iconCart, iconRemove } from "../../UIIcons";
 import "./cart.css";
 
@@ -45,7 +44,7 @@ export const Cart = () => {
             Subtotal <span>${totalAmount.toFixed(2)}</span>
           </p>
           <p>
-            Shipping fee <span>Free</span>
+            Shipping <span>Free</span>
           </p>
           <h3>
             Total <span>${totalAmount.toFixed(2)}</span>

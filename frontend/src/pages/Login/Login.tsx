@@ -6,8 +6,9 @@ import { useAuthContext } from "../../context/useAuthContext";
 import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
 
-import iconGoogle from "../../assets/icons/google.svg";
+import { iconEyeClosed, iconEyeOpen, iconGoogle } from "../../UIIcons";
 import "./login.css";
+import { useState } from "react";
 
 export const Login = () => {
   const { googleLogin, login } = useAuthContext();
@@ -19,6 +20,7 @@ export const Login = () => {
   } = useForm<ILogin>({
     resolver: zodResolver(loginSchema),
   });
+  const [visible, setIsVisible] = useState<boolean>(false);
 
   const onSubmit = (data: ILogin) => {
     login(data);
@@ -64,11 +66,21 @@ export const Login = () => {
             <span className="error">{errors.password.message}</span>
           )}
           <input
-            type="password"
+            type={visible ? "text" : "password"}
             id="password"
             placeholder="A1b2C3d4"
             {...register("password")}
           />
+          <button
+            type="button"
+            className="view_pass"
+            onClick={() => setIsVisible(!visible)}
+          >
+            <img
+              src={visible ? iconEyeOpen : iconEyeClosed}
+              alt="password visibility"
+            />
+          </button>
         </label>
 
         <button type="submit">Login</button>

@@ -51,26 +51,25 @@ ol {
 :root {
   --black-text: #2b354a;
   --white-text: #f8f8f8;
+  --gray-text: #7d7d7d;
 
   --black-bg: #333f57;
-  --white-bg: #f8f8f8;
-  --gray-bg: #d2d2d2;
+  --white-bg: #f7f6f9;
+  --gray-bg: #dedede;
 
   --white: #ffffff;
 
-  --accent: #cab585;
+  --accent: #5c6ce3;
   --error: #ff5f5f;
-  --link: #5c6ce3;
-
-  --filter: invert(43%) sepia(7%) saturate(5324%) hue-rotate(317deg)
-    brightness(100%) contrast(105%);
+  --filter: invert(37%) sepia(83%) saturate(1230%) hue-rotate(215deg)
+    brightness(92%) contrast(92%);
 
   --menu-height: 5rem;
   --footer-height: 5rem;
 }
 
 body {
-  background-color: var(--white-bg);
+  background-color: var(--white);
 }
 
 .app {

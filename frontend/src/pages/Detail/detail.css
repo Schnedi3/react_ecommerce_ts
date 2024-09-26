@@ -39,27 +39,24 @@
 .detail_info > button {
   width: 50%;
   padding: 0.7rem;
+  font-size: 1rem;
   color: var(--white-text);
   background-color: var(--black-text);
   border: 0;
   border-radius: 0.2rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.05rem;
   transition: 0.3s;
 }
 
 .detail_info > button.disabled {
   pointer-events: none;
-  font-weight: 500;
-  color: var(--black-text);
   background-color: var(--accent);
 }
 
 /* HOVER */
 @media (hover: hover) {
   .detail_info > button:hover {
-    font-weight: 500;
-    color: var(--black-text);
     background-color: var(--accent);
     cursor: pointer;
   }

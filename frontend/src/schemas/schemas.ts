@@ -33,3 +33,12 @@ export const registerSchema = z.object({
     .min(1, "Field required")
     .min(8, "Must be at least 8 characters"),
 });
+
+export const addressSchema = z.object({
+  address_line1: z.string().min(1, "Field required"),
+  address_line2: z.string().min(1, "Field required"),
+  city: z.string().min(1, "Field required"),
+  state: z.string().min(1, "Field required"),
+  zip_code: z.string().min(1, "Field required"),
+  phone: z.string().min(1, "Field required"),
+});
