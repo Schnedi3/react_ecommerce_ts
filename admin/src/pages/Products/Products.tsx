@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 import { getProductsRequest, removeProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
-import iconRemove from "../../assets/images/remove.svg";
+import iconRemove from "../../assets/icons/remove.svg";
 import "./products.css";
 
 export const Products = () => {

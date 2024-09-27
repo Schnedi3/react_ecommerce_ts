@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 import { getUsersRequest, removeUserRequest } from "../../api/users";
 import { IUser } from "../../types/types";
-import iconRemove from "../../assets/images/remove.svg";
+import iconRemove from "../../assets/icons/remove.svg";
 import "./users.css";
 
 export const Users = () => {

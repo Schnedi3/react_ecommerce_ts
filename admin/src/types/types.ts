@@ -16,3 +16,15 @@ export interface IUser {
   password: string;
   role: string;
 }
+
+export interface ILogin {
+  email: string;
+  password: string;
+}
+
+export interface AuthContextType {
+  user: ILogin | null;
+  login: (user: ILogin) => void;
+  logout: () => void;
+  isAuthenticated: boolean;
+}

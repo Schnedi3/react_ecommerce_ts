@@ -2,7 +2,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 import { addProductRequest } from "../../api/product";
-import imageUpload from "../../assets/images/upload.svg";
+import imageUpload from "../../assets/icons/upload.svg";
 import "./new.css";
 
 export const NewProduct = () => {
