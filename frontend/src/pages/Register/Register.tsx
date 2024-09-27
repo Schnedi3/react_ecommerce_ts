@@ -8,6 +8,7 @@ import { registerSchema } from "../../schemas/schemas";
 import { IRegister } from "../../types/types";
 import { iconEyeClosed, iconEyeOpen } from "../../UIIcons";
 import "./register.css";
+import "../globals.css";
 
 export const Register = () => {
   const { signup } = useAuthContext();
@@ -34,40 +35,40 @@ export const Register = () => {
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <label htmlFor="username">
+        <label>
           Username
           {errors.username && (
             <span className="error">{errors.username.message}</span>
           )}
           <input
             type="text"
-            id="username"
+            className={errors.username ? "input_error" : ""}
             placeholder="John Doe"
             {...register("username")}
           />
         </label>
 
-        <label htmlFor="email">
+        <label>
           Email
           {errors.email && (
             <span className="error">{errors.email.message}</span>
           )}
           <input
             type="email"
-            id="email"
+            className={errors.email ? "input_error" : ""}
             placeholder="johndoe@lorem.com"
             {...register("email")}
           />
         </label>
 
-        <label htmlFor="password">
+        <label>
           Password
           {errors.password && (
             <span className="error">{errors.password.message}</span>
           )}
           <input
             type={visible ? "text" : "password"}
-            id="password"
+            className={errors.password ? "input_error" : ""}
             placeholder="A1b2C3d4"
             {...register("password")}
           />
@@ -83,7 +84,9 @@ export const Register = () => {
           </button>
         </label>
 
-        <button type="submit">Sign Up</button>
+        <button className="dark_button dark_button-register" type="submit">
+          Sign Up
+        </button>
 
         <article className="register_footer">
           <h3>Forgot your password?</h3>

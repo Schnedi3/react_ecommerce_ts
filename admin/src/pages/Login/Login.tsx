@@ -7,6 +7,7 @@ import { ILogin } from "../../types/types";
 import iconEyeClosed from "../../assets/icons/eye_closed.svg";
 import iconEyeOpen from "../../assets/icons/eye_open.svg";
 import "./login.css";
+import "../globals.css";
 
 export const Login = () => {
   const {
@@ -75,7 +76,7 @@ export const Login = () => {
           </button>
         </label>
 
-        <button type="submit">Login</button>
+        <button className="dark_button" type="submit">Login</button>
       </form>
     </main>
   );

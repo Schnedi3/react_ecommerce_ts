@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/useAuthContext";
 import "./logout.css";
+import "../globals.css";
 
 import { iconBox, iconLogin, iconModal } from "../../UIIcons";
 
@@ -20,7 +21,7 @@ export const Logout = () => {
         <p>My orders</p>
         <img src={iconModal} />
       </Link>
-      <button className="logout" onClick={logout}>
+      <button className="dark_button dark_button-logout" onClick={logout}>
         Logout
       </button>
     </section>

@@ -3,8 +3,9 @@ import { toast } from "react-toastify";
 
 import { getProductsRequest, removeProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
-import iconRemove from "../../assets/icons/remove.svg";
+import { iconRemove } from "../../UIIcons";
 import "./products.css";
+import "../globals.css";
 
 export const Products = () => {
   const [products, setProducts] = useState<IProduct[]>([]);

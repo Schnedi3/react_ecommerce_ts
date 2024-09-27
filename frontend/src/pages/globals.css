@@ -1,0 +1,38 @@
+/* GLOBALS */
+h2 {
+  margin-top: 0.7rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: Prata;
+  font-weight: 300;
+  font-size: 1.7rem;
+}
+
+h2::after {
+  content: "";
+  width: 2rem;
+  height: 0.1rem;
+  background-color: var(--accent);
+}
+
+.dark_button {
+  margin-top: 0.8rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+  color: var(--white-text);
+  background-color: var(--black-text);
+  border: 0;
+  border-radius: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  transition: 0.3s;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .dark_button:hover {
+    background-color: var(--accent);
+    cursor: pointer;
+  }
+}

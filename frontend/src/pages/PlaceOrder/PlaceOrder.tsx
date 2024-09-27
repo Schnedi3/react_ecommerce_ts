@@ -1,6 +1,7 @@
 import { useCartContext } from "../../context/useCartContext";
 import { useAddress } from "../../hooks/useAddress";
 import "./place_order.css";
+import "../globals.css";
 
 export const PlaceOrder = () => {
   const { cart, totalAmount } = useCartContext();

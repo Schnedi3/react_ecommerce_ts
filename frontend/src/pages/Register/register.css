@@ -9,23 +9,6 @@
 }
 
 /* ----- */
-.register_container > h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: Prata;
-  font-weight: 300;
-  font-size: 1.7rem;
-}
-
-.register_container > h2::after {
-  content: "";
-  width: 2rem;
-  height: 0.1rem;
-  background-color: var(--black-text);
-}
-
-/* ----- */
 .register_form {
   width: 60%;
   display: flex;
@@ -55,17 +38,8 @@
   opacity: 0.25;
 }
 
-.register_form > button {
-  margin-top: 0.5rem;
-  padding: 0.7rem;
-  font-size: 1rem;
-  color: var(--white-text);
-  background-color: var(--black-text);
-  border: 0;
-  border-radius: 0.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  transition: 0.3s;
+.dark_button-register {
+  width: 100%;
 }
 
 /* ----- */
@@ -92,13 +66,12 @@
   font-size: 0.9rem;
 }
 
+.register_form > label > input.input_error {
+  border: 0.05rem solid var(--error);
+}
+
 /* HOVER */
 @media (hover: hover) {
-  .register_form > button:hover {
-    background-color: var(--accent);
-    cursor: pointer;
-  }
-
   .register_footer > a:hover {
     text-decoration: underline;
     cursor: pointer;

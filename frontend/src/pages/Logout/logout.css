@@ -9,23 +9,6 @@
 }
 
 /* ----- */
-.logout_container > h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: Prata;
-  font-weight: 300;
-  font-size: 1.7rem;
-}
-
-.logout_container > h2::after {
-  content: "";
-  width: 2rem;
-  height: 0.1rem;
-  background-color: var(--black-text);
-}
-
-/* ----- */
 .profile,
 .orders {
   width: 60%;
@@ -55,18 +38,8 @@
 }
 
 /* ----- */
-.logout {
-  width: 60%;
-  margin-top: 0.5rem;
-  padding: 0.7rem;
-  font-size: 1rem;
-  color: var(--white-text);
-  background-color: var(--black-text);
-  border: 0;
-  border-radius: 0.2rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  transition: 0.3s;
+.dark_button-logout {
+  width: 100%;
 }
 
 /* HOVER */
@@ -82,18 +55,13 @@
   .orders:hover > img {
     filter: invert(1);
   }
-
-  .logout:hover {
-    background-color: var(--accent);
-    cursor: pointer;
-  }
 }
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
   .profile,
   .orders,
-  .logout {
+  .dark_button-logout {
     width: 100%;
   }
 }

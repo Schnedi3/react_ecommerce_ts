@@ -9,25 +9,6 @@
 }
 
 /* ----- */
-.personal > h2,
-.address_container > h2 {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: Prata;
-  font-weight: 300;
-  font-size: 1.7rem;
-}
-
-.personal > h2::after,
-.address_container > h2::after {
-  content: "";
-  width: 2rem;
-  height: 0.1rem;
-  background-color: var(--black-text);
-}
-
 .personal > ul {
   display: flex;
   flex-direction: column;
@@ -135,23 +116,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-}
-
-.personal_form > h2 {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: Prata;
-  font-weight: 300;
-  font-size: 1.7rem;
-}
-
-.personal_form > h2::after {
-  content: "";
-  width: 2rem;
-  height: 0.1rem;
-  background-color: var(--black-text);
 }
 
 .personal_form > label,

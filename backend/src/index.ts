@@ -6,8 +6,8 @@ import cookieParser from "cookie-parser";
 import { COOKIE_URL, PORT } from "./config/config";
 
 import authRoutes from "./routes/authRoute";
-import prodRoutes from "./routes/productRoute";
-import usersRoutes from "./routes/userRoute";
+import productRoutes from "./routes/productRoute";
+import userRoutes from "./routes/userRoute";
 import cartRoutes from "./routes/cartRoute";
 import addressRoutes from "./routes/addressRoute";
 
@@ -25,8 +25,8 @@ app.use(cookieParser());
 app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
 app.use("/api/auth", authRoutes);
-app.use("/api/product", prodRoutes);
-app.use("/api/user", usersRoutes);
+app.use("/api/product", productRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/address", addressRoutes);
 

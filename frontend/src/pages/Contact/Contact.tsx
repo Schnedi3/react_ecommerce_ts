@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema } from "../../schemas/schemas";
 import { IContact } from "../../types/types";
 import "./contact.css";
+import "../globals.css";
 
 export const Contact = () => {
   const {
@@ -33,7 +34,7 @@ export const Contact = () => {
           {errors.name && <span className="error">{errors.name.message}</span>}
           <input
             type="text"
-            id="name"
+            className={errors.name ? "input_error" : ""}
             placeholder="John Doe"
             {...register("name")}
           />
@@ -46,7 +47,7 @@ export const Contact = () => {
           )}
           <input
             type="email"
-            id="email"
+            className={errors.email ? "input_error" : ""}
             placeholder="johndoe@lorem.com"
             {...register("email")}
           />
@@ -58,14 +59,14 @@ export const Contact = () => {
             <span className="error">{errors.message.message}</span>
           )}
           <textarea
-            id="message"
+            className={errors.message ? "input_error" : ""}
             rows={3}
             placeholder="lorem ipsum..."
             {...register("message")}
           ></textarea>
         </label>
 
-        <button type="submit" className="contact_button">
+        <button type="submit" className="dark_button dark_button-contact">
           Send
         </button>
       </form>

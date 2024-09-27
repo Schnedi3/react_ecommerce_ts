@@ -9,22 +9,6 @@
   color: var(--black-text);
 }
 
-.form > h2 {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: Prata;
-  font-weight: 300;
-  font-size: 1.7rem;
-}
-
-.form > h2::after {
-  content: "";
-  width: 2rem;
-  height: 0.1rem;
-  background-color: var(--black-text);
-}
-
 /* ----- */
 .upload {
   display: flex;
@@ -164,19 +148,6 @@
   background-color: var(--accent);
 }
 
-/* ----- */
-.form > button {
-  margin-top: 0.5rem;
-  padding: 0.7rem;
-  font-size: 1.1rem;
-  color: var(--white-text);
-  background-color: var(--black-text);
-  border: 0;
-  border-radius: 0.2rem;
-  text-transform: uppercase;
-  transition: 0.3s;
-}
-
 /* HOVER */
 @media (hover: hover) {
   .upload > div > label:hover {
@@ -195,11 +166,6 @@
 
   .sizes > div > button:hover {
     color: var(--white-text);
-    background-color: var(--accent);
-    cursor: pointer;
-  }
-
-  .form > button:hover {
     background-color: var(--accent);
     cursor: pointer;
   }

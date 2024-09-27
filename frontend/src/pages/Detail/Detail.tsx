@@ -13,7 +13,7 @@ export const Detail = () => {
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
 
   useEffect(() => {
-    const fetchProduct = async () => {
+    const getProduct = async () => {
       try {
         if (id) {
           const response = await getProductRequest(parseInt(id));
@@ -33,12 +33,12 @@ export const Detail = () => {
       }
     };
 
-    fetchProduct();
+    getProduct();
   }, [id]);
 
   if (!product) return <p>Product not found</p>;
 
-  const { title, description, price, images } = product;
+  const { title, description, price, sizes, images } = product;
   const onCart = cart.some((item) => item.product_id === product.id);
 
   return (
@@ -48,8 +48,15 @@ export const Detail = () => {
         <h2>{title}</h2>
         <h3>{price}$</h3>
         <p>{description}</p>
+        <ul>
+          {sizes.map((size) => (
+            <li>
+              <button>{size}</button>
+            </li>
+          ))}
+        </ul>
         <button
-          className={onCart ? "disabled" : ""}
+          className={`dark_button${onCart ? " dark_button-disabled" : ""}`}
           onClick={() => addToCart(product, 1)}
         >
           {onCart ? "Already on cart" : "Add to Cart"}

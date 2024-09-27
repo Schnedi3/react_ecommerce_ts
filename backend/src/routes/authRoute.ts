@@ -11,9 +11,12 @@ import {
 
 const router = Router();
 
+// admin
+router.post("/admin", validateSchema(loginSchema), loginAdmin);
+
+// user
 router.post("/register", validateSchema(registerSchema), registerUser);
 router.post("/login", validateSchema(loginSchema), loginUser);
 router.post("/google", loginGoogle);
-router.post("/admin", validateSchema(loginSchema), loginAdmin);
 
 export default router;

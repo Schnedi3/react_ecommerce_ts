@@ -25,9 +25,6 @@ export const addToCart = async (req: Request, res: Response) => {
   const product_id = Number(req.params.id);
   const { quantity } = req.body;
 
-  console.log(product_id);
-  console.log(quantity);
-
   try {
     const userId = req.user.id;
 

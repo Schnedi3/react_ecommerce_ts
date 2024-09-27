@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { getUserDB, getUsersDB, removeUserDB } from "../database/userDB";
+import { getUserDB, getUsersDB, deleteUserDB } from "../database/userDB";
 
 export const getUsers = async (req: Request, res: Response) => {
   try {
@@ -24,11 +24,11 @@ export const getUser = async (req: Request, res: Response) => {
   }
 };
 
-export const removeUser = async (req: Request, res: Response) => {
+export const deleteUser = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
   try {
-    await removeUserDB(id);
+    await deleteUserDB(id);
 
     res.status(200).json({ success: true, message: "User removed" });
   } catch (error: any) {

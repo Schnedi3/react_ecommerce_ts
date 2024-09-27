@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCartContext } from "../../context/useCartContext";
 import { iconCart, iconRemove } from "../../UIIcons";
 import "./cart.css";
+import "../globals.css";
 
 export const Cart = () => {
   const { cart, updateQuantity, removeProduct, totalAmount } = useCartContext();
@@ -50,7 +51,10 @@ export const Cart = () => {
             Total <span>${totalAmount.toFixed(2)}</span>
           </h3>
         </div>
-        <button className="cart_pay" onClick={() => navigate("/place-order")}>
+        <button
+          className="dark_button dark_button-pay"
+          onClick={() => navigate("/place-order")}
+        >
           proceed to checkout
         </button>
       </article>

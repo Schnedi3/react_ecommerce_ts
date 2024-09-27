@@ -10,6 +10,7 @@ import { validateToken } from "../middleware/validateToken";
 
 const router = Router();
 
+// user
 router.get("/", validateToken, getCart);
 router.post("/:id", validateToken, addToCart);
 router.put("/:id", validateToken, updateCart);

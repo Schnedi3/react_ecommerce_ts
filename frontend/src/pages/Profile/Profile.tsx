@@ -6,6 +6,7 @@ import { useAddress } from "../../hooks/useAddress";
 import { removeAddresstRequest } from "../../api/address";
 import { iconAdd } from "../../UIIcons";
 import "./profile.css";
+import "../globals.css";
 
 export const Profile = () => {
   const { user } = useAuthContext();

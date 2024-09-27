@@ -7,6 +7,7 @@ import { getProductsRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 import { Search } from "./Search";
 import { Categories } from "./Categories";
+import { HomeSkeleton } from "../../skeletons/HomeSkeleton";
 import "./home.css";
 
 export const defaultCategory: string = "All";
@@ -18,7 +19,7 @@ export const Home = () => {
     useState<string>(defaultCategory);
   const { cart } = useCartContext();
 
-  const fetchProducts = async () => {
+  const getProducts = async () => {
     try {
       const response = await getProductsRequest();
 
@@ -37,7 +38,7 @@ export const Home = () => {
   };
 
   useEffect(() => {
-    fetchProducts();
+    getProducts();
   }, []);
 
   const filteredProducts = useMemo(() => {
@@ -58,6 +59,8 @@ export const Home = () => {
     return filtered;
   }, [selectedCategory, products, inputValue]);
 
+  if (!filteredProducts) return <HomeSkeleton />;
+
   return (
     <section className="home_container container">
       <header className="header">
@@ -71,7 +74,7 @@ export const Home = () => {
 
       <article className="cards">
         {filteredProducts.length === 0 ? (
-          <p>No products found...</p>
+          <HomeSkeleton />
         ) : (
           filteredProducts.map((product) => {
             const onCart = cart.some((item) => item.product_id === product.id);

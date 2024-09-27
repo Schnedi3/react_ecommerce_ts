@@ -154,16 +154,19 @@
   }
 
   .menu_links {
-    width: 60%;
+    width: 16rem;
     height: 100vh;
     position: absolute;
     top: 0;
     right: 0;
-    padding: 1.5rem 1.3rem;
+    padding: 1.5rem;
+    display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: flex-start;
+    gap: 4rem;
+    border-left: 0.05rem solid var(--gray-bg);
     background-color: var(--white-bg);
-    border-left: 2px solid rgba(0, 0, 0, 0.1);
     z-index: 2;
     clip-path: inset(0 0 0 100%);
     transition: 0.3s;
@@ -175,5 +178,16 @@
 
   .menu_links > li > a {
     font-size: 1rem;
+  }
+
+  .menu_links > li > a:after {
+    display: none;
+  }
+
+  .menu_links > li > a.active {
+    padding-right: 0.6rem;
+    padding-bottom: 0;
+    border-right: 0.15rem solid var(--accent);
+    border-bottom: 0;
   }
 }

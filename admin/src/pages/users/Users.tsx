@@ -3,8 +3,9 @@ import { toast } from "react-toastify";
 
 import { getUsersRequest, removeUserRequest } from "../../api/users";
 import { IUser } from "../../types/types";
-import iconRemove from "../../assets/icons/remove.svg";
+import { iconRemove } from "../../UIIcons";
 import "./users.css";
+import "../globals.css";
 
 export const Users = () => {
   const [users, setUsers] = useState<IUser[]>([]);

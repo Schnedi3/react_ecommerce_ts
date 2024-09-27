@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
@@ -8,7 +9,7 @@ import { ILogin } from "../../types/types";
 
 import { iconEyeClosed, iconEyeOpen, iconGoogle } from "../../UIIcons";
 import "./login.css";
-import { useState } from "react";
+import "../globals.css";
 
 export const Login = () => {
   const { googleLogin, login } = useAuthContext();
@@ -47,27 +48,27 @@ export const Login = () => {
       >
         <h2>Login</h2>
 
-        <label htmlFor="email">
+        <label>
           Email
           {errors.email && (
             <span className="error">{errors.email.message}</span>
           )}
           <input
             type="email"
-            id="email"
+            className={errors.email ? "input_error" : ""}
             placeholder="johndoe@lorem.com"
             {...register("email")}
           />
         </label>
 
-        <label htmlFor="password">
+        <label>
           Password
           {errors.password && (
             <span className="error">{errors.password.message}</span>
           )}
           <input
             type={visible ? "text" : "password"}
-            id="password"
+            className={errors.password ? "input_error" : ""}
             placeholder="A1b2C3d4"
             {...register("password")}
           />
@@ -83,7 +84,9 @@ export const Login = () => {
           </button>
         </label>
 
-        <button type="submit">Login</button>
+        <button className="dark_button dark_button-login" type="submit">
+          Login
+        </button>
 
         <article className="login_footer">
           <h3>Forgot your password?</h3>

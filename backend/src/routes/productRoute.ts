@@ -6,13 +6,15 @@ import {
   getProduct,
   removeProduct,
 } from "../controllers/productController";
+import { validateToken } from "../middleware/validateToken";
 import { upload } from "../middleware/multer";
 
 const router = Router();
 
-router.post("/", upload.array("images", 5), addProduct);
-router.get("/", getProducts);
-router.get("/:id", getProduct);
-router.delete("/:id", removeProduct);
+// admin
+router.post("/", validateToken, upload.array("images", 5), addProduct);
+router.get("/", validateToken, getProducts);
+router.get("/:id", validateToken, getProduct);
+router.delete("/:id", validateToken, removeProduct);
 
 export default router;

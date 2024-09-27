@@ -2,8 +2,9 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 import { addProductRequest } from "../../api/product";
-import imageUpload from "../../assets/icons/upload.svg";
+import { iconUpload } from "../../UIIcons";
 import "./new.css";
+import "../globals.css";
 
 export const NewProduct = () => {
   const [title, setTitle] = useState<string>("");
@@ -16,7 +17,16 @@ export const NewProduct = () => {
 
   const handleImages = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      setImages([...images, e.target.files[0]]);
+      const file = e.target.files[0];
+
+      if (
+        images.some(
+          (image) => image.name === file.name && image.size === file.size
+        )
+      )
+        return;
+
+      setImages([...images, file]);
     }
   };
 
@@ -71,7 +81,7 @@ export const NewProduct = () => {
         <p>Images</p>
         <div>
           <label htmlFor="image">
-            <img src={imageUpload} />
+            <img src={iconUpload} />
             <input
               type="file"
               id="image"
@@ -154,7 +164,9 @@ export const NewProduct = () => {
         </div>
       </article>
 
-      <button type="submit">Add</button>
+      <button className="dark_button" type="submit">
+        Add
+      </button>
     </form>
   );
 };

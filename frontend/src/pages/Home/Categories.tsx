@@ -41,6 +41,7 @@ export const Categories = ({
         <span></span>
         <img src={iconModal} alt="Modal toggle icon" />
       </button>
+
       <ul className={isModalOpen ? "modal_open" : ""}>
         {uniqueCategories.map((category) => (
           <li
