@@ -48,7 +48,7 @@ export const useAddress = () => {
       const response = await addAddressRequest(data);
 
       if (response.data.success) {
-        toast(response.data.message);
+        toast.success(response.data.message);
         await getAddress();
       } else {
         console.log(response.data.message);

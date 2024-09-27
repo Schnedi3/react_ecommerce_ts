@@ -1,20 +1,21 @@
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
-import { loginRequest } from "../api/auth";
-import { AuthContextType, ILogin } from "../types/types";
+import { adminRequest } from "../api/auth";
+import { AuthContextType, ILogin, IUser } from "../types/types";
 
 export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
 );
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-  const [user, setUser] = useState<ILogin | null>(null);
+  const [user, setUser] = useState<IUser | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   const login = async (user: ILogin) => {
     try {
-      const response = await loginRequest(user);
+      const response = await adminRequest(user);
 
       if (response.data.success) {
         setUser(response.data.result);
@@ -26,6 +27,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
+        toast.error("Invalid admin credentials");
         console.log(error.message);
       } else {
         console.log("An unexpected error occurred");

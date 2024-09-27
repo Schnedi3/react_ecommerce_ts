@@ -99,3 +99,36 @@ export const loginGoogle = async (req: Request, res: Response) => {
     res.status(500).json({ success: false, message: error.message });
   }
 };
+
+export const loginAdmin = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
+  try {
+    const result = await loginUserDB(email);
+
+    if (result.role === "user") {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid admin credentials" });
+    }
+
+    const isMatch = await bcrypt.compare(password, result.password);
+    if (!isMatch) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid password" });
+    }
+
+    const token = generateToken(result.id);
+    res.cookie("token", token);
+
+    res.status(200).json({
+      success: true,
+      message: "Logged in succesfully",
+      result,
+      token,
+    });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};

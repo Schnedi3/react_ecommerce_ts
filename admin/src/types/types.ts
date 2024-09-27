@@ -23,7 +23,7 @@ export interface ILogin {
 }
 
 export interface AuthContextType {
-  user: ILogin | null;
+  user: IUser | null;
   login: (user: ILogin) => void;
   logout: () => void;
   isAuthenticated: boolean;
