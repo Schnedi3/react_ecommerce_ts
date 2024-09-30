@@ -24,7 +24,8 @@ CREATE TABLE cart_item (
   cart_id INTEGER NOT NULL REFERENCES cart(id) ON DELETE CASCADE,
   product_id INTEGER NOT NULL REFERENCES product(id),
   quantity INTEGER NOT NULL,
-  PRIMARY KEY (cart_id, product_id)
+  size VARCHAR(10) NOT NULL,
+  PRIMARY KEY (cart_id, product_id, size)
 );
 
 CREATE TABLE cart (
@@ -32,9 +33,9 @@ CREATE TABLE cart (
   user_id INTEGER NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
-UPDATE user
+UPDATE "user"
 SET role = 'admin'
-WHERE email = 'email';
+WHERE email = 'admin1@gmail.com';
 
 CREATE TABLE address (
   id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

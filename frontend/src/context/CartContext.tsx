@@ -36,9 +36,19 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const addToCart = async (product: IProduct, quantity: number) => {
+  const addToCart = async (
+    product: IProduct,
+    quantity: number,
+    selectedSize: string
+  ) => {
+    if (!selectedSize) return toast.error("Select a size first");
+
     try {
-      const response = await addToCartRequest(product.id, quantity);
+      const response = await addToCartRequest(
+        product.id,
+        quantity,
+        selectedSize
+      );
 
       if (response.data.success) {
         const newItem = response.data.result;
@@ -57,9 +67,13 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const updateQuantity = async (product_id: number, quantity: number) => {
+  const updateQuantity = async (
+    product_id: number,
+    quantity: number,
+    size: string
+  ) => {
     try {
-      const response = await updateCartRequest(product_id, quantity);
+      const response = await updateCartRequest(product_id, quantity, size);
 
       if (response.data.success) {
         const updateItem = response.data.result;
@@ -80,9 +94,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const removeProduct = async (product_id: number) => {
+  const removeProduct = async (product_id: number, size: string) => {
     try {
-      const response = await removeFromCartRequest(product_id);
+      const response = await removeFromCartRequest(product_id, size);
 
       if (response.data.success) {
         setCart(cart.filter((item) => item.id !== product_id));
@@ -130,4 +144,3 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     </CartContext.Provider>
   );
 };
- 

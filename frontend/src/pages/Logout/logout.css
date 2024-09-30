@@ -13,13 +13,13 @@
 .orders {
   width: 60%;
   margin-top: 0.5rem;
-  padding: 1.1rem;
+  padding: 0.7rem;
   display: flex;
   justify-content: space-between;
   font-size: 1rem;
   color: var(--black-text);
   border: 0.05rem solid var(--gray-bg);
-  border-radius: 1rem;
+  border-radius: 0.2rem;
   background-color: var(--white-bg);
   transition: 0.3s;
 }
@@ -39,7 +39,7 @@
 
 /* ----- */
 .dark_button-logout {
-  width: 100%;
+  width: 60%;
 }
 
 /* HOVER */

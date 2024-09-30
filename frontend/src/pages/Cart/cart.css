@@ -1,11 +1,11 @@
 /* CART */
 .cart_empty {
   width: 30rem;
+  min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   opacity: 0.3;
 }
 
@@ -24,7 +24,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
   border-bottom: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
 }
@@ -37,7 +36,7 @@
 .item_title {
   justify-self: left;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--black-text);
 }
 
@@ -115,30 +114,10 @@
 /* ADAPTIVE */
 @media (max-width: 700px) {
   .item_info {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-areas:
-      "pic title title title"
-      "pic quantity price remove";
-  }
-
-  .item_photo {
-    grid-area: pic;
-  }
-
-  .item_title {
-    grid-area: title;
-  }
-
-  .item_info > input {
-    grid-area: quantity;
-  }
-
-  .item_info > p {
-    grid-area: price;
-  }
-
-  .item_remove {
-    grid-area: remove;
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    place-items: center;
+    row-gap: 1rem;
   }
 
   .cart_total {

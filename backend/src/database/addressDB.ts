@@ -1,11 +1,11 @@
 import { pool } from "./db";
 
-export const getAddressDB = async (userId: number) => {
+export const getAddressDB = async (user_id: number) => {
   const getQuery = `
     SELECT * FROM address
     WHERE user_id = $1`;
 
-  const result = await pool.query(getQuery, [userId]);
+  const result = await pool.query(getQuery, [user_id]);
   return result.rows;
 };
 
@@ -16,7 +16,7 @@ export const addAddressDB = async (
   state: string,
   zip_code: string,
   phone: string,
-  userId: number
+  user_id: number
 ) => {
   const addQuery = `
     INSERT INTO address (address_line1, address_line2, city, state, zip_code, phone, user_id)
@@ -30,7 +30,7 @@ export const addAddressDB = async (
     state,
     zip_code,
     phone,
-    userId,
+    user_id,
   ]);
 
   return result.rows[0];

@@ -17,8 +17,8 @@ export const validateToken = (
   }
 
   try {
-    const user = jwt.verify(token, JWT_SECRET);
-    req.user = user as IUser;
+    const validate = jwt.verify(token, JWT_SECRET);
+    req.user = validate as IUser;
     next();
   } catch (error: any) {
     return res.status(403).json({ success: false, message: error.message });

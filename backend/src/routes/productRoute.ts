@@ -13,8 +13,10 @@ const router = Router();
 
 // admin
 router.post("/", validateToken, upload.array("images", 5), addProduct);
-router.get("/", validateToken, getProducts);
-router.get("/:id", validateToken, getProduct);
 router.delete("/:id", validateToken, removeProduct);
+
+// user
+router.get("/", getProducts);
+router.get("/:id", getProduct);
 
 export default router;

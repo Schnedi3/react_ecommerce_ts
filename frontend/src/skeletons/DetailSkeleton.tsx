@@ -4,7 +4,7 @@ export const DetailSkeleton = () => {
   const sizeItems = Array.from({ length: 4 });
 
   return (
-    <section className="detail_skeleton">
+    <section className="detail_skeleton container">
       <img />
       <article>
         <h2></h2>

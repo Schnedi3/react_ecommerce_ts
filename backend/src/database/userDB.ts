@@ -1,7 +1,7 @@
 import { pool } from "./db";
 
 export const getUsersDB = async () => {
-  const getUsersQuery = "SELECT * FROM users";
+  const getUsersQuery = `SELECT * FROM "user"`;
 
   const result = await pool.query(getUsersQuery);
   return result.rows;
@@ -9,7 +9,7 @@ export const getUsersDB = async () => {
 
 export const getUserDB = async (id: number) => {
   const getUserQuery = `
-    SELECT * FROM users
+    SELECT * FROM "user"
     WHERE id = $1`;
 
   const result = await pool.query(getUserQuery, [id]);
@@ -18,7 +18,7 @@ export const getUserDB = async (id: number) => {
 
 export const deleteUserDB = async (id: number) => {
   const deleteUserQuery = `
-    DELETE FROM users
+    DELETE FROM "user"
     WHERE id = $1`;
 
   await pool.query(deleteUserQuery, [id]);

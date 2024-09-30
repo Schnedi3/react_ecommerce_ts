@@ -5,12 +5,14 @@ import { toast } from "react-toastify";
 import { useCartContext } from "../../context/useCartContext";
 import { getProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
+import { DetailSkeleton } from "../../skeletons/DetailSkeleton";
 import "./detail.css";
 
 export const Detail = () => {
   const { id } = useParams<string>();
   const { cart, addToCart } = useCartContext();
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
+  const [selectedSize, setSelectedSize] = useState<string>("");
 
   useEffect(() => {
     const getProduct = async () => {
@@ -36,30 +38,45 @@ export const Detail = () => {
     getProduct();
   }, [id]);
 
-  if (!product) return <p>Product not found</p>;
-
+  if (!product) return <DetailSkeleton />;
   const { title, description, price, sizes, images } = product;
-  const onCart = cart.some((item) => item.product_id === product.id);
+
+  const handleSize = (size: string) => {
+    if (!selectedSize) {
+      setSelectedSize(size);
+    } else {
+      setSelectedSize("");
+    }
+  };
 
   return (
     <section className="detail_container container">
       <img src={images[0]} alt={title} />
       <article className="detail_info">
-        <h2>{title}</h2>
-        <h3>{price}$</h3>
+        <h3>{title}</h3>
+        <h4>{price}$</h4>
         <p>{description}</p>
         <ul>
           {sizes.map((size) => (
-            <li>
-              <button>{size}</button>
+            <li key={size}>
+              <button
+                className={`${selectedSize === size ? "selected" : ""}${
+                  cart.some((item) => item.size === size) ? "disabled" : ""
+                }`}
+                onClick={() => handleSize(size)}
+              >
+                {size}
+              </button>
             </li>
           ))}
         </ul>
         <button
-          className={`dark_button${onCart ? " dark_button-disabled" : ""}`}
-          onClick={() => addToCart(product, 1)}
+          className={`dark_button${
+            !selectedSize ? " dark_button-disabled" : ""
+          }`}
+          onClick={() => addToCart(product, 1, selectedSize)}
         >
-          {onCart ? "Already on cart" : "Add to Cart"}
+          Add to Cart
         </button>
       </article>
     </section>

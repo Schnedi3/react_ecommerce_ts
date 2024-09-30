@@ -15,8 +15,8 @@ export const Cart = () => {
     <section className="cart_container container">
       <h2>Cart</h2>
 
-      {cart.map((item) => (
-        <article className="item_info" key={item.product_id}>
+      {cart.map((item, index) => (
+        <article className="item_info" key={index}>
           <img className="item_photo" src={item.images[0]} alt={item.title} />
           <h3 className="item_title">{item.title}</h3>
           <input
@@ -25,15 +25,16 @@ export const Cart = () => {
             min={1}
             defaultValue={item.quantity}
             onChange={(e) =>
-              updateQuantity(item.product_id, Number(e.target.value))
+              updateQuantity(item.product_id, Number(e.target.value), item.size)
             }
           />
+          <p>{item.size}</p>
           <p>${item.price}</p>
           <img
             className="item_remove"
             src={iconRemove}
             alt="remove product"
-            onClick={() => removeProduct(item.product_id)}
+            onClick={() => removeProduct(item.product_id, item.size)}
           />
         </article>
       ))}

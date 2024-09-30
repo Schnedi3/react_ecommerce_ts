@@ -20,19 +20,22 @@
   color: var(--black-text);
 }
 
-.detail_info > h2 {
+.detail_info > h3 {
+  font-family: Prata;
   font-weight: 600;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   text-wrap: balance;
 }
 
-.detail_info > h3 {
+.detail_info > h4 {
   margin: 0.5rem 0;
   font-weight: 700;
+  font-size: 1.2rem;
   color: var(--accent);
 }
 
 .detail_info > p {
+  font-size: 0.9rem;
   text-wrap: balance;
 }
 
@@ -42,13 +45,26 @@
 }
 
 .detail_info > ul > li > button {
-  padding: 0.5rem;
+  padding: 0.4rem 0.7rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--black-text);
+  border: 0.05rem solid var(--gray-bg);
+  background-color: var(--white-bg);
+}
+
+.detail_info > ul > li > button.selected {
+  color: var(--white-text);
+  background-color: var(--accent);
+}
+
+.detail_info > ul > li > button.disabled {
+  pointer-events: none;
+  color: var(--white-text);
+  background-color: var(--gray-bg);
 }
 
 .dark_button {
@@ -57,7 +73,16 @@
 
 .dark_button-disabled {
   pointer-events: none;
-  background-color: var(--accent);
+  background-color: var(--gray-bg) !important;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .detail_info > ul > li > button:hover {
+    color: var(--white-text);
+    background-color: var(--accent);
+    cursor: pointer;
+  }
 }
 
 /* ADAPTIVE */

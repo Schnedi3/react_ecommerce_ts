@@ -8,8 +8,8 @@ import {
 
 export const getAddress = async (req: Request, res: Response) => {
   try {
-    const userId = req.user.id;
-    const result = await getAddressDB(userId);
+    const user_id = req.user.id;
+    const result = await getAddressDB(user_id);
 
     res.status(200).json({ success: true, result });
   } catch (error: any) {
@@ -22,7 +22,7 @@ export const addAddress = async (req: Request, res: Response) => {
     req.body;
 
   try {
-    const userId = req.user.id;
+    const user_id = req.user.id;
     const result = await addAddressDB(
       address_line1,
       address_line2,
@@ -30,7 +30,7 @@ export const addAddress = async (req: Request, res: Response) => {
       state,
       zip_code,
       phone,
-      userId
+      user_id
     );
 
     res.status(200).json({ success: true, message: "Address saved", result });

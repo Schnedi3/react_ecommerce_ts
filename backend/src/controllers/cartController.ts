@@ -10,10 +10,10 @@ import {
 
 export const getCart = async (req: Request, res: Response) => {
   try {
-    const userId = req.user.id;
+    const user_id = req.user.id;
 
-    const cartId = await getCartIdByUserId(userId);
-    const result = await getCartDB(cartId);
+    const cart_id = await getCartIdByUserId(user_id);
+    const result = await getCartDB(cart_id);
 
     res.status(200).json({ success: true, result });
   } catch (error: any) {
@@ -23,13 +23,13 @@ export const getCart = async (req: Request, res: Response) => {
 
 export const addToCart = async (req: Request, res: Response) => {
   const product_id = Number(req.params.id);
-  const { quantity } = req.body;
+  const { quantity, size } = req.body;
 
   try {
-    const userId = req.user.id;
+    const user_id = req.user.id;
 
-    const cartId = await getCartIdByUserId(userId);
-    const result = await addToCartDB(cartId, product_id, quantity);
+    const cart_id = await getCartIdByUserId(user_id);
+    const result = await addToCartDB(cart_id, product_id, quantity, size);
 
     res.status(200).json({
       success: true,
@@ -43,13 +43,12 @@ export const addToCart = async (req: Request, res: Response) => {
 
 export const updateCart = async (req: Request, res: Response) => {
   const product_id = Number(req.params.id);
-  const { quantity } = req.body;
-
+  const { quantity, size } = req.body;
   try {
-    const userId = req.user.id;
+    const user_id = req.user.id;
 
-    const cartId = await getCartIdByUserId(userId);
-    const result = await updateCartDB(quantity, cartId, product_id);
+    const cart_id = await getCartIdByUserId(user_id);
+    const result = await updateCartDB(quantity, cart_id, product_id, size);
 
     res
       .status(200)
@@ -61,12 +60,13 @@ export const updateCart = async (req: Request, res: Response) => {
 
 export const removeFromCart = async (req: Request, res: Response) => {
   const product_id = Number(req.params.id);
+  const { size } = req.body;
 
   try {
-    const userId = req.user.id;
+    const user_id = req.user.id;
 
-    const cartId = await getCartIdByUserId(userId);
-    await removeFromCartDB(cartId, product_id);
+    const cart_id = await getCartIdByUserId(user_id);
+    await removeFromCartDB(cart_id, product_id, size);
 
     res.status(200).json({ success: true, message: "Product removed" });
   } catch (error: any) {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { getUsersRequest, removeUserRequest } from "../../api/users";
+import { getUsersRequest, deleteUserRequest } from "../../api/users";
 import { IUser } from "../../types/types";
 import { iconRemove } from "../../UIIcons";
 import "./users.css";
@@ -10,7 +10,7 @@ import "../globals.css";
 export const Users = () => {
   const [users, setUsers] = useState<IUser[]>([]);
 
-  const fetchUsers = async () => {
+  const getUsers = async () => {
     try {
       const response = await getUsersRequest();
 
@@ -28,9 +28,9 @@ export const Users = () => {
     }
   };
 
-  const removeUser = async (id: number) => {
+  const deleteUser = async (id: number) => {
     try {
-      const response = await removeUserRequest(id);
+      const response = await deleteUserRequest(id);
 
       if (response.data.success) {
         setUsers(users.filter((user) => user.id !== id));
@@ -48,7 +48,7 @@ export const Users = () => {
   };
 
   useEffect(() => {
-    fetchUsers();
+    getUsers();
   }, []);
 
   return (
@@ -64,7 +64,7 @@ export const Users = () => {
             <img
               src={iconRemove}
               alt="remove product"
-              onClick={() => removeUser(user.id)}
+              onClick={() => deleteUser(user.id)}
             />
           </li>
         ))}

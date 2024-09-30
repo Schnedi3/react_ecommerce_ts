@@ -4,6 +4,6 @@ export const getUsersRequest = () => {
   return axios.get("/user");
 };
 
-export const removeUserRequest = (id: number) => {
+export const deleteUserRequest = (id: number) => {
   return axios.delete(`/user/${id}`);
 };

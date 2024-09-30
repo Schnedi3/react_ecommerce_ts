@@ -13,15 +13,20 @@ export interface IProduct {
 export interface CartItem extends IProduct {
   product_id: number;
   quantity: number;
+  size: string;
 }
 
 export interface CartContextType {
   cart: CartItem[];
   setCart: (cart: CartItem[]) => void;
   getCart: () => void;
-  addToCart: (product: IProduct, quantity: number) => void;
-  updateQuantity: (product_id: number, quantity: number) => void;
-  removeProduct: (product_id: number) => void;
+  addToCart: (
+    product: IProduct,
+    quantity: number,
+    selectedSize: string
+  ) => void;
+  updateQuantity: (product_id: number, quantity: number, size: string) => void;
+  removeProduct: (product_id: number, size: string) => void;
   itemsInCart: number;
   totalAmount: number;
 }
