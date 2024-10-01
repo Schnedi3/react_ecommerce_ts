@@ -9,7 +9,8 @@
 }
 
 .detail_container > img {
-  width: 100%;
+  width: 80%;
+  margin: auto;
   border-radius: 0.2rem;
 }
 
@@ -92,9 +93,19 @@
   }
 }
 
+@media (max-width: 1000px) {
+  .detail_container > img {
+    width: 100%;
+  }
+}
+
 @media (max-width: 700px) {
   .detail_container {
     margin: 2rem auto !important;
     grid-template-columns: 1fr;
+  }
+
+  .detail_container > img {
+    width: 70%;
   }
 }

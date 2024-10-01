@@ -36,7 +36,7 @@ export const Orders = () => {
       {orders.map((order) => (
         <li className="order" key={order.order_id}>
           {order.products.map((item) => (
-            <article>
+            <article key={item.id}>
               <img src={item.images[0]} alt="" />
 
               <div>

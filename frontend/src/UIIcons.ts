@@ -1,4 +1,3 @@
-import iconAdd from "./assets/icons/add.svg";
 import iconBox from "./assets/icons/box.svg";
 import iconCart from "./assets/icons/cart.svg";
 import iconClose from "./assets/icons/close.svg";
@@ -12,7 +11,6 @@ import iconRemove from "./assets/icons/remove.svg";
 import iconSearch from "./assets/icons/search.svg";
 
 export {
-  iconAdd,
   iconBox,
   iconCart,
   iconClose,

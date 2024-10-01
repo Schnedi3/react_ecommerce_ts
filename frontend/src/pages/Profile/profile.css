@@ -75,58 +75,29 @@
   color: var(--accent);
 }
 
-.profile_address > label > button {
-  width: 1.4rem;
-  height: 1.4rem;
-  position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
+.profile_address > label > p > span {
+  color: var(--gray-text);
+}
+
+.profile_address > label > div {
+  margin-top: 0.6rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 50%;
-  background-color: var(--accent);
-  transform: rotate(45deg);
-  transition: 0.3s;
+  gap: 0.8rem;
 }
 
-.profile_address > label > button > img {
-  width: 2rem;
-  filter: invert(1);
-}
-
-.profile_address > label > input {
-  display: none;
-}
-
-/* ----- */
-.crud {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.crud > button {
-  width: 2rem;
-  height: 2rem;
-  padding: 0.5rem;
+.profile_address > label > div > button {
+  padding: 0rem 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 0.05rem solid var(--gray-bg);
-  border-radius: 50%;
-  background-color: var(--white-bg);
+  border-radius: 1rem;
+  background-color: var(--white);
   transition: 0.3s;
 }
 
-.crud > button > img {
-  width: 2.5rem;
-  opacity: 0.6;
-}
-
-.remove {
-  transform: rotate(45deg);
+.profile_address > label > input {
+  display: none;
 }
 
 /* ----- */
@@ -183,17 +154,8 @@ dark_button-address {
 
 /* HOVER */
 @media (hover: hover) {
-  .crud > button:hover {
-    cursor: pointer;
-  }
-
-  .crud > button:hover > img {
-    filter: var(--filter);
-    opacity: 1;
-  }
-
-  .profile_address > label > button:hover {
-    background-color: var(--error);
+  .profile_address > label > div > button:hover {
+    border: 0.05rem solid var(--accent);
     cursor: pointer;
   }
 }
