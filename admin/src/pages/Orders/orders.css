@@ -1,1 +1,75 @@
-/*  */
+/* ORDERS */
+.order_container {
+  margin: 2rem auto !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order > li {
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 0.5fr 0.5fr 0.5fr;
+  align-items: start;
+  justify-items: center;
+  gap: 2rem;
+  border-bottom: 0.05rem solid var(--gray-bg);
+  font-size: 0.9rem;
+}
+
+.order_box {
+  width: 2.5rem;
+}
+
+.order > li > article > p > span {
+  font-weight: 600;
+}
+
+.order > li > h3 {
+  font-weight: 600;
+}
+
+.order > li > select {
+  padding: 0.2rem 0.7rem;
+  color: var(--black-text);
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+  background-color: var(--white-bg);
+}
+
+.order_delete {
+  width: 1.5rem;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .order_delete:hover {
+    filter: var(--filter);
+    cursor: pointer;
+  }
+}
+
+/* ADAPTIVE */
+@media (max-width: 1000px) {
+  .order > li {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    align-items: start;
+    justify-items: center;
+    row-gap: 3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .order > li {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

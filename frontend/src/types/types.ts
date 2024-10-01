@@ -26,7 +26,7 @@ export interface CartContextType {
     selectedSize: string
   ) => void;
   updateQuantity: (product_id: number, quantity: number, size: string) => void;
-  removeProduct: (product_id: number, size: string) => void;
+  deleteProduct: (product_id: number, size: string) => void;
   itemsInCart: number;
   totalAmount: number;
 }
@@ -74,10 +74,30 @@ export interface ISearchProps {
 
 export interface IAddress {
   id: number;
-  address_line1: string;
-  address_line2: string;
+  first_name: string;
+  last_name: string;
+  phone: string;
+  street: string;
+  number: string;
+  door: string;
   city: string;
   state: string;
   zip_code: string;
-  phone: string;
+}
+
+export interface IOrder {
+  order_amount: number;
+  order_date: string;
+  order_id: number;
+  order_status: string;
+  products: IOrderProduct[];
+}
+
+interface IOrderProduct {
+  id: number;
+  images: string[];
+  price: number;
+  quantity: number;
+  size: string;
+  title: string;
 }

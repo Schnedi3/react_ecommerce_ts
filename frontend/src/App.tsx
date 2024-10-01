@@ -14,6 +14,7 @@ import { Cart } from "./pages/Cart/Cart";
 import { Login } from "./pages/Login/Login";
 import { Register } from "./pages/Register/Register";
 import { PlaceOrder } from "./pages/PlaceOrder/PlaceOrder";
+import { Orders } from "./pages/Orders/Orders";
 import { Profile } from "./pages/Profile/Profile";
 import { Footer } from "./components/Footer/Footer";
 
@@ -37,6 +38,7 @@ export const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/place-order" element={<PlaceOrder />} />
+              <Route path="/orders" element={<Orders />} />
               <Route path="/profile" element={<Profile />} />
             </Routes>
 

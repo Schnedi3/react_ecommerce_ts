@@ -6,38 +6,43 @@ import "./cart.css";
 import "../globals.css";
 
 export const Cart = () => {
-  const { cart, updateQuantity, removeProduct, totalAmount } = useCartContext();
+  const { cart, updateQuantity, deleteProduct, totalAmount } = useCartContext();
   const navigate = useNavigate();
 
   return cart.length === 0 ? (
     <img className="cart_empty" src={iconCart} alt="" />
   ) : (
     <section className="cart_container container">
-      <h2>Cart</h2>
-
-      {cart.map((item, index) => (
-        <article className="item_info" key={index}>
-          <img className="item_photo" src={item.images[0]} alt={item.title} />
-          <h3 className="item_title">{item.title}</h3>
-          <input
-            type="number"
-            id="quantity"
-            min={1}
-            defaultValue={item.quantity}
-            onChange={(e) =>
-              updateQuantity(item.product_id, Number(e.target.value), item.size)
-            }
-          />
-          <p>{item.size}</p>
-          <p>${item.price}</p>
-          <img
-            className="item_remove"
-            src={iconRemove}
-            alt="remove product"
-            onClick={() => removeProduct(item.product_id, item.size)}
-          />
-        </article>
-      ))}
+      <article>
+        <h2>Cart</h2>
+        {cart.map((item, index) => (
+          <div className="item_info" key={index}>
+            <img className="item_photo" src={item.images[0]} alt={item.title} />
+            <h3 className="item_title">{item.title}</h3>
+            <input
+              type="number"
+              id="quantity"
+              min={1}
+              defaultValue={item.quantity}
+              onChange={(e) =>
+                updateQuantity(
+                  item.product_id,
+                  Number(e.target.value),
+                  item.size
+                )
+              }
+            />
+            <p>{item.size}</p>
+            <p>${item.price}</p>
+            <img
+              className="item_remove"
+              src={iconRemove}
+              alt="remove product"
+              onClick={() => deleteProduct(item.product_id, item.size)}
+            />
+          </div>
+        ))}
+      </article>
 
       <article className="cart_total">
         <h2>Total</h2>

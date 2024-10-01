@@ -20,6 +20,6 @@ export const updateCartRequest = (
   return axios.put(`/cart/${product_id}`, { quantity, size });
 };
 
-export const removeFromCartRequest = (product_id: number, size: string) => {
+export const deleteFromCartRequest = (product_id: number, size: string) => {
   return axios.delete(`/cart/${product_id}`, { data: { size } });
 };

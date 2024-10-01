@@ -8,6 +8,6 @@ export const getProductsRequest = () => {
   return axios.get("/product");
 };
 
-export const removeProductRequest = (id: number) => {
+export const deleteProductRequest = (id: number) => {
   return axios.delete(`/product/${id}`);
 };

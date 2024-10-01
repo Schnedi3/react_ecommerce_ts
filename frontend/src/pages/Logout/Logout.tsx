@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
+
 import { useAuthContext } from "../../context/useAuthContext";
+import { iconBox, iconLogin, iconModal } from "../../UIIcons";
 import "./logout.css";
 import "../globals.css";
-
-import { iconBox, iconLogin, iconModal } from "../../UIIcons";
 
 export const Logout = () => {
   const { logout } = useAuthContext();
@@ -16,7 +16,7 @@ export const Logout = () => {
         <p>My account</p>
         <img src={iconModal} />
       </Link>
-      <Link className="orders" to={"/"}>
+      <Link className="orders" to={"/orders"}>
         <img src={iconBox} />
         <p>My orders</p>
         <img src={iconModal} />

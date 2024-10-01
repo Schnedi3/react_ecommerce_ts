@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { getProductsRequest, removeProductRequest } from "../../api/product";
+import { getProductsRequest, deleteProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 import { iconRemove } from "../../UIIcons";
 import "./products.css";
@@ -10,7 +10,7 @@ import "../globals.css";
 export const Products = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
 
-  const fetchProducts = async () => {
+  const getProducts = async () => {
     try {
       const response = await getProductsRequest();
 
@@ -28,9 +28,9 @@ export const Products = () => {
     }
   };
 
-  const removeProduct = async (id: number) => {
+  const deleteProduct = async (id: number) => {
     try {
-      const response = await removeProductRequest(id);
+      const response = await deleteProductRequest(id);
 
       if (response.data.success) {
         setProducts(products.filter((item) => item.id !== id));
@@ -48,11 +48,11 @@ export const Products = () => {
   };
 
   useEffect(() => {
-    fetchProducts();
+    getProducts();
   }, []);
 
   return (
-    <section className="list container">
+    <section className="product_container container">
       <h2>All products</h2>
       <ul className="product">
         {products.map((item) => (
@@ -65,7 +65,7 @@ export const Products = () => {
               className="product_remove"
               src={iconRemove}
               alt="remove product"
-              onClick={() => removeProduct(item.id)}
+              onClick={() => deleteProduct(item.id)}
             />
           </li>
         ))}

@@ -4,7 +4,7 @@ import {
   getCart,
   addToCart,
   updateCart,
-  removeFromCart,
+  deleteFromCart,
 } from "../controllers/cartController";
 import { validateToken } from "../middleware/validateToken";
 
@@ -14,6 +14,6 @@ const router = Router();
 router.get("/", validateToken, getCart);
 router.post("/:id", validateToken, addToCart);
 router.put("/:id", validateToken, updateCart);
-router.delete("/:id", validateToken, removeFromCart);
+router.delete("/:id", validateToken, deleteFromCart);
 
 export default router;

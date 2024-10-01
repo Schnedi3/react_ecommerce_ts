@@ -10,6 +10,7 @@ import productRoutes from "./routes/productRoute";
 import userRoutes from "./routes/userRoute";
 import cartRoutes from "./routes/cartRoute";
 import addressRoutes from "./routes/addressRoute";
+import orderRoutes from "./routes/orderRoute";
 
 export const app = express();
 
@@ -29,6 +30,7 @@ app.use("/api/product", productRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/cart", cartRoutes);
 app.use("/api/address", addressRoutes);
+app.use("/api/order", orderRoutes);
 
 app.listen(PORT);
 console.log("Server running on port", PORT);

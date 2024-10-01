@@ -2,118 +2,24 @@
 .place_order {
   padding: 2rem 0;
   min-height: calc(100vh - var(--menu-height) - var(--footer-height));
-  display: grid;
-  grid-template-columns: 1fr 0.5fr;
-  gap: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-.place_order > article {
+/* ----- */
+.cart_summary {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-/* ----- */
-.address {
-  margin-bottom: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-
-.label {
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem 1rem;
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.5rem;
-  background-color: var(--white-bg);
-  transition: 0.3s;
-}
-
-.label:has(.radio:checked) {
-  border: 0.1rem solid var(--accent);
-}
-
-.label > p {
-  font-size: 0.8rem;
-}
-
-.radio {
-  display: none;
-}
-
-/* ----- */
-.address_form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.place_order > article > h2 {
-  margin-bottom: 0;
-}
-
-.address_form > label,
-.address_form > article > label {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
-}
-
-.address_form > label > input,
-.address_form > article > label > input {
-  padding: 0.7rem;
-  color: var(--black-text);
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
-  background-color: var(--white-bg);
-}
-
-.address_form > label > input::placeholder,
-.address_form > article > label > input::placeholder {
-  opacity: 0.25;
-}
-
-.address_form > article {
-  display: flex;
-  gap: 1rem;
-}
-
-.address_form > button {
-  margin-top: 1rem;
-  padding: 0.7rem;
-  font-size: 1rem;
-  color: var(--white-text);
-  background-color: var(--black-text);
-  text-transform: uppercase;
-  border: 0;
-  border-radius: 0.2rem;
-  transition: 0.3s;
-}
-
-/* ----- */
-.error {
-  position: absolute;
-  right: 0;
-  color: var(--error);
-  font-size: 0.9rem;
-}
-
-/* ----- */
-.order_summary {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 .product {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  padding-bottom: 2rem;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.05rem solid var(--gray-bg);
 }
 
 .product > img {
@@ -121,16 +27,11 @@
   border-radius: 0.2rem;
 }
 
-.product > div > h3 {
+.product > h3 {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
-.product > div > p > span {
-  font-weight: 600;
-}
-
-/* ----- */
 .total {
   display: flex;
   flex-direction: column;
@@ -148,34 +49,162 @@
   justify-content: space-between;
   font-weight: 500;
   font-size: 1.1rem;
+  color: var(--black-text);
   margin-top: 0.5rem;
   padding-top: 0.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 0.05rem solid var(--gray-bg);
 }
 
 .total > h3 > span {
   font-weight: 700;
-  color: var(--black-text);
 }
 
-.order_summary > button {
-  margin-top: 1rem;
-  padding: 0.7rem;
-  font-size: 1rem;
-  color: var(--white-text);
-  background-color: var(--black-text);
-  text-transform: uppercase;
-  border: 0;
+/* ----- */
+.payment {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payment > div {
+  display: flex;
+  gap: 2rem;
+}
+
+.payment > div > label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 2rem 0.3rem 1rem;
+  border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
+  background-color: var(--white-bg);
+}
+
+.payment > div > label > input[type="radio"] {
+  appearance: none;
+  display: grid;
+  place-content: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 0.1rem solid var(--gray-bg);
+  border-radius: 50%;
+}
+
+.payment > div > label > input[type="radio"]::before {
+  content: "";
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background-color: var(--accent);
+  transform: scale(0);
   transition: 0.3s;
+}
+
+.payment > div > label > input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+/* ----- */
+.addresses {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 2rem 0.5rem 1.5rem;
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+  background-color: var(--white-bg);
+  transition: 0.3s;
+}
+
+.label:has(.radio:checked) {
+  border: 0.05rem solid var(--accent);
+}
+
+.label > h4 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.label > p {
+  font-size: 0.8rem;
+}
+
+.radio {
+  display: none;
+}
+
+/* ----- */
+.address_form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.address_form > article {
+  display: flex;
+  gap: 1rem;
+}
+
+.address_form > article > label {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.address_form > article > label > input {
+  width: 100%;
+  padding: 0.7rem;
+  color: var(--black-text);
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+  background-color: var(--white-bg);
+}
+
+.address_form > article > label > input::placeholder {
+  opacity: 0.25;
+}
+
+dark_button-address {
+  width: 100%;
+}
+
+/* ----- */
+.error {
+  position: absolute;
+  right: 0;
+  color: var(--error);
+  font-size: 0.9rem;
+}
+
+.address_form > article > label > input.input_error {
+  border: 0.05rem solid var(--error);
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .address_form > button:hover,
-  .order_summary > button:hover {
-    background-color: var(--accent);
+  .payment > div > label:hover {
+    border: 0.05rem solid var(--accent);
     cursor: pointer;
+  }
+
+  .payment > div > label > input[type="radio"]:hover {
+    border: 0.1rem solid var(--accent);
   }
 
   .label:hover {
@@ -185,22 +214,8 @@
 }
 
 /* ADAPTIVE */
-@media (max-width: 1250px) {
-  .place_order {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 800px) {
-  .place_order {
-    grid-template-columns: 1fr;
-  }
-
-  .product > div {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+@media (max-width: 700px) {
+  .address_form > article {
+    flex-direction: column;
   }
 }

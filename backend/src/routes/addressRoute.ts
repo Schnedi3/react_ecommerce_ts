@@ -9,6 +9,7 @@ import { validateToken } from "../middleware/validateToken";
 
 const router = Router();
 
+// user
 router.get("/", validateToken, getAddress);
 router.post("/", validateToken, addAddress);
 router.delete("/:id", validateToken, removeAddress);

@@ -33,17 +33,34 @@ CREATE TABLE cart (
   user_id INTEGER NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
 );
 
-UPDATE "user"
-SET role = 'admin'
-WHERE email = 'admin1@gmail.com';
-
 CREATE TABLE address (
   id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  address_line1 VARCHAR(100),
-  address_line2 VARCHAR(100),
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  phone VARCHAR(20) NOT NULL UNIQUE,
+  street VARCHAR(100) NOT NULL,
+  number VARCHAR(10) NOT NULL,
+  door VARCHAR(10) NOT NULL,
   city VARCHAR(50) NOT NULL,
   state VARCHAR(50) NOT NULL,
-  zip_code VARCHAR(25) NOT NULL,
-  phone VARCHAR(25) NOT NULL,
+  zip_code VARCHAR(10) NOT NULL,
   user_id INTEGER NOT NULL REFERENCES "user"(id) ON DELETE CASCADE
+);
+
+CREATE TABLE order_item (
+  order_id INTEGER NOT NULL REFERENCES "order"(id),
+  product_id INTEGER NOT NULL REFERENCES product(id),
+  quantity INTEGER NOT NULL,
+  size VARCHAR(10) NOT NULL,
+  PRIMARY KEY (order_id, product_id, size)
+);
+
+CREATE TABLE "order" (
+  id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id INTEGER NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
+  address_id INTEGER NOT NULL REFERENCES address(id),
+  amount INTEGER NOT NULL,
+  payment_method VARCHAR(25) NOT NULL,
+  status VARCHAR(100) DEFAULT 'Order placed',
+  date TIMESTAMP
 );

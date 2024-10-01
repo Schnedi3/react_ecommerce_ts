@@ -18,18 +18,30 @@ export const getAddress = async (req: Request, res: Response) => {
 };
 
 export const addAddress = async (req: Request, res: Response) => {
-  const { address_line1, address_line2, city, state, zip_code, phone } =
-    req.body;
+  const {
+    first_name,
+    last_name,
+    phone,
+    street,
+    number,
+    door,
+    city,
+    state,
+    zip_code,
+  } = req.body;
 
   try {
     const user_id = req.user.id;
     const result = await addAddressDB(
-      address_line1,
-      address_line2,
+      first_name,
+      last_name,
+      phone,
+      street,
+      number,
+      door,
       city,
       state,
       zip_code,
-      phone,
       user_id
     );
 

@@ -24,7 +24,7 @@ export const getCartDB = async (cart_id: number) => {
     SELECT p.id AS product_id, p.title, p.price, p.images, ci.quantity, ci.size
     FROM cart_item ci
     JOIN product p ON ci.product_id = p.id
-    WHERE ci.cart_id = $1;`;
+    WHERE ci.cart_id = $1`;
 
   const result = await pool.query(getCartQuery, [cart_id]);
   return result.rows;
@@ -75,16 +75,16 @@ export const updateCartDB = async (
   return result.rows[0];
 };
 
-export const removeFromCartDB = async (
+export const deleteFromCartDB = async (
   cart_id: number,
   product_id: number,
   size: string
 ) => {
-  const removeFromCartQuery = `
+  const deleteFromCartQuery = `
     DELETE FROM cart_item
     WHERE cart_id = $1
     AND product_id = $2
     AND size = $3`;
 
-  await pool.query(removeFromCartQuery, [cart_id, product_id, size]);
+  await pool.query(deleteFromCartQuery, [cart_id, product_id, size]);
 };

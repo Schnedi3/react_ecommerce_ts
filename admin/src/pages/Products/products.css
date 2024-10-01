@@ -1,5 +1,5 @@
 /* PRODUCTS */
-.list {
+.product_container {
   margin: 2rem auto !important;
   display: flex;
   flex-direction: column;

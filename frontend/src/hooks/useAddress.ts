@@ -17,7 +17,6 @@ export const useAddress = () => {
     resolver: zodResolver(addressSchema),
   });
   const [addresses, setAddresses] = useState<IAddress[]>([]);
-  const [useAddress, setUseAddress] = useState<IAddress | undefined>(undefined);
 
   const getAddress = async () => {
     try {
@@ -42,8 +41,6 @@ export const useAddress = () => {
   }, []);
 
   const onSubmit = async (data: IAddress) => {
-    setUseAddress(data);
-
     try {
       const response = await addAddressRequest(data);
 
@@ -70,8 +67,6 @@ export const useAddress = () => {
     errors,
     addresses,
     setAddresses,
-    useAddress,
-    setUseAddress,
     onSubmit,
   };
 };

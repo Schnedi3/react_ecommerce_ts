@@ -41,12 +41,14 @@ export const Detail = () => {
   if (!product) return <DetailSkeleton />;
   const { title, description, price, sizes, images } = product;
 
+  const isSizeInCart = (size: string) => {
+    return cart.some(
+      (item) => item.product_id === product.id && item.size === size
+    );
+  };
+
   const handleSize = (size: string) => {
-    if (!selectedSize) {
-      setSelectedSize(size);
-    } else {
-      setSelectedSize("");
-    }
+    setSelectedSize(selectedSize === size ? "" : size);
   };
 
   return (
@@ -61,7 +63,7 @@ export const Detail = () => {
             <li key={size}>
               <button
                 className={`${selectedSize === size ? "selected" : ""}${
-                  cart.some((item) => item.size === size) ? "disabled" : ""
+                  isSizeInCart(size) ? "disabled" : ""
                 }`}
                 onClick={() => handleSize(size)}
               >

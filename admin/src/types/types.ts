@@ -28,3 +28,35 @@ export interface AuthContextType {
   logout: () => void;
   isAuthenticated: boolean;
 }
+
+export interface IOrder {
+  city: string;
+  door: string;
+  email: string;
+  first_name: string;
+  last_name: string;
+  number: string;
+  order_date: string;
+  order_id: number;
+  payment_method: string;
+  phone: string;
+  products: IOrderProduct[];
+  state: string;
+  order_status: string;
+  street: string;
+  order_amount: number;
+  user_id: number;
+  username: string;
+  zip_code: string;
+}
+
+interface IOrderProduct {
+  category: string;
+  images: string[];
+  price: number;
+  id: number;
+  title: string;
+  quantity: number;
+  size: string;
+  subcategory: string;
+}

@@ -35,10 +35,13 @@ export const registerSchema = z.object({
 });
 
 export const addressSchema = z.object({
-  address_line1: z.string().min(1, "Field required"),
-  address_line2: z.string().min(1, "Field required"),
+  first_name: z.string().min(1, "Field required"),
+  last_name: z.string().min(1, "Field required"),
+  phone: z.string().min(1, "Field required"),
+  street: z.string().min(1, "Field required"),
+  number: z.string().min(1, "Field required"),
+  door: z.string().min(1, "Field required"),
   city: z.string().min(1, "Field required"),
   state: z.string().min(1, "Field required"),
   zip_code: z.string().min(1, "Field required"),
-  phone: z.string().min(1, "Field required"),
 });

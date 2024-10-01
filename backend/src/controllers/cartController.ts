@@ -4,7 +4,7 @@ import {
   addToCartDB,
   getCartDB,
   getCartIdByUserId,
-  removeFromCartDB,
+  deleteFromCartDB,
   updateCartDB,
 } from "../database/cartDB";
 
@@ -58,7 +58,7 @@ export const updateCart = async (req: Request, res: Response) => {
   }
 };
 
-export const removeFromCart = async (req: Request, res: Response) => {
+export const deleteFromCart = async (req: Request, res: Response) => {
   const product_id = Number(req.params.id);
   const { size } = req.body;
 
@@ -66,7 +66,7 @@ export const removeFromCart = async (req: Request, res: Response) => {
     const user_id = req.user.id;
 
     const cart_id = await getCartIdByUserId(user_id);
-    await removeFromCartDB(cart_id, product_id, size);
+    await deleteFromCartDB(cart_id, product_id, size);
 
     res.status(200).json({ success: true, message: "Product removed" });
   } catch (error: any) {

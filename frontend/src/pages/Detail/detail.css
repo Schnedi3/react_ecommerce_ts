@@ -67,7 +67,7 @@
   background-color: var(--gray-bg);
 }
 
-.dark_button {
+.detail_info > ul > li > button.dark_button {
   width: 50%;
 }
 
@@ -96,9 +96,5 @@
   .detail_container {
     margin: 2rem auto !important;
     grid-template-columns: 1fr;
-  }
-
-  .dark_button {
-    width: 40%;
   }
 }

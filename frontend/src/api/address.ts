@@ -10,6 +10,6 @@ export const addAddressRequest = (address: IAddress) => {
   return axios.post("/address/", address);
 };
 
-export const removeAddresstRequest = (id: number) => {
+export const removeAddressRequest = (id: number) => {
   return axios.delete(`/address/${id}`);
 };
