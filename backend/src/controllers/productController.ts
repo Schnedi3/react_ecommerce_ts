@@ -4,7 +4,7 @@ import {
   addProductDB,
   getProductsDB,
   getProductDB,
-  removeProductDB,
+  deleteProductDB,
 } from "../database/productDB";
 import { PG_HOST, PORT } from "../config/config";
 
@@ -55,11 +55,11 @@ export const getProduct = async (req: Request, res: Response) => {
   }
 };
 
-export const removeProduct = async (req: Request, res: Response) => {
+export const deleteProduct = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
   try {
-    await removeProductDB(id);
+    await deleteProductDB(id);
 
     res.status(200).json({ success: true, message: "Product removed" });
   } catch (error: any) {

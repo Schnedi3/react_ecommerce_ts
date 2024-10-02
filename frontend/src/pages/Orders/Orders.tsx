@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import { getUserOrdersRequest } from "../../api/order";
 import { IOrder } from "../../types/types";
+import { formatCurrency } from "../../helpers/formatCurrency";
 import "./orders.css";
 import "../globals.css";
 
@@ -42,7 +43,7 @@ export const Orders = () => {
               <div>
                 <h3>{item.title}</h3>
                 <div>
-                  <p>${item.price.toFixed(2)}</p>
+                  <p>{formatCurrency(item.price)}</p>
                   <p>
                     <span>Quantity:</span> {item.quantity}
                   </p>

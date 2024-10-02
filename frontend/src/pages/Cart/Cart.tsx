@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { useCartContext } from "../../context/useCartContext";
+import { formatCurrency } from "../../helpers/formatCurrency";
 import { iconCart, iconRemove } from "../../UIIcons";
 import "./cart.css";
 import "../globals.css";
@@ -33,7 +34,7 @@ export const Cart = () => {
               }
             />
             <p>{item.size}</p>
-            <p>${item.price}</p>
+            <p>{formatCurrency(item.price)}</p>
             <img
               className="item_remove"
               src={iconRemove}
@@ -48,13 +49,13 @@ export const Cart = () => {
         <h2>Total</h2>
         <div className="total_info">
           <p>
-            Subtotal <span>${totalAmount.toFixed(2)}</span>
+            Subtotal <span>{formatCurrency(totalAmount)}</span>
           </p>
           <p>
             Shipping <span>Free</span>
           </p>
           <h3>
-            Total <span>${totalAmount.toFixed(2)}</span>
+            Total <span>{formatCurrency(totalAmount)}</span>
           </h3>
         </div>
         <button

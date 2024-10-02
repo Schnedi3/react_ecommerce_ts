@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 
 import { getProductsRequest, deleteProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
+import { formatCurrency } from "../../helpers/formatCurrency";
 import { iconRemove } from "../../UIIcons";
 import "./products.css";
 import "../globals.css";
@@ -60,7 +61,7 @@ export const Products = () => {
             <img className="product_img" src={item.images[0]} />
             <h3>{item.title}</h3>
             <h4>{item.category}</h4>
-            <p>{item.price}€</p>
+            <p>{formatCurrency(item.price)}</p>
             <img
               className="product_remove"
               src={iconRemove}

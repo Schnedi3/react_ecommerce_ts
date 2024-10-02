@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useCartContext } from "../../context/useCartContext";
 import { getProductsRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
+import { formatCurrency } from "../../helpers/formatCurrency";
 import { Search } from "./Search";
 import { Categories } from "./Categories";
 import { HomeSkeleton } from "../../skeletons/HomeSkeleton";
@@ -88,7 +89,7 @@ export const Home = () => {
                 <div className="card_info">
                   <h3>{product.title}</h3>
                   <div>
-                    <h4>{product.price}$</h4>
+                    <h4>{formatCurrency(product.price)}</h4>
                     {onCart && <p className="home_badge">on cart</p>}
                   </div>
                 </div>

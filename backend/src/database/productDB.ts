@@ -43,10 +43,10 @@ export const getProductDB = async (id: number) => {
   return result.rows[0];
 };
 
-export const removeProductDB = async (id: number) => {
-  const removeQuery = `
+export const deleteProductDB = async (id: number) => {
+  const deleteQuery = `
     DELETE FROM product
     WHERE id = $1`;
 
-  await pool.query(removeQuery, [id]);
+  await pool.query(deleteQuery, [id]);
 };

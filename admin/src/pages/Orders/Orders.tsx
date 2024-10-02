@@ -7,6 +7,7 @@ import {
   updateOrderRequest,
 } from "../../api/order";
 import { IOrder } from "../../types/types";
+import { formatCurrency } from "../../helpers/formatCurrency";
 import { iconBox, iconRemove } from "../../UIIcons";
 import "./orders.css";
 import "../globals.css";
@@ -122,7 +123,7 @@ export const Orders = () => {
               </p>
             </article>
 
-            <h3>${order.order_amount.toFixed(2)}</h3>
+            <h3>{formatCurrency(order.order_amount)}</h3>
 
             <select onChange={(e) => handleOnChange(e, order.order_id)}>
               <option value="Order placed">Order placed</option>

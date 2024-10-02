@@ -37,7 +37,12 @@ export const registerSchema = z.object({
 export const addressSchema = z.object({
   first_name: z.string().min(1, "Field required"),
   last_name: z.string().min(1, "Field required"),
-  phone: z.string().min(1, "Field required"),
+  phone: z
+    .string()
+    .min(1, "Field required")
+    .regex(/^[0-9]{3}\s[0-9]{3}\s[0-9]{3}$/, {
+      message: "Invalid phone number format",
+    }),
   street: z.string().min(1, "Field required"),
   number: z.string().min(1, "Field required"),
   door: z.string().min(1, "Field required"),

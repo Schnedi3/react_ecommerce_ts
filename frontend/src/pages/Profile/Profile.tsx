@@ -123,7 +123,7 @@ export const Profile = () => {
               <span className="error">{errors.phone.message}</span>
             )}
             <input
-              type="tel"
+              type="number"
               className={errors.phone ? "input_error" : ""}
               placeholder="678 901 234"
               {...register("phone")}
@@ -201,7 +201,7 @@ export const Profile = () => {
               <span className="error">{errors.zip_code.message}</span>
             )}
             <input
-              type="text"
+              type="number"
               className={errors.zip_code ? "input_error" : ""}
               placeholder="12345"
               {...register("zip_code")}

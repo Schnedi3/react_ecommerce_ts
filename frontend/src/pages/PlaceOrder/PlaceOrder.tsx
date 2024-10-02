@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useCartContext } from "../../context/useCartContext";
 import { useAddress } from "../../hooks/useAddress";
 import { addOrderRequest } from "../../api/order";
+import { formatCurrency } from "../../helpers/formatCurrency";
 import "./place_order.css";
 import "../globals.css";
 
@@ -64,19 +65,19 @@ export const PlaceOrder = () => {
             <h3>{item.title}</h3>
             <p>{item.quantity}</p>
             <p>{item.size}</p>
-            <p>${item.price}</p>
+            <p>{formatCurrency(item.price)}</p>
           </div>
         ))}
 
         <div className="total">
           <p>
-            Subtotal <span>${totalAmount.toFixed(2)}</span>
+            Subtotal <span>{formatCurrency(totalAmount)}</span>
           </p>
           <p>
             Shipping <span>Free</span>
           </p>
           <h3>
-            Total <span>${totalAmount.toFixed(2)}</span>
+            Total <span>{formatCurrency(totalAmount)}</span>
           </h3>
         </div>
       </article>
@@ -171,7 +172,7 @@ export const PlaceOrder = () => {
                   <span className="error">{errors.phone.message}</span>
                 )}
                 <input
-                  type="tel"
+                  type="number"
                   className={errors.phone ? "input_error" : ""}
                   placeholder="678 901 234"
                   {...register("phone")}
@@ -249,7 +250,7 @@ export const PlaceOrder = () => {
                   <span className="error">{errors.zip_code.message}</span>
                 )}
                 <input
-                  type="text"
+                  type="number"
                   className={errors.zip_code ? "input_error" : ""}
                   placeholder="12345"
                   {...register("zip_code")}

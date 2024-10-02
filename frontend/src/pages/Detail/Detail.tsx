@@ -6,6 +6,7 @@ import { useCartContext } from "../../context/useCartContext";
 import { getProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 import { DetailSkeleton } from "../../skeletons/DetailSkeleton";
+import { formatCurrency } from "../../helpers/formatCurrency";
 import "./detail.css";
 
 export const Detail = () => {
@@ -56,7 +57,7 @@ export const Detail = () => {
       <img src={images[0]} alt={title} />
       <article className="detail_info">
         <h3>{title}</h3>
-        <h4>{price}$</h4>
+        <h4>{formatCurrency(price)}</h4>
         <p>{description}</p>
         <ul>
           {sizes.map((size) => (
