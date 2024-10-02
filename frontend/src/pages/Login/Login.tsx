@@ -89,7 +89,7 @@ export const Login = () => {
         </button>
 
         <article className="login_footer">
-          <h3>Forgot your password?</h3>
+          <p>Forgot your password?</p>
           <Link to="/register">Create an account</Link>
         </article>
       </form>

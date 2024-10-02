@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getUserOrdersRequest } from "../../api/order";
 import { IOrder } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
+import { OrderSkeleton } from "../../skeletons/OrderSkeleton";
 import "./orders.css";
 import "../globals.css";
 
@@ -34,34 +35,38 @@ export const Orders = () => {
   return (
     <ul className="order_container container">
       <h2>All orders</h2>
-      {orders.map((order) => (
-        <li className="order" key={order.order_id}>
-          {order.products.map((item) => (
-            <article key={item.id}>
-              <img src={item.images[0]} alt="" />
+      {orders.length === 0 ? (
+        <OrderSkeleton />
+      ) : (
+        orders.map((order) => (
+          <li className="order" key={order.order_id}>
+            {order.products.map((item) => (
+              <article key={item.id}>
+                <img src={item.images[0]} alt="" />
 
-              <div>
-                <h3>{item.title}</h3>
                 <div>
-                  <p>{formatCurrency(item.price)}</p>
+                  <h3>{item.title}</h3>
+                  <div>
+                    <p>{formatCurrency(item.price)}</p>
+                    <p>
+                      <span>Quantity:</span> {item.quantity}
+                    </p>
+                    <p>
+                      <span>Size:</span> {item.size}
+                    </p>
+                  </div>
+
                   <p>
-                    <span>Quantity:</span> {item.quantity}
-                  </p>
-                  <p>
-                    <span>Size:</span> {item.size}
+                    <span>Date:</span> {order.order_date}
                   </p>
                 </div>
 
-                <p>
-                  <span>Date:</span> {order.order_date}
-                </p>
-              </div>
-
-              <p>{order.order_status}</p>
-            </article>
-          ))}
-        </li>
-      ))}
+                <p>{order.order_status}</p>
+              </article>
+            ))}
+          </li>
+        ))
+      )}
     </ul>
   );
 };

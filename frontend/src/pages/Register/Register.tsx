@@ -89,7 +89,7 @@ export const Register = () => {
         </button>
 
         <article className="register_footer">
-          <h3>Forgot your password?</h3>
+          <p>Forgot your password?</p>
           <Link to="/login">Login</Link>
         </article>
       </form>

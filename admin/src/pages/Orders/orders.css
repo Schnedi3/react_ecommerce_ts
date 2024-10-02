@@ -31,10 +31,6 @@
   font-weight: 600;
 }
 
-.order > li > h3 {
-  font-weight: 600;
-}
-
 .order > li > select {
   padding: 0.2rem 0.7rem;
   color: var(--black-text);

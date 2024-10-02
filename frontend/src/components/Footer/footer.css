@@ -9,7 +9,3 @@
   padding: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
-
-.footer > p {
-  color: var(--black-text);
-}

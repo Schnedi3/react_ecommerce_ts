@@ -70,6 +70,7 @@
   flex-direction: column;
   gap: 0.3rem;
   font-size: 0.9rem;
+  color: var(--gray-text);
 }
 
 .login_form > label > input {
@@ -119,13 +120,6 @@
 }
 
 /* ----- */
-.error {
-  position: absolute;
-  right: 0;
-  color: var(--error);
-  font-size: 0.9rem;
-}
-
 .login_form > label > input.input_error {
   border: 0.05rem solid var(--error);
 }

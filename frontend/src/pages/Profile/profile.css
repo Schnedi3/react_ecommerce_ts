@@ -28,14 +28,12 @@
 }
 
 .personal > ul > li > h4 {
-  font-weight: 400;
-  font-size: 0.9rem;
+  color: var(--gray-text);
 }
 
 .personal > ul > li > p {
   width: 100%;
   padding: 0.7rem 1rem;
-  color: var(--gray-text);
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
   background-color: var(--white-bg);
@@ -70,8 +68,6 @@
 }
 
 .profile_address > label > h4 {
-  font-weight: 600;
-  font-size: 1.1rem;
   color: var(--accent);
 }
 
@@ -122,9 +118,11 @@ h2 {
   display: flex;
   flex-direction: column;
   font-size: 0.9rem;
+  color: var(--gray-text);
 }
 
 .personal_form > article > label > input {
+  width: 100%;
   padding: 0.7rem;
   color: var(--black-text);
   border: 0.05rem solid var(--gray-bg);
@@ -141,13 +139,6 @@ dark_button-address {
 }
 
 /* ----- */
-.error {
-  position: absolute;
-  right: 0;
-  color: var(--error);
-  font-size: 0.9rem;
-}
-
 .personal_form > article > label > input.input_error {
   border: 0.05rem solid var(--error);
 }

@@ -24,15 +24,6 @@
   width: 4rem;
 }
 
-.product > li > h3 {
-  font-weight: 500;
-  font-size: 1rem;
-}
-
-.product > li > h4 {
-  font-weight: 500;
-}
-
 .product_remove {
   width: 1.5rem;
 }

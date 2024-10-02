@@ -38,7 +38,6 @@
   justify-self: left;
   font-weight: 600;
   font-size: 1rem;
-  color: var(--black-text);
 }
 
 .item_info > input {
@@ -52,7 +51,6 @@
 .item_info > p {
   font-weight: 500;
   font-size: 0.9rem;
-  color: var(--black-text);
 }
 
 .item_remove {
@@ -93,7 +91,6 @@
 .total_info > h3 {
   font-weight: 600;
   font-size: 1.2rem;
-  color: var(--black-text);
 }
 
 .total_info > h3 > span {

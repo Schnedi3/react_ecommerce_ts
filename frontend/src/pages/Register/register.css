@@ -22,6 +22,7 @@
   flex-direction: column;
   gap: 0.3rem;
   font-size: 0.9rem;
+  color: var(--gray-text);
 }
 
 .register_form > label > input {
@@ -49,23 +50,11 @@
   justify-content: space-between;
 }
 
-.register_footer > h3 {
-  font-weight: 400;
-  font-size: 0.9rem;
-}
-
 .register_footer > a {
   color: var(--accent);
 }
 
 /* ----- */
-.error {
-  position: absolute;
-  right: 0;
-  color: var(--error);
-  font-size: 0.9rem;
-}
-
 .register_form > label > input.input_error {
   border: 0.05rem solid var(--error);
 }

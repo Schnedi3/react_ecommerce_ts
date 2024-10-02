@@ -54,20 +54,19 @@ ol {
 
 /* GLOBALS */
 :root {
-  --black-text: #2b354a;
+  --black-text: #373e4e;
+  --gray-text: #7d7d7d;
   --white-text: #f8f8f8;
 
   --black-bg: #333f57;
-  --white-bg: #f7f6f9;
   --gray-bg: #d9d9d9;
-
-  --white: #ffffff;
+  --white-bg: #f7f6f9;
 
   --accent: #5c6ce3;
   --error: #ff5f5f;
-
   --filter: invert(37%) sepia(83%) saturate(1230%) hue-rotate(215deg)
     brightness(92%) contrast(92%);
+  --white: #ffffff;
 
   --menu-height: 5rem;
 }
@@ -78,6 +77,7 @@ body {
 
 .app {
   font-family: Poppins;
+  font-size: 0.9rem;
 }
 
 .container {

@@ -13,22 +13,6 @@
   justify-content: space-between;
 }
 
-.header > h1 {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: Prata;
-  font-weight: 300;
-  font-size: 1.9rem;
-}
-
-.header > h1::after {
-  content: "";
-  width: 2rem;
-  height: 0.1rem;
-  background-color: var(--black-text);
-}
-
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -54,21 +38,14 @@
   gap: 0.4rem;
 }
 
-.card_info > h3 {
-  font-weight: 500;
-  color: var(--black-text);
-  text-wrap: balance;
-}
-
 .card_info > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.card_info > div > h4 {
-  font-weight: 400;
-  color: var(--black-text);
+.card_info > h4 {
+  color: var(--gray-text);
 }
 
 .home_badge {

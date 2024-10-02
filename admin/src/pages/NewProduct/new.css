@@ -6,7 +6,6 @@
   justify-content: center;
   gap: 1rem;
   font-size: 0.9rem;
-  color: var(--black-text);
 }
 
 /* ----- */
@@ -14,6 +13,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+}
+
+.upload > p {
+  color: var(--gray-text);
 }
 
 .upload > div {
@@ -50,10 +53,16 @@
 }
 
 /* ----- */
-.title {
+.title,
+.desc,
+.category,
+.subcategory,
+.price,
+.sizes {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  color: var(--gray-text);
 }
 
 .title > input {
@@ -70,12 +79,6 @@
 }
 
 /* ----- */
-.desc {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
 .desc > textarea {
   padding: 0.7rem;
   font-size: 1rem;
@@ -99,14 +102,6 @@
   gap: 3rem;
 }
 
-.category,
-.subcategory,
-.price {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
 .category > select,
 .subcategory > select,
 .price > input {
@@ -123,12 +118,6 @@
 }
 
 /* ----- */
-.sizes {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
 .sizes > div {
   display: flex;
   gap: 1rem;

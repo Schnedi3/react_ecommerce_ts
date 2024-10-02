@@ -27,11 +27,6 @@
   border-radius: 0.2rem;
 }
 
-.product > h3 {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
 .total {
   display: flex;
   flex-direction: column;
@@ -41,15 +36,11 @@
   padding-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
-  font-size: 0.9rem;
 }
 
 .total > h3 {
   display: flex;
   justify-content: space-between;
-  font-weight: 500;
-  font-size: 1.1rem;
-  color: var(--black-text);
   margin-top: 0.5rem;
   padding-top: 0.5rem;
   border-top: 0.05rem solid var(--gray-bg);
@@ -139,10 +130,6 @@
   color: var(--accent);
 }
 
-.label > p {
-  font-size: 0.8rem;
-}
-
 .radio {
   display: none;
 }
@@ -165,6 +152,7 @@
   display: flex;
   flex-direction: column;
   font-size: 0.9rem;
+  color: var(--gray-text);
 }
 
 .address_form > article > label > input {
@@ -185,13 +173,6 @@ dark_button-address {
 }
 
 /* ----- */
-.error {
-  position: absolute;
-  right: 0;
-  color: var(--error);
-  font-size: 0.9rem;
-}
-
 .address_form > article > label > input.input_error {
   border: 0.05rem solid var(--error);
 }

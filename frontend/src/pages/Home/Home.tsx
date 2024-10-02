@@ -87,9 +87,9 @@ export const Home = () => {
               >
                 <img src={product.images[0]} alt={product.title} />
                 <div className="card_info">
-                  <h3>{product.title}</h3>
+                  <h4>{product.title}</h4>
                   <div>
-                    <h4>{formatCurrency(product.price)}</h4>
+                    <h3>{formatCurrency(product.price)}</h3>
                     {onCart && <p className="home_badge">on cart</p>}
                   </div>
                 </div>
