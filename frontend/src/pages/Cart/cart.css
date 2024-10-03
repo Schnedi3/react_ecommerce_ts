@@ -22,9 +22,9 @@
 .item_info {
   padding: 1rem 0;
   margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  place-items: center;
   border-bottom: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
 }
@@ -112,9 +112,7 @@
 /* ADAPTIVE */
 @media (max-width: 700px) {
   .item_info {
-    display: grid;
     grid-template-columns: 0.5fr 1fr 0.5fr;
-    place-items: center;
     row-gap: 1rem;
   }
 

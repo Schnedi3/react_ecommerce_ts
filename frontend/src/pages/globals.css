@@ -31,11 +31,12 @@ h2 {
 
 h2::after {
   content: "";
-  width: 2rem;
+  width: 1.5rem;
   height: 0.1rem;
   background-color: var(--accent);
 }
 
+/* ----- */
 .dark_button {
   margin-top: 0.8rem;
   padding: 0.7rem;
@@ -48,17 +49,41 @@ h2::after {
   transition: 0.3s;
 }
 
+/* ----- */
+.new_address {
+  width: 14rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+  background-color: var(--white-bg);
+  transition: 0.3s;
+}
+
+.new_address > img {
+  width: 1.5rem;
+}
+
 .error {
   position: absolute;
   right: 0;
   color: var(--error);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 /* HOVER */
 @media (hover: hover) {
   .dark_button:hover {
     background-color: var(--accent);
+    cursor: pointer;
+  }
+
+  .new_address:hover {
+    border: 0.05rem solid var(--accent);
     cursor: pointer;
   }
 }

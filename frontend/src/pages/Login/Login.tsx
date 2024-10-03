@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/useAuthContext";
 import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
-
-import { iconEyeClosed, iconEyeOpen, iconGoogle } from "../../UIIcons";
+import { iconEyeClosed, iconEyeOpen, iconGoogle } from "../../Routes";
 import "./login.css";
 import "../globals.css";
 

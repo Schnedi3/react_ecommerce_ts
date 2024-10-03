@@ -1,0 +1,33 @@
+/* CONFIRMATION */
+.confirm_container {
+  min-height: calc(100vh - var(--menu-height) - var(--footer-height));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.confirm_container > img {
+  width: 12rem;
+}
+
+.thanks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thanks > p {
+  font-size: 1rem;
+}
+
+.buttons {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark_button-shop {
+  width: 100%;
+}

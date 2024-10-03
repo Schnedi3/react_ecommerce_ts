@@ -55,6 +55,11 @@
   .orders:hover > img {
     filter: invert(1);
   }
+
+  .profile:hover > p,
+  .orders:hover > p {
+    color: var(--white-text);
+  }
 }
 
 /* ADAPTIVE */

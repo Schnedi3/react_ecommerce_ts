@@ -4,20 +4,20 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
-
-import { Menu } from "./components/Menu/Menu";
-import { Home } from "./pages/Home/Home";
-import { Detail } from "./pages/Detail/Detail";
-import { Contact } from "./pages/Contact/Contact";
-import { User } from "./pages/User/User";
-import { Cart } from "./pages/Cart/Cart";
-import { Login } from "./pages/Login/Login";
-import { Register } from "./pages/Register/Register";
-import { PlaceOrder } from "./pages/PlaceOrder/PlaceOrder";
-import { Orders } from "./pages/Orders/Orders";
-import { Profile } from "./pages/Profile/Profile";
-import { Footer } from "./components/Footer/Footer";
-
+import { Menu, Footer } from "./Routes";
+import {
+  Cart,
+  Confirmation,
+  Contact,
+  Detail,
+  Home,
+  Login,
+  Orders,
+  OrderSummary,
+  Profile,
+  Register,
+  User,
+} from "./Routes";
 import "./app.css";
 
 export const App = () => {
@@ -37,9 +37,10 @@ export const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/place-order" element={<PlaceOrder />} />
+              <Route path="/order-summary" element={<OrderSummary />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/confirmation" element={<Confirmation />} />
             </Routes>
 
             <Footer />

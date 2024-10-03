@@ -37,16 +37,6 @@ select {
   font-weight: inherit;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
-input[type="number"] {
-  appearance: none;
-  -moz-appearance: textfield;
-}
-
 ul,
 ol {
   list-style: none;
@@ -63,6 +53,7 @@ ol {
   --white-bg: #f7f6f9;
 
   --accent: #5c6ce3;
+  --accent-clear: #edeef7;
   --error: #ff5f5f;
   --filter: invert(37%) sepia(83%) saturate(1230%) hue-rotate(215deg)
     brightness(92%) contrast(92%);

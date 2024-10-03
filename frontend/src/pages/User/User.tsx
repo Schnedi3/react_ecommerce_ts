@@ -1,5 +1,4 @@
-import { Login } from "../Login/Login";
-import { Logout } from "../Logout/Logout";
+import { Login, Logout } from "../../Routes";
 import { useAuthContext } from "../../context/useAuthContext";
 
 export const User = () => {

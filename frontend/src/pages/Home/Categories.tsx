@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { ICategoriesProps } from "../../types/types";
 import { defaultCategory } from "./Home";
-import { iconModal } from "../../UIIcons";
+import { iconModal } from "../../Routes";
 import "./categories.css";
 
 export const Categories = ({

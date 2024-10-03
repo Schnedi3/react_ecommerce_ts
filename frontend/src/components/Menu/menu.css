@@ -80,8 +80,8 @@
 
 /* ----- */
 .menu_user > img {
-  margin-top: 0.2rem;
-  width: 1.7rem;
+  margin-top: 0.4rem;
+  width: 1.9rem;
 }
 
 /* ----- */
@@ -144,7 +144,6 @@
   .mobile_menu {
     display: block;
     width: 2rem;
-    margin-left: 1rem;
   }
 
   .close_menu {

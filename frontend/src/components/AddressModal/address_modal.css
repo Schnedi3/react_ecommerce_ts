@@ -1,0 +1,105 @@
+/* MODAL */
+.modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.address_form {
+  width: 90%;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--white);
+}
+
+.close_modal {
+  width: 1.8rem;
+  height: 1.8rem;
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--accent);
+  transition: 0.3s;
+}
+
+.close_modal > img {
+  width: 1.8rem;
+  filter: invert(1);
+}
+
+.address_form > article {
+  display: flex;
+  gap: 1rem;
+}
+
+.address_form > article > label {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: var(--gray-text);
+}
+
+.address_form > article > label > input {
+  width: 100%;
+  padding: 0.7rem;
+  color: var(--black-text);
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+  background-color: var(--white-bg);
+}
+
+.address_form > article > label > input::placeholder {
+  opacity: 0.25;
+}
+
+dark_button-address {
+  width: 100%;
+}
+
+/* error */
+.address_form > article > label > input.input_error {
+  border: 0.05rem solid var(--error);
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .close_modal:hover {
+    background-color: var(--error);
+    cursor: pointer;
+  }
+}
+
+/* ADAPTIVE */
+@media (max-width: 700px) {
+  .address_form {
+    width: 90%;
+    padding: 2rem;
+  }
+
+  .address_form > article:nth-child(3) {
+    flex-direction: column;
+  }
+
+  .address_form > article > label {
+    font-size: 0.85rem;
+  }
+
+  .address_form > article > label > input {
+    padding: 0.5rem;
+  }
+}

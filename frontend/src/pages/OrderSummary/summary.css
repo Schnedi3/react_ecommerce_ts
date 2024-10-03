@@ -28,8 +28,11 @@
 }
 
 .total {
+  width: 50%;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
+  align-self: flex-end;
 }
 
 .total > p {
@@ -70,6 +73,11 @@
   border: 0.05rem solid var(--gray-bg);
   border-radius: 0.2rem;
   background-color: var(--white-bg);
+}
+
+.payment > div > label:has(input[type="radio"]:checked) {
+  border: 0.05rem solid var(--accent);
+  background-color: var(--accent-clear);
 }
 
 .payment > div > label > input[type="radio"] {
@@ -122,6 +130,7 @@
 
 .label:has(.radio:checked) {
   border: 0.05rem solid var(--accent);
+  background-color: var(--accent-clear);
 }
 
 .label > h4 {
@@ -134,58 +143,11 @@
   display: none;
 }
 
-/* ----- */
-.address_form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.address_form > article {
-  display: flex;
-  gap: 1rem;
-}
-
-.address_form > article > label {
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  font-size: 0.9rem;
-  color: var(--gray-text);
-}
-
-.address_form > article > label > input {
-  width: 100%;
-  padding: 0.7rem;
-  color: var(--black-text);
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
-  background-color: var(--white-bg);
-}
-
-.address_form > article > label > input::placeholder {
-  opacity: 0.25;
-}
-
-dark_button-address {
-  width: 100%;
-}
-
-/* ----- */
-.address_form > article > label > input.input_error {
-  border: 0.05rem solid var(--error);
-}
-
 /* HOVER */
 @media (hover: hover) {
   .payment > div > label:hover {
     border: 0.05rem solid var(--accent);
     cursor: pointer;
-  }
-
-  .payment > div > label > input[type="radio"]:hover {
-    border: 0.1rem solid var(--accent);
   }
 
   .label:hover {
@@ -196,7 +158,7 @@ dark_button-address {
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
-  .address_form > article {
-    flex-direction: column;
+  .total {
+    width: 100%;
   }
 }

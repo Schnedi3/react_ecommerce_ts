@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useCartContext } from "../../context/useCartContext";
 import { formatCurrency } from "../../helpers/formatCurrency";
-import { iconCart, iconRemove } from "../../UIIcons";
+import { iconCart, iconRemove } from "../../Routes";
 import "./cart.css";
 import "../globals.css";
 
@@ -49,9 +49,6 @@ export const Cart = () => {
         <h2>Total</h2>
         <div className="total_info">
           <p>
-            Subtotal <span>{formatCurrency(totalAmount)}</span>
-          </p>
-          <p>
             Shipping <span>Free</span>
           </p>
           <h3>
@@ -60,9 +57,9 @@ export const Cart = () => {
         </div>
         <button
           className="dark_button dark_button-pay"
-          onClick={() => navigate("/place-order")}
+          onClick={() => navigate("/order-summary")}
         >
-          proceed to checkout
+          proceed to summary
         </button>
       </article>
     </section>

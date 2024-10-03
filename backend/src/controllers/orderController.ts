@@ -7,7 +7,7 @@ import {
   updateStatusDB,
   deleteOrderDB,
 } from "../database/orderDB";
-import { getCartIdByUserId } from "../database/cartDB";
+import { emptyCartDb, getCartIdByUserId } from "../database/cartDB";
 
 export const addOrder = async (req: Request, res: Response) => {
   const { address_id, amount, payment_method } = req.body;
@@ -17,7 +17,7 @@ export const addOrder = async (req: Request, res: Response) => {
     const cart_id = await getCartIdByUserId(user_id);
 
     const date = new Date();
-    const orderDate = new Intl.DateTimeFormat('en-GB').format(date);
+    const orderDate = new Intl.DateTimeFormat("es-ES").format(date);
 
     const result = await addOrderDB(
       cart_id,
@@ -27,6 +27,9 @@ export const addOrder = async (req: Request, res: Response) => {
       payment_method,
       orderDate
     );
+
+    // emoty cart
+    await emptyCartDb(cart_id);
 
     res.status(200).json({ success: true, message: "Order placed", result });
   } catch (error: any) {

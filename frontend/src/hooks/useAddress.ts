@@ -17,6 +17,17 @@ export const useAddress = () => {
     resolver: zodResolver(addressSchema),
   });
   const [addresses, setAddresses] = useState<IAddress[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
 
   const getAddress = async () => {
     try {
@@ -45,6 +56,7 @@ export const useAddress = () => {
       const response = await addAddressRequest(data);
 
       if (response.data.success) {
+        setIsModalOpen(false);
         toast.success(response.data.message);
         await getAddress();
       } else {
@@ -68,5 +80,7 @@ export const useAddress = () => {
     addresses,
     setAddresses,
     onSubmit,
+    isModalOpen,
+    setIsModalOpen,
   };
 };
