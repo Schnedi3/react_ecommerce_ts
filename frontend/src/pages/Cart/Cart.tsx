@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useCartContext } from "../../context/useCartContext";
 import { formatCurrency } from "../../helpers/formatCurrency";
-import { iconCart, iconRemove } from "../../Routes";
+import { iconCart, iconDelete } from "../../Routes";
 import "./cart.css";
 import "../globals.css";
 
@@ -37,7 +37,7 @@ export const Cart = () => {
             <p>{formatCurrency(item.price)}</p>
             <img
               className="item_remove"
-              src={iconRemove}
+              src={iconDelete}
               alt="remove product"
               onClick={() => deleteProduct(item.product_id, item.size)}
             />

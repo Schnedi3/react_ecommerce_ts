@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 import { getUsersRequest, deleteUserRequest } from "../../api/users";
 import { IUser } from "../../types/types";
-import { iconRemove } from "../../UIIcons";
+import { iconDelete } from "../../UIIcons";
 import "./users.css";
 import "../globals.css";
 
@@ -62,7 +62,7 @@ export const Users = () => {
             <h4>{user.email}</h4>
             <p>{user.role}</p>
             <img
-              src={iconRemove}
+              src={iconDelete}
               alt="remove product"
               onClick={() => deleteUser(user.id)}
             />

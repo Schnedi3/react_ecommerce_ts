@@ -8,7 +8,7 @@ import {
 } from "../../api/order";
 import { IOrder } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
-import { iconBox, iconRemove } from "../../UIIcons";
+import { iconBox, iconDelete } from "../../UIIcons";
 import "./orders.css";
 import "../globals.css";
 
@@ -133,7 +133,7 @@ export const Orders = () => {
 
             <img
               className="order_delete"
-              src={iconRemove}
+              src={iconDelete}
               alt="delete order"
               onClick={() => deleteOrder(order.order_id)}
             />
