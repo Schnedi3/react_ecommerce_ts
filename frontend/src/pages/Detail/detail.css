@@ -59,7 +59,7 @@
   background-color: var(--accent);
 }
 
-.detail_info > ul > li > button.disabled {
+.detail_info > ul > li > button#disabled {
   pointer-events: none;
   color: var(--white-text);
   background-color: var(--gray-bg);
@@ -69,7 +69,7 @@
   width: 50%;
 }
 
-.dark_button-disabled {
+#dark_button-disabled {
   pointer-events: none;
   background-color: var(--gray-bg) !important;
 }

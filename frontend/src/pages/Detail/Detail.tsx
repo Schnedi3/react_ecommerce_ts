@@ -63,9 +63,8 @@ export const Detail = () => {
           {sizes.map((size) => (
             <li key={size}>
               <button
-                className={`${selectedSize === size ? "selected" : ""}${
-                  isSizeInCart(size) ? "disabled" : ""
-                }`}
+                className={selectedSize === size ? "selected" : ""}
+                id={isSizeInCart(size) ? "disabled" : ""}
                 onClick={() => handleSize(size)}
               >
                 {size}
@@ -74,10 +73,11 @@ export const Detail = () => {
           ))}
         </ul>
         <button
-          className={`dark_button${
-            !selectedSize ? " dark_button-disabled" : ""
-          }`}
-          onClick={() => addToCart(product, 1, selectedSize)}
+          className="dark_button"
+          id={!selectedSize ? "dark_button-disabled" : ""}
+          onClick={() => {
+            addToCart(product, 1, selectedSize), setSelectedSize("");
+          }}
         >
           Add to Cart
         </button>
