@@ -1,5 +1,6 @@
 import { ISearchProps } from "../../types/types";
 import { iconClose, iconSearch } from "../../Routes";
+
 import "./search.css";
 
 export const Search = ({ inputValue, setInputValue }: ISearchProps) => {

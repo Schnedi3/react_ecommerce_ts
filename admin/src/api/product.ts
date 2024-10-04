@@ -4,10 +4,10 @@ export const addProductRequest = (formData: FormData) => {
   return axios.post("/product", formData);
 };
 
-export const getProductsRequest = () => {
-  return axios.get("/product");
-};
-
 export const deleteProductRequest = (id: number) => {
   return axios.delete(`/product/${id}`);
+};
+
+export const getProductsRequest = () => {
+  return axios.get("/product");
 };

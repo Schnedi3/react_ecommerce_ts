@@ -42,7 +42,7 @@ export const addAddressDB = async (
   return result.rows[0];
 };
 
-export const removeAddressDB = async (id: number) => {
+export const deleteAddressDB = async (id: number) => {
   const removeQuery = `
     DELETE FROM address
     WHERE id = $1`;

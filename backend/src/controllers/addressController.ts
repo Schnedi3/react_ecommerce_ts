@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import {
   getAddressDB,
   addAddressDB,
-  removeAddressDB,
+  deleteAddressDB,
 } from "../database/addressDB";
 
 export const getAddress = async (req: Request, res: Response) => {
@@ -51,11 +51,11 @@ export const addAddress = async (req: Request, res: Response) => {
   }
 };
 
-export const removeAddress = async (req: Request, res: Response) => {
+export const deleteAddress = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
   try {
-    await removeAddressDB(id);
+    await deleteAddressDB(id);
 
     res.status(200).json({ success: true, message: "Address removed" });
   } catch (error: any) {

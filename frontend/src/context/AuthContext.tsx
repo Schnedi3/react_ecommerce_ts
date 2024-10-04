@@ -4,16 +4,16 @@ import Cookies from "js-cookie";
 import { useGoogleLogin } from "@react-oauth/google";
 import { toast } from "react-toastify";
 
-import { loginGoogleRequest, loginRequest, registerRequest } from "../api/auth";
+import { useShopContext } from "./useShopContext";
+import { loginGoogleRequest, loginRequest, registerRequest } from "../Routes";
 import { AuthContextType, ILogin, IRegister } from "../types/types";
-import { useCartContext } from "./useCartContext";
 
 export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
 );
 
 export const AuthProvider = ({ children }: PropsWithChildren) => {
-  const { getCart, setCart } = useCartContext();
+  const { getCart, setCart } = useShopContext();
   const [user, setUser] = useState<ILogin | IRegister | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
   const navigate = useNavigate();

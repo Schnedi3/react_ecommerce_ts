@@ -2,18 +2,19 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { useCartContext } from "../../context/useCartContext";
-import { getProductRequest } from "../../api/product";
-import { IProduct } from "../../types/types";
+import { useShopContext } from "../../context/useShopContext";
+import { addToCartRequest, getProductRequest } from "../../Routes";
 import { DetailSkeleton } from "../../skeletons/DetailSkeleton";
 import { formatCurrency } from "../../helpers/formatCurrency";
+import { IProduct } from "../../types/types";
+
 import "./detail.css";
 
 export const Detail = () => {
-  const { id } = useParams<string>();
-  const { cart, addToCart } = useCartContext();
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
   const [selectedSize, setSelectedSize] = useState<string>("");
+  const { id } = useParams<string>();
+  const { cart, setCart, getCart } = useShopContext();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -38,6 +39,37 @@ export const Detail = () => {
 
     getProduct();
   }, [id]);
+
+  const addToCart = async (
+    product: IProduct,
+    quantity: number,
+    selectedSize: string
+  ) => {
+    if (!selectedSize) return toast.error("Select a size first");
+
+    try {
+      const response = await addToCartRequest(
+        product.id,
+        quantity,
+        selectedSize
+      );
+
+      if (response.data.success) {
+        const newItem = response.data.result;
+        setCart([...cart, newItem]);
+        getCart();
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unexpected error occurred");
+      }
+    }
+  };
 
   if (!product) return <DetailSkeleton />;
   const { title, description, price, sizes, images } = product;

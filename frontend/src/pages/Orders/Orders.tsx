@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 
-import { getUserOrdersRequest } from "../../api/order";
-import { IOrder } from "../../types/types";
+import { getUserOrdersRequest } from "../../Routes";
 import { formatCurrency } from "../../helpers/formatCurrency";
 import { OrderSkeleton } from "../../skeletons/OrderSkeleton";
+import { IOrder } from "../../types/types";
+
 import "./orders.css";
 import "../globals.css";
 
 export const Orders = () => {
   const [orders, setOrders] = useState<IOrder[]>([]);
-
-  console.log(orders)
 
   const getUserOrders = async () => {
     try {
@@ -34,41 +33,39 @@ export const Orders = () => {
     getUserOrders();
   }, []);
 
+  if (orders.length === 0) return <OrderSkeleton />;
+
   return (
     <ul className="order_container container">
       <h2>All orders</h2>
-      {orders.length === 0 ? (
-        <OrderSkeleton />
-      ) : (
-        orders.map((order) => (
-          <li className="order" key={order.order_id}>
-            {order.products.map((item) => (
-              <article key={item.id}>
-                <img src={item.images[0]} alt="" />
+      {orders.map((order) => (
+        <li className="order" key={order.order_id}>
+          {order.products.map((item) => (
+            <article key={item.id}>
+              <img src={item.images[0]} alt="" />
 
+              <div>
+                <h3>{item.title}</h3>
                 <div>
-                  <h3>{item.title}</h3>
-                  <div>
-                    <p>{formatCurrency(item.price)}</p>
-                    <p>
-                      <span>Quantity:</span> {item.quantity}
-                    </p>
-                    <p>
-                      <span>Size:</span> {item.size}
-                    </p>
-                  </div>
-
+                  <p>{formatCurrency(item.price)}</p>
                   <p>
-                    <span>Date:</span> {order.order_date}
+                    <span>Quantity:</span> {item.quantity}
+                  </p>
+                  <p>
+                    <span>Size:</span> {item.size}
                   </p>
                 </div>
 
-                <p>{order.order_status}</p>
-              </article>
-            ))}
-          </li>
-        ))
-      )}
+                <p>
+                  <span>Date:</span> {order.order_date.toLocaleDateString()}
+                </p>
+              </div>
+
+              <p>{order.order_status}</p>
+            </article>
+          ))}
+        </li>
+      ))}
     </ul>
   );
 };

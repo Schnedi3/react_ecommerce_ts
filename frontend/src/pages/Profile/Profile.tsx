@@ -1,21 +1,30 @@
+import { useEffect } from "react";
 import { toast } from "react-toastify";
 
 import { useAuthContext } from "../../context/useAuthContext";
-import { useCartContext } from "../../context/useCartContext";
-import { removeAddressRequest } from "../../api/address";
+import { useShopContext } from "../../context/useShopContext";
+import { AddressModal, deleteAddressRequest, iconAddress } from "../../Routes";
 
-import { AddressModal, iconAddress } from "../../Routes";
 import "./profile.css";
 import "../globals.css";
 
 export const Profile = () => {
   const { user } = useAuthContext();
-  const { isModalOpen, setIsModalOpen, addressList, setAddressList } =
-    useCartContext();
+  const {
+    getAddress,
+    addressList,
+    setAddressList,
+    isModalAddress,
+    setIsModalAddress,
+  } = useShopContext();
 
-  const removeAddress = async (id: number) => {
+  useEffect(() => {
+    getAddress();
+  }, [getAddress]);
+
+  const deleteAddress = async (id: number) => {
     try {
-      const response = await removeAddressRequest(id);
+      const response = await deleteAddressRequest(id);
 
       if (response.data.success) {
         setAddressList(addressList.filter((address) => address.id !== id));
@@ -74,20 +83,20 @@ export const Profile = () => {
 
               <div>
                 <button>Edit</button>
-                <button onClick={() => removeAddress(address.id)}>
+                <button onClick={() => deleteAddress(address.id)}>
                   Delete
                 </button>
               </div>
             </label>
           ))}
         </div>
-        <button className="new_address" onClick={() => setIsModalOpen(true)}>
+        <button className="new_address" onClick={() => setIsModalAddress(true)}>
           <img src={iconAddress} alt="add new address" />
           Add new address
         </button>
       </article>
 
-      {isModalOpen && <AddressModal />}
+      {isModalAddress && <AddressModal getAddress={getAddress} />}
     </section>
   );
 };

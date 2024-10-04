@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { contactSchema } from "../../schemas/schemas";
 import { IContact } from "../../types/types";
+
 import "./contact.css";
 import "../globals.css";
 

@@ -3,7 +3,8 @@ import { toast } from "react-toastify";
 
 import { getUsersRequest, deleteUserRequest } from "../../api/users";
 import { IUser } from "../../types/types";
-import { iconDelete } from "../../UIIcons";
+
+import { iconDelete } from "../../Routes";
 import "./users.css";
 import "../globals.css";
 

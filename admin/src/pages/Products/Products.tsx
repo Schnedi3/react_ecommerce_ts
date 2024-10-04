@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 import { getProductsRequest, deleteProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
-import { iconDelete } from "../../UIIcons";
+
+import { iconDelete } from "../../Routes";
 import "./products.css";
 import "../globals.css";
 

@@ -6,11 +6,13 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../context/useAuthContext";
 import { registerSchema } from "../../schemas/schemas";
 import { IRegister } from "../../types/types";
+
 import { iconEyeClosed, iconEyeOpen } from "../../Routes";
 import "./register.css";
 import "../globals.css";
 
 export const Register = () => {
+  const [visible, setIsVisible] = useState<boolean>(false);
   const { signup } = useAuthContext();
   const {
     register,
@@ -20,7 +22,6 @@ export const Register = () => {
   } = useForm<IRegister>({
     resolver: zodResolver(registerSchema),
   });
-  const [visible, setIsVisible] = useState<boolean>(false);
 
   const onSubmit = (data: IRegister) => {
     signup(data);

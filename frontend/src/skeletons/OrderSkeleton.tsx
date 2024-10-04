@@ -4,7 +4,7 @@ export const OrderSkeleton = () => {
   const orderItems = Array.from({ length: 3 });
 
   return (
-    <li className="order_skeleton">
+    <li className="order_skeleton container">
       {orderItems.map((_, index) => (
         <article key={index}>
           <img />

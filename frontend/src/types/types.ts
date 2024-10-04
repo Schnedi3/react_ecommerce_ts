@@ -1,13 +1,11 @@
-export interface IProduct {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  subcategory: string;
-  price: number;
-  sizes: string[];
-  images: string[];
-  quantity: number;
+export interface AuthContextType {
+  user: ILogin | IRegister | null;
+  googleLogin: () => void;
+  login: (user: ILogin) => void;
+  signup: (user: IRegister) => void;
+  logout: () => void;
+  isAuthenticated: boolean;
+  setIsAuthenticated: (isAuthenticated: boolean) => void;
 }
 
 export interface CartItem extends IProduct {
@@ -16,24 +14,17 @@ export interface CartItem extends IProduct {
   size: string;
 }
 
-export interface CartContextType {
-  cart: CartItem[];
-  setCart: (cart: CartItem[]) => void;
-  getCart: () => void;
-  addToCart: (
-    product: IProduct,
-    quantity: number,
-    selectedSize: string
-  ) => void;
-  updateQuantity: (product_id: number, quantity: number, size: string) => void;
-  deleteProduct: (product_id: number, size: string) => void;
-  itemsInCart: number;
-  totalAmount: number;
-  isModalOpen: boolean;
-  setIsModalOpen: (isModalOpen: boolean) => void;
-  addressList: IAddress[]
-  setAddressList: (addressList: IAddress[]) => void;
-  getAddress: () => void;
+export interface IAddress {
+  id: number;
+  first_name: string;
+  last_name: string;
+  phone: string;
+  street: string;
+  number: string;
+  door: string;
+  city: string;
+  state: string;
+  zip_code: string;
 }
 
 export interface ICategoriesProps {
@@ -55,44 +46,9 @@ export interface ILogin {
   role?: string;
 }
 
-export interface IRegister {
-  username: string;
-  email: string;
-  password: string;
-  role?: string;
-}
-
-export interface AuthContextType {
-  user: ILogin | IRegister | null;
-  googleLogin: () => void;
-  login: (user: ILogin) => void;
-  signup: (user: IRegister) => void;
-  logout: () => void;
-  isAuthenticated: boolean;
-  setIsAuthenticated: (isAuthenticated: boolean) => void;
-}
-
-export interface ISearchProps {
-  inputValue: string;
-  setInputValue: (inputValue: string) => void;
-}
-
-export interface IAddress {
-  id: number;
-  first_name: string;
-  last_name: string;
-  phone: string;
-  street: string;
-  number: string;
-  door: string;
-  city: string;
-  state: string;
-  zip_code: string;
-}
-
 export interface IOrder {
   order_amount: number;
-  order_date: string;
+  order_date: Date;
   order_id: number;
   order_status: string;
   products: IOrderProduct[];
@@ -105,4 +61,43 @@ interface IOrderProduct {
   quantity: number;
   size: string;
   title: string;
+}
+
+export interface IRegister {
+  username: string;
+  email: string;
+  password: string;
+  role?: string;
+}
+
+export interface ISearchProps {
+  inputValue: string;
+  setInputValue: (inputValue: string) => void;
+}
+
+export interface IProduct {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  subcategory: string;
+  price: number;
+  sizes: string[];
+  images: string[];
+  quantity: number;
+}
+
+export interface ShopContextType {
+  // address
+  getAddress: () => void;
+  addressList: IAddress[];
+  setAddressList: (addressList: IAddress[]) => void;
+  isModalAddress: boolean;
+  setIsModalAddress: (isModalAddress: boolean) => void;
+  // cart
+  cart: CartItem[];
+  setCart: (cart: CartItem[]) => void;
+  getCart: () => void;
+  itemsInCart: number;
+  totalAmount: number;
 }

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import { useCartContext } from "../../context/useCartContext";
+import { useShopContext } from "../../context/useShopContext";
+
 import { iconCart, iconClose, iconLogin, iconMenu } from "../../Routes";
 import "./menu.css";
 
 export const Menu = () => {
-  const { itemsInCart } = useCartContext();
+  const { itemsInCart } = useShopContext();
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);

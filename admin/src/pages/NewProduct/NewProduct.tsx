@@ -2,7 +2,8 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 import { addProductRequest } from "../../api/product";
-import { iconUpload } from "../../UIIcons";
+
+import { iconUpload } from "../../Routes";
 import "./new.css";
 import "../globals.css";
 
@@ -80,14 +81,9 @@ export const NewProduct = () => {
       <article className="upload">
         <p>Images</p>
         <div>
-          <label htmlFor="image">
+          <label>
             <img src={iconUpload} />
-            <input
-              type="file"
-              id="image"
-              accept="image/*"
-              onChange={handleImages}
-            />
+            <input type="file" accept="image/*" onChange={handleImages} />
           </label>
           <ul>
             {images.map((image, index) => (
@@ -99,21 +95,19 @@ export const NewProduct = () => {
         </div>
       </article>
 
-      <label htmlFor="title" className="title">
+      <label className="title">
         Title
         <input
           type="text"
-          id="title"
           placeholder="product title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </label>
 
-      <label htmlFor="desc" className="desc">
+      <label className="desc">
         Description
         <textarea
-          id="desc"
           placeholder="product description"
           rows={3}
           value={description}

@@ -1,32 +1,13 @@
-export interface IProduct {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  subcategory: string;
-  price: number;
-  sizes: string[];
-  images: string[];
-}
-
-export interface IUser {
-  id: number;
-  username: string;
-  email: string;
-  password: string;
-  role: string;
-}
-
-export interface ILogin {
-  email: string;
-  password: string;
-}
-
 export interface AuthContextType {
   user: IUser | null;
   login: (user: ILogin) => void;
   logout: () => void;
   isAuthenticated: boolean;
+}
+
+export interface ILogin {
+  email: string;
+  password: string;
 }
 
 export interface IOrder {
@@ -36,7 +17,7 @@ export interface IOrder {
   first_name: string;
   last_name: string;
   number: string;
-  order_date: string;
+  order_date: Date;
   order_id: number;
   payment_method: string;
   phone: string;
@@ -59,4 +40,23 @@ interface IOrderProduct {
   quantity: number;
   size: string;
   subcategory: string;
+}
+
+export interface IProduct {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  subcategory: string;
+  price: number;
+  sizes: string[];
+  images: string[];
+}
+
+export interface IUser {
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+  role: string;
 }

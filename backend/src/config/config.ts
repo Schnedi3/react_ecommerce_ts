@@ -11,5 +11,4 @@ export const PG_PASSWORD = process.env.PG_PASSWORD;
 export const PG_PORT = process.env.PG_PORT;
 export const PG_USER = process.env.PG_USER;
 
-export const STRIPE_PUBLIC_KEY = process.env.STRIPE_PUBLIC_KEY;
 export const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;

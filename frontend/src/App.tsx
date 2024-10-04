@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { AuthProvider } from "./context/AuthContext";
-import { CartProvider } from "./context/CartContext";
+import { ShopProvider } from "./context/ShopContext";
 import { Menu, Footer } from "./Routes";
 import {
   Cart,
@@ -18,6 +18,7 @@ import {
   Register,
   User,
 } from "./Routes";
+
 import "./app.css";
 
 export const App = () => {
@@ -25,7 +26,7 @@ export const App = () => {
     <main className="app">
       <ToastContainer autoClose={2000} pauseOnHover={false} />
       <BrowserRouter>
-        <CartProvider>
+        <ShopProvider>
           <AuthProvider>
             <Menu />
 
@@ -45,7 +46,7 @@ export const App = () => {
 
             <Footer />
           </AuthProvider>
-        </CartProvider>
+        </ShopProvider>
       </BrowserRouter>
     </main>
   );

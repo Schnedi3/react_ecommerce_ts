@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { useAuthContext } from "../../context/useAuthContext";
-import { iconClose, iconMenu } from "../../UIIcons";
+
+import { iconClose, iconMenu } from "../../Routes";
 import "./menu.css";
 
 export const Menu = () => {

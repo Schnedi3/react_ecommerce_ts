@@ -3,14 +3,15 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { AuthProvider } from "./context/AuthContext";
-
-import { Menu } from "./components/Menu/Menu";
-import { Login } from "./pages/Login/Login";
-import { ProtectedRoute } from "./pages/ProtectedRoute";
-import { NewProduct } from "./pages/NewProduct/NewProduct";
-import { Products } from "./pages/Products/Products";
-import { Orders } from "./pages/Orders/Orders";
-import { Users } from "./pages/users/Users";
+import {
+  Login,
+  Menu,
+  NewProduct,
+  Orders,
+  Products,
+  ProtectedRoute,
+  Users,
+} from "./Routes";
 
 import "./app.css";
 

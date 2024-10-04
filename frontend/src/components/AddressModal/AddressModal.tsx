@@ -1,17 +1,21 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 
-import { useCartContext } from "../../context/useCartContext";
-import { addAddressRequest } from "../../api/address";
+import { useShopContext } from "../../context/useShopContext";
+import { addAddressRequest, iconClose } from "../../Routes";
 import { IAddress } from "../../types/types";
 import { addressSchema } from "../../schemas/schemas";
 
-import { iconClose } from "../../Routes";
 import "./address_modal.css";
 
-export const AddressModal = () => {
-  const { setIsModalOpen, getAddress } = useCartContext();
+interface IAddressProps {
+  getAddress: () => void;
+}
+
+export const AddressModal = ({ getAddress }: IAddressProps) => {
+  const { isModalAddress, setIsModalAddress } = useShopContext();
 
   const {
     register,
@@ -28,8 +32,8 @@ export const AddressModal = () => {
 
       if (response.data.success) {
         toast.success(response.data.message);
-        await getAddress();
-        setIsModalOpen(false);
+        getAddress();
+        setIsModalAddress(false);
       } else {
         console.log(response.data.message);
       }
@@ -44,9 +48,19 @@ export const AddressModal = () => {
     reset();
   };
 
+  useEffect(() => {
+    if (isModalAddress) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalAddress]);
+
   return (
     <section className="modal">
-      <button className="close_modal" onClick={() => setIsModalOpen(false)}>
+      <button className="close_modal" onClick={() => setIsModalAddress(false)}>
         <img src={iconClose} alt="close modal" />
       </button>
 

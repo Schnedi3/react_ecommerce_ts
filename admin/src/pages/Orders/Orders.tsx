@@ -8,7 +8,8 @@ import {
 } from "../../api/order";
 import { IOrder } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
-import { iconBox, iconDelete } from "../../UIIcons";
+
+import { iconBox, iconDelete } from "../../Routes";
 import "./orders.css";
 import "../globals.css";
 
@@ -87,7 +88,7 @@ export const Orders = () => {
       <h2>All orders</h2>
       <ul className="order">
         {orders.map((order) => (
-          <li key={order.order_date}>
+          <li key={order.order_id}>
             <img className="order_box" src={iconBox} />
 
             <article>
@@ -119,7 +120,7 @@ export const Orders = () => {
                 <span>Payment method:</span> {order.payment_method}
               </p>
               <p>
-                <span>Date:</span> {order.order_date}
+                <span>Date:</span> {order.order_date.toLocaleDateString()}
               </p>
             </article>
 

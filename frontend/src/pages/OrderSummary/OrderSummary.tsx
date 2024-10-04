@@ -2,11 +2,14 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 import { loadStripe } from "@stripe/stripe-js";
 
-import { useCartContext } from "../../context/useCartContext";
-import { createCheckoutSessionRequest } from "../../api/payment";
+import { useShopContext } from "../../context/useShopContext";
 import { formatCurrency } from "../../helpers/formatCurrency";
+import {
+  createCheckoutSessionRequest,
+  AddressModal,
+  iconAddress,
+} from "../../Routes";
 
-import { AddressModal, iconAddress } from "../../Routes";
 import "./summary.css";
 import "../globals.css";
 
@@ -15,10 +18,16 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 export const OrderSummary = () => {
   const [loading, setLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<string>("");
-  const [orderAddress, setOrderAddress] = useState<number>(0);
+  const [shippingAddress, setShippingAddress] = useState<number>(0);
 
-  const { cart, totalAmount, isModalOpen, setIsModalOpen, addressList } =
-    useCartContext();
+  const {
+    cart,
+    totalAmount,
+    getAddress,
+    addressList,
+    isModalAddress,
+    setIsModalAddress,
+  } = useShopContext();
 
   const handleCheckout = async () => {
     if (!paymentMethod) {
@@ -26,7 +35,7 @@ export const OrderSummary = () => {
       return;
     }
 
-    if (!orderAddress) {
+    if (!shippingAddress) {
       toast.error("Please select an address");
       return;
     }
@@ -37,7 +46,7 @@ export const OrderSummary = () => {
 
       const response = await createCheckoutSessionRequest(
         cart,
-        orderAddress,
+        shippingAddress,
         totalAmount,
         paymentMethod
       );
@@ -112,7 +121,7 @@ export const OrderSummary = () => {
                 type="radio"
                 className="radio"
                 name="address"
-                onChange={() => setOrderAddress(address.id)}
+                onChange={() => setShippingAddress(address.id)}
               />
               <h4>
                 {address.first_name} {address.last_name}
@@ -131,13 +140,13 @@ export const OrderSummary = () => {
             </label>
           ))}
         </div>
-        <button className="new_address" onClick={() => setIsModalOpen(true)}>
+        <button className="new_address" onClick={() => setIsModalAddress(true)}>
           <img src={iconAddress} alt="add new address" />
           Add new address
         </button>
       </article>
 
-      {isModalOpen && <AddressModal />}
+      {isModalAddress && <AddressModal getAddress={getAddress} />}
 
       <button
         className="dark_button"

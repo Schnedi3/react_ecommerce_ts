@@ -15,7 +15,6 @@ export const addOrder = async (req: Request, res: Response) => {
   try {
     const user_id = req.user.id;
     const cart_id = await getCartIdByUserId(user_id);
-
     const date = new Date();
 
     const result = await addOrderDB(

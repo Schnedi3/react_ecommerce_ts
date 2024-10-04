@@ -2,12 +2,14 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { useCartContext } from "../../context/useCartContext";
-import { getProductsRequest } from "../../api/product";
-import { IProduct } from "../../types/types";
+import { useShopContext } from "../../context/useShopContext";
 import { formatCurrency } from "../../helpers/formatCurrency";
+import { getProductsRequest } from "../../Routes";
+import { IProduct } from "../../types/types";
+
 import { Search } from "./Search";
 import { Categories } from "./Categories";
+
 import { HomeSkeleton } from "../../skeletons/HomeSkeleton";
 import "./home.css";
 
@@ -18,7 +20,7 @@ export const Home = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [selectedCategory, setSelectedCategory] =
     useState<string>(defaultCategory);
-  const { cart } = useCartContext();
+  const { cart } = useShopContext();
 
   const getProducts = async () => {
     try {

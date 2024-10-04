@@ -1,18 +1,73 @@
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import { useCartContext } from "../../context/useCartContext";
+import { useShopContext } from "../../context/useShopContext";
 import { formatCurrency } from "../../helpers/formatCurrency";
-import { iconCart, iconDelete } from "../../Routes";
+import {
+  deleteFromCartRequest,
+  iconCart,
+  iconDelete,
+  updateCartRequest,
+} from "../../Routes";
+
 import "./cart.css";
 import "../globals.css";
 
 export const Cart = () => {
-  const { cart, updateQuantity, deleteProduct, totalAmount } = useCartContext();
+  const { cart, setCart, getCart, totalAmount } = useShopContext();
   const navigate = useNavigate();
 
-  return cart.length === 0 ? (
-    <img className="cart_empty" src={iconCart} alt="" />
-  ) : (
+  const updateQuantity = async (
+    product_id: number,
+    quantity: number,
+    size: string
+  ) => {
+    try {
+      const response = await updateCartRequest(product_id, quantity, size);
+
+      if (response.data.success) {
+        const updateItem = response.data.result;
+        setCart(
+          cart.map((item) => (item.id === product_id ? updateItem : item))
+        );
+        getCart();
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unexpected error occurred");
+      }
+    }
+  };
+
+  const deleteProduct = async (product_id: number, size: string) => {
+    try {
+      const response = await deleteFromCartRequest(product_id, size);
+
+      if (response.data.success) {
+        setCart(cart.filter((item) => item.id !== product_id));
+        getCart();
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unexpected error occurred");
+      }
+    }
+  };
+
+  if (cart.length === 0)
+    return <img className="cart_empty" src={iconCart} alt="" />;
+
+  return (
     <section className="cart_container container">
       <article>
         <h2>Cart</h2>

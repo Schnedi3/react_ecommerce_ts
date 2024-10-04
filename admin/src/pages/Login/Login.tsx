@@ -4,19 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 import { useAuthContext } from "../../context/useAuthContext";
 import { ILogin } from "../../types/types";
-import iconEyeClosed from "../../assets/icons/eye_closed.svg";
-import iconEyeOpen from "../../assets/icons/eye_open.svg";
+
+import { iconEyeClosed, iconEyeOpen } from "../../Routes";
 import "./login.css";
 import "../globals.css";
 
 export const Login = () => {
+  const [visible, setIsVisible] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm<ILogin>();
-  const [visible, setIsVisible] = useState<boolean>(false);
   const { isAuthenticated, login } = useAuthContext();
   const navigate = useNavigate();
 
@@ -38,28 +38,26 @@ export const Login = () => {
       >
         <h2>Login</h2>
 
-        <label htmlFor="email">
+        <label>
           Email
           {errors.email && (
             <span className="error">{errors.email.message}</span>
           )}
           <input
             type="email"
-            id="email"
             className={errors.email ? "input_error" : ""}
             placeholder="johndoe@lorem.com"
             {...register("email", { required: "Email is required" })}
           />
         </label>
 
-        <label htmlFor="password">
+        <label>
           Password
           {errors.password && (
             <span className="error">{errors.password.message}</span>
           )}
           <input
             type={visible ? "text" : "password"}
-            id="password"
             className={errors.password ? "input_error" : ""}
             placeholder="A1b2C3d4"
             {...register("password", { required: "Password is required" })}
@@ -76,7 +74,9 @@ export const Login = () => {
           </button>
         </label>
 
-        <button className="dark_button" type="submit">Login</button>
+        <button className="dark_button" type="submit">
+          Login
+        </button>
       </form>
     </main>
   );
