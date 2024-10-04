@@ -83,6 +83,15 @@ export const Orders = () => {
     getOrders();
   }, []);
 
+  if (orders.length === 0) {
+    return (
+      <section className="orders_empty container">
+        <img src={iconBox} alt="" />
+        <p>No orders yet</p>
+      </section>
+    );
+  }
+
   return (
     <section className="order_container container">
       <h2>All orders</h2>
@@ -120,7 +129,7 @@ export const Orders = () => {
                 <span>Payment method:</span> {order.payment_method}
               </p>
               <p>
-                <span>Date:</span> {order.order_date.toLocaleDateString()}
+                <span>Date:</span> {order.order_date}
               </p>
             </article>
 

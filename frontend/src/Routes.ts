@@ -49,6 +49,7 @@ import iconCart from "./assets/icons/cart.svg";
 import iconClose from "./assets/icons/close.svg";
 import iconConfirm from "./assets/icons/confirm.svg";
 import iconDelete from "./assets/icons/delete.svg";
+import iconEdit from "./assets/icons/edit.svg";
 import iconEyeClosed from "./assets/icons/eye_closed.svg";
 import iconEyeOpen from "./assets/icons/eye_open.svg";
 import iconGoogle from "./assets/icons/google.svg";
@@ -64,6 +65,7 @@ export {
   iconClose,
   iconConfirm,
   iconDelete,
+  iconEdit,
   iconEyeClosed,
   iconEyeOpen,
   iconGoogle,

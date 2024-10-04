@@ -55,10 +55,13 @@
   margin-bottom: 1rem;
 }
 
+.profile_address {
+  display: flex;
+}
+
 .profile_address > label {
   max-width: fit-content;
   padding: 0.5rem 1rem;
-  position: relative;
   display: flex;
   flex-direction: column;
   border: 0.05rem solid var(--gray-bg);
@@ -78,22 +81,23 @@
   color: var(--gray-text);
 }
 
-.profile_address > label > div {
-  margin-top: 0.6rem;
+.address_buttons {
   display: flex;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
-.profile_address > label > div > button {
-  padding: 0.1rem 1rem;
+.address_buttons > button {
+  margin-top: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 1rem;
-  background-color: var(--white);
-  transition: 0.3s;
+  border: 0;
+  background-color: transparent;
+}
+
+.address_buttons > button > img {
+  width: 1.4rem;
 }
 
 .profile_address > label > input {
@@ -102,9 +106,11 @@
 
 /* HOVER */
 @media (hover: hover) {
-  .profile_address > label > div > button:hover {
-    border: 0.05rem solid var(--accent);
-    background-color: var(--accent-clear);
+  .address_buttons > button:hover {
     cursor: pointer;
+  }
+
+  .address_buttons > button > img:hover {
+    filter: var(--filter);
   }
 }

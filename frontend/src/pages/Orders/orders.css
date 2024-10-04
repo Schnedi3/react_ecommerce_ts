@@ -1,3 +1,23 @@
+/* EMPTY */
+.orders_empty {
+  min-height: calc(100vh - var(--menu-height) - var(--footer-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.orders_empty > img {
+  width: 30rem;
+  opacity: 0.15;
+}
+
+.orders_empty > p {
+  position: absolute;
+  font-weight: 800;
+  font-size: 4.5rem;
+  opacity: 0.8;
+}
+
 /* ORDERS */
 .order_container {
   margin: 2rem auto !important;
@@ -59,6 +79,14 @@
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
+  .orders_empty > img {
+    width: 20rem;
+  }
+
+  .orders_empty > p {
+    font-size: 3rem;
+  }
+
   .order > article {
     display: grid;
     grid-template-columns: 0.5fr 2fr;

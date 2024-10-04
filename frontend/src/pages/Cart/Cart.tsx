@@ -64,8 +64,14 @@ export const Cart = () => {
     }
   };
 
-  if (cart.length === 0)
-    return <img className="cart_empty" src={iconCart} alt="" />;
+  if (cart.length === 0) {
+    return (
+      <section className="cart_empty container">
+        <img src={iconCart} alt="" />
+        <p>Your cart is empty</p>
+      </section>
+    );
+  }
 
   return (
     <section className="cart_container container">

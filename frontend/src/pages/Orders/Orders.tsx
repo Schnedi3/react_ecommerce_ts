@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { getUserOrdersRequest } from "../../Routes";
+import { getUserOrdersRequest, iconBox } from "../../Routes";
 import { formatCurrency } from "../../helpers/formatCurrency";
-import { OrderSkeleton } from "../../skeletons/OrderSkeleton";
+// import { OrderSkeleton } from "../../skeletons/OrderSkeleton";
 import { IOrder } from "../../types/types";
 
 import "./orders.css";
@@ -33,7 +33,14 @@ export const Orders = () => {
     getUserOrders();
   }, []);
 
-  if (orders.length === 0) return <OrderSkeleton />;
+  if (orders.length === 0) {
+    return (
+      <section className="orders_empty container">
+        <img src={iconBox} alt="" />
+        <p>No orders yet</p>
+      </section>
+    );
+  }
 
   return (
     <ul className="order_container container">
@@ -57,7 +64,7 @@ export const Orders = () => {
                 </div>
 
                 <p>
-                  <span>Date:</span> {order.order_date.toLocaleDateString()}
+                  <span>Date:</span> {order.order_date}
                 </p>
               </div>
 

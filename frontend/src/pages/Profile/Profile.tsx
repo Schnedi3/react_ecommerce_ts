@@ -3,7 +3,13 @@ import { toast } from "react-toastify";
 
 import { useAuthContext } from "../../context/useAuthContext";
 import { useShopContext } from "../../context/useShopContext";
-import { AddressModal, deleteAddressRequest, iconAddress } from "../../Routes";
+import {
+  AddressModal,
+  deleteAddressRequest,
+  iconAddress,
+  iconDelete,
+  iconEdit,
+} from "../../Routes";
 
 import "./profile.css";
 import "../globals.css";
@@ -66,9 +72,11 @@ export const Profile = () => {
           {addressList.map((address) => (
             <label key={address.first_name}>
               <input type="radio" />
+
               <h4>
                 {address.first_name} {address.last_name}
               </h4>
+
               <p>
                 {address.street}, {address.number}
               </p>
@@ -77,14 +85,17 @@ export const Profile = () => {
               <p>
                 {address.state}, {address.zip_code}
               </p>
+
               <p>
                 <span>Phone number:</span> {address.phone}
               </p>
 
-              <div>
-                <button>Edit</button>
+              <div className="address_buttons">
+                <button>
+                  <img src={iconEdit} alt="edit address" />
+                </button>
                 <button onClick={() => deleteAddress(address.id)}>
-                  Delete
+                  <img src={iconDelete} alt="delete address" />
                 </button>
               </div>
             </label>
