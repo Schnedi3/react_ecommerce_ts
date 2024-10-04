@@ -13,3 +13,7 @@ export const deleteAddressRequest = (id: number) => {
 export const getAddressRequest = () => {
   return axios.get("/address/");
 };
+
+export const updateAddressRequest = (address: IAddress, id: number) => {
+  return axios.put(`/address/${id}`, address);
+};

@@ -2,6 +2,7 @@
 import { addAddressRequest } from "./api/address";
 import { deleteAddressRequest } from "./api/address";
 import { getAddressRequest } from "./api/address";
+import { updateAddressRequest } from "./api/address";
 import { loginGoogleRequest } from "./api/auth";
 import { loginRequest } from "./api/auth";
 import { registerRequest } from "./api/auth";
@@ -20,6 +21,7 @@ export {
   addAddressRequest,
   deleteAddressRequest,
   getAddressRequest,
+  updateAddressRequest,
   loginGoogleRequest,
   loginRequest,
   registerRequest,

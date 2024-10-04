@@ -68,16 +68,15 @@
   font-size: 0.8rem;
   border-radius: 0.2rem;
   background-color: var(--white-bg);
-  transition: 0.3s;
 }
 
-.profile_address > label > h4 {
+.address_info > h4 {
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--accent);
 }
 
-.profile_address > label > p > span {
+.address_info > p > span {
   color: var(--gray-text);
 }
 
@@ -112,5 +111,29 @@
 
   .address_buttons > button > img:hover {
     filter: var(--filter);
+  }
+}
+
+/* ADAPTIVE */
+@media (max-width: 700px) {
+  .personal > ul {
+    flex-direction: column;
+  }
+
+  .profile_address > label {
+    width: 100%;
+    max-width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .address_buttons {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .address_buttons > button {
+    margin-top: 0;
   }
 }

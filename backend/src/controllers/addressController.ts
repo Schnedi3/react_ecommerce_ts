@@ -4,6 +4,7 @@ import {
   getAddressDB,
   addAddressDB,
   deleteAddressDB,
+  updateAddressDB,
 } from "../database/addressDB";
 
 export const getAddress = async (req: Request, res: Response) => {
@@ -58,6 +59,40 @@ export const deleteAddress = async (req: Request, res: Response) => {
     await deleteAddressDB(id);
 
     res.status(200).json({ success: true, message: "Address removed" });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const updateAddress = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const {
+    first_name,
+    last_name,
+    phone,
+    street,
+    number,
+    door,
+    city,
+    state,
+    zip_code,
+  } = req.body;
+
+  try {
+    const result = await updateAddressDB(
+      first_name,
+      last_name,
+      phone,
+      street,
+      number,
+      door,
+      city,
+      state,
+      zip_code,
+      id
+    );
+
+    res.status(200).json({ success: true, message: "Address updated", result });
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });
   }
