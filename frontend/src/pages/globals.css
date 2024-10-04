@@ -51,8 +51,8 @@ h2::after {
 
 /* ----- */
 .new_address {
-  width: 14rem;
-  padding: 0.5rem 1rem;
+  max-width: fit-content;
+  padding: 0.5rem 2rem;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,13 +1,14 @@
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { CartItem, CartContextType, IProduct } from "../types/types";
+import { CartItem, CartContextType, IProduct, IAddress } from "../types/types";
 import {
   addToCartRequest,
   deleteFromCartRequest,
   getCartRequest,
   updateCartRequest,
 } from "../api/cart";
+import { getAddressRequest } from "../api/address";
 
 export const CartContext = createContext<CartContextType | undefined>(
   undefined
@@ -17,6 +18,8 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [itemsInCart, setItemsInCart] = useState<number>(0);
   const [totalAmount, setTotalAmount] = useState<number>(0);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [addressList, setAddressList] = useState<IAddress[]>([]);
 
   const getCart = async () => {
     try {
@@ -127,6 +130,38 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
     setTotalAmount(totalCart);
   }, [cart]);
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
+
+  const getAddress = async () => {
+    try {
+      const response = await getAddressRequest();
+
+      if (response.data.success) {
+        setAddressList(response.data.result);
+      } else {
+        console.log(response.data.message);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unexpected error occurred");
+      }
+    }
+  };
+
+  useEffect(() => {
+    getAddress();
+  }, []);
+
   return (
     <CartContext.Provider
       value={{
@@ -138,6 +173,11 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
         deleteProduct,
         itemsInCart,
         totalAmount,
+        isModalOpen,
+        setIsModalOpen,
+        addressList,
+        setAddressList,
+        getAddress,
       }}
     >
       {children}

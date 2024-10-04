@@ -1,22 +1,24 @@
 import { toast } from "react-toastify";
 
 import { useAuthContext } from "../../context/useAuthContext";
-import { useAddress } from "../../hooks/useAddress";
+import { useCartContext } from "../../context/useCartContext";
 import { removeAddressRequest } from "../../api/address";
+
 import { AddressModal, iconAddress } from "../../Routes";
 import "./profile.css";
 import "../globals.css";
 
 export const Profile = () => {
   const { user } = useAuthContext();
-  const { addresses, setAddresses, isModalOpen, setIsModalOpen } = useAddress();
+  const { isModalOpen, setIsModalOpen, addressList, setAddressList } =
+    useCartContext();
 
   const removeAddress = async (id: number) => {
     try {
       const response = await removeAddressRequest(id);
 
       if (response.data.success) {
-        setAddresses(addresses.filter((address) => address.id !== id));
+        setAddressList(addressList.filter((address) => address.id !== id));
         toast.success(response.data.message);
       } else {
         toast.error(response.data.message);
@@ -52,7 +54,7 @@ export const Profile = () => {
         <h2>Your addresses</h2>
 
         <div className="profile_address">
-          {addresses.map((address) => (
+          {addressList.map((address) => (
             <label key={address.first_name}>
               <input type="radio" />
               <h4>

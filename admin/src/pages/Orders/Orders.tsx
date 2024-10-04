@@ -107,7 +107,7 @@ export const Orders = () => {
                 {order.city}, {order.state}, {order.zip_code}
               </p>
               <p>
-                <span>Phone:</span> {order.phone}
+                <span>Phone number:</span> {order.phone}
               </p>
             </article>
 

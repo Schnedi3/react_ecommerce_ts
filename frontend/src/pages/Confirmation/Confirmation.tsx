@@ -25,18 +25,15 @@ export const Confirmation = () => {
         const response = await fetchCheckoutSessionRequest(sessionId);
 
         if (response.data.payment_status === "paid") {
-          toast.success("Payment successful!");
-
           const { address_id, amount, payment_method } = response.data.metadata;
-
           const res = await addOrderRequest(address_id, amount, payment_method);
+
           if (!res.data.success) {
             toast.error(response.data.message);
           }
         } else {
           toast.error("Payment failed. Please try again.");
         }
-        console.log("Session details:", response.data);
       } catch (error) {
         console.error("Error fetching checkout session:", error);
         toast.error("Failed to retrieve payment session. Redirecting to home");

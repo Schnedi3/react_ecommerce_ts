@@ -29,6 +29,11 @@ export interface CartContextType {
   deleteProduct: (product_id: number, size: string) => void;
   itemsInCart: number;
   totalAmount: number;
+  isModalOpen: boolean;
+  setIsModalOpen: (isModalOpen: boolean) => void;
+  addressList: IAddress[]
+  setAddressList: (addressList: IAddress[]) => void;
+  getAddress: () => void;
 }
 
 export interface ICategoriesProps {

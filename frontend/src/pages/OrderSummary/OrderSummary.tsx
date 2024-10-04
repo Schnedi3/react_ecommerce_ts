@@ -3,13 +3,12 @@ import { toast } from "react-toastify";
 import { loadStripe } from "@stripe/stripe-js";
 
 import { useCartContext } from "../../context/useCartContext";
-import { useAddress } from "../../hooks/useAddress";
+import { createCheckoutSessionRequest } from "../../api/payment";
 import { formatCurrency } from "../../helpers/formatCurrency";
-import { AddressModal, iconAddress } from "../../Routes";
 
+import { AddressModal, iconAddress } from "../../Routes";
 import "./summary.css";
 import "../globals.css";
-import { createCheckoutSessionRequest } from "../../api/payment";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -18,12 +17,12 @@ export const OrderSummary = () => {
   const [paymentMethod, setPaymentMethod] = useState<string>("");
   const [orderAddress, setOrderAddress] = useState<number>(0);
 
-  const { cart, totalAmount } = useCartContext();
-  const { addresses, isModalOpen, setIsModalOpen } = useAddress();
+  const { cart, totalAmount, isModalOpen, setIsModalOpen, addressList } =
+    useCartContext();
 
   const handleCheckout = async () => {
     if (!paymentMethod) {
-      toast.error("Please select payment method");
+      toast.error("Please select a payment method");
       return;
     }
 
@@ -106,30 +105,32 @@ export const OrderSummary = () => {
 
       <article className="addresses">
         <h2>Delivery address</h2>
-        {addresses.map((address) => (
-          <label className="label" key={address.first_name}>
-            <input
-              type="radio"
-              className="radio"
-              name="address"
-              onChange={() => setOrderAddress(address.id)}
-            />
-            <h4>
-              {address.first_name} {address.last_name}
-            </h4>
-            <p>
-              {address.street}, {address.number}
-            </p>
-            <p>{address.door}</p>
-            <p>{address.city}</p>
-            <p>
-              {address.state}, {address.zip_code}
-            </p>
-            <p>
-              <span>Phone number:</span> {address.phone}
-            </p>
-          </label>
-        ))}
+        <div>
+          {addressList.map((address) => (
+            <label className="label" key={address.first_name}>
+              <input
+                type="radio"
+                className="radio"
+                name="address"
+                onChange={() => setOrderAddress(address.id)}
+              />
+              <h4>
+                {address.first_name} {address.last_name}
+              </h4>
+              <p>
+                {address.street}, {address.number}
+              </p>
+              <p>{address.door}</p>
+              <p>{address.city}</p>
+              <p>
+                {address.state}, {address.zip_code}
+              </p>
+              <p>
+                <span>Phone number:</span> {address.phone}
+              </p>
+            </label>
+          ))}
+        </div>
         <button className="new_address" onClick={() => setIsModalOpen(true)}>
           <img src={iconAddress} alt="add new address" />
           Add new address

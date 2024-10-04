@@ -10,6 +10,8 @@ import "../globals.css";
 export const Orders = () => {
   const [orders, setOrders] = useState<IOrder[]>([]);
 
+  console.log(orders)
+
   const getUserOrders = async () => {
     try {
       const response = await getUserOrdersRequest();

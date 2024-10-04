@@ -1,28 +1,61 @@
-import { useAddress } from "../../hooks/useAddress";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "react-toastify";
+
+import { useCartContext } from "../../context/useCartContext";
+import { addAddressRequest } from "../../api/address";
+import { IAddress } from "../../types/types";
+import { addressSchema } from "../../schemas/schemas";
+
 import { iconClose } from "../../Routes";
 import "./address_modal.css";
 
 export const AddressModal = () => {
+  const { setIsModalOpen, getAddress } = useCartContext();
+
   const {
     register,
     handleSubmit,
-    errors,
-    onSubmit,
-    setIsModalOpen,
-  } = useAddress();
+    formState: { errors },
+    reset,
+  } = useForm<IAddress>({
+    resolver: zodResolver(addressSchema),
+  });
+
+  const onSubmit = async (data: IAddress) => {
+    try {
+      const response = await addAddressRequest(data);
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+        await getAddress();
+        setIsModalOpen(false);
+      } else {
+        console.log(response.data.message);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unexpected error occurred");
+      }
+    }
+
+    reset();
+  };
 
   return (
     <section className="modal">
+      <button className="close_modal" onClick={() => setIsModalOpen(false)}>
+        <img src={iconClose} alt="close modal" />
+      </button>
+
       <form
         className="address_form"
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2>Add address</h2>
-
-        <button className="close_modal" onClick={() => setIsModalOpen(false)}>
-          <img src={iconClose} alt="close modal" />
-        </button>
 
         <article>
           <label>

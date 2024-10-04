@@ -6,7 +6,7 @@ export const addOrderDB = async (
   address_id: number,
   amount: number,
   payment_method: string,
-  orderDate: string
+  date: Date
 ) => {
   const addOrderQuery = `
     INSERT INTO "order" (user_id, address_id, amount, payment_method, date)
@@ -18,7 +18,7 @@ export const addOrderDB = async (
     address_id,
     amount,
     payment_method,
-    orderDate,
+    date,
   ]);
 
   const addOrderItemQuery = `

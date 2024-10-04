@@ -17,7 +17,6 @@ export const addOrder = async (req: Request, res: Response) => {
     const cart_id = await getCartIdByUserId(user_id);
 
     const date = new Date();
-    const orderDate = new Intl.DateTimeFormat("es-ES").format(date);
 
     const result = await addOrderDB(
       cart_id,
@@ -25,7 +24,7 @@ export const addOrder = async (req: Request, res: Response) => {
       address_id,
       amount,
       payment_method,
-      orderDate
+      date
     );
 
     // emoty cart

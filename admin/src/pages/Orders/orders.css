@@ -28,7 +28,7 @@
 }
 
 .order > li > article > p > span {
-  font-weight: 600;
+  color: var(--gray-text);
 }
 
 .order > li > select {
@@ -45,6 +45,10 @@
 
 /* HOVER */
 @media (hover: hover) {
+  .order > li > select:hover {
+    cursor: pointer;
+  }
+
   .order_delete:hover {
     filter: var(--filter);
     cursor: pointer;
