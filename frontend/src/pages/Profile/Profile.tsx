@@ -4,21 +4,21 @@ import { toast } from "react-toastify";
 import { useAuthContext } from "../../context/useAuthContext";
 import { useShopContext } from "../../context/useShopContext";
 import {
-  AddressModal,
-  deleteAddressRequest,
   iconAddress,
   iconDelete,
   iconEdit,
+  AddressModal,
+  deleteAddressRequest,
+  updateUsernameRequest,
 } from "../../Routes";
-
-import "./profile.css";
-import "../globals.css";
 import { AddressEdit } from "./AddressEdit";
 import { IAddress } from "../../types/types";
 
+import "./profile.css";
+import "../globals.css";
+
 export const Profile = () => {
-  const [isEditAddress, setIsEditAddress] = useState<boolean>(false);
-  const { user } = useAuthContext();
+  const { user, setUser } = useAuthContext();
   const {
     getAddress,
     addressList,
@@ -31,6 +31,34 @@ export const Profile = () => {
     getAddress();
   }, [getAddress]);
 
+  const [isEditUsername, setIsEditUsername] = useState<boolean>(false);
+  const [updatedUsername, setUpdatedUsername] = useState<string>("");
+
+  const handleUpdateUser = async (
+    e: React.FormEvent<HTMLFormElement>,
+    id: number
+  ) => {
+    e.preventDefault();
+
+    try {
+      if (updatedUsername.trim() !== "") {
+        const response = await updateUsernameRequest(updatedUsername, id);
+
+        if (response.data.success) {
+          toast.success(response.data.message);
+          setUser(response.data.result);
+          localStorage.setItem("user", JSON.stringify(response.data.result));
+          setIsEditUsername(false);
+        } else {
+          toast.error(response.data.message);
+        }
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const [isEditAddress, setIsEditAddress] = useState<boolean>(false);
   const [addressData, setAddressData] = useState<IAddress | undefined>(
     undefined
   );
@@ -66,7 +94,21 @@ export const Profile = () => {
           <ul>
             <li>
               <h4>Username</h4>
-              <p>{user.username}</p>
+              {isEditUsername ? (
+                <form onSubmit={(e) => handleUpdateUser(e, user.id)}>
+                  <input
+                    type="text"
+                    className="username_edit"
+                    value={updatedUsername}
+                    onChange={(e) => setUpdatedUsername(e.target.value)}
+                    autoFocus
+                  />
+                </form>
+              ) : (
+                <p onDoubleClick={() => setIsEditUsername(true)}>
+                  {user.username}
+                </p>
+              )}
             </li>
             <li>
               <h4>Email</h4>

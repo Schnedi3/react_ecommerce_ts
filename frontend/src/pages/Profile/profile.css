@@ -39,6 +39,14 @@
   background-color: var(--white-bg);
 }
 
+.username_edit {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.2rem;
+  background-color: var(--white-bg);
+}
+
 /* ----- */
 .address_container {
   display: flex;

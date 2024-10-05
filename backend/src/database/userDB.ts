@@ -23,3 +23,14 @@ export const deleteUserDB = async (id: number) => {
 
   await pool.query(deleteUserQuery, [id]);
 };
+
+export const updateUsernamerDB = async (username: string, id: number) => {
+  const updateUsernameQuery = `
+    UPDATE "user"
+    SET username = $1
+    WHERE id = $2
+    RETURNING *`;
+
+  const result = await pool.query(updateUsernameQuery, [username, id]);
+  return result.rows[0];
+};

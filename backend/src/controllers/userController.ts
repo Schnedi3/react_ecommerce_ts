@@ -1,6 +1,11 @@
 import { Request, Response } from "express";
 
-import { getUserDB, getUsersDB, deleteUserDB } from "../database/userDB";
+import {
+  getUserDB,
+  getUsersDB,
+  deleteUserDB,
+  updateUsernamerDB,
+} from "../database/userDB";
 
 export const getUsers = async (req: Request, res: Response) => {
   try {
@@ -31,6 +36,21 @@ export const deleteUser = async (req: Request, res: Response) => {
     await deleteUserDB(id);
 
     res.status(200).json({ success: true, message: "User removed" });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const updateUsername = async (req: Request, res: Response) => {
+  const id = Number(req.params.id);
+  const { username } = req.body;
+
+  try {
+    const result = await updateUsernamerDB(username, id);
+
+    res
+      .status(200)
+      .json({ success: true, message: "Username updated", result });
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });
   }

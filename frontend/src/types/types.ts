@@ -1,5 +1,6 @@
 export interface AuthContextType {
   user: ILogin | IRegister | null;
+  setUser: (user: ILogin | IRegister | null) => void;
   googleLogin: () => void;
   login: (user: ILogin) => void;
   signup: (user: IRegister) => void;
@@ -40,6 +41,7 @@ export interface IContact {
 }
 
 export interface ILogin {
+  id: number;
   username?: string;
   email: string;
   password: string;
@@ -64,6 +66,7 @@ interface IOrderProduct {
 }
 
 export interface IRegister {
+  id: number;
   username: string;
   email: string;
   password: string;

@@ -16,6 +16,7 @@ import { createCheckoutSessionRequest } from "./api/payment";
 import { fetchCheckoutSessionRequest } from "./api/payment";
 import { getProductRequest } from "./api/product";
 import { getProductsRequest } from "./api/product";
+import { updateUsernameRequest } from "./api/user";
 
 export {
   addAddressRequest,
@@ -35,6 +36,7 @@ export {
   fetchCheckoutSessionRequest,
   getProductRequest,
   getProductsRequest,
+  updateUsernameRequest,
 };
 
 //components

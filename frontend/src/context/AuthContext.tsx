@@ -121,6 +121,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     <AuthContext.Provider
       value={{
         user,
+        setUser,
         googleLogin,
         login,
         signup,
