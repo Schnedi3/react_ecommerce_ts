@@ -50,13 +50,13 @@
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--black-text);
-  border: 0.05rem solid var(--gray-bg);
+  border-radius: 0.3rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
 .detail_info > ul > li > button.selected {
-  color: var(--white-text);
-  background-color: var(--accent);
+  box-shadow: 0 2px 0 0 var(--accent);
 }
 
 .detail_info > ul > li > button#disabled {
@@ -72,8 +72,7 @@
 /* HOVER */
 @media (hover: hover) {
   .detail_info > ul > li > button:hover {
-    color: var(--white-text);
-    background-color: var(--accent);
+    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 }

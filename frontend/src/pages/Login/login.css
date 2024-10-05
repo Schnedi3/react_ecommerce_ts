@@ -16,10 +16,9 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  border: 0;
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
-  border: 0.05rem solid var(--gray-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
 .gbutton > img {
@@ -74,12 +73,16 @@
 }
 
 .login_form > label > input {
-  padding: 0.7rem;
-  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
   color: var(--black-text);
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
+}
+
+.login_form > label > input:focus {
+  box-shadow: 0 2px 0 0 var(--accent);
 }
 
 .login_form > label > input::placeholder {
@@ -91,7 +94,6 @@
   position: absolute;
   top: 55%;
   right: 1rem;
-  border: 0;
   background-color: transparent;
 }
 
@@ -121,13 +123,13 @@
 
 /* ----- */
 .login_form > label > input.input_error {
-  border: 0.05rem solid var(--error);
+  box-shadow: 0 2px 0 0 var(--error);
 }
 
 /* HOVER */
 @media (hover: hover) {
   .gbutton:hover {
-    filter: brightness(95%);
+    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 

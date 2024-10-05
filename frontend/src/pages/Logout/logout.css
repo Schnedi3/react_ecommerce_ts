@@ -13,14 +13,14 @@
 .orders {
   width: 60%;
   margin-top: 0.5rem;
-  padding: 0.7rem;
+  padding: 0.7rem 1.5rem;
   display: flex;
   justify-content: space-between;
   font-size: 1rem;
   color: var(--black-text);
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
   transition: 0.3s;
 }
 
@@ -32,9 +32,9 @@
 
 .profile > img:nth-child(3),
 .orders > img:nth-child(3) {
-  width: 1.5rem;
+  width: 1.3rem;
   transform: rotate(-90deg);
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 /* ----- */
@@ -46,19 +46,8 @@
 @media (hover: hover) {
   .profile:hover,
   .orders:hover {
-    color: var(--white-text);
-    background-color: var(--accent);
+    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
-  }
-
-  .profile:hover > img,
-  .orders:hover > img {
-    filter: invert(1);
-  }
-
-  .profile:hover > p,
-  .orders:hover > p {
-    color: var(--white-text);
   }
 }
 

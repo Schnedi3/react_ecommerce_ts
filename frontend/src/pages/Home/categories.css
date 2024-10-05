@@ -13,9 +13,9 @@
   gap: 0.7rem;
   font-size: 0.9rem;
   color: var(--black-text);
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
 .categories > button > span {
@@ -27,12 +27,18 @@
 
 .categories > button > img {
   width: 1rem;
+  transform: rotate(-90deg);
+  transition: 0.3s;
+}
+
+.categories:has(ul.modal_open) > button > img {
+  transform: rotate(0deg);
 }
 
 .categories > ul {
   width: 100%;
   position: absolute;
-  top: 3rem;
+  top: 3.2rem;
   display: flex;
   flex-direction: column;
   clip-path: inset(0 0 100% 0);
@@ -60,6 +66,7 @@
 /* HOVER */
 @media (hover: hover) {
   .categories > button:hover {
+    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 

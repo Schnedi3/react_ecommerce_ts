@@ -4,10 +4,14 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding: 0.7rem;
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
+}
+
+.search:has(.search_input:focus) {
+  box-shadow: 0 2px 0 0 var(--accent);
 }
 
 .find_icon {
@@ -26,10 +30,6 @@
 
 .search_input::placeholder {
   opacity: 0.25;
-}
-
-.search_input:focus-visible {
-  outline: 0;
 }
 
 .clear_icon {

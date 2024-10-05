@@ -29,7 +29,6 @@
   position: absolute;
   top: 6.8rem;
   right: 1.5rem;
-  border: 0;
   border-radius: 50%;
   background-color: var(--accent);
   z-index: 2;
@@ -57,20 +56,25 @@
 
 .address_form > article > label > input {
   width: 100%;
-  padding: 0.7rem;
+  padding: 0.7rem 1rem;
   color: var(--black-text);
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
-}
-
-.address_form > article > label > input::placeholder {
-  opacity: 0.25;
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
 .address_form > article > label > input:focus {
-  border: 0.05rem solid var(--accent);
-  background-color: var(--accent-clear);
+  box-shadow: 0 2px 0 0 var(--accent);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  appearance: none;
+  -moz-appearance: textfield;
 }
 
 dark_button-address {
@@ -79,7 +83,7 @@ dark_button-address {
 
 /* error */
 .address_form > article > label > input.input_error {
-  border: 0.05rem solid var(--error);
+  box-shadow: 0 2px 0 0 var(--error);
 }
 
 /* HOVER */

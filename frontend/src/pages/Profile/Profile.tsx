@@ -102,10 +102,15 @@ export const Profile = () => {
                     value={updatedUsername}
                     onChange={(e) => setUpdatedUsername(e.target.value)}
                     autoFocus
+                    onBlur={() => setIsEditUsername(false)}
                   />
                 </form>
               ) : (
-                <p onDoubleClick={() => setIsEditUsername(true)}>
+                <p
+                  onDoubleClick={() => {
+                    setIsEditUsername(true), setUpdatedUsername(user.username);
+                  }}
+                >
                   {user.username}
                 </p>
               )}

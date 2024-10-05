@@ -64,9 +64,11 @@ h2::after {
   justify-content: center;
   gap: 0.7rem;
   font-size: 0.9rem;
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  color: var(--gray-text);
+  border: 0;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
   transition: 0.3s;
 }
 
@@ -90,7 +92,8 @@ h2::after {
   }
 
   .new_address:hover {
-    border: 0.05rem solid var(--accent);
+    /* border: 0.05rem solid var(--accent); */
+    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 }

@@ -42,10 +42,10 @@ export interface IContact {
 
 export interface ILogin {
   id: number;
-  username?: string;
+  username: string;
   email: string;
   password: string;
-  role?: string;
+  role: string;
 }
 
 export interface IOrder {
@@ -70,7 +70,7 @@ export interface IRegister {
   username: string;
   email: string;
   password: string;
-  role?: string;
+  role: string;
 }
 
 export interface ISearchProps {

@@ -109,7 +109,7 @@ export const NewProduct = () => {
         Description
         <textarea
           placeholder="product description"
-          rows={3}
+          rows={5}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>

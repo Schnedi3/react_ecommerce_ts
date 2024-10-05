@@ -52,11 +52,11 @@
 }
 
 .order > li > select {
-  padding: 0.2rem 0.7rem;
+  padding: 0.5rem 0.9rem;
   color: var(--black-text);
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  border-radius: 0.3rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
 .order_delete {
@@ -66,6 +66,7 @@
 /* HOVER */
 @media (hover: hover) {
   .order > li > select:hover {
+    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 

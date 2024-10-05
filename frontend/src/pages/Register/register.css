@@ -26,12 +26,16 @@
 }
 
 .register_form > label > input {
-  padding: 0.7rem;
-  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
   color: var(--black-text);
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
+}
+
+.register_form > label > input:focus {
+  box-shadow: 0 2px 0 0 var(--accent);
 }
 
 .register_form > label > input::placeholder {
@@ -56,7 +60,7 @@
 
 /* ----- */
 .register_form > label > input.input_error {
-  border: 0.05rem solid var(--error);
+  box-shadow: 0 2px 0 0 var(--error);
 }
 
 /* HOVER */

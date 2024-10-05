@@ -28,23 +28,28 @@
 }
 
 .personal > ul > li > h4 {
+  font-size: 0.9rem;
   color: var(--gray-text);
 }
 
 .personal > ul > li > p {
   width: 100%;
   padding: 0.7rem 1rem;
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
 .username_edit {
   width: 100%;
   padding: 0.7rem 1rem;
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
-  background-color: var(--white-bg);
+  border-radius: 0.5rem;
+  background-color: var(--accent-clear);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
+}
+
+.username_edit:focus {
+  box-shadow: 0 2px 0 0 var(--accent);
 }
 
 /* ----- */
@@ -72,10 +77,10 @@
   padding: 0.5rem 1rem;
   display: flex;
   flex-direction: column;
-  border: 0.05rem solid var(--gray-bg);
   font-size: 0.8rem;
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
 .address_info > h4 {

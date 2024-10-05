@@ -27,12 +27,17 @@
 
 .contact_label > input,
 .contact_label > textarea {
-  padding: 0.7rem;
-  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
   color: var(--black-text);
-  border: 0.05rem solid var(--gray-bg);
-  border-radius: 0.2rem;
+  border-radius: 0.5rem;
   background-color: var(--white-bg);
+  box-shadow: 0 2px 0 0 var(--accent-shadow);
+}
+
+.contact_label > input:focus,
+.contact_label > textarea:focus {
+  box-shadow: 0 2px 0 0 var(--accent);
 }
 
 .contact_label > input::placeholder,
@@ -59,7 +64,7 @@
 
 .contact_label > input.input_error,
 .contact_label > textarea.input_error {
-  border: 0.05rem solid var(--error);
+  box-shadow: 0 2px 0 0 var(--error);
 }
 
 /* ADAPTIVE */
