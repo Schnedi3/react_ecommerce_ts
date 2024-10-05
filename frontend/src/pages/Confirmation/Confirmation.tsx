@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 import { useShopContext } from "../../context/useShopContext";
 import {
-  addOrderRequest,
+  addStripeOrderRequest,
   fetchCheckoutSessionRequest,
   iconConfirm,
 } from "../../Routes";
@@ -31,7 +31,12 @@ export const Confirmation = () => {
 
         if (response.data.payment_status === "paid") {
           const { address_id, amount, payment_method } = response.data.metadata;
-          const res = await addOrderRequest(address_id, amount, payment_method);
+          const res = await addStripeOrderRequest(
+            address_id,
+            amount,
+            payment_method,
+            sessionId
+          );
 
           if (res.data.success) {
             getCart();

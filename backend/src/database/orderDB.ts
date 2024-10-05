@@ -32,6 +32,53 @@ export const addOrderDB = async (
   return result[0];
 };
 
+export const addStripeOrderDB = async (
+  cart_id: string,
+  user_id: number,
+  address_id: number,
+  amount: number,
+  payment_method: string,
+  date: Date,
+  session_id: string
+) => {
+  const checkSessionQuery = `
+    SELECT id FROM "order"
+    WHERE session_id = $1
+  `;
+
+  const { rows: existingOrder } = await pool.query(checkSessionQuery, [
+    session_id,
+  ]);
+
+  if (existingOrder.length > 0) {
+    return existingOrder[0];
+  }
+
+  const addStripeOrderQuery = `
+    INSERT INTO "order" (user_id, address_id, amount, payment_method, date, session_id)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *`;
+
+  const { rows: result } = await pool.query(addStripeOrderQuery, [
+    user_id,
+    address_id,
+    amount,
+    payment_method,
+    date,
+    session_id,
+  ]);
+
+  const addOrderItemQuery = `
+    INSERT INTO order_item (order_id, product_id, quantity, size)
+    SELECT $1, product_id, quantity, size
+    FROM cart_item
+    WHERE cart_id = $2
+    RETURNING *`;
+
+  await pool.query(addOrderItemQuery, [result[0].id, cart_id]);
+  return result[0];
+};
+
 export const getOrdersDB = async () => {
   const getOrdersQuery = `
     SELECT 

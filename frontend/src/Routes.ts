@@ -11,6 +11,7 @@ import { deleteFromCartRequest } from "./api/cart";
 import { getCartRequest } from "./api/cart";
 import { updateCartRequest } from "./api/cart";
 import { addOrderRequest } from "./api/order";
+import { addStripeOrderRequest } from "./api/order";
 import { getUserOrdersRequest } from "./api/order";
 import { createCheckoutSessionRequest } from "./api/payment";
 import { fetchCheckoutSessionRequest } from "./api/payment";
@@ -31,6 +32,7 @@ export {
   getCartRequest,
   updateCartRequest,
   addOrderRequest,
+  addStripeOrderRequest,
   getUserOrdersRequest,
   createCheckoutSessionRequest,
   fetchCheckoutSessionRequest,

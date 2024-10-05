@@ -48,7 +48,7 @@ export const Orders = () => {
         <li className="order" key={order.order_id}>
           {order.products.map((item) => (
             <article key={item.id}>
-              {/* <img src={item.images[0]} alt="" /> */}
+              <img src={item.images[0]} alt="" />
 
               <div>
                 <h3>{item.title}</h3>
