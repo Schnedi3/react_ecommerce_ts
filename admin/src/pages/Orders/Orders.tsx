@@ -129,7 +129,7 @@ export const Orders = () => {
                 <span>Payment method:</span> {order.payment_method}
               </p>
               <p>
-                <span>Date:</span> {order.order_date}
+                <span>Date:</span> {new Date(order.order_date).toLocaleString()}
               </p>
             </article>
 
