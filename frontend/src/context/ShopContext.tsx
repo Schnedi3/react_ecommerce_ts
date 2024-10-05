@@ -42,7 +42,7 @@ export const ShopProvider = ({ children }: PropsWithChildren) => {
   }, [setAddressList]);
 
   // ----- cart ----- //
-  const getCart = async () => {
+  const getCart = useCallback(async () => {
     try {
       const response = await getCartRequest();
 
@@ -58,7 +58,7 @@ export const ShopProvider = ({ children }: PropsWithChildren) => {
         console.log("An unexpected error occurred");
       }
     }
-  };
+  }, [setCart]);
 
   useEffect(() => {
     const quantityInCart = cart.reduce((acc, item) => acc + item.quantity, 0);

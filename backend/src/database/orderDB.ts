@@ -135,16 +135,10 @@ export const updateStatusDB = async (status: string, id: number) => {
   return result.rows[0];
 };
 
-export const deleteOrderDB = async (id: number, cart_id: number) => {
+export const deleteOrderDB = async (id: number) => {
   const deleteOrderQuery = `
     DELETE FROM "order"
     WHERE id = $1`;
 
   await pool.query(deleteOrderQuery, [id]);
-
-  const deleteItemQuery = `
-    DELETE FROM order_item
-    WHERE cart_id = $1`;
-
-  await pool.query(deleteItemQuery, [cart_id]);
 };

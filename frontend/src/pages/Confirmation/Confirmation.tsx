@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import { useShopContext } from "../../context/useShopContext";
 import {
   addOrderRequest,
   fetchCheckoutSessionRequest,
@@ -15,12 +16,13 @@ export const Confirmation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const sessionId = new URLSearchParams(location.search).get("session_id");
+  const { getCart } = useShopContext();
 
   useEffect(() => {
     const getSessionDetails = async () => {
       if (!sessionId) {
-        toast.error("No session ID found. Redirecting to home");
-        navigate("/");
+        toast.error("No session ID found. Redirecting");
+        navigate("/cart");
         return;
       }
 
@@ -31,21 +33,25 @@ export const Confirmation = () => {
           const { address_id, amount, payment_method } = response.data.metadata;
           const res = await addOrderRequest(address_id, amount, payment_method);
 
-          if (!res.data.success) {
-            toast.error(response.data.message);
+          if (res.data.success) {
+            getCart();
+          } else {
+            toast.error(res.data.message);
+            navigate("/cart");
           }
         } else {
-          toast.error("Payment failed. Please try again.");
+          toast.error("Payment failed. Please try again");
+          navigate("/cart");
         }
       } catch (error) {
         console.error("Error fetching checkout session:", error);
-        toast.error("Failed to retrieve payment session. Redirecting to home");
-        navigate("/");
+        toast.error("Failed to retrieve payment session. Redirecting");
+        navigate("/cart");
       }
     };
 
     getSessionDetails();
-  }, [sessionId, navigate]);
+  }, [sessionId, navigate, getCart]);
 
   return (
     <section className="confirm_container container">

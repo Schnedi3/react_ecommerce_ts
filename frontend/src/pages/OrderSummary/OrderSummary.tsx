@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { loadStripe } from "@stripe/stripe-js";
+import { useNavigate } from "react-router-dom";
 
 import { useShopContext } from "../../context/useShopContext";
 import { formatCurrency } from "../../helpers/formatCurrency";
@@ -8,6 +9,7 @@ import {
   createCheckoutSessionRequest,
   AddressModal,
   iconAddress,
+  addOrderRequest,
 } from "../../Routes";
 
 import "./summary.css";
@@ -16,9 +18,10 @@ import "../globals.css";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 export const OrderSummary = () => {
-  const [loading, setLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState<string>("");
   const [shippingAddress, setShippingAddress] = useState<number>(0);
+  const { getCart } = useShopContext();
+  const navigate = useNavigate();
 
   const {
     cart,
@@ -29,18 +32,11 @@ export const OrderSummary = () => {
     setIsModalAddress,
   } = useShopContext();
 
-  const handleCheckout = async () => {
-    if (!paymentMethod) {
-      toast.error("Please select a payment method");
-      return;
-    }
+  useEffect(() => {
+    getAddress();
+  }, [getAddress]);
 
-    if (!shippingAddress) {
-      toast.error("Please select an address");
-      return;
-    }
-
-    setLoading(true);
+  const handleStripeCheckout = async () => {
     try {
       const stripe = await stripePromise;
 
@@ -56,12 +52,34 @@ export const OrderSummary = () => {
           (await stripe.redirectToCheckout({ sessionId: response.data.id }));
       } else {
         toast.error(response.data.message);
-        setLoading(false);
       }
     } catch (error) {
       console.error("Error creating checkout session:", error);
       toast.error("Failed to redirect to Stripe Checkout");
-      setLoading(false);
+    }
+  };
+
+  const handleCodCheckout = async () => {
+    try {
+      const response = await addOrderRequest(
+        shippingAddress,
+        totalAmount,
+        paymentMethod
+      );
+
+      if (response.data.success) {
+        getCart();
+        navigate("/success");
+      } else {
+        toast.error(response.data.message);
+        navigate("/cart");
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unexpected error occurred");
+      }
     }
   };
 
@@ -150,10 +168,16 @@ export const OrderSummary = () => {
 
       <button
         className="dark_button"
-        onClick={handleCheckout}
-        disabled={loading}
+        id={
+          paymentMethod === "" || shippingAddress === 0
+            ? "dark_button-disabled"
+            : ""
+        }
+        onClick={
+          paymentMethod === "cod" ? handleCodCheckout : handleStripeCheckout
+        }
       >
-        {loading ? "Processing..." : "Go to Checkout"}
+        {paymentMethod === "cod" ? "Place order" : "Go to Checkout"}
       </button>
     </section>
   );

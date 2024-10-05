@@ -9,6 +9,7 @@ import { formatCurrency } from "../../helpers/formatCurrency";
 import { IProduct } from "../../types/types";
 
 import "./detail.css";
+import "../globals.css";
 
 export const Detail = () => {
   const [product, setProduct] = useState<IProduct | undefined>(undefined);

@@ -48,7 +48,7 @@ CREATE TABLE address (
 );
 
 CREATE TABLE order_item (
-  order_id INTEGER NOT NULL REFERENCES "order"(id),
+  order_id INTEGER NOT NULL REFERENCES "order"(id) ON DELETE CASCADE,
   product_id INTEGER NOT NULL REFERENCES product(id),
   quantity INTEGER NOT NULL,
   size VARCHAR(10) NOT NULL,

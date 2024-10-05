@@ -23,13 +23,12 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
       mode: "payment",
       success_url: `${FRONTEND_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${FRONTEND_URL}/cart`,
-      customer_email: req.user.email,
-      metadata: { address_id, payment_method, amount },
+      metadata: { address_id, amount, payment_method },
     });
 
     res.json({ success: true, id: session.id });
   } catch (error: any) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 

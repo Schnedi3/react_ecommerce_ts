@@ -4,8 +4,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { AuthProvider } from "./context/AuthContext";
 import { ShopProvider } from "./context/ShopContext";
-import { Menu, Footer } from "./Routes";
 import {
+  Menu,
+  Footer,
   Cart,
   Confirmation,
   Contact,
@@ -16,6 +17,7 @@ import {
   OrderSummary,
   Profile,
   Register,
+  Success,
   User,
 } from "./Routes";
 
@@ -24,7 +26,12 @@ import "./app.css";
 export const App = () => {
   return (
     <main className="app">
-      <ToastContainer autoClose={2000} pauseOnHover={false} />
+      <ToastContainer
+        autoClose={1000}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        newestOnTop={true}
+      />
       <BrowserRouter>
         <ShopProvider>
           <AuthProvider>
@@ -42,6 +49,7 @@ export const App = () => {
               <Route path="/orders" element={<Orders />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/confirmation" element={<Confirmation />} />
+              <Route path="/success" element={<Success />} />
             </Routes>
 
             <Footer />

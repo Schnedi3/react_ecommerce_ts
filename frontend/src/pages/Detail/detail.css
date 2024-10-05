@@ -69,11 +69,6 @@
   width: 50%;
 }
 
-#dark_button-disabled {
-  pointer-events: none;
-  background-color: var(--gray-bg) !important;
-}
-
 /* HOVER */
 @media (hover: hover) {
   .detail_info > ul > li > button:hover {

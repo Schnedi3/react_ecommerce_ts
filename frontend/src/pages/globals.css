@@ -50,6 +50,12 @@ h2::after {
 }
 
 /* ----- */
+#dark_button-disabled {
+  pointer-events: none;
+  background-color: var(--gray-bg) !important;
+}
+
+/* ----- */
 .new_address {
   max-width: fit-content;
   padding: 0.5rem 1.5rem;

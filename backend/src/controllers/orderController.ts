@@ -73,10 +73,7 @@ export const deleteOrder = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
   try {
-    const user_id = req.user.id;
-    const cart_id = await getCartIdByUserId(user_id);
-
-    await deleteOrderDB(id, cart_id);
+    await deleteOrderDB(id);
 
     res.status(200).json({ success: true, message: "Order deleted" });
   } catch (error: any) {

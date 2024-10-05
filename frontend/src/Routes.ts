@@ -82,6 +82,7 @@ export {
 // pages
 import { Cart } from "./pages/Cart/Cart";
 import { Contact } from "./pages/Contact/Contact";
+import { Confirmation } from "./pages/Confirmation/Confirmation";
 import { Detail } from "./pages/Detail/Detail";
 import { Home } from "./pages/Home/Home";
 import { Login } from "./pages/Login/Login";
@@ -90,8 +91,8 @@ import { Orders } from "./pages/Orders/Orders";
 import { OrderSummary } from "./pages/OrderSummary/OrderSummary";
 import { Profile } from "./pages/Profile/Profile";
 import { Register } from "./pages/Register/Register";
+import { Success } from "./pages/Confirmation/Success";
 import { User } from "./pages/User/User";
-import { Confirmation } from "./pages/Confirmation/Confirmation";
 
 export {
   Cart,
@@ -105,5 +106,6 @@ export {
   OrderSummary,
   Profile,
   Register,
+  Success,
   User,
 };
