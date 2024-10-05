@@ -10,7 +10,7 @@ export interface AuthContextType {
 }
 
 export interface CartItem extends IProduct {
-  product_id: number;
+  productId: number;
   quantity: number;
   size: string;
 }

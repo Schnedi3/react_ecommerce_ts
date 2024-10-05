@@ -11,24 +11,24 @@ import {
 import { emptyCartDb, getCartIdByUserId } from "../database/cartDB";
 
 export const addOrder = async (req: Request, res: Response) => {
-  const { address_id, amount, payment_method } = req.body;
+  const { addressId, amount, paymentMethod } = req.body;
 
   try {
-    const user_id = req.user.id;
-    const cart_id = await getCartIdByUserId(user_id);
+    const userId = req.user.id;
+    const cartId = await getCartIdByUserId(userId);
     const date = new Date();
 
     const result = await addOrderDB(
-      cart_id,
-      user_id,
-      address_id,
+      cartId,
+      userId,
+      addressId,
       amount,
-      payment_method,
+      paymentMethod,
       date
     );
 
     // emoty cart
-    await emptyCartDb(cart_id);
+    await emptyCartDb(cartId);
 
     res.status(200).json({ success: true, message: "Order placed", result });
   } catch (error: any) {
@@ -37,25 +37,25 @@ export const addOrder = async (req: Request, res: Response) => {
 };
 
 export const addStripeOrder = async (req: Request, res: Response) => {
-  const { address_id, amount, payment_method, session_id } = req.body;
+  const { addressId, amount, paymentMethod, sessionId } = req.body;
 
   try {
-    const user_id = req.user.id;
-    const cart_id = await getCartIdByUserId(user_id);
+    const userId = req.user.id;
+    const cartId = await getCartIdByUserId(userId);
     const date = new Date();
 
     const result = await addStripeOrderDB(
-      cart_id,
-      user_id,
-      address_id,
+      cartId,
+      userId,
+      addressId,
       amount,
-      payment_method,
+      paymentMethod,
       date,
-      session_id
+      sessionId
     );
 
     // emoty cart
-    await emptyCartDb(cart_id);
+    await emptyCartDb(cartId);
 
     res.status(200).json({ success: true, message: "Order placed", result });
   } catch (error: any) {
@@ -75,8 +75,8 @@ export const getOrders = async (req: Request, res: Response) => {
 
 export const getUserOrders = async (req: Request, res: Response) => {
   try {
-    const user_id = req.user.id;
-    const result = await getUserOrdersDB(user_id);
+    const userId = req.user.id;
+    const result = await getUserOrdersDB(userId);
 
     res.status(200).json({ success: true, result });
   } catch (error: any) {

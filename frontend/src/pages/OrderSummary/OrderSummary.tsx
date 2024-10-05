@@ -113,7 +113,7 @@ export const OrderSummary = () => {
           <label>
             <input
               type="radio"
-              name="payment_method"
+              name="paymentMethod"
               onChange={() => setPaymentMethod("stripe")}
             />
             Stripe
@@ -121,7 +121,7 @@ export const OrderSummary = () => {
           <label>
             <input
               type="radio"
-              name="payment_method"
+              name="paymentMethod"
               value="cod"
               onChange={() => setPaymentMethod("cod")}
             />
@@ -134,7 +134,7 @@ export const OrderSummary = () => {
         <h2>Delivery address</h2>
         <div>
           {addressList.map((address) => (
-            <label className="label" key={address.first_name}>
+            <label className="label" key={address.firstName}>
               <input
                 type="radio"
                 className="radio"
@@ -142,7 +142,7 @@ export const OrderSummary = () => {
                 onChange={() => setShippingAddress(address.id)}
               />
               <h4>
-                {address.first_name} {address.last_name}
+                {address.firstName} {address.lastName}
               </h4>
               <p>
                 {address.street}, {address.number}
@@ -150,7 +150,7 @@ export const OrderSummary = () => {
               <p>{address.door}</p>
               <p>{address.city}</p>
               <p>
-                {address.state}, {address.zip_code}
+                {address.state}, {address.zipCode}
               </p>
               <p>
                 <span>Phone number:</span> {address.phone}

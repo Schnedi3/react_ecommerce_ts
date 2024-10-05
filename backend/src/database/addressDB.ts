@@ -1,25 +1,25 @@
 import { pool } from "./db";
 
-export const getAddressDB = async (user_id: number) => {
+export const getAddressDB = async (userId: number) => {
   const getQuery = `
     SELECT * FROM address
     WHERE user_id = $1`;
 
-  const result = await pool.query(getQuery, [user_id]);
+  const result = await pool.query(getQuery, [userId]);
   return result.rows;
 };
 
 export const addAddressDB = async (
-  first_name: string,
-  last_name: string,
+  firstName: string,
+  lastName: string,
   phone: string,
   street: string,
   number: string,
   door: string,
   city: string,
   state: string,
-  zip_code: string,
-  user_id: number
+  zipCode: string,
+  userId: number
 ) => {
   const addQuery = `
     INSERT INTO address (first_name, last_name, phone, street, number, door, city, state, zip_code, user_id)
@@ -27,16 +27,16 @@ export const addAddressDB = async (
     RETURNING *`;
 
   const result = await pool.query(addQuery, [
-    first_name,
-    last_name,
+    firstName,
+    lastName,
     phone,
     street,
     number,
     door,
     city,
     state,
-    zip_code,
-    user_id,
+    zipCode,
+    userId,
   ]);
 
   return result.rows[0];
@@ -51,15 +51,15 @@ export const deleteAddressDB = async (id: number) => {
 };
 
 export const updateAddressDB = async (
-  first_name: string,
-  last_name: string,
+  firstName: string,
+  lastName: string,
   phone: string,
   street: string,
   number: string,
   door: string,
   city: string,
   state: string,
-  zip_code: string,
+  zipCode: string,
   id: number
 ) => {
   const updateQuery = `
@@ -69,15 +69,15 @@ export const updateAddressDB = async (
     RETURNING *`;
 
   const result = await pool.query(updateQuery, [
-    first_name,
-    last_name,
+    firstName,
+    lastName,
     phone,
     street,
     number,
     door,
     city,
     state,
-    zip_code,
+    zipCode,
     id,
   ]);
 

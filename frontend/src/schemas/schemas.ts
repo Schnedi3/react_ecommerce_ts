@@ -35,8 +35,8 @@ export const registerSchema = z.object({
 });
 
 export const addressSchema = z.object({
-  first_name: z.string().min(1, "Field required"),
-  last_name: z.string().min(1, "Field required"),
+  firstName: z.string().min(1, "Field required"),
+  lastName: z.string().min(1, "Field required"),
   phone: z
     .string()
     .min(1, "Field required")
@@ -48,5 +48,5 @@ export const addressSchema = z.object({
   door: z.string().min(1, "Field required"),
   city: z.string().min(1, "Field required"),
   state: z.string().min(1, "Field required"),
-  zip_code: z.string().min(1, "Field required"),
+  zipCode: z.string().min(1, "Field required"),
 });

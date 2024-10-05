@@ -26,7 +26,7 @@ export interface IOrder {
   order_status: string;
   street: string;
   order_amount: number;
-  user_id: number;
+  userId: number;
   username: string;
   zip_code: string;
 }

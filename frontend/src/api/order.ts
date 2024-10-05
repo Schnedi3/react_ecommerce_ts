@@ -1,24 +1,24 @@
 import axios from "./axios";
 
 export const addOrderRequest = (
-  address_id: number,
+  addressId: number,
   amount: number,
-  payment_method: string
+  paymentMethod: string
 ) => {
-  return axios.post("/order", { address_id, amount, payment_method });
+  return axios.post("/order", { addressId, amount, paymentMethod });
 };
 
 export const addStripeOrderRequest = (
-  address_id: number,
+  addressId: number,
   amount: number,
-  payment_method: string,
-  session_id: string
+  paymentMethod: string,
+  sessionId: string
 ) => {
   return axios.post("/order/stripe", {
-    address_id,
+    addressId,
     amount,
-    payment_method,
-    session_id,
+    paymentMethod,
+    sessionId,
   });
 };
 

@@ -30,11 +30,11 @@ export const Confirmation = () => {
         const response = await fetchCheckoutSessionRequest(sessionId);
 
         if (response.data.payment_status === "paid") {
-          const { address_id, amount, payment_method } = response.data.metadata;
+          const { addressId, amount, paymentMethod } = response.data.metadata;
           const res = await addStripeOrderRequest(
-            address_id,
+            addressId,
             amount,
-            payment_method,
+            paymentMethod,
             sessionId
           );
 

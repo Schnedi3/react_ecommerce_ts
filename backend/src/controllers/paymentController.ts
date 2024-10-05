@@ -5,7 +5,7 @@ import { FRONTEND_URL, STRIPE_SECRET_KEY } from "../config/config";
 const stripe = new Stripe(STRIPE_SECRET_KEY as string);
 
 export const createCheckoutSession = async (req: Request, res: Response) => {
-  const { cartItems, address_id, amount, payment_method } = req.body;
+  const { cartItems, addressId, amount, paymentMethod } = req.body;
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -23,7 +23,7 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
       mode: "payment",
       success_url: `${FRONTEND_URL}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${FRONTEND_URL}/cart`,
-      metadata: { address_id, amount, payment_method },
+      metadata: { addressId, amount, paymentMethod },
     });
 
     res.json({ success: true, id: session.id });
@@ -33,11 +33,11 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
 };
 
 export const getCheckoutSession = async (req: Request, res: Response) => {
-  const { session_id } = req.query;
+  const { sessionId } = req.query;
 
   try {
     const session = await stripe.checkout.sessions.retrieve(
-      session_id as string
+      sessionId as string
     );
     res.json(session);
   } catch (error: any) {

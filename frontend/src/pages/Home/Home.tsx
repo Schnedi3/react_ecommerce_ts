@@ -80,7 +80,7 @@ export const Home = () => {
           <HomeSkeleton />
         ) : (
           filteredProducts.map((product) => {
-            const onCart = cart.some((item) => item.product_id === product.id);
+            const onCart = cart.some((item) => item.productId === product.id);
             return (
               <Link
                 to={`/product/${product.id}`}

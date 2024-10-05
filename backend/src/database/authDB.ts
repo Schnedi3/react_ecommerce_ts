@@ -31,7 +31,7 @@ export const loginUserDB = async (email: string) => {
 export const createGoogleUserDB = async (
   name: string,
   email: string,
-  google_id: string
+  googleId: string
 ) => {
   const username = name;
   const createUserQuery = `
@@ -41,6 +41,6 @@ export const createGoogleUserDB = async (
     SET google_id = EXCLUDED.google_id
     RETURNING *`;
 
-  const result = await pool.query(createUserQuery, [username, email, google_id]);
+  const result = await pool.query(createUserQuery, [username, email, googleId]);
   return result.rows[0];
 };

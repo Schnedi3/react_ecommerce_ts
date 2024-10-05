@@ -9,8 +9,8 @@ import {
 
 export const getAddress = async (req: Request, res: Response) => {
   try {
-    const user_id = req.user.id;
-    const result = await getAddressDB(user_id);
+    const userId = req.user.id;
+    const result = await getAddressDB(userId);
 
     res.status(200).json({ success: true, result });
   } catch (error: any) {
@@ -20,30 +20,30 @@ export const getAddress = async (req: Request, res: Response) => {
 
 export const addAddress = async (req: Request, res: Response) => {
   const {
-    first_name,
-    last_name,
+    firstName,
+    lastName,
     phone,
     street,
     number,
     door,
     city,
     state,
-    zip_code,
+    zipCode,
   } = req.body;
 
   try {
-    const user_id = req.user.id;
+    const userId = req.user.id;
     const result = await addAddressDB(
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       phone,
       street,
       number,
       door,
       city,
       state,
-      zip_code,
-      user_id
+      zipCode,
+      userId
     );
 
     res.status(200).json({ success: true, message: "Address saved", result });
@@ -67,28 +67,28 @@ export const deleteAddress = async (req: Request, res: Response) => {
 export const updateAddress = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
   const {
-    first_name,
-    last_name,
+    firstName,
+    lastName,
     phone,
     street,
     number,
     door,
     city,
     state,
-    zip_code,
+    zipCode,
   } = req.body;
 
   try {
     const result = await updateAddressDB(
-      first_name,
-      last_name,
+      firstName,
+      lastName,
       phone,
       street,
       number,
       door,
       city,
       state,
-      zip_code,
+      zipCode,
       id
     );
 

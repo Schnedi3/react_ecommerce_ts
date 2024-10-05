@@ -18,17 +18,17 @@ export const Cart = () => {
   const navigate = useNavigate();
 
   const updateQuantity = async (
-    product_id: number,
+    productId: number,
     quantity: number,
     size: string
   ) => {
     try {
-      const response = await updateCartRequest(product_id, quantity, size);
+      const response = await updateCartRequest(productId, quantity, size);
 
       if (response.data.success) {
         const updateItem = response.data.result;
         setCart(
-          cart.map((item) => (item.id === product_id ? updateItem : item))
+          cart.map((item) => (item.id === productId ? updateItem : item))
         );
         getCart();
         toast.success(response.data.message);
@@ -44,12 +44,12 @@ export const Cart = () => {
     }
   };
 
-  const deleteProduct = async (product_id: number, size: string) => {
+  const deleteProduct = async (productId: number, size: string) => {
     try {
-      const response = await deleteFromCartRequest(product_id, size);
+      const response = await deleteFromCartRequest(productId, size);
 
       if (response.data.success) {
-        setCart(cart.filter((item) => item.id !== product_id));
+        setCart(cart.filter((item) => item.id !== productId));
         getCart();
         toast.success(response.data.message);
       } else {
@@ -88,7 +88,7 @@ export const Cart = () => {
               defaultValue={item.quantity}
               onChange={(e) =>
                 updateQuantity(
-                  item.product_id,
+                  item.productId,
                   Number(e.target.value),
                   item.size
                 )
@@ -100,7 +100,7 @@ export const Cart = () => {
               className="item_remove"
               src={iconDelete}
               alt="remove product"
-              onClick={() => deleteProduct(item.product_id, item.size)}
+              onClick={() => deleteProduct(item.productId, item.size)}
             />
           </div>
         ))}

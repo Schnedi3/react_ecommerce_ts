@@ -1,15 +1,15 @@
 import axios from "./axios";
 
 export const addToCartRequest = (
-  product_id: number,
+  productId: number,
   quantity: number,
   size: string
 ) => {
-  return axios.post(`/cart/${product_id}`, { quantity, size });
+  return axios.post(`/cart/${productId}`, { quantity, size });
 };
 
-export const deleteFromCartRequest = (product_id: number, size: string) => {
-  return axios.delete(`/cart/${product_id}`, { data: { size } });
+export const deleteFromCartRequest = (productId: number, size: string) => {
+  return axios.delete(`/cart/${productId}`, { data: { size } });
 };
 
 export const getCartRequest = () => {
@@ -17,9 +17,9 @@ export const getCartRequest = () => {
 };
 
 export const updateCartRequest = (
-  product_id: number,
+  productId: number,
   quantity: number,
   size: string
 ) => {
-  return axios.put(`/cart/${product_id}`, { quantity, size });
+  return axios.put(`/cart/${productId}`, { quantity, size });
 };

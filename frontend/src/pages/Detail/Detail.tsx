@@ -77,7 +77,7 @@ export const Detail = () => {
 
   const isSizeInCart = (size: string) => {
     return cart.some(
-      (item) => item.product_id === product.id && item.size === size
+      (item) => item.productId === product.id && item.size === size
     );
   };
 

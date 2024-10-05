@@ -2,15 +2,15 @@ import axios from "./axios";
 
 export const createCheckoutSessionRequest = (
   cartItems: unknown,
-  address_id: number,
+  addressId: number,
   amount: number,
-  payment_method: string
+  paymentMethod: string
 ) => {
   return axios.post("/payment/checkout-session", {
     cartItems,
-    address_id,
+    addressId,
     amount,
-    payment_method,
+    paymentMethod,
   });
 };
 

@@ -20,8 +20,8 @@ export const registerUser = async (req: Request, res: Response) => {
     const result = await registerUserDB(username, email, hashedPassword);
 
     // create a cart
-    const user_id = result.id;
-    const cart = await createCartForUser(user_id);
+    const userId = result.id;
+    const cart = await createCartForUser(userId);
 
     // generate token
     const token = generateToken(result.id);
@@ -82,8 +82,8 @@ export const loginGoogle = async (req: Request, res: Response) => {
     const result = await createGoogleUserDB(name, email, sub);
 
     // create a cart
-    const user_id = result.id;
-    const cart = await createCartForUser(user_id);
+    const userId = result.id;
+    const cart = await createCartForUser(userId);
 
     const token = generateToken(result.id);
     res.cookie("token", token);

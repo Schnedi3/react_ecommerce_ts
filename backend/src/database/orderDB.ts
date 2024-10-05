@@ -1,11 +1,11 @@
 import { pool } from "./db";
 
 export const addOrderDB = async (
-  cart_id: string,
-  user_id: number,
-  address_id: number,
+  cartId: string,
+  userId: number,
+  addressId: number,
   amount: number,
-  payment_method: string,
+  paymentMethod: string,
   date: Date
 ) => {
   const addOrderQuery = `
@@ -14,10 +14,10 @@ export const addOrderDB = async (
     RETURNING *`;
 
   const { rows: result } = await pool.query(addOrderQuery, [
-    user_id,
-    address_id,
+    userId,
+    addressId,
     amount,
-    payment_method,
+    paymentMethod,
     date,
   ]);
 
@@ -28,18 +28,18 @@ export const addOrderDB = async (
     WHERE cart_id = $2
     RETURNING *`;
 
-  await pool.query(addOrderItemQuery, [result[0].id, cart_id]);
+  await pool.query(addOrderItemQuery, [result[0].id, cartId]);
   return result[0];
 };
 
 export const addStripeOrderDB = async (
-  cart_id: string,
-  user_id: number,
-  address_id: number,
+  cartId: string,
+  userId: number,
+  addressId: number,
   amount: number,
-  payment_method: string,
+  paymentMethod: string,
   date: Date,
-  session_id: string
+  sessionId: string
 ) => {
   const checkSessionQuery = `
     SELECT id FROM "order"
@@ -47,7 +47,7 @@ export const addStripeOrderDB = async (
   `;
 
   const { rows: existingOrder } = await pool.query(checkSessionQuery, [
-    session_id,
+    sessionId,
   ]);
 
   if (existingOrder.length > 0) {
@@ -60,12 +60,12 @@ export const addStripeOrderDB = async (
     RETURNING *`;
 
   const { rows: result } = await pool.query(addStripeOrderQuery, [
-    user_id,
-    address_id,
+    userId,
+    addressId,
     amount,
-    payment_method,
+    paymentMethod,
     date,
-    session_id,
+    sessionId,
   ]);
 
   const addOrderItemQuery = `
@@ -75,7 +75,7 @@ export const addStripeOrderDB = async (
     WHERE cart_id = $2
     RETURNING *`;
 
-  await pool.query(addOrderItemQuery, [result[0].id, cart_id]);
+  await pool.query(addOrderItemQuery, [result[0].id, cartId]);
   return result[0];
 };
 
@@ -140,7 +140,7 @@ export const getOrdersDB = async () => {
   return result.rows;
 };
 
-export const getUserOrdersDB = async (user_id: number) => {
+export const getUserOrdersDB = async (userId: number) => {
   const getUserOrdersQuery = `
     SELECT
       -- order details
@@ -167,7 +167,7 @@ export const getUserOrdersDB = async (user_id: number) => {
     GROUP BY o.id
     ORDER BY o.id`;
 
-  const result = await pool.query(getUserOrdersQuery, [user_id]);
+  const result = await pool.query(getUserOrdersQuery, [userId]);
   return result.rows;
 };
 

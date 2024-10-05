@@ -1,38 +1,38 @@
 import { pool } from "./db";
 
-export const createCartForUser = async (user_id: number) => {
+export const createCartForUser = async (userId: number) => {
   const createCartQuery = `
     INSERT INTO cart (user_id)
     VALUES ($1)
     RETURNING *`;
 
-  const result = await pool.query(createCartQuery, [user_id]);
+  const result = await pool.query(createCartQuery, [userId]);
   return result.rows[0];
 };
 
-export const getCartIdByUserId = async (user_id: number) => {
+export const getCartIdByUserId = async (userId: number) => {
   const findCartQuery = `
     SELECT id FROM cart
     WHERE user_id = $1`;
 
-  const result = await pool.query(findCartQuery, [user_id]);
+  const result = await pool.query(findCartQuery, [userId]);
   return result.rows[0].id;
 };
 
-export const getCartDB = async (cart_id: number) => {
+export const getCartDB = async (cartId: number) => {
   const getCartQuery = `
     SELECT p.id AS product_id, p.title, p.price, p.images, ci.quantity, ci.size
     FROM cart_item ci
     JOIN product p ON ci.product_id = p.id
     WHERE ci.cart_id = $1`;
 
-  const result = await pool.query(getCartQuery, [cart_id]);
+  const result = await pool.query(getCartQuery, [cartId]);
   return result.rows;
 };
 
 export const addToCartDB = async (
-  cart_id: number,
-  product_id: number,
+  cartId: number,
+  productId: number,
   quantity: number,
   size: string
 ) => {
@@ -42,8 +42,8 @@ export const addToCartDB = async (
     RETURNING *`;
 
   const result = await pool.query(addToCartQuery, [
-    cart_id,
-    product_id,
+    cartId,
+    productId,
     quantity,
     size,
   ]);
@@ -53,8 +53,8 @@ export const addToCartDB = async (
 
 export const updateCartDB = async (
   quantity: number,
-  cart_id: number,
-  product_id: number,
+  cartId: number,
+  productId: number,
   size: string
 ) => {
   const updateCartItemQuery = `
@@ -67,8 +67,8 @@ export const updateCartDB = async (
 
   const result = await pool.query(updateCartItemQuery, [
     quantity,
-    cart_id,
-    product_id,
+    cartId,
+    productId,
     size,
   ]);
 
@@ -76,8 +76,8 @@ export const updateCartDB = async (
 };
 
 export const deleteFromCartDB = async (
-  cart_id: number,
-  product_id: number,
+  cartId: number,
+  productId: number,
   size: string
 ) => {
   const deleteFromCartQuery = `
@@ -86,11 +86,11 @@ export const deleteFromCartDB = async (
     AND product_id = $2
     AND size = $3`;
 
-  await pool.query(deleteFromCartQuery, [cart_id, product_id, size]);
+  await pool.query(deleteFromCartQuery, [cartId, productId, size]);
 };
 
-export const emptyCartDb = async (cart_id: number) => {
+export const emptyCartDb = async (cartId: number) => {
   const emptyCartQuery = `DELETE FROM cart_item WHERE cart_id = $1`;
 
-  return await pool.query(emptyCartQuery, [cart_id]);
+  return await pool.query(emptyCartQuery, [cartId]);
 };
