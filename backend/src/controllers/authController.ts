@@ -8,46 +8,20 @@ import {
   createGoogleUserDB,
   loginUserDB,
   registerUserDB,
+  resetPasswordDB,
 } from "../database/authDB";
 
-export const registerUser = async (req: Request, res: Response) => {
-  const { username, email, password } = req.body;
-
-  // encrypt password
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  try {
-    const result = await registerUserDB(username, email, hashedPassword);
-
-    // create a cart
-    const userId = result.id;
-    const cart = await createCartForUser(userId);
-
-    // generate token
-    const token = generateToken(result.id);
-    // Set token as a cookie
-    res.cookie("token", token);
-
-    res.status(200).json({
-      success: true,
-      message: "Registered succesfully",
-      result,
-      cart,
-      token,
-    });
-  } catch (error: any) {
-    if (error.code === "23505") {
-      res.status(403).json({ success: false, message: "Email already exist" });
-    }
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-export const loginUser = async (req: Request, res: Response) => {
+export const loginAdmin = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
     const result = await loginUserDB(email);
+
+    if (result.role === "user") {
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid admin credentials" });
+    }
 
     const isMatch = await bcrypt.compare(password, result.password);
     if (!isMatch) {
@@ -100,17 +74,11 @@ export const loginGoogle = async (req: Request, res: Response) => {
   }
 };
 
-export const loginAdmin = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
   try {
     const result = await loginUserDB(email);
-
-    if (result.role === "user") {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid admin credentials" });
-    }
 
     const isMatch = await bcrypt.compare(password, result.password);
     if (!isMatch) {
@@ -128,6 +96,56 @@ export const loginAdmin = async (req: Request, res: Response) => {
       result,
       token,
     });
+  } catch (error: any) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const registerUser = async (req: Request, res: Response) => {
+  const { username, email, password } = req.body;
+
+  // encrypt password
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    const result = await registerUserDB(username, email, hashedPassword);
+
+    // create a cart
+    const userId = result.id;
+    const cart = await createCartForUser(userId);
+
+    // generate token
+    const token = generateToken(result.id);
+    // Set token as a cookie
+    res.cookie("token", token);
+
+    res.status(200).json({
+      success: true,
+      message: "Registered succesfully",
+      result,
+      cart,
+      token,
+    });
+  } catch (error: any) {
+    if (error.code === "23505") {
+      res.status(403).json({ success: false, message: "Email already exist" });
+    }
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const resetPassword = async (req: Request, res: Response) => {
+  const { password, email } = req.body;
+
+  // encrypt password
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    await resetPasswordDB(hashedPassword, email);
+
+    res
+      .status(200)
+      .json({ success: true, message: "Password updated succesfully" });
   } catch (error: any) {
     res.status(500).json({ success: false, message: error.message });
   }

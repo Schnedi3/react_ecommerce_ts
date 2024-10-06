@@ -13,3 +13,7 @@ export const loginRequest = (user: ILogin) => {
 export const registerRequest = (user: IRegister) => {
   return axios.post("/auth/register", user);
 };
+
+export const resetPasswordRequest = (user: ILogin) => {
+  return axios.put("/auth/reset-password", user);
+};

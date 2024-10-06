@@ -1,19 +1,16 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router-dom";
 
 import { useAuthContext } from "../../context/useAuthContext";
 import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
 
-import { iconEyeClosed, iconEyeOpen, iconGoogle } from "../../Routes";
-import "./login.css";
-import "../globals.css";
+import { iconEyeClosed, iconEyeOpen } from "../../Routes";
 
-export const Login = () => {
+export const ResetPassword = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
-  const { googleLogin, login } = useAuthContext();
+  const { resetPassword } = useAuthContext();
   const {
     register,
     handleSubmit,
@@ -24,29 +21,18 @@ export const Login = () => {
   });
 
   const onSubmit = (data: ILogin) => {
-    login(data);
+    resetPassword(data);
     reset();
   };
 
   return (
     <section className="login_container container">
-      <button className="gbutton" onClick={() => googleLogin()}>
-        <img src={iconGoogle} />
-        <p>Login with Google</p>
-      </button>
-
-      <article className="separator">
-        <span></span>
-        <p>or</p>
-        <span></span>
-      </article>
-
       <form
         className="login_form"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2>Login</h2>
+        <h2>Reset password</h2>
 
         <label>
           Email
@@ -62,7 +48,7 @@ export const Login = () => {
         </label>
 
         <label>
-          Password
+          New password
           {errors.password && (
             <span className="error">{errors.password.message}</span>
           )}
@@ -85,13 +71,8 @@ export const Login = () => {
         </label>
 
         <button className="dark_button dark_button-login" type="submit">
-          Login
+          Reset password
         </button>
-
-        <article className="login_footer">
-          <Link to="/register">Create an account</Link>
-          <Link to="/reset-password">Forgot your password?</Link>
-        </article>
       </form>
     </section>
   );

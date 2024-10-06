@@ -8,8 +8,6 @@ import { registerSchema } from "../../schemas/schemas";
 import { IRegister } from "../../types/types";
 
 import { iconEyeClosed, iconEyeOpen } from "../../Routes";
-import "./register.css";
-import "../globals.css";
 
 export const Register = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
@@ -28,14 +26,14 @@ export const Register = () => {
     reset();
   };
   return (
-    <section className="register_container container">
-      <h2>Sign up</h2>
-
+    <section className="login_container container">
       <form
-        className="register_form"
+        className="login_form"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
+        <h2>Sign up</h2>
+
         <label>
           Username
           {errors.username && (
@@ -89,8 +87,8 @@ export const Register = () => {
           Sign Up
         </button>
 
-        <article className="register_footer">
-          <p>Forgot your password?</p>
+        <article className="login_footer">
+          <p>Already have an account?</p>
           <Link to="/login">Login</Link>
         </article>
       </form>

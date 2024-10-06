@@ -63,11 +63,15 @@
   gap: 0.5rem;
 }
 
+.login_form > h2 {
+  margin-bottom: 1rem;
+}
+
 .login_form > label {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.1rem;
   font-size: 0.9rem;
   color: var(--gray-text);
 }
@@ -110,11 +114,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.login_footer > h3 {
-  font-weight: 400;
-  font-size: 0.9rem;
 }
 
 .login_footer > a {

@@ -3,10 +3,11 @@ import { Router } from "express";
 import { validateSchema } from "../middleware/validateAuth";
 import { registerSchema, loginSchema } from "../schemas/authSchema";
 import {
-  registerUser,
-  loginUser,
-  loginGoogle,
   loginAdmin,
+  loginGoogle,
+  loginUser,
+  registerUser,
+  resetPassword,
 } from "../controllers/authController";
 
 const router = Router();
@@ -15,8 +16,9 @@ const router = Router();
 router.post("/admin", validateSchema(loginSchema), loginAdmin);
 
 // user
-router.post("/register", validateSchema(registerSchema), registerUser);
-router.post("/login", validateSchema(loginSchema), loginUser);
 router.post("/google", loginGoogle);
+router.post("/login", validateSchema(loginSchema), loginUser);
+router.post("/register", validateSchema(registerSchema), registerUser);
+router.put("/reset-password", validateSchema(loginSchema), resetPassword);
 
 export default router;

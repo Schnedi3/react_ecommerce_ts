@@ -5,6 +5,7 @@ export interface AuthContextType {
   login: (user: ILogin) => void;
   signup: (user: IRegister) => void;
   logout: () => void;
+  resetPassword: (user: ILogin) => void;
   isAuthenticated: boolean;
   setIsAuthenticated: (isAuthenticated: boolean) => void;
 }

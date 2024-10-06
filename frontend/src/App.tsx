@@ -17,6 +17,7 @@ import {
   OrderSummary,
   Profile,
   Register,
+  ResetPassword,
   Success,
   User,
 } from "./Routes";
@@ -45,6 +46,7 @@ export const App = () => {
               <Route path="/user" element={<User />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/order-summary" element={<OrderSummary />} />
               <Route path="/orders" element={<Orders />} />

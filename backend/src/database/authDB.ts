@@ -1,5 +1,31 @@
 import { pool } from "./db";
 
+export const createGoogleUserDB = async (
+  name: string,
+  email: string,
+  googleId: string
+) => {
+  const username = name;
+  const createUserQuery = `
+    INSERT INTO "user" (username, email, google_id, password)
+    VALUES ($1, $2, $3, NULL)
+    ON CONFLICT (email) DO UPDATE
+    SET google_id = EXCLUDED.google_id
+    RETURNING *`;
+
+  const result = await pool.query(createUserQuery, [username, email, googleId]);
+  return result.rows[0];
+};
+
+export const loginUserDB = async (email: string) => {
+  const loginQuery = `
+    SELECT * FROM "user"
+    WHERE email = $1`;
+
+  const result = await pool.query(loginQuery, [email]);
+  return result.rows[0];
+};
+
 export const registerUserDB = async (
   username: string,
   email: string,
@@ -19,28 +45,14 @@ export const registerUserDB = async (
   return result.rows[0];
 };
 
-export const loginUserDB = async (email: string) => {
-  const loginQuery = `
-    SELECT * FROM "user"
-    WHERE email = $1`;
-
-  const result = await pool.query(loginQuery, [email]);
-  return result.rows[0];
-};
-
-export const createGoogleUserDB = async (
-  name: string,
-  email: string,
-  googleId: string
+export const resetPasswordDB = async (
+  hashedPassword: string,
+  email: string
 ) => {
-  const username = name;
-  const createUserQuery = `
-    INSERT INTO "user" (username, email, google_id, password)
-    VALUES ($1, $2, $3, NULL)
-    ON CONFLICT (email) DO UPDATE
-    SET google_id = EXCLUDED.google_id
-    RETURNING *`;
+  const registerQuery = `
+    UPDATE "user"
+    SET password = $1
+    WHERE email = $2`;
 
-  const result = await pool.query(createUserQuery, [username, email, googleId]);
-  return result.rows[0];
+  await pool.query(registerQuery, [hashedPassword, email]);
 };

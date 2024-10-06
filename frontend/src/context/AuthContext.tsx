@@ -1,11 +1,22 @@
-import { createContext, PropsWithChildren, useEffect, useState } from "react";
+import {
+  createContext,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useGoogleLogin } from "@react-oauth/google";
 import { toast } from "react-toastify";
 
 import { useShopContext } from "./useShopContext";
-import { loginGoogleRequest, loginRequest, registerRequest } from "../Routes";
+import {
+  loginGoogleRequest,
+  loginRequest,
+  registerRequest,
+  resetPasswordRequest,
+} from "../Routes";
 import { AuthContextType, ILogin, IRegister } from "../types/types";
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -98,7 +109,26 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     navigate("/");
   };
 
-  const checkAuth = () => {
+  const resetPassword = async (user: ILogin) => {
+    try {
+      const response = await resetPasswordRequest(user);
+
+      if (response.data.success) {
+        toast.success(response.data.message);
+        navigate("/login");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unexpected error occurred");
+      }
+    }
+  };
+
+  const checkAuth = useCallback(() => {
     const token = Cookies.get("token");
     const savedUser = localStorage.getItem("user");
 
@@ -110,12 +140,11 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       setIsAuthenticated(false);
       setUser(null);
     }
-  };
+  }, [getCart]);
 
   useEffect(() => {
     checkAuth();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [checkAuth]);
 
   return (
     <AuthContext.Provider
@@ -126,6 +155,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
         login,
         signup,
         logout,
+        resetPassword,
         isAuthenticated,
         setIsAuthenticated,
       }}
