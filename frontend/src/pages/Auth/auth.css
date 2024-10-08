@@ -1,5 +1,5 @@
-/* LOGIN */
-.login_container {
+/* AUTH */
+.auth_container {
   min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   display: flex;
   flex-direction: column;
@@ -55,18 +55,18 @@
 }
 
 /* ----- */
-.login_form {
+.auth_form {
   width: 60%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.login_form > h2 {
+.auth_form > h2 {
   margin-bottom: 1rem;
 }
 
-.login_form > label {
+.auth_form > label {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@
   color: var(--gray-text);
 }
 
-.login_form > label > input {
+.auth_form > label > input {
   padding: 0.7rem 1rem;
   font-size: 0.9rem;
   color: var(--black-text);
@@ -84,11 +84,11 @@
   box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
-.login_form > label > input:focus {
+.auth_form > label > input:focus {
   box-shadow: 0 2px 0 0 var(--accent);
 }
 
-.login_form > label > input::placeholder {
+.auth_form > label > input::placeholder {
   font-weight: 300;
   opacity: 0.25;
 }
@@ -104,23 +104,23 @@
   width: 1.3rem;
 }
 
-.dark_button-login {
+.dark_button-auth {
   width: 100%;
 }
 
 /* ----- */
-.login_footer {
+.auth_footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.login_footer > a {
+.auth_footer > a {
   color: var(--accent);
 }
 
 /* ----- */
-.login_form > label > input.input_error {
+.auth_form > label > input.input_error {
   box-shadow: 0 2px 0 0 var(--error);
 }
 
@@ -135,7 +135,7 @@
     cursor: pointer;
   }
 
-  .login_footer > a:hover {
+  .auth_footer > a:hover {
     text-decoration: underline;
     cursor: pointer;
   }
@@ -151,7 +151,7 @@
     width: 100%;
   }
 
-  .login_form {
+  .auth_form {
     width: 100%;
   }
 }

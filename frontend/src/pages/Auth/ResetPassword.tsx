@@ -7,6 +7,8 @@ import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
 
 import { iconEyeClosed, iconEyeOpen } from "../../Routes";
+import "./auth.css";
+import "../globals.css";
 
 export const ResetPassword = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
@@ -26,9 +28,9 @@ export const ResetPassword = () => {
   };
 
   return (
-    <section className="login_container container">
+    <section className="auth_container container">
       <form
-        className="login_form"
+        className="auth_form"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
@@ -70,8 +72,8 @@ export const ResetPassword = () => {
           </button>
         </label>
 
-        <button className="dark_button dark_button-login" type="submit">
-          Reset password
+        <button className="dark_button dark_button-auth" type="submit">
+          Set new password
         </button>
       </form>
     </section>

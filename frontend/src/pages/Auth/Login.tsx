@@ -4,48 +4,49 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
 
 import { useAuthContext } from "../../context/useAuthContext";
-import { registerSchema } from "../../schemas/schemas";
-import { IRegister } from "../../types/types";
+import { loginSchema } from "../../schemas/schemas";
+import { ILogin } from "../../types/types";
 
-import { iconEyeClosed, iconEyeOpen } from "../../Routes";
+import { iconEyeClosed, iconEyeOpen, iconGoogle } from "../../Routes";
+import "./auth.css";
+import "../globals.css";
 
-export const Register = () => {
+export const Login = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
-  const { signup } = useAuthContext();
+  const { googleLogin, login } = useAuthContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<IRegister>({
-    resolver: zodResolver(registerSchema),
+  } = useForm<ILogin>({
+    resolver: zodResolver(loginSchema),
   });
 
-  const onSubmit = (data: IRegister) => {
-    signup(data);
+  const onSubmit = (data: ILogin) => {
+    login(data);
     reset();
   };
+
   return (
-    <section className="login_container container">
+    <section className="auth_container container">
+      <button className="gbutton" onClick={() => googleLogin()}>
+        <img src={iconGoogle} />
+        <p>Login with Google</p>
+      </button>
+
+      <article className="separator">
+        <span></span>
+        <p>or</p>
+        <span></span>
+      </article>
+
       <form
-        className="login_form"
+        className="auth_form"
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2>Sign up</h2>
-
-        <label>
-          Username
-          {errors.username && (
-            <span className="error">{errors.username.message}</span>
-          )}
-          <input
-            type="text"
-            className={errors.username ? "input_error" : ""}
-            placeholder="John Doe"
-            {...register("username")}
-          />
-        </label>
+        <h2>Login</h2>
 
         <label>
           Email
@@ -83,13 +84,13 @@ export const Register = () => {
           </button>
         </label>
 
-        <button className="dark_button dark_button-register" type="submit">
-          Sign Up
+        <button className="dark_button dark_button-auth" type="submit">
+          Login
         </button>
 
-        <article className="login_footer">
-          <p>Already have an account?</p>
-          <Link to="/login">Login</Link>
+        <article className="auth_footer">
+          <Link to="/register">Create an account</Link>
+          <Link to="/reset-password">Forgot your password?</Link>
         </article>
       </form>
     </section>
