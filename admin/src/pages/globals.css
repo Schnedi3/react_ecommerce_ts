@@ -40,9 +40,9 @@ h2::after {
   padding: 0.7rem;
   font-size: 1rem;
   color: var(--white-text);
-  background-color: var(--black-text);
+  background-color: var(--black-bg);
   border: 0;
-  border-radius: 0.2rem;
+  border-radius: 0.4rem;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   transition: 0.3s;

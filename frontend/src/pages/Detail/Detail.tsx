@@ -3,10 +3,16 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { useShopContext } from "../../context/useShopContext";
-import { addToCartRequest, getProductRequest } from "../../Routes";
+import {
+  addToCartRequest,
+  getProductRequest,
+  iconNext,
+  iconPrevious,
+} from "../../Routes";
 import { DetailSkeleton } from "../../skeletons/DetailSkeleton";
 import { formatCurrency } from "../../helpers/formatCurrency";
 import { IProduct } from "../../types/types";
+import { imagesURL } from "../config";
 
 import "./detail.css";
 import "../globals.css";
@@ -14,6 +20,7 @@ import "../globals.css";
 export const Detail = () => {
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
   const [selectedSize, setSelectedSize] = useState<string>("");
+  const [currentImage, setCurrentImage] = useState(0);
   const { id } = useParams<string>();
   const { cart, setCart, getCart } = useShopContext();
 
@@ -40,6 +47,14 @@ export const Detail = () => {
 
     getProduct();
   }, [id]);
+
+  const handlePrevious = () => {
+    setCurrentImage(currentImage === 0 ? images.length - 1 : currentImage - 1);
+  };
+
+  const handleNext = () => {
+    setCurrentImage(currentImage === images.length - 1 ? 0 : currentImage + 1);
+  };
 
   const addToCart = async (
     product: IProduct,
@@ -87,7 +102,18 @@ export const Detail = () => {
 
   return (
     <section className="detail_container container">
-      <img src={images[0]} alt={title} />
+      <article className="images">
+        <span onClick={handlePrevious}>
+          <img src={iconPrevious} alt="previous image" />
+        </span>
+        <img
+          src={`${imagesURL}/${images[currentImage]}`}
+          alt="sneakers image"
+        />
+        <span onClick={handleNext}>
+          <img src={iconNext} alt="next image" />
+        </span>
+      </article>
       <article className="detail_info">
         <h3>{title}</h3>
         <h4>{formatCurrency(price)}</h4>
@@ -106,7 +132,7 @@ export const Detail = () => {
           ))}
         </ul>
         <button
-          className="dark_button"
+          className="dark_button dark_button-detail"
           id={!selectedSize ? "dark_button-disabled" : ""}
           onClick={() => {
             addToCart(product, 1, selectedSize), setSelectedSize("");

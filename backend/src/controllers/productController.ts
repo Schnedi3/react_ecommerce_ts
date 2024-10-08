@@ -6,15 +6,12 @@ import {
   getProductDB,
   deleteProductDB,
 } from "../database/productDB";
-import { PG_HOST, PORT } from "../config/config";
-
-const BASE_URL = `http://${PG_HOST}:${PORT}`;
 
 export const addProduct = async (req: Request, res: Response) => {
   const { title, description, price, category, subcategory, sizes } = req.body;
   const images = req.files as Express.Multer.File[];
 
-  const imageUrls = images.map((file) => `${BASE_URL}/images/${file.filename}`);
+  const imageUrls = images.map((file) => file.filename);
 
   try {
     const result = await addProductDB(

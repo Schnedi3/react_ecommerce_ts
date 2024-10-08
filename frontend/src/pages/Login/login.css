@@ -17,8 +17,7 @@
   justify-content: center;
   gap: 1.5rem;
   border-radius: 0.5rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  background-color: var(--black-bg);
 }
 
 .gbutton > img {
@@ -27,7 +26,7 @@
 
 .gbutton > p {
   font-size: 0.9rem;
-  color: var(--gray-text);
+  color: var(--white-text);
 }
 
 /* ----- */
@@ -128,7 +127,6 @@
 /* HOVER */
 @media (hover: hover) {
   .gbutton:hover {
-    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 

@@ -9,6 +9,7 @@ import {
   iconDelete,
   updateCartRequest,
 } from "../../Routes";
+import { imagesURL } from "../config";
 
 import "./cart.css";
 import "../globals.css";
@@ -79,7 +80,11 @@ export const Cart = () => {
         <h2>Cart</h2>
         {cart.map((item, index) => (
           <div className="item_info" key={index}>
-            <img className="item_photo" src={item.images[0]} alt={item.title} />
+            <img
+              className="item_photo"
+              src={`${imagesURL}/${item.images[0]}`}
+              alt={item.title}
+            />
             <h3 className="item_title">{item.title}</h3>
             <input
               type="number"

@@ -64,6 +64,8 @@ import iconGoogle from "./assets/icons/google.svg";
 import iconLogin from "./assets/icons/login.svg";
 import iconMenu from "./assets/icons/menu.svg";
 import iconModal from "./assets/icons/modal.svg";
+import iconNext from "./assets/icons/next.svg";
+import iconPrevious from "./assets/icons/previous.svg";
 import iconSearch from "./assets/icons/search.svg";
 
 export {
@@ -79,6 +81,8 @@ export {
   iconGoogle,
   iconLogin,
   iconMenu,
+  iconNext,
+  iconPrevious,
   iconModal,
   iconSearch,
 };

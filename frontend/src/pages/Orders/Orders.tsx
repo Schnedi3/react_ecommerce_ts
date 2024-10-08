@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getUserOrdersRequest, iconBox } from "../../Routes";
 import { formatCurrency } from "../../helpers/formatCurrency";
 import { IOrder } from "../../types/types";
+import { imagesURL } from "../config";
 
 import "./orders.css";
 import "../globals.css";
@@ -48,7 +49,7 @@ export const Orders = () => {
         <li className="order" key={order.order_id}>
           {order.products.map((item) => (
             <article key={item.id}>
-              <img src={item.images[0]} alt="" />
+              <img src={`${imagesURL}/${item.images[0]}`} alt="" />
 
               <div>
                 <h3>{item.title}</h3>

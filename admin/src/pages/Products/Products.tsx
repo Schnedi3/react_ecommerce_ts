@@ -9,6 +9,8 @@ import { iconDelete } from "../../Routes";
 import "./products.css";
 import "../globals.css";
 
+const baseURL = "http://localhost:4000/images/";
+
 export const Products = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
 
@@ -59,7 +61,7 @@ export const Products = () => {
       <ul className="product">
         {products.map((item) => (
           <li key={item.id}>
-            <img className="product_img" src={item.images[0]} />
+            <img className="product_img" src={`${baseURL}/${item.images[0]}`} />
             <h3>{item.title}</h3>
             <h4>{item.category}</h4>
             <p>{formatCurrency(item.price)}</p>
