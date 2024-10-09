@@ -16,13 +16,15 @@ export const addProduct = async (req: Request, res: Response) => {
   const imageUrls = images.map((file) => file.filename);
 
   try {
+    const sizesArray = Array.isArray(sizes) ? sizes : [sizes];
+
     const result = await addProductDB(
       title,
       description,
       price,
       category,
       subcategory,
-      sizes,
+      sizesArray,
       imageUrls
     );
 

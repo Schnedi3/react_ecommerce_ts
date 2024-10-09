@@ -6,7 +6,7 @@ export const addProductDB = async (
   price: string,
   category: string,
   subcategory: string,
-  sizes: string[],
+  sizesArray: string[],
   imageUrls: string[]
 ) => {
   const addQuery = `
@@ -20,7 +20,7 @@ export const addProductDB = async (
     price,
     category,
     subcategory,
-    sizes,
+    sizesArray,
     imageUrls,
   ]);
 
