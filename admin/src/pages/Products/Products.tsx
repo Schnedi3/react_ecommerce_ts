@@ -5,7 +5,7 @@ import { getProductsRequest, deleteProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
 
-import { iconDelete } from "../../Routes";
+import { iconDelete, iconList } from "../../Routes";
 import "./products.css";
 import "../globals.css";
 
@@ -54,6 +54,15 @@ export const Products = () => {
   useEffect(() => {
     getProducts();
   }, []);
+
+  if (products.length === 0) {
+    return (
+      <section className="products_empty container">
+        <img src={iconList} alt="" />
+        <p>No products yet</p>
+      </section>
+    );
+  }
 
   return (
     <section className="product_container container">

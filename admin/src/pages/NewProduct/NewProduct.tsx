@@ -158,7 +158,19 @@ export const NewProduct = () => {
         </div>
       </article>
 
-      <button className="dark_button" type="submit">
+      <button
+        className="dark_button"
+        id={
+          title === "" ||
+          description === "" ||
+          price === "" ||
+          sizes.length === 0 ||
+          images.length === 0
+            ? "dark_button-disabled"
+            : ""
+        }
+        type="submit"
+      >
         Add
       </button>
     </form>

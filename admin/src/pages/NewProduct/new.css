@@ -151,6 +151,12 @@
   box-shadow: 0 2px 0 0 var(--accent);
 }
 
+/* ----- */
+#dark_button-disabled {
+  pointer-events: none;
+  background-color: var(--gray-bg);
+}
+
 /* HOVER */
 @media (hover: hover) {
   .upload > div > label:hover {
