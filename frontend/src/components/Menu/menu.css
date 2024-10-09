@@ -168,6 +168,7 @@
     background-color: var(--white-bg);
     z-index: 2;
     clip-path: inset(0 0 0 100%);
+    z-index: 100;
     transition: 0.3s;
   }
 

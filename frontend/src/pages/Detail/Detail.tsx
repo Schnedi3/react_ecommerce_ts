@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 
 import { useShopContext } from "../../context/useShopContext";
 import {
@@ -100,15 +101,27 @@ export const Detail = () => {
     setSelectedSize(selectedSize === size ? "" : size);
   };
 
+  const variants = {
+    initial: { scale: 0.5 },
+    animate: { scale: 1 },
+    exit: { scale: 0.5 },
+  };
+
   return (
     <section className="detail_container container">
       <article className="images">
         <span onClick={handlePrevious}>
           <img src={iconPrevious} alt="previous image" />
         </span>
-        <img
+        <motion.img
+          key={currentImage}
           src={`${imagesURL}/${images[currentImage]}`}
           alt="sneakers image"
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          variants={variants}
+          transition={{ duration: 0.5 }}
         />
         <span onClick={handleNext}>
           <img src={iconNext} alt="next image" />
