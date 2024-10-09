@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import { unlink } from "fs";
+import path from "path";
 
 import {
   addProductDB,
@@ -56,7 +58,26 @@ export const deleteProduct = async (req: Request, res: Response) => {
   const id = Number(req.params.id);
 
   try {
+    const product = await getProductDB(id);
+    const imageUrls = product.images;
+
     await deleteProductDB(id);
+
+    imageUrls.forEach((filename: string) => {
+      const filePath = path.join(
+        __dirname,
+        "..",
+        "..",
+        "public",
+        "images",
+        filename
+      );
+      unlink(filePath, (error: any) => {
+        if (error) {
+          console.error(`Failed to delete image: ${filename}`, error);
+        }
+      });
+    });
 
     res.status(200).json({ success: true, message: "Product removed" });
   } catch (error: any) {
