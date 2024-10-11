@@ -18,17 +18,17 @@ h4 {
   font-weight: 500;
 }
 
-h2 {
+.title {
   margin: 0.7rem 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: Prata;
+  font-family: var(--title-font);
   font-weight: 300;
   font-size: 1.7rem;
 }
 
-h2::after {
+.title::after {
   content: "";
   width: 2rem;
   height: 0.1rem;

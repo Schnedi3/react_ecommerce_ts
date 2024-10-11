@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { addProductRequest } from "../../api/product";
 
 import { iconUpload } from "../../Routes";
-import "./new.css";
+import styles from "./new.module.css";
 import "../globals.css";
 
 export const NewProduct = () => {
@@ -76,38 +76,44 @@ export const NewProduct = () => {
   };
 
   return (
-    <form className="form container" onSubmit={handleSubmit}>
-      <h2>Add product</h2>
-      <article className="upload">
-        <p>Images</p>
-        <div>
-          <label>
-            <img src={iconUpload} />
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <h2 className="title">Add product</h2>
+
+      <article>
+        <h3 className={styles.subtitle}>Images</h3>
+        <label className={styles.uploadSection}>
+          <div className={styles.upload}>
+            <img className={styles.uploadIcon} src={iconUpload} />
             <input type="file" accept="image/*" onChange={handleImages} />
-          </label>
-          <ul>
+          </div>
+          <ul className={styles.uploadedImages}>
             {images.map((image, index) => (
               <li key={index}>
-                <img src={URL.createObjectURL(image)} />
+                <img
+                  className={styles.uploadedImage}
+                  src={URL.createObjectURL(image)}
+                />
               </li>
             ))}
           </ul>
-        </div>
+        </label>
       </article>
 
-      <label className="title">
-        Title
+      <label>
+        <h3 className={styles.subtitle}>Title</h3>
         <input
           type="text"
+          className={styles.input}
           placeholder="product title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </label>
 
-      <label className="desc">
-        Description
+      <label>
+        <h3 className={styles.subtitle}>Description</h3>
         <textarea
+          className={styles.input}
           placeholder="product description"
           rows={5}
           value={description}
@@ -115,26 +121,35 @@ export const NewProduct = () => {
         ></textarea>
       </label>
 
-      <article className="categories">
-        <div className="category">
-          <p>Category</p>
-          <select onChange={(e) => setCategory(e.target.value)}>
+      <article className={styles.categories}>
+        <label>
+          <h3 className={styles.subtitle}>Category</h3>
+          <select
+            className={styles.category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
             <option value="Men">Men</option>
             <option value="Women">Women</option>
             <option value="Kids">Kids</option>
           </select>
-        </div>
-        <div className="subcategory">
-          <p>Sub-category</p>
-          <select onChange={(e) => setSubcategory(e.target.value)}>
+        </label>
+
+        <label>
+          <h3 className={styles.subtitle}>Sub-category</h3>
+          <select
+            className={styles.category}
+            onChange={(e) => setSubcategory(e.target.value)}
+          >
             <option value="Top">Top</option>
             <option value="Bottom">Bottom</option>
           </select>
-        </div>
-        <label className="price">
-          Price
+        </label>
+
+        <label>
+          <h3 className={styles.subtitle}>Price</h3>
           <input
             type="number"
+            className={styles.category}
             placeholder="10"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
@@ -142,33 +157,34 @@ export const NewProduct = () => {
         </label>
       </article>
 
-      <article className="sizes">
-        <p>Sizes</p>
-        <div>
+      <article>
+        <h3 className={styles.subtitle}>Sizes</h3>
+        <label className={styles.sizes}>
           {sizesArray.map((size) => (
             <button
               key={size}
               type="button"
-              className={sizes.includes(size) ? "selected" : ""}
+              className={`${styles.size} ${
+                sizes.includes(size) ? styles.selected : ""
+              }`}
               onClick={() => handleSize(size)}
             >
               {size}
             </button>
           ))}
-        </div>
+        </label>
       </article>
 
       <button
-        className="dark_button"
-        id={
+        className={`dark_button ${
           title === "" ||
           description === "" ||
           price === "" ||
           sizes.length === 0 ||
           images.length === 0
-            ? "dark_button-disabled"
+            ? styles.darkButtonDisabled
             : ""
-        }
+        }`}
         type="submit"
       >
         Add

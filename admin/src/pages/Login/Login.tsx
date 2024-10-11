@@ -6,8 +6,7 @@ import { useAuthContext } from "../../context/useAuthContext";
 import { ILogin } from "../../types/types";
 
 import { iconEyeClosed, iconEyeOpen } from "../../Routes";
-import "./login.css";
-import "../globals.css";
+import styles from "./login.module.css";
 
 export const Login = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
@@ -15,14 +14,14 @@ export const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    // reset,
   } = useForm<ILogin>();
   const { isAuthenticated, login } = useAuthContext();
   const navigate = useNavigate();
 
   const onSubmit = (data: ILogin) => {
     login(data);
-    reset();
+    // reset();
   };
 
   useEffect(() => {
@@ -30,44 +29,49 @@ export const Login = () => {
   }, [isAuthenticated, navigate]);
 
   return (
-    <main className="login_container container">
+    <section className={styles.login}>
       <form
-        className="login"
+        className={styles.form}
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2>Login</h2>
+        <h2 className="title">Login</h2>
 
-        <label>
+        <label className={styles.label}>
           Email
           {errors.email && (
-            <span className="error">{errors.email.message}</span>
+            <span className={styles.error}>{errors.email.message}</span>
           )}
           <input
+            className={`${styles.input} ${
+              errors.email ? styles.inputError : ""
+            }`}
             type="email"
-            className={errors.email ? "input_error" : ""}
             placeholder="johndoe@lorem.com"
             {...register("email", { required: "Email is required" })}
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           Password
           {errors.password && (
-            <span className="error">{errors.password.message}</span>
+            <span className={styles.error}>{errors.password.message}</span>
           )}
           <input
+            className={`${styles.input} ${
+              errors.password ? styles.inputError : ""
+            }`}
             type={visible ? "text" : "password"}
-            className={errors.password ? "input_error" : ""}
             placeholder="A1b2C3d4"
             {...register("password", { required: "Password is required" })}
           />
           <button
+            className={styles.viewPassword}
             type="button"
-            className="view_pass"
             onClick={() => setIsVisible(!visible)}
           >
             <img
+              className={styles.viewIcon}
               src={visible ? iconEyeOpen : iconEyeClosed}
               alt="password visibility"
             />
@@ -78,6 +82,6 @@ export const Login = () => {
           Login
         </button>
       </form>
-    </main>
+    </section>
   );
 };

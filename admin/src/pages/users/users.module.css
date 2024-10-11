@@ -1,30 +1,30 @@
 /* LIST */
-.list {
-  margin: 2rem auto !important;
+.users {
+  margin: 2rem auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.users {
+.usersList {
   display: flex;
   flex-direction: column;
 }
 
-.info {
+.user {
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   border-bottom: 0.05rem solid var(--gray-bg);
 }
 
-.info > img {
+.userDelete {
   width: 1.5rem;
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .info > img:hover {
+  .userDelete:hover {
     filter: var(--filter);
     cursor: pointer;
   }
@@ -32,7 +32,7 @@
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
-  .info {
+  .user {
     justify-content: space-between;
   }
 }

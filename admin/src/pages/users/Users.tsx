@@ -5,8 +5,7 @@ import { getUsersRequest, deleteUserRequest } from "../../api/users";
 import { IUser } from "../../types/types";
 
 import { iconDelete } from "../../Routes";
-import "./users.css";
-import "../globals.css";
+import styles from "./users.module.css";
 
 export const Users = () => {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -53,16 +52,17 @@ export const Users = () => {
   }, []);
 
   return (
-    <section className="list container">
-      <h2>All users</h2>
-      <ul className="users">
+    <section className={styles.users}>
+      <h2 className="title">All users</h2>
+      <ul className={styles.usersList}>
         {users.map((user) => (
-          <li className="info" key={user.id}>
+          <li className={styles.user} key={user.id}>
             <h3>{user.id}</h3>
             <h3>{user.username}</h3>
             <h4>{user.email}</h4>
             <p>{user.role}</p>
             <img
+              className={styles.userDelete}
               src={iconDelete}
               alt="remove product"
               onClick={() => deleteUser(user.id)}

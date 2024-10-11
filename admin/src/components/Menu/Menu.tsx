@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { useAuthContext } from "../../context/useAuthContext";
 
 import { iconClose, iconMenu } from "../../Routes";
-import "./menu.css";
+import styles from "./menu.module.css";
 
 export const Menu = () => {
   const { isAuthenticated, logout } = useAuthContext();
@@ -22,48 +22,66 @@ export const Menu = () => {
 
   return (
     isAuthenticated && (
-      <nav className="menu container">
-        <article className="menu_logo">
-          <h2>Shopify</h2>
-          <h3>admin panel</h3>
-        </article>
+      <nav className={styles.menu}>
+        <Link to={"/"}>
+          <h2 className={styles.menuTitle}>Shopify</h2>
+          <h3 className={styles.menuSubtitle}>admin panel</h3>
+        </Link>
 
         <img
-          className="open_menu"
+          className={styles.menuOpen}
           src={iconMenu}
           alt="menu icon"
           onClick={openMenu}
         />
 
-        <ul className={`menu_links${isMenuOpen ? " menu_links-visible" : ""}`}>
+        <ul
+          className={`${styles.menuLinks} ${
+            isMenuOpen ? styles.menuLinksVisible : ""
+          }`}
+        >
           <img
-            className="close_menu"
+            className={styles.menuClose}
             onClick={closeMenu}
             src={iconClose}
             alt="close menu"
           />
           <li>
-            <NavLink to="/" onClick={closeMenu}>
+            <NavLink className={styles.menuLink} to="/" onClick={closeMenu}>
               New Product
             </NavLink>
           </li>
           <li>
-            <NavLink to="/products" onClick={closeMenu}>
+            <NavLink
+              className={styles.menuLink}
+              to="/products"
+              onClick={closeMenu}
+            >
               Manage Products
             </NavLink>
           </li>
           <li>
-            <NavLink to="/orders" onClick={closeMenu}>
+            <NavLink
+              className={styles.menuLink}
+              to="/orders"
+              onClick={closeMenu}
+            >
               Orders
             </NavLink>
           </li>
           <li>
-            <NavLink to="/users" onClick={closeMenu}>
+            <NavLink
+              className={styles.menuLink}
+              to="/users"
+              onClick={closeMenu}
+            >
               Manage Users
             </NavLink>
           </li>
           <li>
-            <p onClick={logout}>Logout</p>
+            <p className={styles.logout} onClick={logout}>
+              Logout
+            </p>
           </li>
         </ul>
       </nav>

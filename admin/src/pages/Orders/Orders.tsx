@@ -10,8 +10,7 @@ import { IOrder } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
 
 import { iconBox, iconDelete } from "../../Routes";
-import "./orders.css";
-import "../globals.css";
+import styles from "./orders.module.css";
 
 export const Orders = () => {
   const [orders, setOrders] = useState<IOrder[]>([]);
@@ -85,20 +84,20 @@ export const Orders = () => {
 
   if (orders.length === 0) {
     return (
-      <section className="orders_empty container">
-        <img src={iconBox} alt="" />
-        <p>No orders yet</p>
+      <section className={`container ${styles.empty}`}>
+        <img className={styles.emptyIcon} src={iconBox} alt="" />
+        <p className={styles.emptyText}>No orders yet</p>
       </section>
     );
   }
 
   return (
-    <section className="order_container container">
-      <h2>All orders</h2>
+    <section className={styles.orders}>
+      <h2 className="title">All orders</h2>
       <ul className="order">
         {orders.map((order) => (
-          <li key={order.order_id}>
-            <img className="order_box" src={iconBox} />
+          <li className={styles.singleOrder} key={order.order_id}>
+            <img className={styles.orderIcon} src={iconBox} />
 
             <article>
               {order.products.map((item) => (
@@ -117,32 +116,39 @@ export const Orders = () => {
                 {order.city}, {order.state}, {order.zip_code}
               </p>
               <p>
-                <span>Phone number:</span> {order.phone}
+                <span className={styles.orderSpan}>Phone number:</span>{" "}
+                {order.phone}
               </p>
             </article>
 
             <article>
               <p>
-                <span>Items:</span> {order.products.length}
+                <span className={styles.orderSpan}>Items:</span>{" "}
+                {order.products.length}
               </p>
               <p>
-                <span>Payment method:</span> {order.payment_method}
+                <span className={styles.orderSpan}>Payment method:</span>{" "}
+                {order.payment_method}
               </p>
               <p>
-                <span>Date:</span> {new Date(order.order_date).toLocaleString()}
+                <span className={styles.orderSpan}>Date:</span>{" "}
+                {new Date(order.order_date).toLocaleString()}
               </p>
             </article>
 
             <h3>{formatCurrency(order.order_amount)}</h3>
 
-            <select onChange={(e) => handleOnChange(e, order.order_id)}>
+            <select
+              className={styles.orderSelect}
+              onChange={(e) => handleOnChange(e, order.order_id)}
+            >
               <option value="Order placed">Order placed</option>
               <option value="On transit">On transit</option>
               <option value="Delivered">Delivered</option>
             </select>
 
             <img
-              className="order_delete"
+              className={styles.orderDelete}
               src={iconDelete}
               alt="delete order"
               onClick={() => deleteOrder(order.order_id)}

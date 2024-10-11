@@ -1,23 +1,19 @@
 /* LOGIN */
-.login_container {
+.login {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.login {
+.form {
   width: 60%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.login > h2 {
-  justify-content: center;
-}
-
-.login > label {
+.label {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -26,7 +22,7 @@
   color: var(--gray-text);
 }
 
-.login > label > input {
+.input {
   padding: 0.7rem 1rem;
   font-size: 0.9rem;
   color: var(--black-text);
@@ -35,16 +31,12 @@
   box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
-.login > label > input:focus {
-  box-shadow: 0 2px 0 0 var(--accent);
-}
-
-.login > label > input::placeholder {
+.input::placeholder {
   font-weight: 300;
   opacity: 0.25;
 }
 
-.view_pass {
+.viewPassword {
   position: absolute;
   top: 55%;
   right: 1rem;
@@ -52,11 +44,11 @@
   background-color: transparent;
 }
 
-.view_pass > img {
+.viewIcon {
   width: 1.3rem;
 }
 
-/* ----- */
+/* ERROR */
 .error {
   position: absolute;
   right: 0;
@@ -64,13 +56,18 @@
   font-size: 0.9rem;
 }
 
-.login > label > input.input_error {
+.inputError {
   border: 0.05rem solid var(--error);
+  box-shadow: 0 2px 0 0 var(--error);
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .view_pass:hover {
+  .input:hover {
+    box-shadow: 0 2px 0 0 var(--accent);
+  }
+
+  .viewPassword:hover {
     filter: var(--filter);
     cursor: pointer;
   }
@@ -78,7 +75,7 @@
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
-  .login {
+  .form {
     width: 100%;
   }
 }

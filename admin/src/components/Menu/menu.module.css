@@ -7,12 +7,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.menu_logo {
-  display: flex;
-  flex-direction: column;
-}
-
-.menu_logo > h2 {
+.menuTitle {
   margin: 0;
   display: flex;
   align-items: baseline;
@@ -24,7 +19,7 @@
   text-transform: uppercase;
 }
 
-.menu_logo > h2::after {
+.menuTitle::after {
   content: "";
   width: 0.6rem;
   height: 0.6rem;
@@ -32,21 +27,17 @@
   border-radius: 50%;
 }
 
-.menu_logo > h3 {
+.menuSubtitle {
   font-size: 0.8rem;
   color: var(--accent);
   text-transform: uppercase;
 }
 
-.open_menu {
+.menuOpen {
   width: 2.2rem;
 }
 
-.close_menu {
-  width: 2.3em;
-}
-
-.menu_links {
+.menuLinks {
   width: 16rem;
   height: 100vh;
   position: absolute;
@@ -65,36 +56,41 @@
   transition: 0.3s;
 }
 
-.menu_links-visible {
+.menuLinksVisible {
   clip-path: inset(0 0 0 0);
 }
 
-.menu_links > li > a {
+.menuClose {
+  width: 2.3em;
+}
+
+.menuLink {
   position: relative;
   font-size: 1rem;
   color: var(--black-text);
 }
 
-.menu_links > li > a.active {
+:global .active {
+  color: var(--accent);
   padding-right: 0.6rem;
   border-right: 0.15rem solid var(--accent);
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .open_menu:hover,
-  .close_menu:hover {
+  .menuOpen:hover,
+  .menuClose:hover {
     filter: var(--filter);
     cursor: pointer;
   }
 
-  .menu_links > li > a:hover,
-  .menu_links > li > p:hover {
+  .menuLink:hover {
     color: var(--accent);
     cursor: pointer;
   }
 
-  .menu_links > li > a.active:hover {
-    color: var(--black-text);
+  .logout:hover {
+    color: var(--accent);
+    cursor: pointer;
   }
 }

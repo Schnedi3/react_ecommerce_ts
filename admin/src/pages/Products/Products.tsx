@@ -6,8 +6,7 @@ import { IProduct } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
 
 import { iconDelete, iconList } from "../../Routes";
-import "./products.css";
-import "../globals.css";
+import styles from "./products.module.css";
 
 const baseURL = "http://localhost:4000/images/";
 
@@ -57,25 +56,28 @@ export const Products = () => {
 
   if (products.length === 0) {
     return (
-      <section className="products_empty container">
-        <img src={iconList} alt="" />
-        <p>No products yet</p>
+      <section className={styles.empty}>
+        <img className={styles.emptyIcon} src={iconList} alt="" />
+        <p className={styles.emptyText}>No products yet</p>
       </section>
     );
   }
 
   return (
-    <section className="product_container container">
-      <h2>All products</h2>
-      <ul className="product">
+    <section className={`container ${styles.products}`}>
+      <h2 className="title">All products</h2>
+      <ul className={styles.product}>
         {products.map((item) => (
-          <li key={item.id}>
-            <img className="product_img" src={`${baseURL}/${item.images[0]}`} />
+          <li className={styles.singleProduct} key={item.id}>
+            <img
+              className={styles.productImage}
+              src={`${baseURL}/${item.images[0]}`}
+            />
             <h3>{item.title}</h3>
             <h4>{item.category}</h4>
             <p>{formatCurrency(item.price)}</p>
             <img
-              className="product_remove"
+              className={styles.productDelete}
               src={iconDelete}
               alt="remove product"
               onClick={() => deleteProduct(item.id)}
