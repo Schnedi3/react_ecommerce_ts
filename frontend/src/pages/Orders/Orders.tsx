@@ -4,9 +4,7 @@ import { getUserOrdersRequest, iconBox } from "../../Routes";
 import { formatCurrency } from "../../helpers/formatCurrency";
 import { IOrder } from "../../types/types";
 import { imagesURL } from "../config";
-
-import "./orders.css";
-import "../globals.css";
+import styles from "./orders.module.css";
 
 export const Orders = () => {
   const [orders, setOrders] = useState<IOrder[]>([]);
@@ -35,41 +33,47 @@ export const Orders = () => {
 
   if (orders.length === 0) {
     return (
-      <section className="orders_empty container">
-        <img src={iconBox} alt="" />
-        <p>No orders yet</p>
+      <section className={styles.empty}>
+        <img className={styles.emptyIcon} src={iconBox} alt="" />
+        <p className={styles.emptyText}>No orders yet</p>
       </section>
     );
   }
 
   return (
-    <ul className="order_container container">
-      <h2>All orders</h2>
-      {orders.map((order) => (
-        <li className="order" key={order.order_id}>
-          {order.products.map((item) => (
-            <article key={item.id}>
-              <img src={`${imagesURL}/${item.images[0]}`} alt="" />
+    <ul className={styles.orders}>
+      <h2 className="title">All orders</h2>
 
-              <div>
+      {orders.map((order) => (
+        <li className={styles.order} key={order.order_id}>
+          {order.products.map((item) => (
+            <article className={styles.product} key={item.id}>
+              <img
+                className={styles.productImage}
+                src={`${imagesURL}/${item.images[0]}`}
+                alt=""
+              />
+
+              <div className={styles.productInfo}>
                 <h3>{item.title}</h3>
                 <div>
                   <p>{formatCurrency(item.price)}</p>
                   <p>
-                    <span>Quantity:</span> {item.quantity}
+                    <span className={styles.span}>Quantity:</span>{" "}
+                    {item.quantity}
                   </p>
                   <p>
-                    <span>Size:</span> {item.size}
+                    <span className={styles.span}>Size:</span> {item.size}
                   </p>
                 </div>
 
                 <p>
-                  <span>Date:</span>{" "}
+                  <span className={styles.span}>Date:</span>{" "}
                   {new Date(order.order_date).toLocaleString()}
                 </p>
               </div>
 
-              <p>{order.order_status}</p>
+              <p className={styles.status}>{order.order_status}</p>
             </article>
           ))}
         </li>

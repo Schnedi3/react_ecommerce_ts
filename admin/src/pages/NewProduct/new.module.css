@@ -8,6 +8,7 @@
 }
 
 .subtitle {
+  margin-bottom: 0.3rem;
   font-size: 0.9rem;
   color: var(--gray-text);
 }
@@ -57,6 +58,7 @@
   border-radius: 0.5rem;
   background-color: var(--white-bg);
   box-shadow: 0 2px 0 0 var(--accent-shadow);
+  resize: none;
 }
 
 .input:focus {

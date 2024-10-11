@@ -8,7 +8,7 @@ import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
 
 import { iconEyeClosed, iconEyeOpen, iconGoogle } from "../../Routes";
-import "./auth.css";
+import styles from "./auth.module.css";
 import "../globals.css";
 
 export const Login = () => {
@@ -29,68 +29,77 @@ export const Login = () => {
   };
 
   return (
-    <section className="auth_container container">
-      <button className="gbutton" onClick={() => googleLogin()}>
-        <img src={iconGoogle} />
-        <p>Login with Google</p>
+    <section className={styles.auth}>
+      <button className={styles.gbutton} onClick={() => googleLogin()}>
+        <img className={styles.googleIcon} src={iconGoogle} />
+        <p className={styles.gbuttonText}>Login with Google</p>
       </button>
 
-      <article className="separator">
+      <article className={styles.separator}>
         <span></span>
         <p>or</p>
         <span></span>
       </article>
 
       <form
-        className="auth_form"
+        className={styles.form}
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2>Login</h2>
+        <h2 className={`title ${styles.title}`}>Login</h2>
 
-        <label>
+        <label className={styles.label}>
           Email
           {errors.email && (
-            <span className="error">{errors.email.message}</span>
+            <span className={styles.error}>{errors.email.message}</span>
           )}
           <input
+            className={`${styles.input} ${
+              errors.email ? styles.inputError : ""
+            }`}
             type="email"
-            className={errors.email ? "input_error" : ""}
             placeholder="johndoe@lorem.com"
             {...register("email")}
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           Password
           {errors.password && (
-            <span className="error">{errors.password.message}</span>
+            <span className={styles.error}>{errors.password.message}</span>
           )}
           <input
+            className={`${styles.input} ${
+              errors.password ? styles.inputError : ""
+            }`}
             type={visible ? "text" : "password"}
-            className={errors.password ? "input_error" : ""}
             placeholder="A1b2C3d4"
             {...register("password")}
           />
           <button
+            className={styles.viewPassword}
             type="button"
-            className="view_pass"
             onClick={() => setIsVisible(!visible)}
           >
             <img
+              className={styles.viewPasswordIcon}
               src={visible ? iconEyeOpen : iconEyeClosed}
               alt="password visibility"
             />
           </button>
         </label>
 
-        <button className="dark_button dark_button-auth" type="submit">
+        <button className="dark_button" type="submit">
           Login
         </button>
 
-        <article className="auth_footer">
-          <Link to="/register">Create an account</Link>
-          <Link to="/reset-password">Forgot your password?</Link>
+        <article className={styles.footer}>
+          <Link className={styles.footerLink} to="/register">
+            Create an account
+          </Link>
+          <Link className={styles.footerLink} to="/reset-password">
+            Forgot your password?
+          </Link>
         </article>
       </form>
     </section>

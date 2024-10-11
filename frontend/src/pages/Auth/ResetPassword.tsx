@@ -7,8 +7,7 @@ import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
 
 import { iconEyeClosed, iconEyeOpen } from "../../Routes";
-import "./auth.css";
-import "../globals.css";
+import styles from "./auth.module.css";
 
 export const ResetPassword = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
@@ -28,51 +27,56 @@ export const ResetPassword = () => {
   };
 
   return (
-    <section className="auth_container container">
+    <section className={styles.auth}>
       <form
-        className="auth_form"
+        className={styles.form}
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2>Reset password</h2>
+        <h2 className={`title ${styles.title}`}>Reset password</h2>
 
-        <label>
+        <label className={styles.label}>
           Email
           {errors.email && (
-            <span className="error">{errors.email.message}</span>
+            <span className={styles.error}>{errors.email.message}</span>
           )}
           <input
+            className={`${styles.input} ${
+              errors.email ? styles.inputError : ""
+            }`}
             type="email"
-            className={errors.email ? "input_error" : ""}
             placeholder="johndoe@lorem.com"
             {...register("email")}
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           New password
           {errors.password && (
-            <span className="error">{errors.password.message}</span>
+            <span className={styles.error}>{errors.password.message}</span>
           )}
           <input
+            className={`${styles.input} ${
+              errors.password ? styles.inputError : ""
+            }`}
             type={visible ? "text" : "password"}
-            className={errors.password ? "input_error" : ""}
             placeholder="A1b2C3d4"
             {...register("password")}
           />
           <button
+            className={styles.viewPassword}
             type="button"
-            className="view_pass"
             onClick={() => setIsVisible(!visible)}
           >
             <img
+              className={styles.viewPasswordIcon}
               src={visible ? iconEyeOpen : iconEyeClosed}
               alt="password visibility"
             />
           </button>
         </label>
 
-        <button className="dark_button dark_button-auth" type="submit">
+        <button className="dark_button" type="submit">
           Set new password
         </button>
       </form>

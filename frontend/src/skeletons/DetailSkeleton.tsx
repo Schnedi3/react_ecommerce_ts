@@ -1,10 +1,10 @@
-import "./detail_skeleton.css";
+import styles from "./detail_skeleton.module.css";
 
 export const DetailSkeleton = () => {
   const sizeItems = Array.from({ length: 4 });
 
   return (
-    <section className="detail_skeleton container">
+    <section className={styles.detailSkeleton}>
       <img />
       <article>
         <h2></h2>

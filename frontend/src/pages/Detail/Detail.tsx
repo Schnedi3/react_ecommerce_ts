@@ -14,9 +14,7 @@ import { DetailSkeleton } from "../../skeletons/DetailSkeleton";
 import { formatCurrency } from "../../helpers/formatCurrency";
 import { IProduct } from "../../types/types";
 import { imagesURL } from "../config";
-
-import "./detail.css";
-import "../globals.css";
+import styles from "./detail.module.css";
 
 export const Detail = () => {
   const [product, setProduct] = useState<IProduct | undefined>(undefined);
@@ -108,12 +106,17 @@ export const Detail = () => {
   };
 
   return (
-    <section className="detail_container container">
-      <article className="images">
-        <span onClick={handlePrevious}>
-          <img src={iconPrevious} alt="previous image" />
+    <section className={styles.detail}>
+      <article className={styles.images}>
+        <span className={styles.span} onClick={handlePrevious}>
+          <img
+            className={styles.spanIcon}
+            src={iconPrevious}
+            alt="previous image"
+          />
         </span>
         <motion.img
+          className={styles.image}
           key={currentImage}
           src={`${imagesURL}/${images[currentImage]}`}
           alt="sneakers image"
@@ -123,20 +126,21 @@ export const Detail = () => {
           variants={variants}
           transition={{ duration: 0.5 }}
         />
-        <span onClick={handleNext}>
-          <img src={iconNext} alt="next image" />
+        <span className={styles.span} onClick={handleNext}>
+          <img className={styles.spanIcon} src={iconNext} alt="next image" />
         </span>
       </article>
-      <article className="detail_info">
-        <h3>{title}</h3>
-        <h4>{formatCurrency(price)}</h4>
-        <p>{description}</p>
-        <ul>
+      <article className={styles.detailInfo}>
+        <h3 className={styles.title}>{title}</h3>
+        <h4 className={styles.price}>{formatCurrency(price)}</h4>
+        <p className={styles.desc}>{description}</p>
+        <ul className={styles.sizes}>
           {sizes.map((size) => (
             <li key={size}>
               <button
-                className={selectedSize === size ? "selected" : ""}
-                id={isSizeInCart(size) ? "disabled" : ""}
+                className={`${styles.size} ${
+                  selectedSize === size ? styles.selectedSize : ""
+                } ${isSizeInCart(size) ? styles.disabledSize : ""}`}
                 onClick={() => handleSize(size)}
               >
                 {size}
@@ -145,8 +149,9 @@ export const Detail = () => {
           ))}
         </ul>
         <button
-          className="dark_button dark_button-detail"
-          id={!selectedSize ? "dark_button-disabled" : ""}
+          className={`dark_button ${styles.darkButtonDetail} ${
+            !selectedSize ? "dark_button-disabled" : ""
+          }`}
           onClick={() => {
             addToCart(product, 1, selectedSize), setSelectedSize("");
           }}

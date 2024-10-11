@@ -1,5 +1,5 @@
 /* LOGOUT */
-.logout_container {
+.logout {
   min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   display: flex;
   flex-direction: column;
@@ -8,44 +8,37 @@
   gap: 0.5rem;
 }
 
-/* ----- */
-.profile,
-.orders {
+.link {
   width: 60%;
   margin-top: 0.5rem;
   padding: 0.7rem 1.5rem;
   display: flex;
   justify-content: space-between;
-  font-size: 1rem;
   color: var(--black-text);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   background-color: var(--white-bg);
   box-shadow: 0 2px 0 0 var(--accent-shadow);
   transition: 0.3s;
 }
 
-.profile > img:nth-child(1),
-.orders > img:nth-child(1) {
+.userIcon {
   width: 1.5rem;
   filter: var(--filter);
 }
 
-.profile > img:nth-child(3),
-.orders > img:nth-child(3) {
+.iconArrow {
   width: 1.3rem;
   transform: rotate(-90deg);
   opacity: 0.5;
 }
 
-/* ----- */
-.dark_button-logout {
+.darkButtonLogout {
   width: 60%;
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .profile:hover,
-  .orders:hover {
+  .link:hover {
     box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
@@ -53,9 +46,11 @@
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
-  .profile,
-  .orders,
-  .dark_button-logout {
+  .link {
+    width: 100%;
+  }
+
+  .darkButtonLogout {
     width: 100%;
   }
 }

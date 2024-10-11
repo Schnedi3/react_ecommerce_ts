@@ -78,10 +78,8 @@ export const Menu = () => {
               Manage Users
             </NavLink>
           </li>
-          <li>
-            <p className={styles.logout} onClick={logout}>
-              Logout
-            </p>
+          <li className={styles.logout}>
+            <p onClick={logout}>Logout</p>
           </li>
         </ul>
       </nav>

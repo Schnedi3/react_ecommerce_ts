@@ -11,11 +11,9 @@ import {
   deleteAddressRequest,
   updateUsernameRequest,
 } from "../../Routes";
-import { AddressEdit } from "./AddressEdit";
+import { AddressUpdate } from "./AddressUpdate";
 import { IAddress } from "../../types/types";
-
-import "./profile.css";
-import "../globals.css";
+import styles from "./profile.module.css";
 
 export const Profile = () => {
   const { user, setUser } = useAuthContext();
@@ -87,18 +85,19 @@ export const Profile = () => {
   };
 
   return (
-    <section className="profile_container container">
+    <section className={styles.profile}>
       {user && (
-        <article className="personal">
-          <h2>Personal information</h2>
-          <ul>
-            <li>
-              <h4>Username</h4>
+        <article className={styles.personal}>
+          <h2 className="title">Personal information</h2>
+
+          <div className={styles.personalInfo}>
+            <label className={styles.personalLabel}>
+              <h4 className={styles.labelTitle}>Username</h4>
               {isEditUsername ? (
                 <form onSubmit={(e) => handleUpdateUser(e, user.id)}>
                   <input
+                    className={styles.input}
                     type="text"
-                    className="username_edit"
                     value={updatedUsername}
                     onChange={(e) => setUpdatedUsername(e.target.value)}
                     autoFocus
@@ -107,6 +106,7 @@ export const Profile = () => {
                 </form>
               ) : (
                 <p
+                  className={styles.labelText}
                   onDoubleClick={() => {
                     setIsEditUsername(true), setUpdatedUsername(user.username);
                   }}
@@ -114,25 +114,23 @@ export const Profile = () => {
                   {user.username}
                 </p>
               )}
-            </li>
-            <li>
-              <h4>Email</h4>
-              <p>{user.email}</p>
-            </li>
-          </ul>
+            </label>
+            <label className={styles.personalLabel}>
+              <h4 className={styles.labelTitle}>Email</h4>
+              <p className={styles.labelText}>{user.email}</p>
+            </label>
+          </div>
         </article>
       )}
 
-      <article className="address_container">
-        <h2>Your addresses</h2>
+      <article>
+        <h2 className={`title ${styles.title}`}>Your addresses</h2>
 
-        <div className="profile_address">
+        <div className={styles.addresses}>
           {addressList.map((address) => (
-            <label key={address.first_name}>
-              <input type="radio" />
-
-              <div className="address_info">
-                <h4>
+            <label className={styles.label} key={address.first_name}>
+              <div>
+                <h4 className={styles.name}>
                   {address.first_name} {address.last_name}
                 </h4>
 
@@ -146,30 +144,53 @@ export const Profile = () => {
                 </p>
 
                 <p>
-                  <span>Phone number:</span> {address.phone}
+                  <span className={styles.span}>Phone number:</span>{" "}
+                  {address.phone}
                 </p>
               </div>
 
-              <div className="address_buttons">
-                <button onClick={() => handleUpdateAddress(address)}>
-                  <img src={iconEdit} alt="edit address" />
+              <div className={styles.buttons}>
+                <button
+                  className={styles.button}
+                  onClick={() => handleUpdateAddress(address)}
+                >
+                  <img
+                    className={styles.buttonIcon}
+                    src={iconEdit}
+                    alt="edit address"
+                  />
                 </button>
-                <button onClick={() => deleteAddress(address.id)}>
-                  <img src={iconDelete} alt="delete address" />
+                <button
+                  className={styles.button}
+                  onClick={() => deleteAddress(address.id)}
+                >
+                  <img
+                    className={styles.buttonIcon}
+                    src={iconDelete}
+                    alt="delete address"
+                  />
                 </button>
               </div>
             </label>
           ))}
         </div>
-        <button className="new_address" onClick={() => setIsModalAddress(true)}>
-          <img src={iconAddress} alt="add new address" />
-          Add new address
-        </button>
       </article>
+
+      <button
+        className={styles.addAddress}
+        onClick={() => setIsModalAddress(true)}
+      >
+        <img
+          className={styles.addAddressIcon}
+          src={iconAddress}
+          alt="add new address"
+        />
+        Add new address
+      </button>
 
       {isModalAddress && <AddressModal getAddress={getAddress} />}
       {isEditAddress && (
-        <AddressEdit
+        <AddressUpdate
           isEditAddress={isEditAddress}
           setIsEditAddress={setIsEditAddress}
           getAddress={getAddress}

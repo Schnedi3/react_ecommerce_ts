@@ -4,38 +4,37 @@
   justify-self: end;
 }
 
-.categories > button {
+.toggleModal {
   min-width: 10rem;
   padding: 0.7rem 1rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
   gap: 0.7rem;
-  font-size: 0.9rem;
   color: var(--black-text);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   background-color: var(--white-bg);
   box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
-.categories > button > span {
+.span {
   width: 1px;
   height: 1.3rem;
   background-color: var(--black-bg);
   opacity: 0.3;
 }
 
-.categories > button > img {
+.iconArrow {
   width: 1rem;
   transform: rotate(-90deg);
   transition: 0.3s;
 }
 
-.categories:has(ul.modal_open) > button > img {
+.categories:has(.modalOpen) .iconArrow {
   transform: rotate(0deg);
 }
 
-.categories > ul {
+.modal {
   width: 100%;
   position: absolute;
   top: 3.2rem;
@@ -45,11 +44,11 @@
   transition: 0.3s;
 }
 
-.categories > ul.modal_open {
+.modalOpen {
   clip-path: inset(0 0 0 0);
 }
 
-.categories > ul > li {
+.category {
   list-style-type: none;
   padding: 0.6rem 2rem;
   font-size: 0.8rem;
@@ -59,18 +58,18 @@
   transition: 0.3s;
 }
 
-.categories > ul > li.active {
+.active {
   color: var(--accent);
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .categories > button:hover {
+  .modal:hover {
     box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 
-  .categories > ul > li:hover {
+  .category:hover {
     color: var(--white-text);
     background-color: var(--accent);
     cursor: pointer;

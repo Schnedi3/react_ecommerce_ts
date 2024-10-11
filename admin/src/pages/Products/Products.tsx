@@ -64,7 +64,7 @@ export const Products = () => {
   }
 
   return (
-    <section className={`container ${styles.products}`}>
+    <section className={styles.products}>
       <h2 className="title">All products</h2>
       <ul className={styles.product}>
         {products.map((item) => (

@@ -3,9 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { contactSchema } from "../../schemas/schemas";
 import { IContact } from "../../types/types";
-
-import "./contact.css";
-import "../globals.css";
+import styles from "./contact.module.css";
 
 export const Contact = () => {
   const {
@@ -23,51 +21,60 @@ export const Contact = () => {
   };
 
   return (
-    <section className="contact_container  container">
-      <h2>Get in touch</h2>
+    <section className={styles.contact}>
+      <h2 className="title">Get in touch</h2>
+
       <form
-        className="contact_form"
+        className={styles.form}
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <label className="contact_label">
+        <label className={styles.label}>
           Name
-          {errors.name && <span className="error">{errors.name.message}</span>}
+          {errors.name && (
+            <span className={styles.error}>{errors.name.message}</span>
+          )}
           <input
             type="text"
-            className={errors.name ? "input_error" : ""}
+            className={`${styles.input} ${
+              errors.name ? styles.inputError : ""
+            }`}
             placeholder="John Doe"
             {...register("name")}
           />
         </label>
 
-        <label className="contact_label">
+        <label className={styles.label}>
           Email
           {errors.email && (
-            <span className="error">{errors.email.message}</span>
+            <span className={styles.error}>{errors.email.message}</span>
           )}
           <input
             type="email"
-            className={errors.email ? "input_error" : ""}
+            className={`${styles.input} ${
+              errors.email ? styles.inputError : ""
+            }`}
             placeholder="johndoe@lorem.com"
             {...register("email")}
           />
         </label>
 
-        <label className="contact_label">
+        <label className={styles.label}>
           Message
           {errors.message && (
-            <span className="error">{errors.message.message}</span>
+            <span className={styles.error}>{errors.message.message}</span>
           )}
           <textarea
-            className={errors.message ? "input_error" : ""}
+            className={`${styles.input} ${
+              errors.message ? styles.inputError : ""
+            }`}
             rows={3}
             placeholder="lorem ipsum..."
             {...register("message")}
           ></textarea>
         </label>
 
-        <button type="submit" className="dark_button dark_button-contact">
+        <button className="dark_button" type="submit">
           Send
         </button>
       </form>

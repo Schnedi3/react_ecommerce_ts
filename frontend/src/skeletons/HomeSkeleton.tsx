@@ -1,10 +1,10 @@
-import "./home_skeleton.css";
+import styles from "./home_skeleton.module.css";
 
 export const HomeSkeleton = () => {
   const skeletonItems = Array.from({ length: 6 });
 
   return (
-    <section className="home_skeleton container">
+    <section className={styles.homeSkeleton}>
       {skeletonItems.map((_, index) => (
         <article key={index}>
           <img />

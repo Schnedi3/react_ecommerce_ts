@@ -1,31 +1,30 @@
 import { useNavigate } from "react-router-dom";
 
 import { iconConfirm } from "../../Routes";
-import "./confirmation.css";
-import "../globals.css";
+import styles from "./confirmation.module.css";
 
 export const Success = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="confirm_container container">
-      <img src={iconConfirm} alt="order confirmed" />
+    <section className={styles.confirm}>
+      <img
+        className={styles.confirmIcon}
+        src={iconConfirm}
+        alt="order confirmed"
+      />
       <h2>Order confirmed</h2>
-      <article className="thanks">
-        <p>Thank you for your order</p>
-        <p>Your payment will be processed on delivery!</p>
+      <article className={styles.thanks}>
+        <p className={styles.thanksText}>Thank you for your order</p>
+        <p className={styles.thanksText}>
+          Your payment will be processed on delivery!
+        </p>
       </article>
-      <article className="buttons">
-        <button
-          className="dark_button dark_button-shop"
-          onClick={() => navigate("/")}
-        >
+      <article className={styles.buttons}>
+        <button className="dark_button" onClick={() => navigate("/")}>
           Continue shopping
         </button>
-        <button
-          className="dark_button dark_button-order"
-          onClick={() => navigate("/orders")}
-        >
+        <button className="dark_button" onClick={() => navigate("/orders")}>
           Go to orders
         </button>
       </article>

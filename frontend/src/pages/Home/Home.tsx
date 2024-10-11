@@ -4,13 +4,13 @@ import { toast } from "react-toastify";
 
 import { useShopContext } from "../../context/useShopContext";
 import { formatCurrency } from "../../helpers/formatCurrency";
-import { getProductsRequest } from "../../Routes";
+import { getProductsRequest, iconSearch } from "../../Routes";
 import { IProduct } from "../../types/types";
 import { Search } from "./Search";
 import { Categories } from "./Categories";
-import { HomeSkeleton } from "../../skeletons/HomeSkeleton";
+// import { HomeSkeleton } from "../../skeletons/HomeSkeleton";
 import { imagesURL } from "../config";
-import "./home.css";
+import styles from "./home.module.css";
 
 export const defaultCategory: string = "All";
 
@@ -61,12 +61,11 @@ export const Home = () => {
     return filtered;
   }, [selectedCategory, products, inputValue]);
 
-  if (!filteredProducts || filteredProducts.length === 0)
-    return <HomeSkeleton />;
+  // if (!filteredProducts) return <HomeSkeleton />;
 
   return (
-    <section className="home_container container">
-      <header className="header">
+    <section className={styles.home}>
+      <header className={styles.header}>
         <Search inputValue={inputValue} setInputValue={setInputValue} />
         <Categories
           selectedCategory={selectedCategory}
@@ -75,30 +74,38 @@ export const Home = () => {
         />
       </header>
 
-      <article className="cards">
-        {filteredProducts.map((product) => {
-          const onCart = cart.some((item) => item.productId === product.id);
-          return (
-            <Link
-              to={`/product/${product.id}`}
-              className="card_container"
-              key={product.id}
-            >
-              <img
-                src={`${imagesURL}/${product.images[0]}`}
-                alt={product.title}
-              />
-              <div className="card_info">
-                <h4>{product.title}</h4>
-                <div>
-                  <h3>{formatCurrency(product.price)}</h3>
-                  {onCart && <p className="home_badge">on cart</p>}
+      {filteredProducts.length !== 0 ? (
+        <article className={styles.cards}>
+          {filteredProducts.map((product) => {
+            const onCart = cart.some((item) => item.productId === product.id);
+            return (
+              <Link
+                className={styles.card}
+                to={`/product/${product.id}`}
+                key={product.id}
+              >
+                <img
+                  className={styles.cardImage}
+                  src={`${imagesURL}/${product.images[0]}`}
+                  alt={product.title}
+                />
+                <div className={styles.cardInfo}>
+                  <h4 className={styles.title}>{product.title}</h4>
+                  <div className={styles.onCart}>
+                    <h3>{formatCurrency(product.price)}</h3>
+                    {onCart && <p className={styles.badge}>on cart</p>}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
-      </article>
+              </Link>
+            );
+          })}
+        </article>
+      ) : (
+        <article className={styles.empty}>
+          <img className={styles.emptyIcon} src={iconSearch} alt="" />
+          <p className={styles.emptyText}>No matching product</p>
+        </article>
+      )}
     </section>
   );
 };

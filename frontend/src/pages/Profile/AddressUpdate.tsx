@@ -6,8 +6,7 @@ import { toast } from "react-toastify";
 import { updateAddressRequest, iconClose } from "../../Routes";
 import { IAddress } from "../../types/types";
 import { addressSchema } from "../../schemas/schemas";
-
-import "./address_edit.css";
+import styles from "./address.module.css";
 
 interface IAddressProps {
   isEditAddress: boolean;
@@ -16,7 +15,7 @@ interface IAddressProps {
   addressData: IAddress | undefined;
 }
 
-export const AddressEdit = ({
+export const AddressUpdate = ({
   isEditAddress,
   setIsEditAddress,
   getAddress,
@@ -66,139 +65,160 @@ export const AddressEdit = ({
   }, [isEditAddress]);
 
   return (
-    <section className="modal">
-      <button className="close_modal" onClick={() => setIsEditAddress(false)}>
-        <img src={iconClose} alt="close modal" />
+    <section className={styles.modal}>
+      <button
+        className={styles.closeModal}
+        onClick={() => setIsEditAddress(false)}
+      >
+        <img className={styles.closeIcon} src={iconClose} alt="close modal" />
       </button>
 
       <form
-        className="address_form"
+        className={styles.form}
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h2>Add address</h2>
+        <h2 className="title">Update address</h2>
 
-        <article>
-          <label>
+        <article className={styles.article}>
+          <label className={styles.label}>
             First name
             {errors.first_name && (
-              <span className="error">{errors.first_name.message}</span>
+              <span className={styles.error}>{errors.first_name.message}</span>
             )}
             <input
               type="text"
-              className={errors.first_name ? "input_error" : ""}
+              className={`${styles.input} ${
+                errors.first_name ? styles.inputError : ""
+              }`}
               placeholder="John"
               {...register("first_name")}
             />
           </label>
-          <label>
+          <label className={styles.label}>
             Last name
             {errors.last_name && (
-              <span className="error">{errors.last_name.message}</span>
+              <span className={styles.error}>{errors.last_name.message}</span>
             )}
             <input
               type="text"
-              className={errors.last_name ? "input_error" : ""}
+              className={`${styles.input} ${
+                errors.last_name ? styles.inputError : ""
+              }`}
               placeholder="Doe"
               {...register("last_name")}
             />
           </label>
         </article>
 
-        <article>
-          <label>
+        <article className={styles.article}>
+          <label className={styles.label}>
             Phone
             {errors.phone && (
-              <span className="error">{errors.phone.message}</span>
+              <span className={styles.error}>{errors.phone.message}</span>
             )}
             <input
               type="tel"
-              className={errors.phone ? "input_error" : ""}
+              className={`${styles.input} ${
+                errors.phone ? styles.inputError : ""
+              }`}
               placeholder="678 901 234"
               {...register("phone")}
             />
           </label>
         </article>
 
-        <article>
-          <label>
+        <article className={styles.article}>
+          <label className={styles.label}>
             Street
             {errors.street && (
-              <span className="error">{errors.street.message}</span>
+              <span className={styles.error}>{errors.street.message}</span>
             )}
             <input
               type="text"
-              className={errors.street ? "input_error" : ""}
+              className={`${styles.input} ${
+                errors.street ? styles.inputError : ""
+              }`}
               placeholder="Fake St"
               {...register("street")}
             />
           </label>
-          <label>
+          <label className={styles.label}>
             Number
             {errors.number && (
-              <span className="error">{errors.number.message}</span>
+              <span className={styles.error}>{errors.number.message}</span>
             )}
             <input
               type="text"
-              className={errors.number ? "input_error" : ""}
+              className={`${styles.input} ${
+                errors.number ? styles.inputError : ""
+              }`}
               placeholder="123"
               {...register("number")}
             />
           </label>
-          <label>
+          <label className={styles.label}>
             Door
             {errors.door && (
-              <span className="error">{errors.door.message}</span>
+              <span className={styles.error}>{errors.door.message}</span>
             )}
             <input
               type="text"
-              className={errors.door ? "input_error" : ""}
+              className={`${styles.input} ${
+                errors.door ? styles.inputError : ""
+              }`}
               placeholder="3A"
               {...register("door")}
             />
           </label>
         </article>
 
-        <article>
-          <label>
+        <article className={styles.article}>
+          <label className={styles.label}>
             City
             {errors.city && (
-              <span className="error">{errors.city.message}</span>
+              <span className={styles.error}>{errors.city.message}</span>
             )}
             <input
               type="text"
-              className={errors.city ? "input_error" : ""}
+              className={`${styles.input} ${
+                errors.city ? styles.inputError : ""
+              }`}
               placeholder="Pernambuco"
               {...register("city")}
             />
           </label>
-          <label>
+          <label className={styles.label}>
             State
             {errors.state && (
-              <span className="error">{errors.state.message}</span>
+              <span className={styles.error}>{errors.state.message}</span>
             )}
             <input
               type="text"
-              className={errors.state ? "input_error" : ""}
+              className={`${styles.input} ${
+                errors.state ? styles.inputError : ""
+              }`}
               placeholder="FakeState"
               {...register("state")}
             />
           </label>
-          <label>
+          <label className={styles.label}>
             Zip code
             {errors.zip_code && (
-              <span className="error">{errors.zip_code.message}</span>
+              <span className={styles.error}>{errors.zip_code.message}</span>
             )}
             <input
               type="number"
-              className={errors.zip_code ? "input_error" : ""}
+              className={`${styles.input} ${
+                errors.zip_code ? styles.inputError : ""
+              }`}
               placeholder="12345"
               {...register("zip_code")}
             />
           </label>
         </article>
 
-        <button className="dark_button dark_button-address" type="submit">
+        <button className="dark_button" type="submit">
           Update Address
         </button>
       </form>

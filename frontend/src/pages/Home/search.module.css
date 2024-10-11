@@ -10,16 +10,16 @@
   box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
-.search:has(.search_input:focus) {
+.search:has(.iconSearch:focus) {
   box-shadow: 0 2px 0 0 var(--accent);
 }
 
-.find_icon {
+.iconSearch {
   position: absolute;
   width: 1.1rem;
 }
 
-.search_input {
+.input {
   width: 100%;
   margin-left: 2rem;
   border: 0;
@@ -28,24 +28,24 @@
   background-color: transparent;
 }
 
-.search_input::placeholder {
+.input::placeholder {
   opacity: 0.25;
 }
 
-.clear_icon {
+.clearIcon {
   display: none;
   position: absolute;
   right: 1rem;
   width: 1.5rem;
 }
 
-.clear_icon-show {
+.showClearIcon {
   display: block;
 }
 
 /* HOVER */
 @media (hover: hover) {
-  .clear_icon:hover {
+  .clearIcon:hover {
     filter: var(--filter);
     cursor: pointer;
   }

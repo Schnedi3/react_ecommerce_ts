@@ -52,6 +52,7 @@ export { AddressModal, Footer, Menu };
 
 //icons
 import iconAddress from "./assets/icons/address.svg";
+import iconArrow from "./assets/icons/arrow.svg";
 import iconBox from "./assets/icons/box.svg";
 import iconCart from "./assets/icons/cart.svg";
 import iconClose from "./assets/icons/close.svg";
@@ -63,13 +64,13 @@ import iconEyeOpen from "./assets/icons/eyeOpen.svg";
 import iconGoogle from "./assets/icons/google.svg";
 import iconLogin from "./assets/icons/login.svg";
 import iconMenu from "./assets/icons/menu.svg";
-import iconModal from "./assets/icons/modal.svg";
 import iconNext from "./assets/icons/next.svg";
 import iconPrevious from "./assets/icons/previous.svg";
 import iconSearch from "./assets/icons/search.svg";
 
 export {
   iconAddress,
+  iconArrow,
   iconBox,
   iconCart,
   iconClose,
@@ -83,7 +84,6 @@ export {
   iconMenu,
   iconNext,
   iconPrevious,
-  iconModal,
   iconSearch,
 };
 

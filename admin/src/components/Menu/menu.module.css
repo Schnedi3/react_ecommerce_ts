@@ -12,7 +12,6 @@
   display: flex;
   align-items: baseline;
   font-family: Logotype;
-  font-weight: 300;
   font-size: 2.5rem;
   color: var(--black-text);
   letter-spacing: 0.1rem;
@@ -76,6 +75,15 @@
   border-right: 0.15rem solid var(--accent);
 }
 
+.logout {
+  font-size: 1rem;
+  margin-top: auto;
+  padding: 0.2rem 1rem;
+  border: 0.1rem solid var(--gray-bg);
+  border-radius: 1rem;
+  transition: 0.3s;
+}
+
 /* HOVER */
 @media (hover: hover) {
   .menuOpen:hover,
@@ -90,7 +98,7 @@
   }
 
   .logout:hover {
-    color: var(--accent);
+    background-color: var(--accent-shadow);
     cursor: pointer;
   }
 }

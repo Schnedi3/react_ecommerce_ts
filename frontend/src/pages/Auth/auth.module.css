@@ -1,5 +1,5 @@
 /* AUTH */
-.auth_container {
+.auth {
   min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   gap: 2rem;
 }
 
-/* ----- */
+/* GOOGLE BUTTON */
 .gbutton {
   width: 60%;
   padding: 0.7rem;
@@ -16,20 +16,19 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   background-color: var(--black-bg);
 }
 
-.gbutton > img {
+.googleIcon {
   width: 1.2rem;
 }
 
-.gbutton > p {
-  font-size: 0.9rem;
+.gbuttonText {
   color: var(--white-text);
 }
 
-/* ----- */
+/* SEPARATOR */
 .separator {
   position: relative;
   width: 60%;
@@ -54,73 +53,67 @@
   right: 0;
 }
 
-/* ----- */
-.auth_form {
+/* FORM */
+.form {
   width: 60%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.auth_form > h2 {
+.title {
   margin-bottom: 1rem;
 }
 
-.auth_form > label {
+.label {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
-  font-size: 0.9rem;
   color: var(--gray-text);
 }
 
-.auth_form > label > input {
+.input {
   padding: 0.7rem 1rem;
-  font-size: 0.9rem;
   color: var(--black-text);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   background-color: var(--white-bg);
   box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
-.auth_form > label > input:focus {
-  box-shadow: 0 2px 0 0 var(--accent);
-}
-
-.auth_form > label > input::placeholder {
-  font-weight: 300;
+.input::placeholder {
   opacity: 0.25;
 }
 
-.view_pass {
+.viewPassword {
   position: absolute;
   top: 55%;
   right: 1rem;
   background-color: transparent;
 }
 
-.view_pass > img {
+.viewPasswordIcon {
   width: 1.3rem;
 }
 
-.dark_button-auth {
-  width: 100%;
-}
-
-/* ----- */
-.auth_footer {
+/* FOOTER */
+.footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.auth_footer > a {
+.footerLink {
   color: var(--accent);
 }
 
-/* ----- */
-.auth_form > label > input.input_error {
+/* ERROR */
+.error {
+  position: absolute;
+  right: 0;
+  color: var(--error);
+}
+
+.inputError {
   box-shadow: 0 2px 0 0 var(--error);
 }
 
@@ -130,18 +123,22 @@
     cursor: pointer;
   }
 
-  .view_pass:hover {
+  .input:hover {
+    box-shadow: 0 2px 0 0 var(--accent);
+  }
+
+  .viewPassword:hover {
     filter: var(--filter);
     cursor: pointer;
   }
 
-  .auth_footer > a:hover {
+  .footerLink:hover {
     text-decoration: underline;
     cursor: pointer;
   }
 }
 
-/* MOBILE */
+/* ADAPTIVE */
 @media (max-width: 700px) {
   .gbutton {
     width: 100%;
@@ -151,7 +148,7 @@
     width: 100%;
   }
 
-  .auth_form {
+  .form {
     width: 100%;
   }
 }

@@ -11,9 +11,8 @@ import {
   iconAddress,
   addOrderRequest,
 } from "../../Routes";
-
-import "./summary.css";
-import "../globals.css";
+import { imagesURL } from "../config";
+import styles from "./summary.module.css";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -84,12 +83,16 @@ export const OrderSummary = () => {
   };
 
   return (
-    <section className="place_order container">
-      <article className="cart_summary">
-        <h2>Summary</h2>
+    <section className={styles.order}>
+      <article className={styles.cart}>
+        <h2 className="title">Summary</h2>
         {cart.map((item, index) => (
-          <div className="product" key={index}>
-            <img src={item.images[0]} alt={item.title} />
+          <div className={styles.product} key={index}>
+            <img
+              className={styles.productImage}
+              src={`${imagesURL}/${item.images[0]}`}
+              alt={item.title}
+            />
             <h3>{item.title}</h3>
             <p>{item.quantity}</p>
             <p>{item.size}</p>
@@ -97,29 +100,31 @@ export const OrderSummary = () => {
           </div>
         ))}
 
-        <div className="total">
-          <p>
+        <div className={styles.total}>
+          <p className={styles.shipping}>
             Shipping <span>Free</span>
           </p>
-          <h3>
+          <h3 className={styles.totalAmount}>
             Total <span>{formatCurrency(totalAmount)}</span>
           </h3>
         </div>
       </article>
 
-      <article className="payment">
-        <h2>Payment method</h2>
-        <div>
-          <label>
+      <article className={styles.payment}>
+        <h2 className="title">Payment method</h2>
+        <div className={styles.paymentInfo}>
+          <label className={styles.paymentLabel}>
             <input
+              className={styles.paymentRadio}
               type="radio"
               name="paymentMethod"
               onChange={() => setPaymentMethod("stripe")}
             />
             Stripe
           </label>
-          <label>
+          <label className={styles.paymentLabel}>
             <input
+              className={styles.paymentRadio}
               type="radio"
               name="paymentMethod"
               value="cod"
@@ -130,19 +135,19 @@ export const OrderSummary = () => {
         </div>
       </article>
 
-      <article className="addresses">
-        <h2>Delivery address</h2>
-        <div>
+      <article className={styles.addresses}>
+        <h2 className="title">Delivery address</h2>
+        <div className={styles.addressInfo}>
           {addressList.map((address) => (
-            <label className="label" key={address.firstName}>
+            <label className={styles.addressLabel} key={address.first_name}>
               <input
+                className={styles.addressRadio}
                 type="radio"
-                className="radio"
                 name="address"
                 onChange={() => setShippingAddress(address.id)}
               />
-              <h4>
-                {address.firstName} {address.lastName}
+              <h4 className={styles.name}>
+                {address.first_name} {address.last_name}
               </h4>
               <p>
                 {address.street}, {address.number}
@@ -150,19 +155,28 @@ export const OrderSummary = () => {
               <p>{address.door}</p>
               <p>{address.city}</p>
               <p>
-                {address.state}, {address.zipCode}
+                {address.state}, {address.zip_code}
               </p>
               <p>
-                <span>Phone number:</span> {address.phone}
+                <span className={styles.span}>Phone number:</span>{" "}
+                {address.phone}
               </p>
             </label>
           ))}
         </div>
-        <button className="new_address" onClick={() => setIsModalAddress(true)}>
-          <img src={iconAddress} alt="add new address" />
-          Add new address
-        </button>
       </article>
+
+      <button
+        className={styles.addAddress}
+        onClick={() => setIsModalAddress(true)}
+      >
+        <img
+          className={styles.addAddressIcon}
+          src={iconAddress}
+          alt="add new address"
+        />
+        Add new address
+      </button>
 
       {isModalAddress && <AddressModal getAddress={getAddress} />}
 

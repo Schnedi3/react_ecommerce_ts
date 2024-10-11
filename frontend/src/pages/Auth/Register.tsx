@@ -8,8 +8,7 @@ import { registerSchema } from "../../schemas/schemas";
 import { IRegister } from "../../types/types";
 
 import { iconEyeClosed, iconEyeOpen } from "../../Routes";
-import "./auth.css";
-import "../globals.css";
+import styles from "./auth.module.css";
 
 export const Register = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
@@ -28,70 +27,79 @@ export const Register = () => {
     reset();
   };
   return (
-    <section className="auth_container container">
+    <section className={styles.auth}>
       <form
-        className="auth_form"
+        className={styles.form}
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2>Sign up</h2>
+        <h2 className={`title ${styles.title}`}>Sign up</h2>
 
-        <label>
+        <label className={styles.label}>
           Username
           {errors.username && (
-            <span className="error">{errors.username.message}</span>
+            <span className={styles.error}>{errors.username.message}</span>
           )}
           <input
+            className={`${styles.input} ${
+              errors.username ? styles.inputError : ""
+            }`}
             type="text"
-            className={errors.username ? "input_error" : ""}
             placeholder="John Doe"
             {...register("username")}
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           Email
           {errors.email && (
-            <span className="error">{errors.email.message}</span>
+            <span className={styles.error}>{errors.email.message}</span>
           )}
           <input
+            className={`${styles.input} ${
+              errors.email ? styles.inputError : ""
+            }`}
             type="email"
-            className={errors.email ? "input_error" : ""}
             placeholder="johndoe@lorem.com"
             {...register("email")}
           />
         </label>
 
-        <label>
+        <label className={styles.label}>
           Password
           {errors.password && (
-            <span className="error">{errors.password.message}</span>
+            <span className={styles.error}>{errors.password.message}</span>
           )}
           <input
+            className={`${styles.input} ${
+              errors.password ? styles.inputError : ""
+            }`}
             type={visible ? "text" : "password"}
-            className={errors.password ? "input_error" : ""}
             placeholder="A1b2C3d4"
             {...register("password")}
           />
           <button
+            className={styles.viewPassword}
             type="button"
-            className="view_pass"
             onClick={() => setIsVisible(!visible)}
           >
             <img
+              className={styles.viewPasswordIcon}
               src={visible ? iconEyeOpen : iconEyeClosed}
               alt="password visibility"
             />
           </button>
         </label>
 
-        <button className="dark_button dark_button-register" type="submit">
+        <button className="dark_button" type="submit">
           Sign Up
         </button>
 
-        <article className="auth_footer">
+        <article className={styles.footer}>
           <p>Already have an account?</p>
-          <Link to="/login">Login</Link>
+          <Link className={styles.footerLink} to="/login">
+            Login
+          </Link>
         </article>
       </form>
     </section>

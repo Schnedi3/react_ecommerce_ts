@@ -80,7 +80,7 @@ export const NewProduct = () => {
       <h2 className="title">Add product</h2>
 
       <article>
-        <h3 className={styles.subtitle}>Images</h3>
+        <h4 className={styles.subtitle}>Images</h4>
         <label className={styles.uploadSection}>
           <div className={styles.upload}>
             <img className={styles.uploadIcon} src={iconUpload} />
@@ -100,7 +100,7 @@ export const NewProduct = () => {
       </article>
 
       <label>
-        <h3 className={styles.subtitle}>Title</h3>
+        <h4 className={styles.subtitle}>Title</h4>
         <input
           type="text"
           className={styles.input}
@@ -111,7 +111,7 @@ export const NewProduct = () => {
       </label>
 
       <label>
-        <h3 className={styles.subtitle}>Description</h3>
+        <h4 className={styles.subtitle}>Description</h4>
         <textarea
           className={styles.input}
           placeholder="product description"
@@ -123,7 +123,7 @@ export const NewProduct = () => {
 
       <article className={styles.categories}>
         <label>
-          <h3 className={styles.subtitle}>Category</h3>
+          <h4 className={styles.subtitle}>Category</h4>
           <select
             className={styles.category}
             onChange={(e) => setCategory(e.target.value)}
@@ -135,7 +135,7 @@ export const NewProduct = () => {
         </label>
 
         <label>
-          <h3 className={styles.subtitle}>Sub-category</h3>
+          <h4 className={styles.subtitle}>Sub-category</h4>
           <select
             className={styles.category}
             onChange={(e) => setSubcategory(e.target.value)}
@@ -158,7 +158,7 @@ export const NewProduct = () => {
       </article>
 
       <article>
-        <h3 className={styles.subtitle}>Sizes</h3>
+        <h4 className={styles.subtitle}>Sizes</h4>
         <label className={styles.sizes}>
           {sizesArray.map((size) => (
             <button

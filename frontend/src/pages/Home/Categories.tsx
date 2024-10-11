@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 
 import { defaultCategory } from "./Home";
 import { ICategoriesProps } from "../../types/types";
-import { iconModal } from "../../Routes";
-
-import "./categories.css";
+import { iconArrow } from "../../Routes";
+import styles from "./categories.module.css";
 
 export const Categories = ({
   products,
@@ -34,21 +33,27 @@ export const Categories = ({
   }, []);
 
   return (
-    <article className="categories">
-      <button onClick={toggleModal}>
+    <article className={styles.categories}>
+      <button className={styles.toggleModal} onClick={toggleModal}>
         {defaultCategory === selectedCategory
           ? "Filter by category"
           : selectedCategory}{" "}
-        <span></span>
-        <img src={iconModal} alt="Modal toggle icon" />
+        <span className={styles.span}></span>
+        <img
+          className={styles.iconArrow}
+          src={iconArrow}
+          alt="Modal toggle icon"
+        />
       </button>
 
-      <ul className={isModalOpen ? "modal_open" : ""}>
+      <ul className={`${styles.modal} ${isModalOpen ? styles.modalOpen : ""}`}>
         {uniqueCategories.map((category) => (
           <li
+            className={`${styles.category} ${
+              category === selectedCategory ? styles.active : ""
+            }`}
             key={category}
             onClick={() => handleCategoryChange(category)}
-            className={category === selectedCategory ? "active" : ""}
           >
             {category}
           </li>

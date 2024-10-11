@@ -10,9 +10,7 @@ import {
   updateCartRequest,
 } from "../../Routes";
 import { imagesURL } from "../config";
-
-import "./cart.css";
-import "../globals.css";
+import styles from "./cart.module.css";
 
 export const Cart = () => {
   const { cart, setCart, getCart, totalAmount } = useShopContext();
@@ -45,12 +43,12 @@ export const Cart = () => {
     }
   };
 
-  const deleteProduct = async (productId: number, size: string) => {
+  const deleteProduct = async (product_id: number, size: string) => {
     try {
-      const response = await deleteFromCartRequest(productId, size);
+      const response = await deleteFromCartRequest(product_id, size);
 
       if (response.data.success) {
-        setCart(cart.filter((item) => item.id !== productId));
+        setCart(cart.filter((item) => item.id !== product_id));
         getCart();
         toast.success(response.data.message);
       } else {
@@ -67,62 +65,68 @@ export const Cart = () => {
 
   if (cart.length === 0) {
     return (
-      <section className="cart_empty container">
-        <img src={iconCart} alt="" />
-        <p>Your cart is empty</p>
+      <section className={styles.empty}>
+        <img
+          className={styles.emptyIcon}
+          src={iconCart}
+          alt="empty cart icon"
+        />
+        <p className={styles.emptyText}>Your cart is empty</p>
       </section>
     );
   }
 
   return (
-    <section className="cart_container container">
+    <section className={styles.cart}>
       <article>
-        <h2>Cart</h2>
+        <h2 className="title">Cart</h2>
+
         {cart.map((item, index) => (
-          <div className="item_info" key={index}>
+          <div className={styles.product} key={index}>
             <img
-              className="item_photo"
+              className={styles.productImage}
               src={`${imagesURL}/${item.images[0]}`}
               alt={item.title}
             />
-            <h3 className="item_title">{item.title}</h3>
+            <h3 className={styles.productTitle}>{item.title}</h3>
             <input
+              className={styles.input}
               type="number"
               id="quantity"
               min={1}
               defaultValue={item.quantity}
               onChange={(e) =>
                 updateQuantity(
-                  item.productId,
+                  item.product_id,
                   Number(e.target.value),
                   item.size
                 )
               }
             />
-            <p>{item.size}</p>
-            <p>{formatCurrency(item.price)}</p>
+            <p className={styles.productText}>{item.size}</p>
+            <p className={styles.productText}>{formatCurrency(item.price)}</p>
             <img
-              className="item_remove"
+              className={styles.delete}
               src={iconDelete}
-              alt="remove product"
-              onClick={() => deleteProduct(item.productId, item.size)}
+              alt="delete product"
+              onClick={() => deleteProduct(item.product_id, item.size)}
             />
           </div>
         ))}
       </article>
 
-      <article className="cart_total">
-        <h2>Total</h2>
-        <div className="total_info">
-          <p>
+      <article className={styles.total}>
+        <h2 className="title">Total</h2>
+        <div className={styles.totalInfo}>
+          <p className={styles.shipping}>
             Shipping <span>Free</span>
           </p>
-          <h3>
+          <h3 className={styles.totalAmount}>
             Total <span>{formatCurrency(totalAmount)}</span>
           </h3>
         </div>
         <button
-          className="dark_button dark_button-pay"
+          className="dark_button"
           onClick={() => navigate("/order-summary")}
         >
           proceed to summary

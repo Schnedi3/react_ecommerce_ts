@@ -20,29 +20,29 @@ export const getAddress = async (req: Request, res: Response) => {
 
 export const addAddress = async (req: Request, res: Response) => {
   const {
-    firstName,
-    lastName,
+    first_name,
+    last_name,
     phone,
     street,
     number,
     door,
     city,
     state,
-    zipCode,
+    zip_code,
   } = req.body;
 
   try {
     const userId = req.user.id;
     const result = await addAddressDB(
-      firstName,
-      lastName,
+      first_name,
+      last_name,
       phone,
       street,
       number,
       door,
       city,
       state,
-      zipCode,
+      zip_code,
       userId
     );
 

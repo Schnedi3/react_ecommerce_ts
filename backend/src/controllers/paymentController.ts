@@ -33,14 +33,19 @@ export const createCheckoutSession = async (req: Request, res: Response) => {
 };
 
 export const getCheckoutSession = async (req: Request, res: Response) => {
-  const { sessionId } = req.query;
+  const { session_id } = req.query;
+
+  if (!session_id) {
+    return res.status(400).json({ error: "Session ID is required" });
+  }
 
   try {
     const session = await stripe.checkout.sessions.retrieve(
-      sessionId as string
+      session_id as string
     );
     res.json(session);
   } catch (error: any) {
+    console.error("Error retrieving checkout session:", error);
     res.status(500).json({ error: error.message });
   }
 };

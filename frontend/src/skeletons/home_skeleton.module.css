@@ -1,5 +1,5 @@
 /* HOME */
-.home_skeleton {
+.homeSkeleton {
   margin: 2rem auto !important;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
@@ -7,14 +7,14 @@
   animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-.home_skeleton > article {
+.homeSkeleton > article {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.home_skeleton > article > img {
+.homeSkeleton > article > img {
   width: 17rem;
   height: 20rem;
   border-radius: 0.2rem;
@@ -22,7 +22,7 @@
   border: 1px solid rgba(0, 0, 0, 0);
 }
 
-.home_skeleton > article > div {
+.homeSkeleton > article > div {
   width: 17rem;
   padding: 1.5rem 0;
   display: flex;
@@ -30,19 +30,19 @@
   gap: 0.4rem;
 }
 
-.home_skeleton > article > div > h3 {
+.homeSkeleton > article > div > h3 {
   height: 1.3rem;
   border-radius: 1rem;
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.home_skeleton > article > div > div {
+.homeSkeleton > article > div > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.home_skeleton > article > div > div > h4 {
+.homeSkeleton > article > div > div > h4 {
   width: 50%;
   height: 1.1rem;
   border-radius: 1rem;

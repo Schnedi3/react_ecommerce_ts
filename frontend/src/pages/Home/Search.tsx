@@ -1,21 +1,22 @@
 import { ISearchProps } from "../../types/types";
 import { iconClose, iconSearch } from "../../Routes";
-
-import "./search.css";
+import styles from "./search.module.css";
 
 export const Search = ({ inputValue, setInputValue }: ISearchProps) => {
   return (
-    <article className="search">
-      <img className="find_icon" src={iconSearch} alt="search icon" />
+    <article className={styles.search}>
+      <img className={styles.iconSearch} src={iconSearch} alt="search icon" />
       <input
-        className="search_input"
+        className={styles.input}
         type="text"
         placeholder="Search for a product..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
       <img
-        className={`clear_icon${inputValue ? " clear_icon-show" : ""}`}
+        className={`${styles.clearIcon} ${
+          inputValue ? styles.showClearIcon : ""
+        }`}
         src={iconClose}
         alt="clear field"
         onClick={() => setInputValue("")}

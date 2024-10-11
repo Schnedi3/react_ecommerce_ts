@@ -26,7 +26,7 @@ import "./app.css";
 
 export const App = () => {
   return (
-    <main className="app">
+    <main className="app container">
       <ToastContainer
         position="bottom-right"
         autoClose={1000}

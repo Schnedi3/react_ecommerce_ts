@@ -1,5 +1,5 @@
 /* CONTACT */
-.contact_container {
+.contact {
   min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   display: flex;
   flex-direction: column;
@@ -8,68 +8,58 @@
   gap: 1rem;
 }
 
-/* ----- */
-.contact_form {
+/* FORM */
+.form {
   width: 60%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.contact_label {
+.label {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  font-size: 0.9rem;
   color: var(--gray-text);
 }
 
-.contact_label > input,
-.contact_label > textarea {
+.input {
   padding: 0.7rem 1rem;
-  font-size: 0.9rem;
   color: var(--black-text);
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   background-color: var(--white-bg);
   box-shadow: 0 2px 0 0 var(--accent-shadow);
 }
 
-.contact_label > input:focus,
-.contact_label > textarea:focus {
-  box-shadow: 0 2px 0 0 var(--accent);
+.input::placeholder {
+  opacity: 0.25;
 }
 
-.contact_label > input::placeholder,
-.contact_label > textarea::placeholder {
-  font-weight: 300;
-  opacity: 0.4;
-}
-
-.contact_label > textarea {
+.label > textarea {
   resize: none;
 }
 
-.dark_button-contact {
-  width: 100%;
-}
-
-/* ----- */
+/* ERROR */
 .error {
   position: absolute;
   right: 0;
   color: var(--error);
-  font-size: 0.9rem;
 }
 
-.contact_label > input.input_error,
-.contact_label > textarea.input_error {
+.inputError {
   box-shadow: 0 2px 0 0 var(--error);
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .input:hover {
+    box-shadow: 0 2px 0 0 var(--accent);
+  }
 }
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
-  .contact_form {
+  .form {
     width: 100%;
   }
 }

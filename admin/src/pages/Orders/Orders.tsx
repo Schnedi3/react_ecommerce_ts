@@ -84,7 +84,7 @@ export const Orders = () => {
 
   if (orders.length === 0) {
     return (
-      <section className={`container ${styles.empty}`}>
+      <section className={styles.empty}>
         <img className={styles.emptyIcon} src={iconBox} alt="" />
         <p className={styles.emptyText}>No orders yet</p>
       </section>

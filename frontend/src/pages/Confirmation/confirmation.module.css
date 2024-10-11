@@ -1,5 +1,5 @@
 /* CONFIRMATION */
-.confirm_container {
+.confirm {
   min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   gap: 1.5rem;
 }
 
-.confirm_container > img {
+.confirmIcon {
   width: 12rem;
 }
 
@@ -18,16 +18,19 @@
   align-items: center;
 }
 
-.thanks > p {
+.thanksText {
   font-size: 1rem;
 }
 
 .buttons {
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
 }
 
-.dark_button-shop {
-  width: 100%;
+/* ADAPTIVE */
+@media (max-width: 700px) {
+  .buttons {
+    width: 100%;
+  }
 }

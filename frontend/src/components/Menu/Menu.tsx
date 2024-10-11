@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useShopContext } from "../../context/useShopContext";
 
 import { iconCart, iconClose, iconLogin, iconMenu } from "../../Routes";
-import "./menu.css";
+import styles from "./menu.module.css";
 
 export const Menu = () => {
   const { itemsInCart } = useShopContext();
@@ -22,38 +22,50 @@ export const Menu = () => {
   }, []);
 
   return (
-    <nav className="menu container">
-      <Link to="/" className="menu_logo">
+    <nav className={styles.menu}>
+      <Link to="/" className={styles.menuTitle}>
         Shopify
       </Link>
-      <ul className={`menu_links${isMenuOpen ? " menu_links-visible" : ""}`}>
+
+      <ul
+        className={`${styles.menuLinks} ${isMenuOpen ? styles.mobileMenu : ""}`}
+      >
         <img
-          className="close_menu"
+          className={styles.menuIconClose}
           onClick={closeMenu}
           src={iconClose}
           alt="close menu"
         />
         <li>
-          <NavLink to="/" onClick={closeMenu}>
+          <NavLink className={styles.menuLink} to="/" onClick={closeMenu}>
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="/contact" onClick={closeMenu}>
+          <NavLink
+            className={styles.menuLink}
+            to="/contact"
+            onClick={closeMenu}
+          >
             Contact
           </NavLink>
         </li>
       </ul>
-      <article>
-        <Link className="menu_user" to="/user">
-          <img src={iconLogin} alt="login icon" />
+
+      <article className={styles.menuUserCart}>
+        <Link to="/user">
+          <img
+            className={styles.menuIconUser}
+            src={iconLogin}
+            alt="login icon"
+          />
         </Link>
-        <Link className="menu_cart" to="/cart">
-          <img src={iconCart} alt="cart icon" />
-          <span>{itemsInCart}</span>
+        <Link className={styles.menuCart} to="/cart">
+          <img className={styles.menuIconCart} src={iconCart} alt="cart icon" />
+          <span className={styles.menuBadge}>{itemsInCart}</span>
         </Link>
         <img
-          className="mobile_menu"
+          className={styles.mobileMenuIcon}
           src={iconMenu}
           alt="mobile menu icon"
           onClick={toggleMenu}
