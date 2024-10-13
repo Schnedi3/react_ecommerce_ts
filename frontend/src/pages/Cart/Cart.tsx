@@ -8,6 +8,7 @@ import {
   deleteFromCartRequest,
   iconCart,
   iconDelete,
+  Title,
   updateCartRequest,
 } from "../../Routes";
 import { imagesURL } from "../config";
@@ -94,7 +95,7 @@ export const Cart = () => {
   return (
     <section className={styles.cart}>
       <article>
-        <h2 className="title">Cart</h2>
+        <Title title="Cart" />
 
         {cart.map((item, index) => (
           <div className={styles.product} key={index}>
@@ -131,7 +132,7 @@ export const Cart = () => {
       </article>
 
       <article className={styles.total}>
-        <h2 className="title">Total</h2>
+        <Title title="Total" />
         <div className={styles.totalInfo}>
           <p className={styles.shipping}>
             Shipping <span>Free</span>

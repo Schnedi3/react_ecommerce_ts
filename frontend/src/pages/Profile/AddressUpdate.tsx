@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 
-import { updateAddressRequest, iconClose } from "../../Routes";
+import { updateAddressRequest, iconClose, Title } from "../../Routes";
 import { IAddress } from "../../types/types";
 import { addressSchema } from "../../schemas/schemas";
 import styles from "./address.module.css";
@@ -78,7 +78,7 @@ export const AddressUpdate = ({
         autoComplete="off"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h2 className="title">Update address</h2>
+        <Title title="Update adddress" />
 
         <article className={styles.article}>
           <label className={styles.label}>

@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { getProductsRequest, deleteProductRequest } from "../../api/product";
 import { IProduct } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
-
-import { iconDelete, iconList } from "../../Routes";
+import {
+  deleteProductRequest,
+  getProductsRequest,
+  iconDelete,
+  iconList,
+  Title,
+} from "../../Routes";
 import { imagesURL } from "../Config";
 import styles from "./products.module.css";
 
@@ -64,7 +68,7 @@ export const Products = () => {
 
   return (
     <section className={styles.products}>
-      <h2 className="title">All products</h2>
+      <Title title="Products" />
       <ul className={styles.product}>
         {products.map((item) => (
           <li className={styles.singleProduct} key={item.id}>

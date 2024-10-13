@@ -1,0 +1,17 @@
+/* TITLE */
+.title {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--title-font);
+  font-weight: 300;
+  font-size: 1.7rem;
+}
+
+.title::after {
+  content: "";
+  width: 1.5rem;
+  height: 0.1rem;
+  background-color: var(--accent);
+}

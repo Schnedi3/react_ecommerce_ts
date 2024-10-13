@@ -7,7 +7,7 @@ import { useAuthContext } from "../../context/useAuthContext";
 import { registerSchema } from "../../schemas/schemas";
 import { IRegister } from "../../types/types";
 
-import { iconEyeClosed, iconEyeOpen } from "../../Routes";
+import { iconEyeClosed, iconEyeOpen, Title } from "../../Routes";
 import styles from "./auth.module.css";
 
 export const Register = () => {
@@ -33,7 +33,7 @@ export const Register = () => {
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2 className={`title ${styles.title}`}>Sign up</h2>
+        <Title title="Sign up" />
 
         <label className={styles.label}>
           Username

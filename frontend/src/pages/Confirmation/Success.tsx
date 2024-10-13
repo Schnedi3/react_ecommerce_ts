@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { iconConfirm } from "../../Routes";
+import { iconConfirm, Title } from "../../Routes";
 import styles from "./confirmation.module.css";
 
 export const Success = () => {
@@ -13,7 +13,7 @@ export const Success = () => {
         src={iconConfirm}
         alt="order confirmed"
       />
-      <h2>Order confirmed</h2>
+      <Title title="Order confirmed" />
       <article className={styles.thanks}>
         <p className={styles.thanksText}>Thank you for your order</p>
         <p className={styles.thanksText}>

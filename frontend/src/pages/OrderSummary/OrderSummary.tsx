@@ -10,6 +10,7 @@ import {
   AddressModal,
   iconAddress,
   addOrderRequest,
+  Title,
 } from "../../Routes";
 import { imagesURL } from "../config";
 import styles from "./summary.module.css";
@@ -85,7 +86,7 @@ export const OrderSummary = () => {
   return (
     <section className={styles.order}>
       <article className={styles.cart}>
-        <h2 className="title">Summary</h2>
+        <Title title="Summary" />
         {cart.map((item, index) => (
           <div className={styles.product} key={index}>
             <img
@@ -111,7 +112,7 @@ export const OrderSummary = () => {
       </article>
 
       <article className={styles.payment}>
-        <h2 className="title">Payment method</h2>
+        <Title title="Payment method" />
         <div className={styles.paymentInfo}>
           <label className={styles.paymentLabel}>
             <input
@@ -136,7 +137,7 @@ export const OrderSummary = () => {
       </article>
 
       <article className={styles.addresses}>
-        <h2 className="title">Delivery address</h2>
+        <Title title="Delivery address" />
         <div className={styles.addressInfo}>
           {addressList.map((address) => (
             <label className={styles.addressLabel} key={address.first_name}>

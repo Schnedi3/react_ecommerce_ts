@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { getUserOrdersRequest, iconBox } from "../../Routes";
+import { getUserOrdersRequest, iconBox, Title } from "../../Routes";
 import { formatCurrency } from "../../helpers/formatCurrency";
 import { IOrder } from "../../types/types";
 import { imagesURL } from "../config";
@@ -42,7 +42,7 @@ export const Orders = () => {
 
   return (
     <ul className={styles.orders}>
-      <h2 className="title">All orders</h2>
+      <Title title="All orders" />
 
       {orders.map((order) => (
         <li className={styles.order} key={order.order_id}>

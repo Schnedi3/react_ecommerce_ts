@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { useAuthContext } from "../../context/useAuthContext";
-import { iconArrow, iconBox, iconLogin } from "../../Routes";
+import { iconArrow, iconBox, iconLogin, Title } from "../../Routes";
 import styles from "./logout.module.css";
 
 export const Logout = () => {
@@ -9,7 +9,7 @@ export const Logout = () => {
 
   return (
     <section className={styles.logout}>
-      <h2 className="title">User</h2>
+      <Title title="User" />
       <Link className={styles.link} to={"/profile"}>
         <img className={styles.userIcon} src={iconLogin} />
         <p>My account</p>

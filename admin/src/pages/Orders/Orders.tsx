@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import {
-  getOrdersRequest,
-  deleteOrderRequest,
-  updateOrderRequest,
-} from "../../api/order";
 import { IOrder } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
-
-import { iconBox, iconDelete } from "../../Routes";
+import {
+  deleteOrderRequest,
+  getOrdersRequest,
+  iconBox,
+  iconDelete,
+  Title,
+  updateOrderRequest,
+} from "../../Routes";
 import { imagesURL } from "../Config";
-
 import styles from "./orders.module.css";
 
 export const Orders = () => {
@@ -95,7 +95,7 @@ export const Orders = () => {
 
   return (
     <section className={styles.orders}>
-      <h2 className="title">All orders</h2>
+      <Title title="Orders" />
       <ul className="order">
         {orders.map((order) => (
           <li className={styles.singleOrder} key={order.order_id}>

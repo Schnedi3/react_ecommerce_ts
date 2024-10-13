@@ -52,10 +52,6 @@
 }
 
 /* ADDRESS */
-.title {
-  margin-bottom: 1rem;
-}
-
 .addresses {
   display: flex;
   gap: 2rem;

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { getUsersRequest, deleteUserRequest } from "../../api/users";
 import { IUser } from "../../types/types";
-
-import { iconDelete } from "../../Routes";
+import {
+  deleteUserRequest,
+  getUsersRequest,
+  iconDelete,
+  Title,
+} from "../../Routes";
 import styles from "./users.module.css";
 
 export const Users = () => {
@@ -53,7 +56,7 @@ export const Users = () => {
 
   return (
     <section className={styles.users}>
-      <h2 className="title">All users</h2>
+      <Title title="Users" />
       <ul className={styles.usersList}>
         {users.map((user) => (
           <li className={styles.user} key={user.id}>

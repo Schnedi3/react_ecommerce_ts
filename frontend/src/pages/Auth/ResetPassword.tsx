@@ -6,7 +6,7 @@ import { useAuthContext } from "../../context/useAuthContext";
 import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
 
-import { iconEyeClosed, iconEyeOpen } from "../../Routes";
+import { iconEyeClosed, iconEyeOpen, Title } from "../../Routes";
 import styles from "./auth.module.css";
 
 export const ResetPassword = () => {
@@ -33,7 +33,7 @@ export const ResetPassword = () => {
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2 className={`title ${styles.title}`}>Reset password</h2>
+        <Title title="Reset password" />
 
         <label className={styles.label}>
           Email

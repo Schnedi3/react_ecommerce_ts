@@ -10,6 +10,7 @@ import {
   AddressModal,
   deleteAddressRequest,
   updateUsernameRequest,
+  Title,
 } from "../../Routes";
 import { AddressUpdate } from "./AddressUpdate";
 import { IAddress } from "../../types/types";
@@ -88,7 +89,7 @@ export const Profile = () => {
     <section className={styles.profile}>
       {user && (
         <article className={styles.personal}>
-          <h2 className="title">Personal information</h2>
+          <Title title="Personal information" />
 
           <div className={styles.personalInfo}>
             <label className={styles.personalLabel}>
@@ -124,7 +125,7 @@ export const Profile = () => {
       )}
 
       <article>
-        <h2 className={`title ${styles.title}`}>Your addresses</h2>
+        <Title title="Your addresses" />
 
         <div className={styles.addresses}>
           {addressList.map((address) => (

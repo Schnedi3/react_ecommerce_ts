@@ -7,6 +7,7 @@ import {
   addStripeOrderRequest,
   fetchCheckoutSessionRequest,
   iconConfirm,
+  Title,
 } from "../../Routes";
 import styles from "./confirmation.module.css";
 
@@ -65,7 +66,7 @@ export const Confirmation = () => {
         src={iconConfirm}
         alt="order confirmed"
       />
-      <h2 className="title">Order confirmed</h2>
+      <Title title="Order confirmed" />
       <article className={styles.thanks}>
         <p className={styles.thanksText}>Thank you for your order</p>
         <p className={styles.thanksText}>

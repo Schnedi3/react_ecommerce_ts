@@ -61,10 +61,6 @@
   gap: 0.5rem;
 }
 
-.title {
-  margin-bottom: 1rem;
-}
-
 .label {
   position: relative;
   display: flex;

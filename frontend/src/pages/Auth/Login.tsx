@@ -7,7 +7,7 @@ import { useAuthContext } from "../../context/useAuthContext";
 import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
 
-import { iconEyeClosed, iconEyeOpen, iconGoogle } from "../../Routes";
+import { iconEyeClosed, iconEyeOpen, iconGoogle, Title } from "../../Routes";
 import styles from "./auth.module.css";
 
 export const Login = () => {
@@ -45,7 +45,7 @@ export const Login = () => {
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2 className={`title ${styles.title}`}>Login</h2>
+        <Title title="Login" />
 
         <label className={styles.label}>
           Email

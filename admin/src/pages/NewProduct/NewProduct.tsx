@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import { addProductRequest } from "../../api/product";
-
-import { iconUpload } from "../../Routes";
+import { addProductRequest, iconUpload, Title } from "../../Routes";
 import styles from "./new.module.css";
 import "../globals.css";
 
@@ -77,7 +75,7 @@ export const NewProduct = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h2 className="title">Add product</h2>
+      <Title title="Add product" />
 
       <article>
         <h4 className={styles.subtitle}>Images</h4>

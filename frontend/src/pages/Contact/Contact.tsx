@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { contactSchema } from "../../schemas/schemas";
 import { IContact } from "../../types/types";
+import { Title } from "../../Routes";
 import styles from "./contact.module.css";
 
 export const Contact = () => {
@@ -22,7 +23,7 @@ export const Contact = () => {
 
   return (
     <section className={styles.contact}>
-      <h2 className="title">Get in touch</h2>
+      <Title title="Get in touch" />
 
       <form
         className={styles.form}

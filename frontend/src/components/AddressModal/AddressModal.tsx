@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 
 import { useShopContext } from "../../context/useShopContext";
-import { addAddressRequest, iconClose } from "../../Routes";
+import { addAddressRequest, iconClose, Title } from "../../Routes";
 import { IAddress } from "../../types/types";
 import { addressSchema } from "../../schemas/schemas";
 import styles from "./address.module.css";
@@ -20,7 +20,7 @@ export const AddressModal = ({ getAddress }: IAddressProps) => {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
+    reset,
   } = useForm<IAddress>({
     resolver: zodResolver(addressSchema),
   });
@@ -44,7 +44,7 @@ export const AddressModal = ({ getAddress }: IAddressProps) => {
       }
     }
 
-    // reset();
+    reset();
   };
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const AddressModal = ({ getAddress }: IAddressProps) => {
       <form
         className={styles.form}
         onSubmit={handleSubmit(onSubmit)}
-        // autoComplete="off"
+        autoComplete="off"
       >
         <button
           className={styles.closeModal}
@@ -71,7 +71,7 @@ export const AddressModal = ({ getAddress }: IAddressProps) => {
           <img className={styles.closeIcon} src={iconClose} alt="close modal" />
         </button>
 
-        <h2 className="title">Add address</h2>
+        <Title title="Add address" />
 
         <article className={styles.article}>
           <label className={styles.label}>

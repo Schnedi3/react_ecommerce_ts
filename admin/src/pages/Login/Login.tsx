@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useAuthContext } from "../../context/useAuthContext";
 import { ILogin } from "../../types/types";
-
-import { iconEyeClosed, iconEyeOpen } from "../../Routes";
+import { iconEyeClosed, iconEyeOpen, Title } from "../../Routes";
 import styles from "./login.module.css";
 
 export const Login = () => {
@@ -14,14 +13,12 @@ export const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
-    // reset,
   } = useForm<ILogin>();
   const { isAuthenticated, login } = useAuthContext();
   const navigate = useNavigate();
 
   const onSubmit = (data: ILogin) => {
     login(data);
-    // reset();
   };
 
   useEffect(() => {
@@ -35,7 +32,7 @@ export const Login = () => {
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <h2 className="title">Login</h2>
+        <Title title="Login" />
 
         <label className={styles.label}>
           Email
