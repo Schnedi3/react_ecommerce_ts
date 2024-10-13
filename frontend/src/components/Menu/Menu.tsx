@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
+import { useAuthContext } from "../../context/useAuthContext";
 import { useShopContext } from "../../context/useShopContext";
-
 import { iconCart, iconClose, iconLogin, iconMenu } from "../../Routes";
+import { Modal } from "./Modal";
 import styles from "./menu.module.css";
 
 export const Menu = () => {
-  const { itemsInCart } = useShopContext();
-
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+
+  const { itemsInCart } = useShopContext();
+  const { isAuthenticated } = useAuthContext();
 
   useEffect(() => {
     window.addEventListener("resize", closeMenu);
@@ -53,13 +55,17 @@ export const Menu = () => {
       </ul>
 
       <article className={styles.menuUserCart}>
-        <Link to="/user">
-          <img
-            className={styles.menuIconUser}
-            src={iconLogin}
-            alt="login icon"
-          />
-        </Link>
+        {!isAuthenticated ? (
+          <Link to="/login">
+            <img
+              className={styles.menuIconUser}
+              src={iconLogin}
+              alt="login icon"
+            />
+          </Link>
+        ) : (
+          <Modal />
+        )}
         <Link className={styles.menuCart} to="/cart">
           <img className={styles.menuIconCart} src={iconCart} alt="cart icon" />
           <span className={styles.menuBadge}>{itemsInCart}</span>

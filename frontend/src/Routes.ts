@@ -95,14 +95,12 @@ import { Confirmation } from "./pages/Confirmation/Confirmation";
 import { Detail } from "./pages/Detail/Detail";
 import { Home } from "./pages/Home/Home";
 import { Login } from "./pages/Auth/Login";
-import { Logout } from "./pages/Logout/Logout";
 import { Orders } from "./pages/Orders/Orders";
 import { OrderSummary } from "./pages/OrderSummary/OrderSummary";
 import { Profile } from "./pages/Profile/Profile";
 import { Register } from "./pages/Auth/Register";
 import { ResetPassword } from "./pages/Auth/ResetPassword";
 import { Success } from "./pages/Confirmation/Success";
-import { User } from "./pages/User/User";
 
 export {
   Cart,
@@ -111,12 +109,10 @@ export {
   Detail,
   Home,
   Login,
-  Logout,
   Orders,
   OrderSummary,
   Profile,
   Register,
   ResetPassword,
   Success,
-  User,
 };

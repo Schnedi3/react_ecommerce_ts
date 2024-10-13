@@ -1,0 +1,49 @@
+/* MODAL */
+.menuIconUser {
+  margin-top: 0.4rem;
+  width: 1.9rem;
+}
+
+.menuUser {
+  position: relative;
+  background-color: transparent;
+}
+
+.modal {
+  position: absolute;
+  top: 3.7rem;
+  margin-left: -4.5rem;
+  display: flex;
+  flex-direction: column;
+  clip-path: inset(0 0 100% 0);
+  z-index: 5;
+  transition: 0.3s;
+}
+
+.modalOpen {
+  clip-path: inset(0 0 0 0);
+}
+
+.modalItem {
+  padding: 0.3rem 1.5rem;
+  border-radius: 0.2rem;
+  background-color: var(--white-bg);
+}
+
+:global .active {
+  color: var(--accent);
+  border-bottom: 0;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .menuUser:hover {
+    cursor: pointer;
+  }
+
+  .modalItem:hover {
+    color: var(--white-text);
+    background-color: var(--accent);
+    cursor: pointer;
+  }
+}

@@ -19,7 +19,6 @@ import {
   Register,
   ResetPassword,
   Success,
-  User,
 } from "./Routes";
 
 import "./app.css";
@@ -43,7 +42,6 @@ export const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/product/:id" element={<Detail />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/user" element={<User />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/reset-password" element={<ResetPassword />} />
