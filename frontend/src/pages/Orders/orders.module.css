@@ -7,14 +7,14 @@
 }
 
 .emptyIcon {
-  width: 30rem;
+  width: clamp(20rem, 50vw, 25rem);
   opacity: 0.15;
 }
 
 .emptyText {
   position: absolute;
   font-weight: 800;
-  font-size: 4.5rem;
+  font-size: clamp(2.5rem, 5.5vw, 3.5rem);
   opacity: 0.8;
 }
 
@@ -77,14 +77,6 @@
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
-  .emptyIcon {
-    width: 20rem;
-  }
-
-  .emptyText {
-    font-size: 3rem;
-  }
-
   .product {
     display: grid;
     grid-template-columns: 0.5fr 2fr;

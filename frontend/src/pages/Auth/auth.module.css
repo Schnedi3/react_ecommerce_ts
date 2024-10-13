@@ -136,14 +136,8 @@
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
-  .gbutton {
-    width: 100%;
-  }
-
-  .separator {
-    width: 100%;
-  }
-
+  .gbutton,
+  .separator,
   .form {
     width: 100%;
   }
