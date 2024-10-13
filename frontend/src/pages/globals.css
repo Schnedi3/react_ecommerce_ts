@@ -20,7 +20,6 @@ h4 {
 }
 
 .title {
-  margin-top: 0.7rem 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -43,7 +42,7 @@ h4 {
   color: var(--white-text);
   background-color: var(--black-bg);
   border: 0;
-  border-radius: 0.4rem;
+  border-radius: 0.2rem;
   text-transform: uppercase;
   transition: 0.3s;
 }

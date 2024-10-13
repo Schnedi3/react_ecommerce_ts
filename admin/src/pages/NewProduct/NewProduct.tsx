@@ -182,7 +182,7 @@ export const NewProduct = () => {
           price === "" ||
           sizes.length === 0 ||
           images.length === 0
-            ? styles.darkButtonDisabled
+            ? "dark_button-disabled"
             : ""
         }`}
         type="submit"

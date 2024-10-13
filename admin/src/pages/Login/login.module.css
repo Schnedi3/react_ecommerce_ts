@@ -57,7 +57,6 @@
 }
 
 .inputError {
-  border: 0.05rem solid var(--error);
   box-shadow: 0 2px 0 0 var(--error);
 }
 

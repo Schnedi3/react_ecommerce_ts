@@ -10,6 +10,8 @@ import { IOrder } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
 
 import { iconBox, iconDelete } from "../../Routes";
+import { imagesURL } from "../Config";
+
 import styles from "./orders.module.css";
 
 export const Orders = () => {
@@ -97,13 +99,26 @@ export const Orders = () => {
       <ul className="order">
         {orders.map((order) => (
           <li className={styles.singleOrder} key={order.order_id}>
-            <img className={styles.orderIcon} src={iconBox} />
+            {order.products.map((item) => (
+              <img
+                className={styles.itemImage}
+                src={`${imagesURL}/${item.images[0]}`}
+                key={item.id}
+              />
+            ))}
 
             <article>
               {order.products.map((item) => (
-                <p key={item.id}>
-                  {item.title} x {item.quantity} {item.size}
-                </p>
+                <div key={item.id}>
+                  <p>{item.title}</p>
+                  <p>
+                    <span className={styles.orderSpan}>Quantity:</span>{" "}
+                    {item.quantity}
+                  </p>
+                  <p>
+                    <span className={styles.orderSpan}>Size:</span> {item.size}
+                  </p>
+                </div>
               ))}
               <br />
               <p>
@@ -113,7 +128,7 @@ export const Orders = () => {
                 {order.street}, {order.number} - {order.door}
               </p>
               <p>
-                {order.city}, {order.state}, {order.zip_code}
+                {order.city}, {order.state} - {order.zip_code}
               </p>
               <p>
                 <span className={styles.orderSpan}>Phone number:</span>{" "}

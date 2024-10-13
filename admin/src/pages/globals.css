@@ -16,10 +16,10 @@ h3 {
 
 h4 {
   font-weight: 500;
+  font-size: 1rem;
 }
 
 .title {
-  margin: 0.7rem 0;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -30,7 +30,7 @@ h4 {
 
 .title::after {
   content: "";
-  width: 2rem;
+  width: 1.5rem;
   height: 0.1rem;
   background-color: var(--accent);
 }
@@ -42,10 +42,15 @@ h4 {
   color: var(--white-text);
   background-color: var(--black-bg);
   border: 0;
-  border-radius: 0.4rem;
+  border-radius: 0.2rem;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   transition: 0.3s;
+}
+
+.dark_button-disabled {
+  pointer-events: none;
+  background-color: var(--gray-bg);
 }
 
 /* HOVER */

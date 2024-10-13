@@ -63,6 +63,7 @@ ul {
   --white-bg: #f7f6f9;
 
   --accent: #5c6ce3;
+  --accent-clear: #edeef7;
   --accent-shadow: rgba(92, 108, 227, 0.35);
   --error: #ff5f5f;
   --filter: invert(37%) sepia(83%) saturate(1230%) hue-rotate(215deg)

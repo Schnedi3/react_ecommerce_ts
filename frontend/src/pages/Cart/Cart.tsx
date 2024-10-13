@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+import { useAuthContext } from "../../context/useAuthContext";
 import { useShopContext } from "../../context/useShopContext";
 import { formatCurrency } from "../../helpers/formatCurrency";
 import {
@@ -14,6 +15,7 @@ import styles from "./cart.module.css";
 
 export const Cart = () => {
   const { cart, setCart, getCart, totalAmount } = useShopContext();
+  const { isAuthenticated } = useAuthContext();
   const navigate = useNavigate();
 
   const updateQuantity = async (
@@ -62,6 +64,19 @@ export const Cart = () => {
       }
     }
   };
+
+  if (!isAuthenticated) {
+    return (
+      <section className={styles.empty}>
+        <img
+          className={styles.emptyIcon}
+          src={iconCart}
+          alt="empty cart icon"
+        />
+        <p className={styles.emptyText}>Please login first</p>
+      </section>
+    );
+  }
 
   if (cart.length === 0) {
     return (

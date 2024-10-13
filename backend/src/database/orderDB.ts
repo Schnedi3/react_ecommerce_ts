@@ -109,6 +109,7 @@ export const getOrdersDB = async () => {
       array_agg(
         json_build_object(
           'id', p.id,
+          'images', p.images,
           'title', p.title,
           'price', p.price,
           'quantity', oi.quantity,

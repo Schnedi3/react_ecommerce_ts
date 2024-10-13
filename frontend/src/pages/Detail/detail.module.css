@@ -1,6 +1,5 @@
 /* DETAILS */
 .detail {
-  margin: 2rem auto;
   min-height: calc(100vh - var(--menu-height) - var(--footer-height));
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -10,10 +9,8 @@
 
 .images {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
   position: relative;
-  display: flex;
+  overflow: hidden;
 }
 
 .span {
@@ -51,10 +48,12 @@
 
 .title {
   font-family: var(--title-font);
+  font-weight: 300;
   font-size: 1.6rem;
 }
 
 .price {
+  font-weight: 700;
   font-size: 1.2rem;
   color: var(--accent);
 }
@@ -82,6 +81,7 @@
 }
 
 .selectedSize {
+  background-color: var(--accent-clear);
   box-shadow: 0 2px 0 0 var(--accent);
 }
 
@@ -106,6 +106,7 @@
   }
 
   .size:hover {
+    background-color: var(--accent-clear);
     box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
@@ -127,7 +128,6 @@
 
   .images {
     height: 50vh;
-    overflow: hidden;
   }
 
   .image {

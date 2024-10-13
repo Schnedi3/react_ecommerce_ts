@@ -1,16 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { useShopContext } from "../../context/useShopContext";
-import { formatCurrency } from "../../helpers/formatCurrency";
-import { getProductsRequest, iconSearch } from "../../Routes";
+import { getProductsRequest } from "../../Routes";
 import { IProduct } from "../../types/types";
 import { Search } from "./Search";
 import { Categories } from "./Categories";
-// import { HomeSkeleton } from "../../skeletons/HomeSkeleton";
-import { imagesURL } from "../config";
+import { HomeSkeleton } from "../../skeletons/HomeSkeleton";
 import styles from "./home.module.css";
+import "../globals.css";
+import { ProductCard } from "./ProductCard";
 
 export const defaultCategory: string = "All";
 
@@ -19,7 +17,6 @@ export const Home = () => {
   const [inputValue, setInputValue] = useState<string>("");
   const [selectedCategory, setSelectedCategory] =
     useState<string>(defaultCategory);
-  const { cart } = useShopContext();
 
   const getProducts = async () => {
     try {
@@ -61,8 +58,6 @@ export const Home = () => {
     return filtered;
   }, [selectedCategory, products, inputValue]);
 
-  // if (!filteredProducts) return <HomeSkeleton />;
-
   return (
     <section className={styles.home}>
       <header className={styles.header}>
@@ -75,36 +70,9 @@ export const Home = () => {
       </header>
 
       {filteredProducts.length !== 0 ? (
-        <article className={styles.cards}>
-          {filteredProducts.map((product) => {
-            const onCart = cart.some((item) => item.productId === product.id);
-            return (
-              <Link
-                className={styles.card}
-                to={`/product/${product.id}`}
-                key={product.id}
-              >
-                <img
-                  className={styles.cardImage}
-                  src={`${imagesURL}/${product.images[0]}`}
-                  alt={product.title}
-                />
-                <div className={styles.cardInfo}>
-                  <h4 className={styles.title}>{product.title}</h4>
-                  <div className={styles.onCart}>
-                    <h3>{formatCurrency(product.price)}</h3>
-                    {onCart && <p className={styles.badge}>on cart</p>}
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
-        </article>
+        <ProductCard filteredProducts={filteredProducts} />
       ) : (
-        <article className={styles.empty}>
-          <img className={styles.emptyIcon} src={iconSearch} alt="" />
-          <p className={styles.emptyText}>No matching product</p>
-        </article>
+        <HomeSkeleton />
       )}
     </section>
   );

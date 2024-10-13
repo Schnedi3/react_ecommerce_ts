@@ -116,13 +116,8 @@ input[type="number"] {
 }
 
 .selected {
+  background-color: var(--accent-clear);
   box-shadow: 0 2px 0 0 var(--accent);
-}
-
-/* ADD BUTTON */
-.darkButtonDisabled {
-  pointer-events: none;
-  background-color: var(--gray-bg);
 }
 
 /* HOVER */
@@ -138,6 +133,7 @@ input[type="number"] {
   }
 
   .size:hover {
+    background-color: var(--accent-clear);
     box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }

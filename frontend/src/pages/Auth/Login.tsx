@@ -9,7 +9,6 @@ import { ILogin } from "../../types/types";
 
 import { iconEyeClosed, iconEyeOpen, iconGoogle } from "../../Routes";
 import styles from "./auth.module.css";
-import "../globals.css";
 
 export const Login = () => {
   const [visible, setIsVisible] = useState<boolean>(false);
@@ -83,7 +82,7 @@ export const Login = () => {
           >
             <img
               className={styles.viewPasswordIcon}
-              src={visible ? iconEyeOpen : iconEyeClosed}
+              src={visible ? iconEyeClosed : iconEyeOpen}
               alt="password visibility"
             />
           </button>

@@ -66,17 +66,8 @@ interface IOrderProduct {
   title: string;
 }
 
-export interface IRegister {
-  id: number;
-  username: string;
-  email: string;
-  password: string;
-  role: string;
-}
-
-export interface ISearchProps {
-  inputValue: string;
-  setInputValue: (inputValue: string) => void;
+export interface IProductCardProps {
+  filteredProducts: IProduct[];
 }
 
 export interface IProduct {
@@ -89,6 +80,19 @@ export interface IProduct {
   sizes: string[];
   images: string[];
   quantity: number;
+}
+
+export interface IRegister {
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+  role: string;
+}
+
+export interface ISearchProps {
+  inputValue: string;
+  setInputValue: (inputValue: string) => void;
 }
 
 export interface ShopContextType {

@@ -6,9 +6,8 @@ import { IProduct } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
 
 import { iconDelete, iconList } from "../../Routes";
+import { imagesURL } from "../Config";
 import styles from "./products.module.css";
-
-const baseURL = "http://localhost:4000/images/";
 
 export const Products = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -71,7 +70,7 @@ export const Products = () => {
           <li className={styles.singleProduct} key={item.id}>
             <img
               className={styles.productImage}
-              src={`${baseURL}/${item.images[0]}`}
+              src={`${imagesURL}/${item.images[0]}`}
             />
             <h3>{item.title}</h3>
             <h4>{item.category}</h4>

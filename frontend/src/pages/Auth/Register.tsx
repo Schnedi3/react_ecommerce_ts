@@ -85,7 +85,7 @@ export const Register = () => {
           >
             <img
               className={styles.viewPasswordIcon}
-              src={visible ? iconEyeOpen : iconEyeClosed}
+              src={visible ? iconEyeClosed : iconEyeOpen}
               alt="password visibility"
             />
           </button>

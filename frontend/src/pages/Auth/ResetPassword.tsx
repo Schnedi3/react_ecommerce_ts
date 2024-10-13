@@ -70,7 +70,7 @@ export const ResetPassword = () => {
           >
             <img
               className={styles.viewPasswordIcon}
-              src={visible ? iconEyeOpen : iconEyeClosed}
+              src={visible ? iconEyeClosed : iconEyeOpen}
               alt="password visibility"
             />
           </button>

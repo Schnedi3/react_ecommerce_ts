@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 
+import { useAuthContext } from "../../context/useAuthContext";
 import { useShopContext } from "../../context/useShopContext";
 import {
   addToCartRequest,
@@ -22,6 +23,7 @@ export const Detail = () => {
   const [currentImage, setCurrentImage] = useState(0);
   const { id } = useParams<string>();
   const { cart, setCart, getCart } = useShopContext();
+  const { isAuthenticated } = useAuthContext();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -61,6 +63,7 @@ export const Detail = () => {
     selectedSize: string
   ) => {
     if (!selectedSize) return toast.error("Select a size first");
+    if (!isAuthenticated) return toast.error("Login first");
 
     try {
       const response = await addToCartRequest(
@@ -91,7 +94,7 @@ export const Detail = () => {
 
   const isSizeInCart = (size: string) => {
     return cart.some(
-      (item) => item.productId === product.id && item.size === size
+      (item) => item.product_id === product.id && item.size === size
     );
   };
 

@@ -43,14 +43,14 @@ export {
   updateUsernameRequest,
 };
 
-//components
+// components
 import { AddressModal } from "./components/AddressModal/AddressModal";
 import { Footer } from "./components/Footer/Footer";
 import { Menu } from "./components/Menu/Menu";
 
 export { AddressModal, Footer, Menu };
 
-//icons
+// icons
 import iconAddress from "./assets/icons/address.svg";
 import iconArrow from "./assets/icons/arrow.svg";
 import iconBox from "./assets/icons/box.svg";

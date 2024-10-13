@@ -98,7 +98,7 @@
   }
 
   .logout:hover {
-    background-color: var(--accent-shadow);
+    background-color: var(--accent-clear);
     cursor: pointer;
   }
 }
