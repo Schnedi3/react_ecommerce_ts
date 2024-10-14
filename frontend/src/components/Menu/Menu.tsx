@@ -9,11 +9,11 @@ import styles from "./menu.module.css";
 
 export const Menu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
-
   const { itemsInCart } = useShopContext();
   const { isAuthenticated } = useAuthContext();
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   useEffect(() => {
     window.addEventListener("resize", closeMenu);
@@ -23,6 +23,16 @@ export const Menu = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   return (
     <nav className={styles.menu}>
       <Link to="/" className={styles.menuTitle}>
@@ -30,7 +40,9 @@ export const Menu = () => {
       </Link>
 
       <ul
-        className={`${styles.menuLinks} ${isMenuOpen ? styles.mobileMenu : ""}`}
+        className={`${styles.menuLinks} ${
+          isMenuOpen ? styles.menuLinksVisible : ""
+        }`}
       >
         <img
           className={styles.menuIconClose}
@@ -77,6 +89,15 @@ export const Menu = () => {
           onClick={toggleMenu}
         />
       </article>
+
+      {isMenuOpen && (
+        <span
+          className={`${styles.menuBackdrop} ${
+            isMenuOpen ? styles.menuBackdropVisible : ""
+          }`}
+          onClick={closeMenu}
+        ></span>
+      )}
     </nav>
   );
 };

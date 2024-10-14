@@ -13,6 +13,15 @@ export const Menu = () => {
   const closeMenu = () => setIsMenuOpen(false);
 
   useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     window.addEventListener("resize", closeMenu);
 
     return () => {
@@ -82,6 +91,13 @@ export const Menu = () => {
             <p onClick={logout}>Logout</p>
           </li>
         </ul>
+
+        <span
+          className={`${styles.menuBackdrop} ${
+            isMenuOpen ? styles.menuBackdropVisible : ""
+          }`}
+          onClick={closeMenu}
+        ></span>
       </nav>
     )
   );

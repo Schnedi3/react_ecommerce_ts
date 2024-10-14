@@ -7,9 +7,10 @@ import styles from "./modal.module.css";
 
 export const Modal = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const { logout } = useAuthContext();
+
   const toggleModal = () => setIsModalOpen(!isModalOpen);
   const closeModal = () => setIsModalOpen(false);
-  const { logout } = useAuthContext();
 
   useEffect(() => {
     window.addEventListener("resize", closeModal);
@@ -19,6 +20,15 @@ export const Modal = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
+
   return (
     <section>
       <button className={styles.menuUser} onClick={toggleModal}>
@@ -26,24 +36,37 @@ export const Modal = () => {
       </button>
 
       <ul className={`${styles.modal} ${isModalOpen ? styles.modalOpen : ""}`}>
-        <NavLink
-          className={styles.modalItem}
-          to={"/profile"}
-          onClick={closeModal}
-        >
-          Profile
-        </NavLink>
-        <NavLink
-          className={styles.modalItem}
-          to={"/orders"}
-          onClick={closeModal}
-        >
-          Orders
-        </NavLink>
-        <p className={styles.modalItem} onClick={logout}>
-          Logout
-        </p>
+        <li className={styles.modalItem}>
+          <NavLink
+            className={styles.modalItemText}
+            to={"/profile"}
+            onClick={closeModal}
+          >
+            Profile
+          </NavLink>
+        </li>
+        <li className={styles.modalItem}>
+          <NavLink
+            className={styles.modalItemText}
+            to={"/orders"}
+            onClick={closeModal}
+          >
+            Orders
+          </NavLink>
+        </li>
+        <li className={styles.modalItem}>
+          <p className={styles.modalItemText} onClick={logout}>
+            Logout
+          </p>
+        </li>
       </ul>
+
+      <span
+        className={`${styles.modalBackdrop} ${
+          isModalOpen ? styles.modalBackdropVisible : ""
+        }`}
+        onClick={closeModal}
+      ></span>
     </section>
   );
 };

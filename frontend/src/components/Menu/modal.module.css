@@ -30,9 +30,24 @@
   background-color: var(--white-bg);
 }
 
-:global .active {
-  color: var(--accent);
-  border-bottom: 0;
+.modalItemText {
+  color: var(--black-text);
+}
+
+.modalBackdrop {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.01);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+}
+
+.modalBackdropVisible {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* HOVER */
@@ -45,5 +60,9 @@
     color: var(--white-text);
     background-color: var(--accent);
     cursor: pointer;
+  }
+
+  .modalItem:hover .modalItemText {
+    color: var(--white-text);
   }
 }
