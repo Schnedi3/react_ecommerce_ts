@@ -1,0 +1,19 @@
+/* NOT FOUND */
+.found {
+  min-height: calc(100vh - var(--menu-height) - var(--footer-height));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  position: absolute;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 5.5vw, 3.5rem);
+  opacity: 0.8;
+}
+
+.link {
+  width: clamp(20rem, 50vw, 25rem);
+  opacity: 0.15;
+}

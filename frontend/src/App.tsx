@@ -16,6 +16,7 @@ import {
   Detail,
   Home,
   Login,
+  NotFound,
   Orders,
   OrderSummary,
   Profile,
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
       <Route path="profile" element={<Profile />} />
       <Route path="confirmation" element={<Confirmation />} />
       <Route path="success" element={<Success />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );

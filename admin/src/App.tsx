@@ -11,6 +11,7 @@ import { RootLayout } from "./layout/RootLayout";
 import {
   Login,
   NewProduct,
+  NotFound,
   Orders,
   Products,
   ProtectedRoute,
@@ -22,13 +23,13 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route path="login" element={<Login />} />
-
       <Route element={<ProtectedRoute />}>
         <Route index element={<NewProduct />} />
         <Route path="products" element={<Products />} />
         <Route path="orders" element={<Orders />} />
         <Route path="users" element={<Users />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );

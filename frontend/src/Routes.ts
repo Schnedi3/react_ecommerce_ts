@@ -64,6 +64,7 @@ import iconEdit from "./assets/icons/edit.svg";
 import iconEyeClosed from "./assets/icons/eyeClosed.svg";
 import iconEyeOpen from "./assets/icons/eyeOpen.svg";
 import iconGoogle from "./assets/icons/google.svg";
+import iconLink from "./assets/icons/link.svg";
 import iconLogin from "./assets/icons/login.svg";
 import iconMenu from "./assets/icons/menu.svg";
 import iconNext from "./assets/icons/next.svg";
@@ -82,6 +83,7 @@ export {
   iconEyeClosed,
   iconEyeOpen,
   iconGoogle,
+  iconLink,
   iconLogin,
   iconMenu,
   iconNext,
@@ -96,6 +98,7 @@ import { Confirmation } from "./pages/Confirmation/Confirmation";
 import { Detail } from "./pages/Detail/Detail";
 import { Home } from "./pages/Home/Home";
 import { Login } from "./pages/Auth/Login";
+import { NotFound } from "./pages/NotFound/NotFound";
 import { Orders } from "./pages/Orders/Orders";
 import { OrderSummary } from "./pages/OrderSummary/OrderSummary";
 import { Profile } from "./pages/Profile/Profile";
@@ -110,6 +113,7 @@ export {
   Detail,
   Home,
   Login,
+  NotFound,
   Orders,
   OrderSummary,
   Profile,
