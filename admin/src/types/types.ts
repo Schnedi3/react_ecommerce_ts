@@ -1,8 +1,9 @@
 export interface AuthContextType {
   user: IUser | null;
+  isAuthenticated: boolean;
+  loading:boolean;
   login: (user: ILogin) => void;
   logout: () => void;
-  isAuthenticated: boolean;
 }
 
 export interface ILogin {

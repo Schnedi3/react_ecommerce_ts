@@ -12,6 +12,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 export const AuthProvider = ({ children }: PropsWithChildren) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const login = async (user: ILogin) => {
     try {
@@ -47,12 +48,14 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
     const savedUser = localStorage.getItem("user");
 
     if (token && savedUser) {
-      setUser(JSON.parse(savedUser));
       setIsAuthenticated(true);
+      setUser(JSON.parse(savedUser));
     } else {
       setIsAuthenticated(false);
       setUser(null);
     }
+
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -64,6 +67,7 @@ export const AuthProvider = ({ children }: PropsWithChildren) => {
       value={{
         user,
         isAuthenticated,
+        loading,
         login,
         logout,
       }}

@@ -40,6 +40,7 @@ import iconDelete from "./assets/icons/delete.svg";
 import iconEyeClosed from "./assets/icons/eye_closed.svg";
 import iconEyeOpen from "./assets/icons/eye_open.svg";
 import iconList from "./assets/icons/list.svg";
+import iconLoad from "./assets/icons/load.svg";
 import iconMenu from "./assets/icons/menu.svg";
 import iconUpload from "./assets/icons/upload.svg";
 
@@ -50,6 +51,7 @@ export {
   iconEyeClosed,
   iconEyeOpen,
   iconList,
+  iconLoad,
   iconMenu,
   iconUpload,
 };
@@ -59,7 +61,7 @@ import { Login } from "./pages/Login/Login";
 import { NewProduct } from "./pages/NewProduct/NewProduct";
 import { Orders } from "./pages/Orders/Orders";
 import { Products } from "./pages/Products/Products";
-import { ProtectedRoute } from "./pages/ProtectedRoute";
+import { ProtectedRoute } from "./pages/ProtectedRoute/ProtectedRoute";
 import { Users } from "./pages/users/Users";
 
 export { Login, NewProduct, Orders, Products, ProtectedRoute, Users };

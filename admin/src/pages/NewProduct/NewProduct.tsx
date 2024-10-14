@@ -79,11 +79,11 @@ export const NewProduct = () => {
 
       <article>
         <h4 className={styles.subtitle}>Images</h4>
-        <label className={styles.uploadSection}>
-          <div className={styles.upload}>
+        <div className={styles.uploadSection}>
+          <label className={styles.upload}>
             <img className={styles.uploadIcon} src={iconUpload} />
             <input type="file" accept="image/*" onChange={handleImages} />
-          </div>
+          </label>
           <ul className={styles.uploadedImages}>
             {images.map((image, index) => (
               <li key={index}>
@@ -94,7 +94,7 @@ export const NewProduct = () => {
               </li>
             ))}
           </ul>
-        </label>
+        </div>
       </article>
 
       <label>
@@ -157,7 +157,7 @@ export const NewProduct = () => {
 
       <article>
         <h4 className={styles.subtitle}>Sizes</h4>
-        <label className={styles.sizes}>
+        <div className={styles.sizes}>
           {sizesArray.map((size) => (
             <button
               key={size}
@@ -170,7 +170,7 @@ export const NewProduct = () => {
               {size}
             </button>
           ))}
-        </label>
+        </div>
       </article>
 
       <button

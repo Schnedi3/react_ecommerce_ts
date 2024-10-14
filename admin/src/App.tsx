@@ -1,40 +1,49 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { AuthProvider } from "./context/AuthContext";
+import { RootLayout } from "./layout/RootLayout";
 import {
   Login,
-  Menu,
   NewProduct,
   Orders,
   Products,
   ProtectedRoute,
   Users,
 } from "./Routes";
-
 import "./app.css";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout />}>
+      <Route path="login" element={<Login />} />
+
+      <Route element={<ProtectedRoute />}>
+        <Route index element={<NewProduct />} />
+        <Route path="products" element={<Products />} />
+        <Route path="orders" element={<Orders />} />
+        <Route path="users" element={<Users />} />
+      </Route>
+    </Route>
+  )
+);
 
 export const App = () => {
   return (
     <main className="app container">
-      <ToastContainer autoClose={2000} pauseOnHover={false} />
-      <AuthProvider>
-        <BrowserRouter>
-          <Menu />
+      <ToastContainer
+        autoClose={1500}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+        newestOnTop={true}
+      />
 
-          <Routes>
-            <Route path="/login" element={<Login />} />
-
-            <Route element={<ProtectedRoute />}>
-              <Route path="/" element={<NewProduct />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/users" element={<Users />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
+      <RouterProvider router={router} />
     </main>
   );
 };
