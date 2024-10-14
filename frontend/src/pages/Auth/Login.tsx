@@ -7,7 +7,13 @@ import { useAuthContext } from "../../context/useAuthContext";
 import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
 
-import { iconEyeClosed, iconEyeOpen, iconGoogle, Title } from "../../Routes";
+import {
+  Button,
+  iconEyeClosed,
+  iconEyeOpen,
+  iconGoogle,
+  Title,
+} from "../../Routes";
 import styles from "./auth.module.css";
 
 export const Login = () => {
@@ -88,9 +94,7 @@ export const Login = () => {
           </button>
         </label>
 
-        <button className="dark_button" type="submit">
-          Login
-        </button>
+        <Button type="submit" text="Login" />
 
         <article className={styles.footer}>
           <Link className={styles.footerLink} to="/register">

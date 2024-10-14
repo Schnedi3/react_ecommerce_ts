@@ -45,11 +45,12 @@ export {
 
 // components
 import { AddressModal } from "./components/AddressModal/AddressModal";
+import { Button } from "./components/Button/Button";
 import { Footer } from "./components/Footer/Footer";
 import { Menu } from "./components/Menu/Menu";
 import { Title } from "./components/Title/Title";
 
-export { AddressModal, Footer, Menu, Title };
+export { AddressModal, Button, Footer, Menu, Title };
 
 // icons
 import iconAddress from "./assets/icons/address.svg";

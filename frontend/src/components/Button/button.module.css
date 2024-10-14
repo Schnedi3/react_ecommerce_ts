@@ -1,0 +1,20 @@
+/* BUTTON */
+.button {
+  margin-top: 0.8rem;
+  padding: 0.7rem;
+  font-size: 1rem;
+  color: var(--white-text);
+  background-color: var(--black-bg);
+  border: 0;
+  border-radius: 0.2rem;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--accent);
+    cursor: pointer;
+  }
+}

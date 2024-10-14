@@ -7,7 +7,7 @@ import { useAuthContext } from "../../context/useAuthContext";
 import { registerSchema } from "../../schemas/schemas";
 import { IRegister } from "../../types/types";
 
-import { iconEyeClosed, iconEyeOpen, Title } from "../../Routes";
+import { Button, iconEyeClosed, iconEyeOpen, Title } from "../../Routes";
 import styles from "./auth.module.css";
 
 export const Register = () => {
@@ -91,9 +91,7 @@ export const Register = () => {
           </button>
         </label>
 
-        <button className="dark_button" type="submit">
-          Sign Up
-        </button>
+        <Button type="submit" text="Sign Up" />
 
         <article className={styles.footer}>
           <p>Already have an account?</p>

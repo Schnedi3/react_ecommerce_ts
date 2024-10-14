@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 
-import { updateAddressRequest, iconClose, Title } from "../../Routes";
+import { Button, iconClose, Title, updateAddressRequest } from "../../Routes";
 import { IAddress } from "../../types/types";
 import { addressSchema } from "../../schemas/schemas";
 import styles from "./address.module.css";
@@ -218,9 +218,7 @@ export const AddressUpdate = ({
           </label>
         </article>
 
-        <button className="dark_button" type="submit">
-          Update Address
-        </button>
+        <Button type="submit" text="Update Address" />
       </form>
     </section>
   );

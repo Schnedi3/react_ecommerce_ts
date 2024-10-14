@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "react-toastify";
 
 import { useShopContext } from "../../context/useShopContext";
-import { addAddressRequest, iconClose, Title } from "../../Routes";
+import { addAddressRequest, Button, iconClose, Title } from "../../Routes";
 import { IAddress } from "../../types/types";
 import { addressSchema } from "../../schemas/schemas";
 import styles from "./address.module.css";
@@ -211,9 +211,7 @@ export const AddressModal = ({ getAddress }: IAddressProps) => {
           </label>
         </article>
 
-        <button className="dark_button" type="submit">
-          Save Address
-        </button>
+        <Button type="submit" text="Save Address" />
       </form>
     </section>
   );

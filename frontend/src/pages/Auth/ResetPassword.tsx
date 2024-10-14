@@ -6,7 +6,7 @@ import { useAuthContext } from "../../context/useAuthContext";
 import { loginSchema } from "../../schemas/schemas";
 import { ILogin } from "../../types/types";
 
-import { iconEyeClosed, iconEyeOpen, Title } from "../../Routes";
+import { Button, iconEyeClosed, iconEyeOpen, Title } from "../../Routes";
 import styles from "./auth.module.css";
 
 export const ResetPassword = () => {
@@ -76,9 +76,7 @@ export const ResetPassword = () => {
           </button>
         </label>
 
-        <button className="dark_button" type="submit">
-          Set new password
-        </button>
+        <Button type="submit" text="Set new password" />
       </form>
     </section>
   );
