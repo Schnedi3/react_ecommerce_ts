@@ -9,8 +9,8 @@ export const useLoginGoogle = () => {
   const { authData } = useAuthStore();
 
   return useMutation({
-    mutationFn: (accessToken: string) => {
-      return axios.post("/auth/google", { accessToken });
+    mutationFn: (access_token: string) => {
+      return axios.post("/auth/google", { access_token });
     },
     onSuccess: ({ data }) => {
       if (data.result.role === "user") {
