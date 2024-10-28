@@ -1,40 +1,18 @@
-/* GLOBALS */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  color: var(--black-text);
-}
-
-h3 {
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-h4 {
-  font-weight: 500;
-  font-size: 1rem;
-}
-
+/* BUTTON */
 .dark_button {
   margin-top: 0.8rem;
   padding: 0.7rem;
   font-size: 1rem;
   color: var(--white-text);
   background-color: var(--black-bg);
-  border: 0;
-  border-radius: 0.2rem;
+  border-radius: var(--border-radius);
   text-transform: uppercase;
-  letter-spacing: 0.05rem;
   transition: 0.3s;
 }
 
 .dark_button-disabled {
-  pointer-events: none;
   background-color: var(--gray-bg);
+  pointer-events: none;
 }
 
 /* HOVER */

@@ -54,8 +54,7 @@ export const Login = () => {
       >
         <Title title="Login" />
 
-        <label className={styles.label}>
-          Email
+        <article className={styles.label}>
           {errors.email && (
             <span className={styles.error}>{errors.email.message}</span>
           )}
@@ -63,14 +62,15 @@ export const Login = () => {
             className={`${styles.input} ${
               errors.email ? styles.inputError : ""
             }`}
+            id="email"
             type="email"
-            placeholder="johndoe@lorem.com"
+            placeholder=""
             {...register("email", { required: "Email is required" })}
           />
-        </label>
+          <label htmlFor="email">Email</label>
+        </article>
 
-        <label className={styles.label}>
-          Password
+        <article className={styles.label}>
           {errors.password && (
             <span className={styles.error}>{errors.password.message}</span>
           )}
@@ -78,14 +78,21 @@ export const Login = () => {
             className={`${styles.input} ${
               errors.password ? styles.inputError : ""
             }`}
+            id="password"
             type={visible ? "text" : "password"}
-            placeholder="A1b2C3d4"
-            {...register("password", { required: "Password is required" })}
+            placeholder=""
+            {...register("password", {
+              required: "Password is required",
+              maxLength: { value: 8, message: "no more than 8 characters" },
+            })}
           />
+          <label htmlFor="password">Password</label>
           <button
             className={styles.viewPassword}
             type="button"
-            onClick={() => setIsVisible(!visible)}
+            onMouseDown={() => setIsVisible(true)}
+            onMouseUp={() => setIsVisible(false)}
+            onMouseLeave={() => setIsVisible(false)}
           >
             <img
               className={styles.viewIcon}
@@ -93,7 +100,7 @@ export const Login = () => {
               alt="password visibility"
             />
           </button>
-        </label>
+        </article>
 
         <button className="dark_button" type="submit">
           Login

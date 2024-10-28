@@ -8,8 +8,6 @@
 }
 
 .subtitle {
-  margin-bottom: 0.3rem;
-  font-size: 0.9rem;
   color: var(--gray-text);
 }
 
@@ -26,14 +24,12 @@
   align-items: center;
   justify-content: center;
   padding: 0.9rem;
-  border-radius: 0.4rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border: 2px solid var(--gray-bg);
+  border-radius: var(--border-radius);
 }
 
 .uploadIcon {
   width: 2rem;
-  opacity: 0.5;
 }
 
 .upload > input {
@@ -47,26 +43,22 @@
 
 .uploadedImage {
   height: 4rem;
-  border-radius: 0.4rem;
+  border-radius: var(--border-radius);
 }
 
 /* TITLE - DESC */
 .input {
+  position: relative;
   width: 100%;
   padding: 0.7rem 1rem;
   color: var(--black-text);
-  border-radius: 0.5rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--gray-bg);
   resize: none;
 }
 
 .input:focus {
-  box-shadow: 0 2px 0 0 var(--accent);
-}
-
-.input::placeholder {
-  opacity: 0.25;
+  border: 2px solid var(--accent);
 }
 
 /* CATEGORIES */
@@ -82,23 +74,12 @@
   width: 100%;
   padding: 0.7rem 1rem;
   color: var(--black-text);
-  border-radius: 0.5rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border: 2px solid var(--gray-bg);
+  border-radius: var(--border-radius);
 }
 
 .category:focus {
-  box-shadow: 0 2px 0 0 var(--accent);
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-
-input[type="number"] {
-  appearance: none;
-  -moz-appearance: textfield;
+  border: 2px solid var(--accent);
 }
 
 /* SIZES */
@@ -109,32 +90,27 @@ input[type="number"] {
 
 .size {
   padding: 0.5rem 0.8rem;
-  border-radius: 0.3rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--gray-bg);
   transition: 0.3s;
 }
 
 .selected {
-  background-color: var(--accent-clear);
-  box-shadow: 0 2px 0 0 var(--accent);
+  border: 2px solid var(--accent);
 }
 
 /* HOVER */
 @media (hover: hover) {
   .upload:hover {
-    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 
   .upload:hover > img {
     filter: var(--filter);
-    opacity: 1;
   }
 
   .size:hover {
-    background-color: var(--accent-clear);
-    box-shadow: 0 2px 0 0 var(--accent);
+    border: 2px solid var(--accent);
     cursor: pointer;
   }
 }

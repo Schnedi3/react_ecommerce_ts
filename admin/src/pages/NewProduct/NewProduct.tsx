@@ -70,12 +70,19 @@ export const NewProduct = () => {
       <Title title="Add product" />
 
       <article>
-        <h4 className={styles.subtitle}>Images</h4>
+        <label className={styles.subtitle} htmlFor="upload">
+          Images
+        </label>
         <div className={styles.uploadSection}>
-          <label className={styles.upload}>
+          <div className={styles.upload}>
             <img className={styles.uploadIcon} src={iconUpload} />
-            <input type="file" accept="image/*" onChange={handleImages} />
-          </label>
+            <input
+              id="upload"
+              type="file"
+              accept="image/*"
+              onChange={handleImages}
+            />
+          </div>
           <ul className={styles.uploadedImages}>
             {images.map((image, index) => (
               <li key={index}>
@@ -89,19 +96,19 @@ export const NewProduct = () => {
         </div>
       </article>
 
-      <label>
-        <h4 className={styles.subtitle}>Title</h4>
+      <label className={styles.subtitle}>
+        Title
         <input
-          type="text"
           className={styles.input}
+          type="text"
           placeholder="product title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </label>
 
-      <label>
-        <h4 className={styles.subtitle}>Description</h4>
+      <label className={styles.subtitle}>
+        Description
         <textarea
           className={styles.input}
           placeholder="product description"
@@ -112,8 +119,8 @@ export const NewProduct = () => {
       </label>
 
       <article className={styles.categories}>
-        <label>
-          <h4 className={styles.subtitle}>Category</h4>
+        <label className={styles.subtitle}>
+          Category
           <select
             className={styles.category}
             onChange={(e) => setCategory(e.target.value)}
@@ -124,8 +131,8 @@ export const NewProduct = () => {
           </select>
         </label>
 
-        <label>
-          <h4 className={styles.subtitle}>Sub-category</h4>
+        <label className={styles.subtitle}>
+          Sub-category
           <select
             className={styles.category}
             onChange={(e) => setSubcategory(e.target.value)}
@@ -135,28 +142,30 @@ export const NewProduct = () => {
           </select>
         </label>
 
-        <label>
-          <h3 className={styles.subtitle}>Price</h3>
+        <label className={styles.subtitle}>
+          Price
           <input
-            type="number"
             className={styles.category}
+            type="text"
+            inputMode="numeric"
             placeholder="10"
             value={price}
+            pattern="[0-9]"
             onChange={(e) => setPrice(e.target.value)}
           />
         </label>
       </article>
 
       <article>
-        <h4 className={styles.subtitle}>Sizes</h4>
+        <label className={styles.subtitle}>Sizes</label>
         <div className={styles.sizes}>
           {sizesArray.map((size) => (
             <button
-              key={size}
-              type="button"
               className={`${styles.size} ${
                 sizes.includes(size) ? styles.selected : ""
               }`}
+              key={size}
+              type="button"
               onClick={() => handleSize(size)}
             >
               {size}

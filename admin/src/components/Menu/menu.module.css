@@ -13,7 +13,6 @@
   align-items: baseline;
   font-family: Logotype;
   font-size: 2.5rem;
-  color: var(--black-text);
   letter-spacing: 0.1rem;
   text-transform: uppercase;
 }
@@ -48,8 +47,8 @@
   align-items: flex-end;
   justify-content: flex-start;
   gap: 3rem;
-  border-left: 0.05rem solid var(--gray-bg);
-  background-color: var(--white-bg);
+  border-left: 0.05rem solid var(--accent);
+  background-color: var(--white);
   clip-path: inset(0 0 0 100%);
   z-index: 2;
   transition: 0.3s;
@@ -66,7 +65,7 @@
 .menuLink {
   position: relative;
   font-size: 1rem;
-  color: var(--black-text);
+  color: var(--gray-text);
 }
 
 :global .active {
@@ -114,7 +113,7 @@
   }
 
   .logout:hover {
-    background-color: var(--accent-clear);
+    border: 2px solid var(--accent);
     cursor: pointer;
   }
 }

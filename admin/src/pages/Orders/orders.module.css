@@ -45,19 +45,22 @@
 
 .itemImage {
   width: 4rem;
-  border-radius: 0.4rem;
+  border-radius: var(--border-radius);
 }
 
 .orderSpan {
-  color: var(--gray-text);
+  color: var(--black-text);
 }
 
 .orderSelect {
   padding: 0.5rem 0.9rem;
   color: var(--black-text);
-  border-radius: 0.3rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border: 2px solid var(--gray-bg);
+  border-radius: var(--border-radius);
+}
+
+.orderSelect:focus {
+  border: 2px solid var(--accent);
 }
 
 .orderDelete {
@@ -67,7 +70,6 @@
 /* HOVER */
 @media (hover: hover) {
   .orderSelect:hover {
-    box-shadow: 0 2px 0 0 var(--accent);
     cursor: pointer;
   }
 

@@ -17,7 +17,8 @@ import {
   ProtectedRoute,
   Users,
 } from "./Routes";
-import "./app.css";
+import "./reset.css";
+import "./main.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
