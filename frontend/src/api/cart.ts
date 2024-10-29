@@ -13,6 +13,7 @@ export const useCart = () => {
       const { data } = await axios.get("/cart");
       return data.result;
     },
+    initialData: [],
     enabled: isAuthenticated,
   });
 };

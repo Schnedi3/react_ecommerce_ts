@@ -99,9 +99,9 @@ export const Profile = () => {
             Add new address
           </button>
 
-          {addressList?.length > 0 && (
+          {addressList.length > 0 && (
             <section className={styles.addressList}>
-              {addressList?.map((address: IAddress) => (
+              {addressList.map((address: IAddress) => (
                 <div className={styles.singleAddress} key={Math.random()}>
                   <h4 className={styles.name}>
                     {address.first_name} {address.last_name}

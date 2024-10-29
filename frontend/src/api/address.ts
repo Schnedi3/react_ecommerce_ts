@@ -11,6 +11,7 @@ export const useAddress = () => {
       const { data } = await axios.get("/address");
       return data.result;
     },
+    initialData: [],
   });
 };
 

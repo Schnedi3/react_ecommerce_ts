@@ -45,12 +45,12 @@ export const Detail = () => {
   };
 
   const isSizeInCart = (size: string) => {
-    return cart?.some(
+    return cart.some(
       (item: ICartItem) => item.product_id === product.id && item.size === size
     );
   };
 
-  if (!product || error || isLoading) {
+  if (error || isLoading) {
     return <DetailSkeleton />;
   }
 

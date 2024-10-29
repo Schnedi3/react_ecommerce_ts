@@ -12,7 +12,7 @@ export const ProductCard = ({ filteredProducts }: IProductCardProps) => {
   return (
     <section className={styles.cards}>
       {filteredProducts.map((product) => {
-        const onCart = cart?.some(
+        const onCart = cart.some(
           (item: ICartItem) => item.product_id === product.id
         );
         return (

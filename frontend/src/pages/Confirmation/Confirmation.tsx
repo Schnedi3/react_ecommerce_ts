@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { useFetchCheckoutSession } from "../../api/payment";
+import { useFetchCheckoutSession } from "../../api/checkout";
 import { useAddOrder } from "../../api/order";
 import { iconConfirm, Title } from "../../Routes";
 import styles from "./confirmation.module.css";

@@ -9,7 +9,7 @@ import styles from "./orders.module.css";
 export const Orders = () => {
   const { data: orders, error, isLoading } = useOrders();
 
-  if (!orders || orders?.length === 0 || error || isLoading) {
+  if (orders.length === 0 || error || isLoading) {
     return <OrderSkeleton />;
   }
 

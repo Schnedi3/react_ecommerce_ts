@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useCart } from "../../api/cart";
 import { useAddress } from "../../api/address";
 import { useAddOrder } from "../../api/order";
-import { useCreateCheckoutSession } from "../../api/payment";
+import { useCreateCheckoutSession } from "../../api/checkout";
 import { IAddress, ICartItem } from "../../types/types";
 import { formatCurrency } from "../../helpers/formatCurrency";
 import { AddressModal, iconAddress, Title } from "../../Routes";
@@ -20,7 +20,7 @@ export const Checkout = () => {
   const { mutate: createCheckoutSession } = useCreateCheckoutSession();
   const sessionId = null;
 
-  const totalAmount = cart?.reduce(
+  const totalAmount = cart.reduce(
     (acc: number, product: ICartItem) => acc + product.price * product.quantity,
     0
   );
@@ -38,7 +38,7 @@ export const Checkout = () => {
     addOrder({ shippingAddress, totalAmount, paymentMethod, sessionId });
   };
 
-  if (!addressList || !cart || error || isLoading) return <p>No data</p>;
+  if (error || isLoading) return <p>No data</p>;
 
   return (
     <section className={styles.order}>

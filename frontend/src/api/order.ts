@@ -10,6 +10,7 @@ export const useOrders = () => {
       const { data } = await axios.get(`/order/user`);
       return data.result;
     },
+    initialData: [],
   });
 };
 

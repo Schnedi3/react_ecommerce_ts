@@ -32,12 +32,12 @@ export const Cart = () => {
     deleteFromCart({ id, size });
   };
 
-  const totalAmount = cart?.reduce(
+  const totalAmount = cart.reduce(
     (acc: number, item: ICartItem) => acc + item.price * item.quantity,
     0
   );
 
-  if (!isAuthenticated || !cart || cart.length === 0 || error || isLoading) {
+  if (!isAuthenticated || cart.length === 0 || error || isLoading) {
     return <CartSkeleton />;
   }
 

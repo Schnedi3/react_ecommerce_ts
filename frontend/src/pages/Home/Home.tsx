@@ -35,7 +35,7 @@ export const Home = () => {
     return filtered;
   }, [selectedCategory, products, inputValue]);
 
-  if (!products || error || isLoading) return <HomeSkeleton />;
+  if (error || isLoading) return <HomeSkeleton />;
 
   return (
     <section className={styles.home}>
