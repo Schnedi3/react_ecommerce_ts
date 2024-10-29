@@ -33,8 +33,7 @@ export const Register = () => {
       >
         <Title title="Sign up" />
 
-        <label className={styles.label}>
-          Username
+        <article className={styles.label}>
           {errors.username && (
             <span className={styles.error}>{errors.username.message}</span>
           )}
@@ -42,14 +41,15 @@ export const Register = () => {
             className={`${styles.input} ${
               errors.username ? styles.inputError : ""
             }`}
+            id="username"
             type="text"
-            placeholder="John Doe"
+            placeholder=""
             {...register("username")}
           />
-        </label>
+          <label htmlFor="username">Username</label>
+        </article>
 
-        <label className={styles.label}>
-          Email
+        <article className={styles.label}>
           {errors.email && (
             <span className={styles.error}>{errors.email.message}</span>
           )}
@@ -57,14 +57,15 @@ export const Register = () => {
             className={`${styles.input} ${
               errors.email ? styles.inputError : ""
             }`}
+            id="email"
             type="email"
-            placeholder="johndoe@lorem.com"
+            placeholder=""
             {...register("email")}
           />
-        </label>
+          <label htmlFor="email">Email</label>
+        </article>
 
-        <label className={styles.label}>
-          Password
+        <article className={styles.label}>
           {errors.password && (
             <span className={styles.error}>{errors.password.message}</span>
           )}
@@ -72,14 +73,18 @@ export const Register = () => {
             className={`${styles.input} ${
               errors.password ? styles.inputError : ""
             }`}
+            id="password"
             type={visible ? "text" : "password"}
-            placeholder="A1b2C3d4"
+            placeholder=""
             {...register("password")}
           />
+          <label htmlFor="password">Password</label>
           <button
             className={styles.viewPassword}
             type="button"
-            onClick={() => setIsVisible(!visible)}
+            onMouseDown={() => setIsVisible(true)}
+            onMouseUp={() => setIsVisible(false)}
+            onMouseLeave={() => setIsVisible(false)}
           >
             <img
               className={styles.viewPasswordIcon}
@@ -87,7 +92,7 @@ export const Register = () => {
               alt="password visibility"
             />
           </button>
-        </label>
+        </article>
 
         <Button type="submit" text="Sign Up" />
 

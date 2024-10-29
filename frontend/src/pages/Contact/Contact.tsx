@@ -30,38 +30,39 @@ export const Contact = () => {
         onSubmit={handleSubmit(onSubmit)}
         autoComplete="off"
       >
-        <label className={styles.label}>
-          Name
+        <article className={styles.label}>
           {errors.name && (
             <span className={styles.error}>{errors.name.message}</span>
           )}
           <input
-            type="text"
             className={`${styles.input} ${
               errors.name ? styles.inputError : ""
             }`}
-            placeholder="John Doe"
+            id="name"
+            type="text"
+            placeholder=""
             {...register("name")}
           />
-        </label>
+          <label htmlFor="name">Name</label>
+        </article>
 
-        <label className={styles.label}>
-          Email
+        <article className={styles.label}>
           {errors.email && (
             <span className={styles.error}>{errors.email.message}</span>
           )}
           <input
-            type="email"
             className={`${styles.input} ${
               errors.email ? styles.inputError : ""
             }`}
-            placeholder="johndoe@lorem.com"
+            id="email"
+            type="email"
+            placeholder=""
             {...register("email")}
           />
-        </label>
+          <label htmlFor="email">Email</label>
+        </article>
 
-        <label className={styles.label}>
-          Message
+        <article className={styles.label}>
           {errors.message && (
             <span className={styles.error}>{errors.message.message}</span>
           )}
@@ -69,11 +70,13 @@ export const Contact = () => {
             className={`${styles.input} ${
               errors.message ? styles.inputError : ""
             }`}
+            id="message"
             rows={3}
-            placeholder="lorem ipsum..."
+            placeholder=""
             {...register("message")}
           ></textarea>
-        </label>
+          <label htmlFor="message">Message</label>
+        </article>
 
         <Button type="submit" text="Send" />
       </form>

@@ -52,7 +52,7 @@ export const Profile = () => {
 
           <div className={styles.personalInfo}>
             <label className={styles.personalLabel}>
-              <h4 className={styles.labelTitle}>Username</h4>
+              <p className={styles.labelTitle}>Username</p>
               {isEditUsername ? (
                 <form onSubmit={(e) => handleUpdateUser(e, user.id)}>
                   <input
@@ -76,81 +76,79 @@ export const Profile = () => {
               )}
             </label>
             <label className={styles.personalLabel}>
-              <h4 className={styles.labelTitle}>Email</h4>
+              <p className={styles.labelTitle}>Email</p>
               <p className={styles.labelText}>{user.email}</p>
             </label>
           </div>
         </article>
       )}
 
-      <article>
+      <article className={styles.addressesContainer}>
         <Title title="Your addresses" />
 
-        {addressList?.length !== 0 ? (
-          <div className={styles.addresses}>
-            {addressList?.map((address: IAddress) => (
-              <div className={styles.label} key={address.first_name}>
-                <div>
+        <div className={styles.addresses}>
+          <button
+            className={styles.addAddress}
+            onClick={() => setIsAddAddress(true)}
+          >
+            <img
+              className={styles.addAddressIcon}
+              src={iconAddress}
+              alt="add new address"
+            />
+            Add new address
+          </button>
+
+          {addressList?.length > 0 && (
+            <section className={styles.addressList}>
+              {addressList?.map((address: IAddress) => (
+                <div className={styles.singleAddress} key={Math.random()}>
                   <h4 className={styles.name}>
                     {address.first_name} {address.last_name}
                   </h4>
+                  <div className={styles.addressInfo}>
+                    <p>
+                      {address.street}, {address.number}
+                    </p>
+                    <p>{address.door}</p>
+                    <p>{address.city}</p>
+                    <p>
+                      {address.state}, {address.zip_code}
+                    </p>
+                    <p>
+                      <span className={styles.span}>Phone number:</span>{" "}
+                      {address.phone}
+                    </p>
+                  </div>
 
-                  <p>
-                    {address.street}, {address.number}
-                  </p>
-                  <p>{address.door}</p>
-                  <p>{address.city}</p>
-                  <p>
-                    {address.state}, {address.zip_code}
-                  </p>
-
-                  <p>
-                    <span className={styles.span}>Phone number:</span>{" "}
-                    {address.phone}
-                  </p>
+                  <div className={styles.buttons}>
+                    <button
+                      className={styles.button}
+                      onClick={() => handleUpdateAddress(address)}
+                    >
+                      <img
+                        className={styles.buttonIcon}
+                        src={iconEdit}
+                        alt="edit address"
+                      />
+                    </button>
+                    <button
+                      className={styles.button}
+                      onClick={() => deleteAddress(address.id)}
+                    >
+                      <img
+                        className={styles.buttonIcon}
+                        src={iconDelete}
+                        alt="delete address"
+                      />
+                    </button>
+                  </div>
                 </div>
-
-                <div className={styles.buttons}>
-                  <button
-                    className={styles.button}
-                    onClick={() => handleUpdateAddress(address)}
-                  >
-                    <img
-                      className={styles.buttonIcon}
-                      src={iconEdit}
-                      alt="edit address"
-                    />
-                  </button>
-                  <button
-                    className={styles.button}
-                    onClick={() => deleteAddress(address.id)}
-                  >
-                    <img
-                      className={styles.buttonIcon}
-                      src={iconDelete}
-                      alt="delete address"
-                    />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>You haven't add any address yet</p>
-        )}
+              ))}
+            </section>
+          )}
+        </div>
       </article>
-
-      <button
-        className={styles.addAddress}
-        onClick={() => setIsAddAddress(true)}
-      >
-        <img
-          className={styles.addAddressIcon}
-          src={iconAddress}
-          alt="add new address"
-        />
-        Add new address
-      </button>
 
       {isAddAddress && (
         <AddressModal

@@ -8,13 +8,12 @@
 .card {
   width: 17rem;
   margin: auto;
-  display: grid;
   transition: 0.3s;
 }
 
 .cardImage {
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: var(--boder-radius);
 }
 
 .cardInfo {
@@ -30,8 +29,9 @@
   justify-content: space-between;
 }
 
-.title {
-  color: var(--gray-text);
+.price {
+  font-weight: 600;
+  color: var(--accent);
 }
 
 .badge {

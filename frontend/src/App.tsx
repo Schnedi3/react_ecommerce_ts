@@ -23,7 +23,8 @@ import {
   ResetPassword,
   Success,
 } from "./Routes";
-import "./app.css";
+import "./reset.css";
+import "./main.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -47,7 +48,7 @@ const router = createBrowserRouter(
 
 export const App = () => {
   return (
-    <main className="app container">
+    <main className="container">
       <ToastContainer
         position="bottom-right"
         autoClose={1500}

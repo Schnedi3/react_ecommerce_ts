@@ -26,13 +26,13 @@ export const ProductCard = ({ filteredProducts }: IProductCardProps) => {
               src={`${imagesURL}/${product.images[0]}`}
               alt={product.title}
             />
-            <div className={styles.cardInfo}>
+            <article className={styles.cardInfo}>
               <h4 className={styles.title}>{product.title}</h4>
               <div className={styles.onCart}>
-                <h3>{formatCurrency(product.price)}</h3>
+                <p className={styles.price}>{formatCurrency(product.price)}</p>
                 {onCart && <p className={styles.badge}>on cart</p>}
               </div>
-            </div>
+            </article>
           </Link>
         );
       })}

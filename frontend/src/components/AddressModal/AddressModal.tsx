@@ -60,141 +60,155 @@ export const AddressModal = ({
         <Title title="Add address" />
 
         <article className={styles.article}>
-          <label className={styles.label}>
-            First name
+          <div className={styles.label}>
             {errors.first_name && (
               <span className={styles.error}>{errors.first_name.message}</span>
             )}
             <input
-              type="text"
               className={`${styles.input} ${
                 errors.first_name ? styles.inputError : ""
               }`}
-              placeholder="John"
+              id="first_name"
+              type="text"
+              placeholder=""
               {...register("first_name")}
             />
-          </label>
-          <label className={styles.label}>
-            Last name
+            <label htmlFor="first_name">First name</label>
+          </div>
+          <div className={styles.label}>
             {errors.last_name && (
               <span className={styles.error}>{errors.last_name.message}</span>
             )}
             <input
-              type="text"
               className={`${styles.input} ${
                 errors.last_name ? styles.inputError : ""
               }`}
-              placeholder="Doe"
+              id="last_name"
+              type="text"
+              placeholder=""
               {...register("last_name")}
             />
-          </label>
+            <label htmlFor="last_name">Last name</label>
+          </div>
         </article>
 
         <article className={styles.article}>
-          <label className={styles.label}>
-            Phone
+          <div className={styles.label}>
             {errors.phone && (
               <span className={styles.error}>{errors.phone.message}</span>
             )}
             <input
-              type="tel"
               className={`${styles.input} ${
                 errors.phone ? styles.inputError : ""
               }`}
-              placeholder="678 901 234"
+              id="phone"
+              type="tel"
+              placeholder=""
               {...register("phone")}
             />
-          </label>
+            <label htmlFor="phone">Phone</label>
+          </div>
         </article>
 
         <article className={styles.article}>
-          <label className={styles.label}>
-            Street
+          <div className={styles.label}>
             {errors.street && (
               <span className={styles.error}>{errors.street.message}</span>
             )}
             <input
-              type="text"
               className={`${styles.input} ${
                 errors.street ? styles.inputError : ""
               }`}
-              placeholder="Fake St"
+              id="street"
+              type="text"
+              placeholder=""
               {...register("street")}
             />
-          </label>
-          <label className={styles.label}>
-            Number
+            <label htmlFor="street">Street</label>
+          </div>
+          <div className={styles.label}>
             {errors.number && (
               <span className={styles.error}>{errors.number.message}</span>
             )}
             <input
-              type="text"
               className={`${styles.input} ${
                 errors.number ? styles.inputError : ""
               }`}
-              placeholder="123"
+              id="number"
+              type="text"
+              placeholder=""
               {...register("number")}
             />
-          </label>
-          <label className={styles.label}>
-            Door
+            <label htmlFor="number">Number</label>
+          </div>
+        </article>
+
+        <article className={styles.article}>
+          <div className={styles.label}>
             {errors.door && (
               <span className={styles.error}>{errors.door.message}</span>
             )}
             <input
-              type="text"
               className={`${styles.input} ${
                 errors.door ? styles.inputError : ""
               }`}
-              placeholder="3A"
+              id="door"
+              type="text"
+              placeholder=""
               {...register("door")}
             />
-          </label>
-        </article>
-
-        <article className={styles.article}>
-          <label className={styles.label}>
-            City
+            <label htmlFor="door">Door</label>
+          </div>
+          <div className={styles.label}>
             {errors.city && (
               <span className={styles.error}>{errors.city.message}</span>
             )}
             <input
-              type="text"
               className={`${styles.input} ${
                 errors.city ? styles.inputError : ""
               }`}
-              placeholder="Pernambuco"
+              id="city"
+              type="text"
+              placeholder=""
               {...register("city")}
             />
-          </label>
-          <label className={styles.label}>
-            State
+            <label htmlFor="city">City</label>
+          </div>
+        </article>
+
+        <article className={styles.article}>
+          <div className={styles.label}>
             {errors.state && (
               <span className={styles.error}>{errors.state.message}</span>
             )}
             <input
-              type="text"
               className={`${styles.input} ${
                 errors.state ? styles.inputError : ""
               }`}
-              placeholder="FakeState"
+              id="state"
+              type="text"
+              placeholder=""
               {...register("state")}
             />
-          </label>
-          <label className={styles.label}>
-            Zip code
+            <label htmlFor="state">State</label>
+          </div>
+          <div className={styles.label}>
             {errors.zip_code && (
               <span className={styles.error}>{errors.zip_code.message}</span>
             )}
             <input
-              type="number"
               className={`${styles.input} ${
                 errors.zip_code ? styles.inputError : ""
               }`}
-              placeholder="12345"
+              id="zip_code"
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]"
+              placeholder=""
               {...register("zip_code")}
             />
-          </label>
+            <label htmlFor="zip_code">Zip code</label>
+          </div>
         </article>
 
         <Button type="submit" text="Save Address" />

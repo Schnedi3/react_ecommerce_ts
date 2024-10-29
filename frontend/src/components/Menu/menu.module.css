@@ -36,8 +36,7 @@
 
 .menuLink {
   position: relative;
-  font-size: 1rem;
-  color: var(--black-text);
+  color: var(--gray-text);
 }
 
 .menuLink:after {
@@ -46,7 +45,7 @@
   height: 0.08rem;
   background-color: var(--accent);
   display: block;
-  transition: width 0.3s linear;
+  transition: 0.3s;
 }
 
 :global .active {
@@ -132,8 +131,8 @@
     align-items: flex-end;
     justify-content: flex-start;
     gap: 4rem;
-    border-left: 0.05rem solid var(--gray-bg);
-    background-color: var(--white-bg);
+    border-left: 0.05rem solid var(--accent);
+    background-color: var(--white);
     clip-path: inset(0 0 0 100%);
     z-index: 3;
     transition: 0.3s;
@@ -154,6 +153,7 @@
   :global .active {
     padding-right: 0.6rem;
     padding-bottom: 0;
+    color: var(--accent);
     border-right: 0.15rem solid var(--accent);
     border-bottom: 0;
   }

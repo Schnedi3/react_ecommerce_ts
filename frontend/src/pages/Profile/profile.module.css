@@ -11,7 +11,6 @@
 .personal {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
 .personalInfo {
@@ -27,55 +26,95 @@
 }
 
 .labelTitle {
-  font-size: 0.9rem;
-  color: var(--gray-text);
+  position: relative;
+  top: 0.9rem;
+  left: 0.5rem;
+  width: fit-content;
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+  background-color: var(--white);
+  z-index: 1;
 }
 
 .labelText {
+  position: relative;
   width: 100%;
   padding: 0.7rem 1rem;
-  border-radius: 0.5rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border-radius: var(--boder-radius);
+  border: 2px solid var(--gray-bg);
 }
 
 .input {
   width: 100%;
   padding: 0.7rem 1rem;
-  border-radius: 0.5rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border-radius: var(--boder-radius);
+  border: 2px solid var(--gray-bg);
 }
 
 .input:focus {
-  box-shadow: 0 2px 0 0 var(--accent);
+  border: 2px solid var(--accent);
 }
 
 /* ADDRESS */
-.addresses {
+.addressesContainer {
   display: flex;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.label {
+.addresses {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ADD ADDRESS */
+.addAddress {
   max-width: fit-content;
-  padding: 1rem 1.5rem;
+  padding: 0rem 2.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-text);
+  border: 2px solid var(--gray-bg);
+  border-radius: var(--boder-radius);
+  transition: 0.3s;
+}
+
+.addAddressIcon {
+  width: 5rem;
+}
+
+/* ADDRESS LIST */
+.addressList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.singleAddress {
+  position: relative;
+  max-width: fit-content;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   font-size: 0.8rem;
-  border-radius: 0.5rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border: 2px solid var(--gray-bg);
+  border-radius: var(--boder-radius);
 }
 
 .name {
+  position: absolute;
+  top: -0.9rem;
+  padding: 0 0.5rem;
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--accent);
+  background-color: var(--white);
 }
 
 .span {
-  color: var(--gray-text);
+  color: var(--black-text);
 }
 
 .buttons {
@@ -88,33 +127,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  border: 0;
-  background-color: transparent;
 }
 
 .buttonIcon {
   width: 1.4rem;
-}
-
-/* ADD ADDRESS */
-.addAddress {
-  max-width: fit-content;
-  padding: 0.5rem 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  color: var(--gray-text);
-  border: 0;
-  border-radius: 0.5rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
-  transition: 0.3s;
-}
-
-.addAddressIcon {
-  width: 1.5rem;
 }
 
 /* HOVER */
@@ -128,18 +144,28 @@
   }
 
   .addAddress:hover {
-    box-shadow: 0 2px 0 0 var(--accent);
+    border: 2px solid var(--accent);
     cursor: pointer;
   }
 }
 
 /* ADAPTIVE */
 @media (max-width: 700px) {
+  .profile {
+    margin: 2rem auto;
+  }
+
   .personalInfo {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .addresses,
+  .addressList {
     flex-direction: column;
   }
 
-  .label {
+  .singleAddress {
     width: 100%;
     max-width: 100%;
     flex-direction: row;

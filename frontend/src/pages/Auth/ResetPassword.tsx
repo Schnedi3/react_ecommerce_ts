@@ -34,8 +34,7 @@ export const ResetPassword = () => {
       >
         <Title title="Reset password" />
 
-        <label className={styles.label}>
-          Email
+        <article className={styles.label}>
           {errors.email && (
             <span className={styles.error}>{errors.email.message}</span>
           )}
@@ -43,14 +42,15 @@ export const ResetPassword = () => {
             className={`${styles.input} ${
               errors.email ? styles.inputError : ""
             }`}
+            id="email"
             type="email"
-            placeholder="johndoe@lorem.com"
+            placeholder=""
             {...register("email")}
           />
-        </label>
+          <label htmlFor="email">Email</label>
+        </article>
 
-        <label className={styles.label}>
-          New password
+        <article className={styles.label}>
           {errors.password && (
             <span className={styles.error}>{errors.password.message}</span>
           )}
@@ -58,10 +58,12 @@ export const ResetPassword = () => {
             className={`${styles.input} ${
               errors.password ? styles.inputError : ""
             }`}
+            id="password"
             type={visible ? "text" : "password"}
-            placeholder="A1b2C3d4"
+            placeholder=""
             {...register("password")}
           />
+          <label htmlFor="password">New password</label>
           <button
             className={styles.viewPassword}
             type="button"
@@ -73,7 +75,7 @@ export const ResetPassword = () => {
               alt="password visibility"
             />
           </button>
-        </label>
+        </article>
 
         <Button type="submit" text="Set new password" />
       </form>

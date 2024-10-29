@@ -19,12 +19,12 @@
   position: absolute;
   top: 47%;
   display: flex;
-  background-color: var(--accent-clear);
+  background-color: var(--white);
   border-radius: 50%;
   z-index: 2;
 }
 
-.span:nth-child(1) {
+.span:nth-child(2) {
   left: 1rem;
 }
 
@@ -39,7 +39,7 @@
 .image {
   width: 100%;
   margin: auto;
-  border-radius: 0.4rem;
+  border-radius: var(--boder-radius);
 }
 
 .detailInfo {
@@ -49,13 +49,11 @@
 }
 
 .title {
-  font-family: var(--title-font);
-  font-weight: 300;
   font-size: 1.6rem;
 }
 
 .price {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.2rem;
   color: var(--accent);
 }
@@ -77,14 +75,12 @@
   justify-content: center;
   font-weight: 600;
   color: var(--black-text);
-  border-radius: 0.3rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border: 2px solid var(--gray-bg);
+  border-radius: var(--boder-radius);
 }
 
 .selectedSize {
-  background-color: var(--accent-clear);
-  box-shadow: 0 2px 0 0 var(--accent);
+  border: 2px solid var(--accent);
 }
 
 .disabledSize {
@@ -99,17 +95,13 @@
 
 /* HOVER */
 @media (hover: hover) {
-  .span:hover {
+  .spanIcon:hover {
+    filter: var(--filter);
     cursor: pointer;
   }
 
-  .spanIcon:hover {
-    filter: var(--filter);
-  }
-
   .size:hover {
-    background-color: var(--accent-clear);
-    box-shadow: 0 2px 0 0 var(--accent);
+    border: 2px solid var(--accent);
     cursor: pointer;
   }
 }

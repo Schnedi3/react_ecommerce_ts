@@ -17,6 +17,9 @@
   flex-direction: column;
   clip-path: inset(0 0 100% 0);
   z-index: 5;
+  border: 2px solid var(--gray-bg);
+  border-radius: var(--boder-radius);
+  background-color: var(--white);
   transition: 0.3s;
 }
 
@@ -26,12 +29,11 @@
 
 .modalItem {
   padding: 0.3rem 1.5rem;
-  border-radius: 0.2rem;
-  background-color: var(--white-bg);
+  
 }
 
 .modalItemText {
-  color: var(--black-text);
+  color: var(--gray-text);
 }
 
 .modalBackdrop {

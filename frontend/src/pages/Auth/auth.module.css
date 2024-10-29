@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  border-radius: 0.2rem;
+  border-radius: var(--boder-radius);
   background-color: var(--black-bg);
 }
 
@@ -58,33 +58,50 @@
   width: 60%;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .label {
   position: relative;
   display: flex;
   flex-direction: column;
-  color: var(--gray-text);
 }
 
 .input {
   padding: 0.7rem 1rem;
+  font-size: 0.9rem;
   color: var(--black-text);
-  border-radius: 0.4rem;
-  background-color: var(--white-bg);
-  box-shadow: 0 2px 0 0 var(--accent-shadow);
+  border: 2px solid var(--gray-bg);
+  border-radius: var(--boder-radius);
 }
 
-.input::placeholder {
-  opacity: 0.25;
+.input:focus + label,
+.input:not(:placeholder-shown) + label {
+  padding: 0 0.5rem;
+  left: 0.5rem;
+  font-size: 0.8rem;
+  background-color: var(--white);
+  transform: translateY(-0.8rem);
+}
+
+.input:focus-visible {
+  border: 2px solid var(--accent);
+}
+
+.label > label {
+  position: absolute;
+  top: 0.2rem;
+  left: 1rem;
+  font-size: 0.9rem;
+  color: var(--gray-text);
+  transform: translateY(0.6rem);
+  transition-duration: 0.3s;
 }
 
 .viewPassword {
   position: absolute;
-  top: 55%;
+  top: 30%;
   right: 1rem;
-  background-color: transparent;
 }
 
 .viewPasswordIcon {
@@ -105,22 +122,22 @@
 /* ERROR */
 .error {
   position: absolute;
-  right: 0;
+  top: -0.7rem;
+  right: 1rem;
+  padding: 0 0.5rem;
   color: var(--error);
+  font-size: 0.9rem;
+  background-color: var(--white);
 }
 
 .inputError {
-  box-shadow: 0 2px 0 0 var(--error);
+  border: 2px solid var(--error);
 }
 
 /* HOVER */
 @media (hover: hover) {
   .gbutton:hover {
     cursor: pointer;
-  }
-
-  .input:hover {
-    box-shadow: 0 2px 0 0 var(--accent);
   }
 
   .viewPassword:hover {

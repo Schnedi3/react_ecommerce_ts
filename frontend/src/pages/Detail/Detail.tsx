@@ -65,13 +65,6 @@ export const Detail = () => {
   return (
     <section className={styles.detail}>
       <article className={styles.images}>
-        <span className={styles.span} onClick={handlePrevious}>
-          <img
-            className={styles.spanIcon}
-            src={iconPrevious}
-            alt="previous image"
-          />
-        </span>
         <motion.img
           className={styles.image}
           key={currentImage}
@@ -83,13 +76,28 @@ export const Detail = () => {
           variants={variants}
           transition={{ duration: 0.5 }}
         />
-        <span className={styles.span} onClick={handleNext}>
-          <img className={styles.spanIcon} src={iconNext} alt="next image" />
-        </span>
+        {images.length > 1 && (
+          <>
+            <span className={styles.span} onClick={handlePrevious}>
+              <img
+                className={styles.spanIcon}
+                src={iconPrevious}
+                alt="previous image"
+              />
+            </span>
+            <span className={styles.span} onClick={handleNext}>
+              <img
+                className={styles.spanIcon}
+                src={iconNext}
+                alt="next image"
+              />
+            </span>
+          </>
+        )}
       </article>
       <article className={styles.detailInfo}>
         <h3 className={styles.title}>{title}</h3>
-        <h4 className={styles.price}>{formatCurrency(price)}</h4>
+        <p className={styles.price}>{formatCurrency(price)}</p>
         <p className={styles.desc}>{description}</p>
         <ul className={styles.sizes}>
           {sizes.map((size: string) => (
