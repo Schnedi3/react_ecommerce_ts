@@ -1,4 +1,4 @@
-import styles from "./detail_skeleton.module.css";
+import styles from "./detail.module.css";
 
 export const DetailSkeleton = () => {
   const sizeItems = Array.from({ length: 4 });

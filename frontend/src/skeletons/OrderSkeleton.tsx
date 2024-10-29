@@ -1,4 +1,4 @@
-import styles from "./order_skeleton.module.css";
+import styles from "./order.module.css";
 
 export const OrderSkeleton = () => {
   const orderItems = Array.from({ length: 3 });

@@ -1,4 +1,4 @@
-import styles from "./home_skeleton.module.css";
+import styles from "./home.module.css";
 
 export const HomeSkeleton = () => {
   const skeletonItems = Array.from({ length: 6 });

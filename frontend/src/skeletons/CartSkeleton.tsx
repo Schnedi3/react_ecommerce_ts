@@ -1,4 +1,4 @@
-import styles from "./cart_skeleton.module.css";
+import styles from "./cart.module.css";
 
 export const CartSkeleton = () => {
   const cartItems = Array.from({ length: 2 });
