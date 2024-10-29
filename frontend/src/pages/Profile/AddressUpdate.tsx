@@ -27,18 +27,21 @@ export const AddressUpdate = ({
     resolver: zodResolver(addressSchema),
     defaultValues: addressData,
   });
-  const { mutate: updateAddress, data } = useUpdateAddress();
+  const { mutate: updateAddress } = useUpdateAddress();
 
   const onSubmit = async (address: IAddress) => {
     if (addressData) {
       const { id } = addressData;
-      updateAddress({ address, id });
+      updateAddress(
+        { address, id },
+        {
+          onSuccess: () => {
+            setIsEditAddress(false);
+          },
+        }
+      );
     }
   };
-
-  if (data?.data.success) {
-    setIsEditAddress(false);
-  }
 
   useEffect(() => {
     if (isEditAddress) {

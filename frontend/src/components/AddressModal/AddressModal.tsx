@@ -28,9 +28,13 @@ export const AddressModal = ({
   const { mutate: addAddress } = useAddAddress();
 
   const onSubmit = async (address: IAddress) => {
-    addAddress(address);
-    setIsAddAddress(false);
-    reset();
+    addAddress(address),
+      {
+        onSuccess: () => {
+          setIsAddAddress(false);
+          reset();
+        },
+      };
   };
 
   useEffect(() => {
