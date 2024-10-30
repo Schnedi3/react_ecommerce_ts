@@ -41,12 +41,6 @@ export interface ICategoriesProps {
   products: IProduct[];
 }
 
-export interface IContact {
-  name: string;
-  email: string;
-  message: string;
-}
-
 export interface IOrder {
   order_amount: number;
   order_date: Date;
@@ -78,9 +72,4 @@ export interface IProduct {
   sizes: string[];
   images: string[];
   quantity: number;
-}
-
-export interface ISearchProps {
-  inputValue: string;
-  setInputValue: (inputValue: string) => void;
 }
