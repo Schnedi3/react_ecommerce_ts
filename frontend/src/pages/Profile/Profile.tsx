@@ -34,8 +34,14 @@ export const Profile = () => {
     e.preventDefault();
 
     if (updatedUsername.trim() !== "") {
-      updateUsername({ updatedUsername, id });
-      setIsEditUsername(false);
+      updateUsername(
+        { updatedUsername, id },
+        {
+          onSuccess: () => {
+            setIsEditUsername(false);
+          },
+        }
+      );
     }
   };
 
