@@ -101,7 +101,7 @@ export const Detail = () => {
         <p className={styles.desc}>{description}</p>
         <ul className={styles.sizes}>
           {sizes.map((size: string) => (
-            <li key={size}>
+            <li key={Math.random()}>
               <button
                 className={`${styles.size} ${
                   selectedSize === size ? styles.selectedSize : ""

@@ -84,8 +84,8 @@ export const NewProduct = () => {
             />
           </div>
           <ul className={styles.uploadedImages}>
-            {images.map((image, index) => (
-              <li key={index}>
+            {images.map((image) => (
+              <li key={Math.random()}>
                 <img
                   className={styles.uploadedImage}
                   src={URL.createObjectURL(image)}
@@ -164,7 +164,7 @@ export const NewProduct = () => {
               className={`${styles.size} ${
                 sizes.includes(size) ? styles.selected : ""
               }`}
-              key={size}
+              key={Math.random()}
               type="button"
               onClick={() => handleSize(size)}
             >

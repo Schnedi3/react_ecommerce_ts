@@ -33,18 +33,18 @@ export const Orders = () => {
       <Title title="Orders" />
       <ul className="order">
         {orders.map((order: IOrder) => (
-          <li className={styles.singleOrder} key={order.order_id}>
+          <li className={styles.singleOrder} key={Math.random()}>
             {order.products.map((item) => (
               <img
                 className={styles.itemImage}
                 src={`${imagesURL}/${item.images[0]}`}
-                key={item.id}
+                key={Math.random()}
               />
             ))}
 
             <article>
               {order.products.map((item) => (
-                <div key={item.id}>
+                <div key={Math.random()}>
                   <p>{item.title}</p>
                   <p>
                     <span className={styles.orderSpan}>Quantity:</span>{" "}

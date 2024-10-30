@@ -21,7 +21,7 @@ export const Users = () => {
       <Title title="Users" />
       <ul className={styles.usersList}>
         {users.map(({ id, username, email, role }: IUser) => (
-          <li className={styles.user} key={id}>
+          <li className={styles.user} key={Math.random()}>
             <h3>{id}</h3>
             <h3>{username}</h3>
             <h4>{email}</h4>

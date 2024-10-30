@@ -62,7 +62,7 @@ export const Categories = ({
             className={`${styles.category} ${
               category === selectedCategory ? styles.active : ""
             }`}
-            key={category}
+            key={Math.random()}
             onClick={() => handleCategoryChange(category)}
           >
             {category}

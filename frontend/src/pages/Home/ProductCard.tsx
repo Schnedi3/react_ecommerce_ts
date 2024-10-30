@@ -19,7 +19,7 @@ export const ProductCard = ({ filteredProducts }: IProductCardProps) => {
           <Link
             className={styles.card}
             to={`/product/${product.id}`}
-            key={product.id}
+            key={Math.random()}
           >
             <img
               className={styles.cardImage}

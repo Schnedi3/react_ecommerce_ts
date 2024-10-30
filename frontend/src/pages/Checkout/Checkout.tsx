@@ -44,21 +44,19 @@ export const Checkout = () => {
     <section className={styles.order}>
       <article className={styles.cart}>
         <Title title="Summary" />
-        {cart.map(
-          ({ images, price, product_id, quantity, size, title }: ICartItem) => (
-            <div className={styles.product} key={product_id}>
-              <img
-                className={styles.productImage}
-                src={`${imagesURL}/${images[0]}`}
-                alt={title}
-              />
-              <h3>{title}</h3>
-              <p>{quantity}</p>
-              <p>{size}</p>
-              <p>{formatCurrency(price)}</p>
-            </div>
-          )
-        )}
+        {cart.map(({ images, price, quantity, size, title }: ICartItem) => (
+          <div className={styles.product} key={Math.random()}>
+            <img
+              className={styles.productImage}
+              src={`${imagesURL}/${images[0]}`}
+              alt={title}
+            />
+            <h3>{title}</h3>
+            <p>{quantity}</p>
+            <p>{size}</p>
+            <p>{formatCurrency(price)}</p>
+          </div>
+        ))}
 
         <div className={styles.total}>
           <p className={styles.shipping}>
@@ -114,10 +112,7 @@ export const Checkout = () => {
           {addressList.length > 0 && (
             <section className={styles.addressList}>
               {addressList.map((address: IAddress) => (
-                <label
-                  className={styles.singleAddress}
-                  key={address.first_name}
-                >
+                <label className={styles.singleAddress} key={Math.random()}>
                   <input
                     className={styles.addressRadio}
                     type="radio"

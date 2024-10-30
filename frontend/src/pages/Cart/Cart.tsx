@@ -48,7 +48,7 @@ export const Cart = () => {
 
         {cart.map(
           ({ images, price, product_id, quantity, size, title }: ICartItem) => (
-            <div className={styles.product} key={product_id}>
+            <div className={styles.product} key={Math.random()}>
               <img
                 className={styles.productImage}
                 src={`${imagesURL}/${images[0]}`}

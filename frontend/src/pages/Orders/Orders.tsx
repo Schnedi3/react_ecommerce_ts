@@ -18,10 +18,10 @@ export const Orders = () => {
       <Title title="All orders" />
 
       {orders.map(
-        ({ order_date, order_id, order_status, products }: IOrder) => (
-          <li className={styles.order} key={order_id}>
-            {products.map(({ id, images, price, quantity, size, title }) => (
-              <article className={styles.product} key={id}>
+        ({ order_date, order_status, products }: IOrder) => (
+          <li className={styles.order} key={Math.random()}>
+            {products.map(({ images, price, quantity, size, title }) => (
+              <article className={styles.product} key={Math.random()}>
                 <img
                   className={styles.productImage}
                   src={`${imagesURL}/${images[0]}`}

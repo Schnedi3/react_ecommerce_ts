@@ -23,7 +23,7 @@ export const Products = () => {
       <Title title="Products" />
       <ul className={styles.product}>
         {products.map(({ id, images, title, category, price }: IProduct) => (
-          <li className={styles.singleProduct} key={id}>
+          <li className={styles.singleProduct} key={Math.random()}>
             <img
               className={styles.productImage}
               src={`${imagesURL}/${images[0]}`}
